@@ -22,6 +22,7 @@
 		B91BD4A9237980020015C934 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B91BD4A7237980020015C934 /* LaunchScreen.storyboard */; };
 		B91BD4B4237980020015C934 /* FinalChallengeAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91BD4B3237980020015C934 /* FinalChallengeAppTests.swift */; };
 		B91BD4BF237980020015C934 /* FinalChallengeAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91BD4BE237980020015C934 /* FinalChallengeAppUITests.swift */; };
+		B9B548FE237C195000ACB625 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9B548FD237C195000ACB625 /* CloudKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,8 @@
 		B91BD4BA237980020015C934 /* FinalChallengeAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FinalChallengeAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B91BD4BE237980020015C934 /* FinalChallengeAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalChallengeAppUITests.swift; sourceTree = "<group>"; };
 		B91BD4C0237980020015C934 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B9B548FB237C193800ACB625 /* FinalChallengeApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FinalChallengeApp.entitlements; sourceTree = "<group>"; };
+		B9B548FD237C195000ACB625 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9B548FE237C195000ACB625 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,6 +128,7 @@
 				B91BD4B2237980020015C934 /* FinalChallengeAppTests */,
 				B91BD4BD237980020015C934 /* FinalChallengeAppUITests */,
 				B91BD497237980010015C934 /* Products */,
+				B9B548FC237C195000ACB625 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -140,6 +145,7 @@
 		B91BD498237980010015C934 /* FinalChallengeApp */ = {
 			isa = PBXGroup;
 			children = (
+				B9B548FB237C193800ACB625 /* FinalChallengeApp.entitlements */,
 				B9067475237C139A00671632 /* Controller */,
 				B9067474237C138C00671632 /* View */,
 				B9067473237C137500671632 /* Model */,
@@ -171,6 +177,14 @@
 				B91BD4C0237980020015C934 /* Info.plist */,
 			);
 			path = FinalChallengeAppUITests;
+			sourceTree = "<group>";
+		};
+		B9B548FC237C195000ACB625 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B9B548FD237C195000ACB625 /* CloudKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -502,6 +516,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FinalChallengeApp/FinalChallengeApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A59P6GV5MM;
 				INFOPLIST_FILE = FinalChallengeApp/Info.plist;
@@ -509,7 +524,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.jorjyeah.FinalChallengeApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jorjyeah.FinalChallengeAppNew;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -520,6 +535,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FinalChallengeApp/FinalChallengeApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A59P6GV5MM;
 				INFOPLIST_FILE = FinalChallengeApp/Info.plist;
@@ -527,7 +543,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.jorjyeah.FinalChallengeApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jorjyeah.FinalChallengeAppNew;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
