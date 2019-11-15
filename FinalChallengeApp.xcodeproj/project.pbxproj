@@ -23,6 +23,11 @@
 		B91BD4B4237980020015C934 /* FinalChallengeAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91BD4B3237980020015C934 /* FinalChallengeAppTests.swift */; };
 		B91BD4BF237980020015C934 /* FinalChallengeAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91BD4BE237980020015C934 /* FinalChallengeAppUITests.swift */; };
 		B9B548FE237C195000ACB625 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9B548FD237C195000ACB625 /* CloudKit.framework */; };
+		B9F81F8A237D41EA0040F09C /* StudentDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F81F89237D41EA0040F09C /* StudentDataModel.swift */; };
+		B9F81F8D237D44DD0040F09C /* StudentCKModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F81F8C237D44DD0040F09C /* StudentCKModel.swift */; };
+		B9F81F91237E82E20040F09C /* TherapyScheduleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F81F90237E82E20040F09C /* TherapyScheduleModel.swift */; };
+		B9F81F93237E835E0040F09C /* TherapyScheduleCKModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F81F92237E835E0040F09C /* TherapyScheduleCKModel.swift */; };
+		B9F81F95237F1A7F0040F09C /* StudentTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F81F94237F1A7F0040F09C /* StudentTestViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +71,11 @@
 		B91BD4C0237980020015C934 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B9B548FB237C193800ACB625 /* FinalChallengeApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FinalChallengeApp.entitlements; sourceTree = "<group>"; };
 		B9B548FD237C195000ACB625 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		B9F81F89237D41EA0040F09C /* StudentDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentDataModel.swift; sourceTree = "<group>"; };
+		B9F81F8C237D44DD0040F09C /* StudentCKModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentCKModel.swift; sourceTree = "<group>"; };
+		B9F81F90237E82E20040F09C /* TherapyScheduleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TherapyScheduleModel.swift; sourceTree = "<group>"; };
+		B9F81F92237E835E0040F09C /* TherapyScheduleCKModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TherapyScheduleCKModel.swift; sourceTree = "<group>"; };
+		B9F81F94237F1A7F0040F09C /* StudentTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentTestViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +107,8 @@
 		B9067473237C137500671632 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B9F81F89237D41EA0040F09C /* StudentDataModel.swift */,
+				B9F81F90237E82E20040F09C /* TherapyScheduleModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -117,6 +129,7 @@
 				B9067476237C13BC00671632 /* ProfileViewController.swift */,
 				B9067478237C13D500671632 /* MaterialsViewController.swift */,
 				B906747A237C13E800671632 /* StudentsViewController.swift */,
+				B9F81F94237F1A7F0040F09C /* StudentTestViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -148,6 +161,7 @@
 				B9B548FB237C193800ACB625 /* FinalChallengeApp.entitlements */,
 				B9067475237C139A00671632 /* Controller */,
 				B9067474237C138C00671632 /* View */,
+				B9F81F8B237D44BE0040F09C /* ModelCK */,
 				B9067473237C137500671632 /* Model */,
 				B91BD499237980010015C934 /* AppDelegate.swift */,
 				B91BD49B237980010015C934 /* SceneDelegate.swift */,
@@ -185,6 +199,15 @@
 				B9B548FD237C195000ACB625 /* CloudKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B9F81F8B237D44BE0040F09C /* ModelCK */ = {
+			isa = PBXGroup;
+			children = (
+				B9F81F8C237D44DD0040F09C /* StudentCKModel.swift */,
+				B9F81F92237E835E0040F09C /* TherapyScheduleCKModel.swift */,
+			);
+			path = ModelCK;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -321,12 +344,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9F81F95237F1A7F0040F09C /* StudentTestViewController.swift in Sources */,
 				B91BD4A4237980010015C934 /* FinalChallengeApp.xcdatamodeld in Sources */,
+				B9F81F8D237D44DD0040F09C /* StudentCKModel.swift in Sources */,
 				B91BD49E237980010015C934 /* ViewController.swift in Sources */,
 				B9067477237C13BC00671632 /* ProfileViewController.swift in Sources */,
+				B9F81F93237E835E0040F09C /* TherapyScheduleCKModel.swift in Sources */,
+				B9F81F91237E82E20040F09C /* TherapyScheduleModel.swift in Sources */,
 				B9067479237C13D500671632 /* MaterialsViewController.swift in Sources */,
 				B91BD49A237980010015C934 /* AppDelegate.swift in Sources */,
 				B906747B237C13E800671632 /* StudentsViewController.swift in Sources */,
+				B9F81F8A237D41EA0040F09C /* StudentDataModel.swift in Sources */,
 				B91BD49C237980010015C934 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
