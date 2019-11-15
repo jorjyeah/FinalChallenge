@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		68A57095237E7BE1002A3014 /* StudentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A57094237E7BE1002A3014 /* StudentsTableViewCell.swift */; };
+		68A57097237E7D6F002A3014 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A57096237E7D6F002A3014 /* TestData.swift */; };
 		B906746D237C133E00671632 /* Students.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B906746B237C133E00671632 /* Students.storyboard */; };
 		B906746F237C135300671632 /* Materials.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B906746E237C135300671632 /* Materials.storyboard */; };
 		B9067472237C136400671632 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9067470237C136400671632 /* Profile.storyboard */; };
@@ -48,6 +50,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		68A57094237E7BE1002A3014 /* StudentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentsTableViewCell.swift; sourceTree = "<group>"; };
+		68A57096237E7D6F002A3014 /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
 		B906746C237C133E00671632 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = FinalChallengeApp/Base.lproj/Students.storyboard; sourceTree = "<group>"; };
 		B906746E237C135300671632 /* Materials.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Materials.storyboard; sourceTree = "<group>"; };
 		B9067471237C136400671632 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = FinalChallengeApp/Base.lproj/Profile.storyboard; sourceTree = "<group>"; };
@@ -104,6 +108,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		68A57093237E7BCF002A3014 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				68A57094237E7BE1002A3014 /* StudentsTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		B9067473237C137500671632 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +128,7 @@
 		B9067474237C138C00671632 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				68A57093237E7BCF002A3014 /* Cell */,
 				B9067470237C136400671632 /* Profile.storyboard */,
 				B906746E237C135300671632 /* Materials.storyboard */,
 				B906746B237C133E00671632 /* Students.storyboard */,
@@ -171,6 +184,7 @@
 				B91BD4A7237980020015C934 /* LaunchScreen.storyboard */,
 				B91BD4AA237980020015C934 /* Info.plist */,
 				B91BD4A2237980010015C934 /* FinalChallengeApp.xcdatamodeld */,
+				68A57096237E7D6F002A3014 /* TestData.swift */,
 			);
 			path = FinalChallengeApp;
 			sourceTree = "<group>";
@@ -345,12 +359,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9F81F95237F1A7F0040F09C /* StudentTestViewController.swift in Sources */,
+				68A57097237E7D6F002A3014 /* TestData.swift in Sources */,
 				B91BD4A4237980010015C934 /* FinalChallengeApp.xcdatamodeld in Sources */,
 				B9F81F8D237D44DD0040F09C /* StudentCKModel.swift in Sources */,
 				B91BD49E237980010015C934 /* ViewController.swift in Sources */,
 				B9067477237C13BC00671632 /* ProfileViewController.swift in Sources */,
 				B9F81F93237E835E0040F09C /* TherapyScheduleCKModel.swift in Sources */,
 				B9F81F91237E82E20040F09C /* TherapyScheduleModel.swift in Sources */,
+				68A57095237E7BE1002A3014 /* StudentsTableViewCell.swift in Sources */,
 				B9067479237C13D500671632 /* MaterialsViewController.swift in Sources */,
 				B91BD49A237980010015C934 /* AppDelegate.swift in Sources */,
 				B906747B237C13E800671632 /* StudentsViewController.swift in Sources */,
@@ -476,7 +492,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -530,7 +546,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
