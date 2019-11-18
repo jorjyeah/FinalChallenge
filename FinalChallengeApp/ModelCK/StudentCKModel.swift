@@ -13,6 +13,15 @@ class StudentCKModel: NSObject{
     // student = child
     var record: CKRecord?
     
+    var studentRecordID : String {
+        get{
+            return record?.value(forKey: "recordName") as! String
+        }
+        set{
+            self.record?.setValue(newValue, forKey: "recordName")
+        }
+    }
+    
     var studentName : String {
         get{
             return record?.value(forKey: "childName") as! String
@@ -43,7 +52,7 @@ class StudentCKModel: NSObject{
         }
     }
     
-    var parentName : String{
+    var parentRecordID : String{
         get{
             return record?.value(forKey: "parentName") as! String
         }
@@ -67,7 +76,6 @@ class StudentCKModel: NSObject{
                 print(error.localizedDescription)
             } else {
                 records?.forEach({ (record) in
-                    
                     let model = StudentCKModel(record: record)
                     print("model",model)
                     studentData.append(model)
