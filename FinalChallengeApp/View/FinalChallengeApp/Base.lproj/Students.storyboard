@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JLt-p9-X3O">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JLt-p9-X3O">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -31,7 +31,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0k2-E9-pLJ">
-                                                    <rect key="frame" x="81" y="6" width="313" height="21"/>
+                                                    <rect key="frame" x="81" y="22" width="313" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -65,7 +65,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Bht-aX-avv" id="896-KZ-H4o"/>
-                        <segue destination="wYF-fh-5YR" kind="show" identifier="showStudentReport" id="3rd-xg-fE9"/>
+                        <segue destination="I7P-FV-xcF" kind="show" identifier="showStudentReport" id="jn5-am-iTU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DjU-jb-wPV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -73,20 +73,20 @@
             <point key="canvasLocation" x="1139.1304347826087" y="831.69642857142856"/>
         </scene>
         <!--View Controller-->
-        <scene sceneID="VBJ-gp-cAZ">
+        <scene sceneID="NFd-gf-J6W">
             <objects>
-                <viewController id="wYF-fh-5YR" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="NO7-5A-VAO">
+                <viewController id="I7P-FV-xcF" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MOc-Aa-Bvm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="xHv-Bz-O6o"/>
+                        <viewLayoutGuide key="safeArea" id="V0d-rt-tyO"/>
                     </view>
-                    <navigationItem key="navigationItem" id="HiH-sD-C79"/>
+                    <navigationItem key="navigationItem" id="hyE-Wc-AaS"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="PGn-2A-aMd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zQE-PR-Uah" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2022" y="832"/>
+            <point key="canvasLocation" x="2003" y="831"/>
         </scene>
         <!--Students-->
         <scene sceneID="hZm-IH-neX">
