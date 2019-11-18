@@ -11,11 +11,8 @@ import UIKit
 class StudentsTableViewCell: UITableViewCell {
     
    
-    @IBOutlet weak var studentImage: UIImageView!
-    
-    @IBOutlet weak var studentName: UILabel!
-    
-    @IBOutlet weak var studentSchedule: UILabel!
+    @IBOutlet weak var studentPhotoImageView: UIImageView!
+    @IBOutlet weak var studentNameLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

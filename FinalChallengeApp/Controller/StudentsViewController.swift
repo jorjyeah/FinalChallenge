@@ -16,9 +16,8 @@ class StudentsViewController: UIViewController {
     var scheduleArray = ["Selasa", "Rabu", "Senin", "Selasa"]
     var imageArray = [UIImage(named: "Bianka"), UIImage(named: "Aurelia"), UIImage(named: "Stefani"), UIImage(named: "Tamara")]
     
-    
-    //var student: [Student] = []
-    var student = [StudentModel]()
+//    var student = [StudentModel]()
+    var student = [StudentCKModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,20 +30,31 @@ class StudentsViewController: UIViewController {
 //        }
         
 //        print("Students View Controller")
-        StudentCKModel.getStudentData { // CloudKit Model called here
-            studentsData in
-            for studentData in studentsData {
-                print("Student name: \(studentData.studentName)")
-                print(studentData.studentDOB)
-                // Insert data that have been called to this
-                let data = StudentModel(studentName: studentData.studentName, studentSchedule: "No Schedule", studentPhoto: studentData.studentPhoto, studentRecordID: studentData.studentRecordID, parentRecordID: studentData.parentRecordID)
-                self.student.append(data)
+        
+        let studentsData = StudentCKModel.self
+        studentsData.getStudentData { studentsData in
+            for studentData in studentsData{
+                self.student.append(studentData)
             }
-            
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
         }
+
+//        StudentCKModel.getStudentData { // CloudKit Model called here
+//            studentsData in
+//            for studentData in studentsData {
+//                print("Student name: \(studentData.studentName)")
+//                print(studentData.studentDOB)
+//                // Insert data that have been called to this
+//                let data = StudentModel(studentName: studentData.studentName, studentPhoto: studentData.studentPhoto, studentRecordID: studentData.studentRecordID, parentRecordID: studentData.parentRecordID)
+//                self.student.append(data)
+//            }
+//
+//            DispatchQueue.main.async {
+//                self.tableView.reloadData()
+//            }
+//        }
     }
     
     
@@ -73,12 +83,10 @@ extension StudentsViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "studentCell", for: indexPath) as! StudentsTableViewCell
         
-        cell.studentName.text = student[indexPath.row].studentName
-        
-        
-        cell.studentImage.layer.cornerRadius = 25
-        cell.studentImage.image = student[indexPath.row].studentPhoto
-        
+        cell.studentNameLabel.text = student[indexPath.row].studentName
+        cell.studentPhotoImageView.layer.cornerRadius = 25
+        cell.studentPhotoImageView.image = student[indexPath.row].studentPhoto
+
         return cell
     }
     
