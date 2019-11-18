@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		68A57095237E7BE1002A3014 /* StudentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A57094237E7BE1002A3014 /* StudentsTableViewCell.swift */; };
-		68A57097237E7D6F002A3014 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A57096237E7D6F002A3014 /* TestData.swift */; };
 		B906746D237C133E00671632 /* Students.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B906746B237C133E00671632 /* Students.storyboard */; };
 		B906746F237C135300671632 /* Materials.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B906746E237C135300671632 /* Materials.storyboard */; };
 		B9067472237C136400671632 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9067470237C136400671632 /* Profile.storyboard */; };
@@ -49,7 +48,6 @@
 
 /* Begin PBXFileReference section */
 		68A57094237E7BE1002A3014 /* StudentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentsTableViewCell.swift; sourceTree = "<group>"; };
-		68A57096237E7D6F002A3014 /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
 		B906746C237C133E00671632 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = FinalChallengeApp/Base.lproj/Students.storyboard; sourceTree = "<group>"; };
 		B906746E237C135300671632 /* Materials.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Materials.storyboard; sourceTree = "<group>"; };
 		B9067471237C136400671632 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = FinalChallengeApp/Base.lproj/Profile.storyboard; sourceTree = "<group>"; };
@@ -170,7 +168,6 @@
 				B91BD4A7237980020015C934 /* LaunchScreen.storyboard */,
 				B91BD4AA237980020015C934 /* Info.plist */,
 				B91BD4A2237980010015C934 /* FinalChallengeApp.xcdatamodeld */,
-				68A57096237E7D6F002A3014 /* TestData.swift */,
 			);
 			path = FinalChallengeApp;
 			sourceTree = "<group>";
@@ -352,7 +349,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				68A57097237E7D6F002A3014 /* TestData.swift in Sources */,
 				B91BD4A4237980010015C934 /* FinalChallengeApp.xcdatamodeld in Sources */,
 				B9F81F8D237D44DD0040F09C /* StudentCKModel.swift in Sources */,
 				B91BD49E237980010015C934 /* ViewController.swift in Sources */,

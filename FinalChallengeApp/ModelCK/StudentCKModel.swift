@@ -15,10 +15,7 @@ class StudentCKModel: NSObject{
     
     var studentRecordID : String {
         get{
-            return record?.value(forKey: "recordName") as! String
-        }
-        set{
-            self.record?.setValue(newValue, forKey: "recordName")
+            return record?.recordID.recordName as! String
         }
     }
     
@@ -54,7 +51,11 @@ class StudentCKModel: NSObject{
     
     var parentRecordID : String{
         get{
-            return record?.value(forKey: "parentName") as! String
+            if record?.value(forKey: "parentName") != nil{
+                return self.record?.value(forKey: "parentName") as! String
+            } else{
+                return "No Parent"
+            }
         }
         set{
             self.record?.setValue(newValue, forKey: "parentName")
@@ -67,7 +68,7 @@ class StudentCKModel: NSObject{
     }
     
     class func getStudentData(onComplete: @escaping ([StudentCKModel]) -> Void){
-        var studentData = [StudentCKModel]()
+        var studentModel = [StudentCKModel]()
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: "Child", predicate: predicate)
         let database = CKContainer.default().publicCloudDatabase
@@ -78,15 +79,14 @@ class StudentCKModel: NSObject{
                 records?.forEach({ (record) in
                     let model = StudentCKModel(record: record)
                     print("model",model)
-                    studentData.append(model)
+                    studentModel.append(model)
                     
                 })
                 print("complete")
-                onComplete(studentData)
+                onComplete(studentModel)
             }
         }
-        print(studentData)
-//        return studentData
+        print("studentModel",studentModel)
     }
 
 }

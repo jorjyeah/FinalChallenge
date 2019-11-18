@@ -13,12 +13,12 @@ class StudentModel {
     var studentRecordID: String
     var parentRecordID: String
     var studentName: String
-    var studentSchedule: String
+//    var studentSchedule: String
     var studentPhoto: UIImage
     
-    init(studentName: String, studentSchedule: String, studentPhoto: UIImage, studentRecordID: String, parentRecordID: String){
+    init(studentName: String, studentPhoto: UIImage, studentRecordID: String, parentRecordID: String){
         self.studentName = studentName
-        self.studentSchedule = studentSchedule
+//        self.studentSchedule = studentSchedule
         self.studentPhoto = studentPhoto
         self.studentRecordID = studentRecordID
         self.parentRecordID = parentRecordID
