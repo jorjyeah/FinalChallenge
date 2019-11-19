@@ -17,13 +17,23 @@ class ReportViewController: UIViewController {
     let therapistReportArray = ["Fri, 18 Oct 2019",  "Wed, 16 Oct 2019", "Mon, 14 Oct 2019"]
     let parentsReportArray = ["Thu, 17 Oct 2019", "Tue, 15 Oct 2019"]
     
-
+    //ini buat nampung student record id yg passing
+    var studentRecordID = String()
+    var therapistRecordID = "7D852C1D-7E0C-B809-571E-65A551192798"
+    var therapySession = [TherapySessionCKModel]()
+//    var parentNotes = [parentNotesCKModel]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationController?.navigationBar.prefersLargeTitles = false
-        
-
+        let therapySessionsData = TherapySessionCKModel.self
+        therapySessionsData.getTherapySession(studentRecordID: studentRecordID, therapistRecordID: therapistRecordID) { therapySessionsData in
+            self.therapySession = therapySessionsData
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
         // Do any additional setup after loading the view.
     }
     
@@ -39,7 +49,7 @@ extension ReportViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch segmentedControl.selectedSegmentIndex {
         case 0:
-            return therapistReportArray.count
+            return therapySession.count
             
         case 1:
             return parentsReportArray.count
@@ -55,7 +65,10 @@ extension ReportViewController: UITableViewDelegate, UITableViewDataSource {
         
         switch segmentedControl.selectedSegmentIndex {
         case 0:
-            cell.reportLabel.text = therapistReportArray[indexPath.row]
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd.MM.yyyy HH:MM"
+            let therapySessionDate = formatter.string(from: therapySession[indexPath.row].therapySessionDate)
+            cell.reportLabel.text = therapySessionDate
             
         case 1:
             cell.reportLabel.text = parentsReportArray[indexPath.row]

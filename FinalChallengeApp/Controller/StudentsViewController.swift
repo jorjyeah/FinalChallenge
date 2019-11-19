@@ -14,6 +14,7 @@ class StudentsViewController: UIViewController {
         
 
     var student = [StudentCKModel]()
+    var recordIDTransfer: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,10 +81,19 @@ extension StudentsViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        recordIDTransfer = student[indexPath.row].studentRecordID
         performSegue(withIdentifier: "showStudentReport", sender: self)
-        let recordIDTransfer = student[indexPath.row].studentRecordID
-        print(recordIDTransfer)
     }
     
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showStudentReport" {
+            let destination = segue.destination as! ReportViewController
+            destination.studentRecordID = recordIDTransfer
+            
+//            print(recordIDTransfer)
+            print("\(destination.studentRecordID)")
+        }
+    }
     
 }
