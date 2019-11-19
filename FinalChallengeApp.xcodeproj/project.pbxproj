@@ -29,7 +29,6 @@
 		B9D9B32A23829614005CCDBB /* TherapySessionCKModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D9B32923829614005CCDBB /* TherapySessionCKModel.swift */; };
 		B9F81F8D237D44DD0040F09C /* StudentCKModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F81F8C237D44DD0040F09C /* StudentCKModel.swift */; };
 		B9F81F93237E835E0040F09C /* TherapyScheduleCKModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F81F92237E835E0040F09C /* TherapyScheduleCKModel.swift */; };
-		B9F81F98237F250B0040F09C /* StudentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F81F97237F250B0040F09C /* StudentModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,7 +78,6 @@
 		B9D9B32923829614005CCDBB /* TherapySessionCKModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TherapySessionCKModel.swift; sourceTree = "<group>"; };
 		B9F81F8C237D44DD0040F09C /* StudentCKModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentCKModel.swift; sourceTree = "<group>"; };
 		B9F81F92237E835E0040F09C /* TherapyScheduleCKModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TherapyScheduleCKModel.swift; sourceTree = "<group>"; };
-		B9F81F97237F250B0040F09C /* StudentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,7 +164,6 @@
 				B9B548FB237C193800ACB625 /* FinalChallengeApp.entitlements */,
 				B9067475237C139A00671632 /* Controller */,
 				B9067474237C138C00671632 /* View */,
-				B9F81F96237F24EF0040F09C /* Model */,
 				B9F81F8B237D44BE0040F09C /* ModelCK */,
 				B91BD499237980010015C934 /* AppDelegate.swift */,
 				B91BD49B237980010015C934 /* SceneDelegate.swift */,
@@ -214,14 +211,6 @@
 				B9D9B32923829614005CCDBB /* TherapySessionCKModel.swift */,
 			);
 			path = ModelCK;
-			sourceTree = "<group>";
-		};
-		B9F81F96237F24EF0040F09C /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				B9F81F97237F250B0040F09C /* StudentModel.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -363,7 +352,6 @@
 				B91BD49E237980010015C934 /* ViewController.swift in Sources */,
 				B9067477237C13BC00671632 /* ProfileViewController.swift in Sources */,
 				68A570B82383D479002A3014 /* ReportTableViewCell.swift in Sources */,
-				B9F81F98237F250B0040F09C /* StudentModel.swift in Sources */,
 				B9F81F93237E835E0040F09C /* TherapyScheduleCKModel.swift in Sources */,
 				B9D9B32A23829614005CCDBB /* TherapySessionCKModel.swift in Sources */,
 				68A57095237E7BE1002A3014 /* StudentsTableViewCell.swift in Sources */,

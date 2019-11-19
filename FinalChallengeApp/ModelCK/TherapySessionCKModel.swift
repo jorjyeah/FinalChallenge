@@ -52,12 +52,16 @@ class TherapySessionCKModel: NSObject{
     }
     
     class func getTherapySession(studentRecordID : String, therapistRecordID : String, onComplete: @escaping ([TherapySessionCKModel]) -> Void){
+        print("print masuk therapy session model, studentRecordID : \(studentRecordID), therapistRecordID : \(therapistRecordID)")
         var therapySessionModel = [TherapySessionCKModel]()
         
-        let studentReference = CKRecord.Reference(recordID: CKRecord.ID.value(forKey: studentRecordID) as! CKRecord.ID, action: CKRecord_Reference_Action.none)
-        let therapistReference = CKRecord.Reference(recordID: CKRecord.ID.value(forKey: therapistRecordID) as! CKRecord.ID, action: CKRecord_Reference_Action.none)
-        let predicate = NSPredicate(format: "childName == %@ AND therapistName  == %@",[studentReference, therapistReference])
+        let studentReference = CKRecord.Reference(recordID: CKRecord.ID(recordName: studentRecordID), action: CKRecord_Reference_Action.none)
+        let therapistReference = CKRecord.Reference(recordID: CKRecord.ID(recordName: therapistRecordID), action: CKRecord_Reference_Action.none)
         
+        
+        let predicate = NSPredicate(format: "childName == %@ AND therapistName  == %@", studentReference, therapistReference)
+        
+        print("sukses predicate")
         let query = CKQuery(recordType: "TherapySession", predicate: predicate)
         let database = CKContainer.default().publicCloudDatabase
         database.perform(query, inZoneWith: nil) { (records, error) in
@@ -68,8 +72,10 @@ class TherapySessionCKModel: NSObject{
                     let model = TherapySessionCKModel(record: record)
                     print("model",model)
                     therapySessionModel.append(model)
+                    // harus append or = aja?
                 })
                 print("complete")
+                print("therapySessionModel",therapySessionModel)
                 onComplete(therapySessionModel)
             }
         }
