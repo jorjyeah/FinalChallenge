@@ -28,6 +28,7 @@ class StudentsViewController: UIViewController {
                 self.tableView.reloadData()
             }
         }
+        
 
 //        StudentCKModel.getStudentData { // CloudKit Model called here
 //            studentsData in
