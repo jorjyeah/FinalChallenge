@@ -66,7 +66,7 @@ extension ReportViewController: UITableViewDelegate, UITableViewDataSource {
         switch segmentedControl.selectedSegmentIndex {
         case 0:
             let formatter = DateFormatter()
-            formatter.dateFormat = "dd.MM.yyyy HH:MM"
+            formatter.dateFormat = "EEEE, d MMM yyyy, HH:MM a"
             let therapySessionDate = formatter.string(from: therapySession[indexPath.row].therapySessionDate)
             cell.reportLabel.text = therapySessionDate
             
