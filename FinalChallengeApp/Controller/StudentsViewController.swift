@@ -11,12 +11,8 @@ import UIKit
 class StudentsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    
-    var nameArray = ["Bianka Aristania", "Aurelia Natasha", "Stefani Vania", "Tamara Liem"]
-    var scheduleArray = ["Selasa", "Rabu", "Senin", "Selasa"]
-    var imageArray = [UIImage(named: "Bianka"), UIImage(named: "Aurelia"), UIImage(named: "Stefani"), UIImage(named: "Tamara")]
-    
-//    var student = [StudentModel]()
+        
+
     var student = [StudentCKModel]()
     
     override func viewDidLoad() {
@@ -24,22 +20,15 @@ class StudentsViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.topItem?.title = "Students"
         
-//        for i in 0..<nameArray.count{
-//            let data = Student(name: nameArray[i], schedule: scheduleArray[i], image: imageArray[i]!)
-//            student.append(data)
-//        }
-        
-//        print("Students View Controller")
         
         let studentsData = StudentCKModel.self
         studentsData.getStudentData { studentsData in
-            for studentData in studentsData{
-                self.student.append(studentData)
-            }
+            self.student = studentsData
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
         }
+        
 
 //        StudentCKModel.getStudentData { // CloudKit Model called here
 //            studentsData in
@@ -92,8 +81,9 @@ extension StudentsViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "showStudentReport", sender: self)
+        let recordIDTransfer = student[indexPath.row].studentRecordID
+        print(recordIDTransfer)
     }
-    
     
     
 }

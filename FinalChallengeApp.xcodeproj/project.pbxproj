@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		68A57095237E7BE1002A3014 /* StudentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A57094237E7BE1002A3014 /* StudentsTableViewCell.swift */; };
+		68A570B62383D45E002A3014 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A570B52383D45E002A3014 /* ReportViewController.swift */; };
+		68A570B82383D479002A3014 /* ReportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A570B72383D479002A3014 /* ReportTableViewCell.swift */; };
 		B906746D237C133E00671632 /* Students.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B906746B237C133E00671632 /* Students.storyboard */; };
 		B906746F237C135300671632 /* Materials.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B906746E237C135300671632 /* Materials.storyboard */; };
 		B9067472237C136400671632 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9067470237C136400671632 /* Profile.storyboard */; };
@@ -49,6 +51,8 @@
 
 /* Begin PBXFileReference section */
 		68A57094237E7BE1002A3014 /* StudentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentsTableViewCell.swift; sourceTree = "<group>"; };
+		68A570B52383D45E002A3014 /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
+		68A570B72383D479002A3014 /* ReportTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportTableViewCell.swift; sourceTree = "<group>"; };
 		B906746C237C133E00671632 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = FinalChallengeApp/Base.lproj/Students.storyboard; sourceTree = "<group>"; };
 		B906746E237C135300671632 /* Materials.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Materials.storyboard; sourceTree = "<group>"; };
 		B9067471237C136400671632 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = FinalChallengeApp/Base.lproj/Profile.storyboard; sourceTree = "<group>"; };
@@ -108,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				68A57094237E7BE1002A3014 /* StudentsTableViewCell.swift */,
+				68A570B72383D479002A3014 /* ReportTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -129,6 +134,7 @@
 				B9067476237C13BC00671632 /* ProfileViewController.swift */,
 				B9067478237C13D500671632 /* MaterialsViewController.swift */,
 				B906747A237C13E800671632 /* StudentsViewController.swift */,
+				68A570B52383D45E002A3014 /* ReportViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -356,11 +362,13 @@
 				B9F81F8D237D44DD0040F09C /* StudentCKModel.swift in Sources */,
 				B91BD49E237980010015C934 /* ViewController.swift in Sources */,
 				B9067477237C13BC00671632 /* ProfileViewController.swift in Sources */,
+				68A570B82383D479002A3014 /* ReportTableViewCell.swift in Sources */,
 				B9F81F98237F250B0040F09C /* StudentModel.swift in Sources */,
 				B9F81F93237E835E0040F09C /* TherapyScheduleCKModel.swift in Sources */,
 				B9D9B32A23829614005CCDBB /* TherapySessionCKModel.swift in Sources */,
 				68A57095237E7BE1002A3014 /* StudentsTableViewCell.swift in Sources */,
 				B9067479237C13D500671632 /* MaterialsViewController.swift in Sources */,
+				68A570B62383D45E002A3014 /* ReportViewController.swift in Sources */,
 				B91BD49A237980010015C934 /* AppDelegate.swift in Sources */,
 				B906747B237C13E800671632 /* StudentsViewController.swift in Sources */,
 				B91BD49C237980010015C934 /* SceneDelegate.swift in Sources */,
