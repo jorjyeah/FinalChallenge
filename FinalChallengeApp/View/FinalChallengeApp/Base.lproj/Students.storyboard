@@ -31,14 +31,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0k2-E9-pLJ">
-                                                    <rect key="frame" x="81" y="6" width="313" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2HU-kH-a9E">
-                                                    <rect key="frame" x="81" y="35" width="313" height="21"/>
+                                                    <rect key="frame" x="81" y="22" width="313" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -47,9 +40,8 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="studentImage" destination="kFw-bj-cOI" id="VYe-E8-CWs"/>
-                                            <outlet property="studentName" destination="0k2-E9-pLJ" id="5U8-Y0-X42"/>
-                                            <outlet property="studentSchedule" destination="2HU-kH-a9E" id="hvs-Dt-Lbi"/>
+                                            <outlet property="studentNameLabel" destination="0k2-E9-pLJ" id="DAs-r1-bx3"/>
+                                            <outlet property="studentPhotoImageView" destination="kFw-bj-cOI" id="Ks0-gl-VWu"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -73,28 +65,83 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Bht-aX-avv" id="896-KZ-H4o"/>
-                        <segue destination="wYF-fh-5YR" kind="show" identifier="showStudentReport" id="3rd-xg-fE9"/>
+                        <segue destination="I7P-FV-xcF" kind="show" identifier="showStudentReport" id="jn5-am-iTU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DjU-jb-wPV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1139.1304347826087" y="831.69642857142856"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="VBJ-gp-cAZ">
+        <!--Report View Controller-->
+        <scene sceneID="NFd-gf-J6W">
             <objects>
-                <viewController id="wYF-fh-5YR" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="NO7-5A-VAO">
+                <viewController id="I7P-FV-xcF" customClass="ReportViewController" customModule="FinalChallengeApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MOc-Aa-Bvm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AhA-RL-CPH">
+                                <rect key="frame" x="0.0" y="166" width="414" height="696"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reportCell" id="nGG-R8-nzX" customClass="ReportTableViewCell" customModule="FinalChallengeApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nGG-R8-nzX" id="ebG-uB-Acs">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jjk-3c-dXm">
+                                                    <rect key="frame" x="20" y="11" width="373" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="reportLabel" destination="jjk-3c-dXm" id="DCQ-4f-hId"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="I7P-FV-xcF" id="CLy-de-46e"/>
+                                    <outlet property="delegate" destination="I7P-FV-xcF" id="UrE-hC-DPv"/>
+                                </connections>
+                            </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Ts6-g7-oKh">
+                                <rect key="frame" x="36" y="104" width="343" height="32"/>
+                                <segments>
+                                    <segment title="My Report"/>
+                                    <segment title="Parents Report"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentedTapped:" destination="I7P-FV-xcF" eventType="valueChanged" id="OI3-yY-Zsf"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="xHv-Bz-O6o"/>
+                        <constraints>
+                            <constraint firstItem="AhA-RL-CPH" firstAttribute="top" secondItem="Ts6-g7-oKh" secondAttribute="bottom" constant="31" id="DKM-Aj-KjL"/>
+                            <constraint firstItem="Ts6-g7-oKh" firstAttribute="leading" secondItem="V0d-rt-tyO" secondAttribute="leading" constant="36" id="Vh2-dq-CYF"/>
+                            <constraint firstItem="Ts6-g7-oKh" firstAttribute="top" secondItem="V0d-rt-tyO" secondAttribute="top" constant="16" id="XDh-1m-JB7"/>
+                            <constraint firstItem="AhA-RL-CPH" firstAttribute="trailing" secondItem="V0d-rt-tyO" secondAttribute="trailing" id="lMX-9J-OkK"/>
+                            <constraint firstItem="V0d-rt-tyO" firstAttribute="trailing" secondItem="Ts6-g7-oKh" secondAttribute="trailing" constant="35" id="oil-I6-VWi"/>
+                            <constraint firstItem="AhA-RL-CPH" firstAttribute="bottom" secondItem="V0d-rt-tyO" secondAttribute="bottom" id="qR2-Yy-9Id"/>
+                            <constraint firstItem="AhA-RL-CPH" firstAttribute="leading" secondItem="V0d-rt-tyO" secondAttribute="leading" id="wJH-YU-XaY"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="V0d-rt-tyO"/>
                     </view>
-                    <navigationItem key="navigationItem" id="HiH-sD-C79"/>
+                    <navigationItem key="navigationItem" id="hyE-Wc-AaS"/>
+                    <connections>
+                        <outlet property="segmentedControl" destination="Ts6-g7-oKh" id="vRO-YF-ThM"/>
+                        <outlet property="tableView" destination="AhA-RL-CPH" id="GEY-72-zPn"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="PGn-2A-aMd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zQE-PR-Uah" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2022" y="832"/>
+            <point key="canvasLocation" x="2002.8985507246377" y="830.35714285714278"/>
         </scene>
         <!--Students-->
         <scene sceneID="hZm-IH-neX">

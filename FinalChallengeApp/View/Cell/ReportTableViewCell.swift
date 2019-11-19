@@ -1,18 +1,17 @@
 //
-//  StudentsTableViewCell.swift
+//  ReportTableViewCell.swift
 //  FinalChallengeApp
 //
-//  Created by Ni Wayan Bianka Aristania on 15/11/19.
+//  Created by Ni Wayan Bianka Aristania on 19/11/19.
 //  Copyright © 2019 George Joseph Kristian. All rights reserved.
 //
 
 import UIKit
 
-class StudentsTableViewCell: UITableViewCell {
+class ReportTableViewCell: UITableViewCell {
     
-   
-    @IBOutlet weak var studentPhotoImageView: UIImageView!
-    @IBOutlet weak var studentNameLabel: UILabel!
+    
+    @IBOutlet weak var reportLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
