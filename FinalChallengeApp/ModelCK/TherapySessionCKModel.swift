@@ -61,7 +61,7 @@ class TherapySessionCKModel: NSObject{
         
         let predicate = NSPredicate(format: "childName == %@ AND therapistName  == %@", studentReference, therapistReference)
         
-        print("sukses predicate")
+//        print("sukses predicate")
         let query = CKQuery(recordType: "TherapySession", predicate: predicate)
         let database = CKContainer.default().publicCloudDatabase
         database.perform(query, inZoneWith: nil) { (records, error) in
@@ -79,14 +79,14 @@ class TherapySessionCKModel: NSObject{
                 onComplete(therapySessionModel)
             }
         }
-        print("therapySessionModel",therapySessionModel)
+//        print("therapySessionModel",therapySessionModel)
     }
     
     class func addTherapySession(){
         let database = CKContainer.default().publicCloudDatabase
         let record = CKRecord(recordType: "TherapySession")
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd.MM.yyyy HH:MM"
+        formatter.dateFormat = "dd.MM.yyyy HH:mm"
         let therapySessionDate = formatter.string(from: Date())
         let therapySessionNotes = "Please repeat activity one"
         record.setObject(therapySessionDate as __CKRecordObjCValue, forKey: "therapySessionDate")
