@@ -62,7 +62,6 @@ class StudentCKModel: NSObject{
         }
     }
 
-    
     init(record: CKRecord){
         self.record = record
     }
@@ -88,6 +87,6 @@ class StudentCKModel: NSObject{
         }
         print("studentModel",studentModel)
     }
-
+    
+    // bikin function buat request friend
 }
-
