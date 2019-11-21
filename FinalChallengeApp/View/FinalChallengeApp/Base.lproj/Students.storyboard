@@ -312,21 +312,92 @@
             </objects>
             <point key="canvasLocation" x="3882.608695652174" y="1260.9375"/>
         </scene>
-        <!--View Controller-->
+        <!--Today's Report-->
         <scene sceneID="DjP-Ob-5zh">
             <objects>
-                <viewController id="3HD-r0-5Ss" sceneMemberID="viewController">
+                <viewController id="3HD-r0-5Ss" customClass="AddReportViewController" customModule="FinalChallengeApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mHb-4t-wvQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uo3-a8-qQ3">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="activityCell" rowHeight="56" id="Eg9-Lw-pQW" customClass="ActivityTableViewCell" customModule="FinalChallengeApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="56"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Eg9-Lw-pQW" id="cRs-CV-A4Y">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="80e-OW-I17">
+                                                    <rect key="frame" x="50" y="16" width="348" height="24"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jau-PQ-kLd">
+                                                    <rect key="frame" x="20" y="19" width="18" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Button" image="Unchecked box"/>
+                                                    <state key="selected" image="Checked box"/>
+                                                </button>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="activityNameLabel" destination="80e-OW-I17" id="649-ky-bvD"/>
+                                            <outlet property="checkboxButton" destination="Jau-PQ-kLd" id="umw-Nd-bUf"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="3HD-r0-5Ss" id="Daf-70-fHw"/>
+                                    <outlet property="delegate" destination="3HD-r0-5Ss" id="sBJ-KD-CXO"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="EW2-Al-361" firstAttribute="bottom" secondItem="uo3-a8-qQ3" secondAttribute="bottom" id="E1T-bG-uou"/>
+                            <constraint firstItem="EW2-Al-361" firstAttribute="trailing" secondItem="uo3-a8-qQ3" secondAttribute="trailing" id="O0U-85-tv3"/>
+                            <constraint firstItem="uo3-a8-qQ3" firstAttribute="top" secondItem="EW2-Al-361" secondAttribute="top" id="b48-IY-EBE"/>
+                            <constraint firstItem="uo3-a8-qQ3" firstAttribute="leading" secondItem="EW2-Al-361" secondAttribute="leading" id="mo8-24-zwr"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="EW2-Al-361"/>
                     </view>
-                    <navigationItem key="navigationItem" id="sDl-qj-IN9"/>
+                    <navigationItem key="navigationItem" title="Today's Report" id="sDl-qj-IN9">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="1wp-mY-lej">
+                            <connections>
+                                <action selector="doneTapped:" destination="3HD-r0-5Ss" id="F3u-It-urc"/>
+                                <segue destination="pHP-U8-wRF" kind="show" identifier="showSummary" id="hV6-kN-wJ1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="uo3-a8-qQ3" id="WDw-EV-vms"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tal-Rt-qOL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2849" y="517"/>
+            <point key="canvasLocation" x="2847.826086956522" y="516.96428571428567"/>
+        </scene>
+        <!--Summary View Controller-->
+        <scene sceneID="ckU-fh-U2K">
+            <objects>
+                <viewController id="pHP-U8-wRF" customClass="SummaryViewController" customModule="FinalChallengeApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3QI-mV-YG0">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="jS4-60-MzV"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="cdC-3h-IGn"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SKG-fu-cNn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3917" y="509"/>
         </scene>
         <!--Students-->
         <scene sceneID="hZm-IH-neX">
@@ -348,4 +419,8 @@
             <point key="canvasLocation" x="228.98550724637684" y="831.69642857142856"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Checked box" width="18" height="18"/>
+        <image name="Unchecked box" width="18" height="18"/>
+    </resources>
 </document>
