@@ -10,6 +10,14 @@
 		68A57095237E7BE1002A3014 /* StudentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A57094237E7BE1002A3014 /* StudentsTableViewCell.swift */; };
 		68A570B62383D45E002A3014 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A570B52383D45E002A3014 /* ReportViewController.swift */; };
 		68A570B82383D479002A3014 /* ReportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A570B72383D479002A3014 /* ReportTableViewCell.swift */; };
+		68A570C72384F378002A3014 /* AddReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A570C62384F378002A3014 /* AddReportViewController.swift */; };
+		68A570CD2384F423002A3014 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A570CC2384F423002A3014 /* DetailViewController.swift */; };
+		68A570CF2384F43C002A3014 /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A570CE2384F43C002A3014 /* DetailTableViewCell.swift */; };
+		68A570D12384FFAD002A3014 /* ViewDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A570D02384FFAD002A3014 /* ViewDetailViewController.swift */; };
+		68A570D5238544E4002A3014 /* NotesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A570D4238544E4002A3014 /* NotesTableViewCell.swift */; };
+		68A570D7238544F5002A3014 /* AttachmentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A570D6238544F5002A3014 /* AttachmentsTableViewCell.swift */; };
+		68A570D92386887C002A3014 /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A570D82386887C002A3014 /* ActivityTableViewCell.swift */; };
+		68A570DB2386A473002A3014 /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A570DA2386A473002A3014 /* SummaryViewController.swift */; };
 		B906746D237C133E00671632 /* Students.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B906746B237C133E00671632 /* Students.storyboard */; };
 		B906746F237C135300671632 /* Materials.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B906746E237C135300671632 /* Materials.storyboard */; };
 		B9067472237C136400671632 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9067470237C136400671632 /* Profile.storyboard */; };
@@ -53,6 +61,14 @@
 		68A57094237E7BE1002A3014 /* StudentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentsTableViewCell.swift; sourceTree = "<group>"; };
 		68A570B52383D45E002A3014 /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
 		68A570B72383D479002A3014 /* ReportTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportTableViewCell.swift; sourceTree = "<group>"; };
+		68A570C62384F378002A3014 /* AddReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReportViewController.swift; sourceTree = "<group>"; };
+		68A570CC2384F423002A3014 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		68A570CE2384F43C002A3014 /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
+		68A570D02384FFAD002A3014 /* ViewDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDetailViewController.swift; sourceTree = "<group>"; };
+		68A570D4238544E4002A3014 /* NotesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewCell.swift; sourceTree = "<group>"; };
+		68A570D6238544F5002A3014 /* AttachmentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentsTableViewCell.swift; sourceTree = "<group>"; };
+		68A570D82386887C002A3014 /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
+		68A570DA2386A473002A3014 /* SummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
 		B906746C237C133E00671632 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = FinalChallengeApp/Base.lproj/Students.storyboard; sourceTree = "<group>"; };
 		B906746E237C135300671632 /* Materials.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Materials.storyboard; sourceTree = "<group>"; };
 		B9067471237C136400671632 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = FinalChallengeApp/Base.lproj/Profile.storyboard; sourceTree = "<group>"; };
@@ -113,6 +129,10 @@
 			children = (
 				68A57094237E7BE1002A3014 /* StudentsTableViewCell.swift */,
 				68A570B72383D479002A3014 /* ReportTableViewCell.swift */,
+				68A570CE2384F43C002A3014 /* DetailTableViewCell.swift */,
+				68A570D4238544E4002A3014 /* NotesTableViewCell.swift */,
+				68A570D6238544F5002A3014 /* AttachmentsTableViewCell.swift */,
+				68A570D82386887C002A3014 /* ActivityTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -135,6 +155,10 @@
 				B9067478237C13D500671632 /* MaterialsViewController.swift */,
 				B906747A237C13E800671632 /* StudentsViewController.swift */,
 				68A570B52383D45E002A3014 /* ReportViewController.swift */,
+				68A570C62384F378002A3014 /* AddReportViewController.swift */,
+				68A570CC2384F423002A3014 /* DetailViewController.swift */,
+				68A570D02384FFAD002A3014 /* ViewDetailViewController.swift */,
+				68A570DA2386A473002A3014 /* SummaryViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -351,19 +375,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				B91BD4A4237980010015C934 /* FinalChallengeApp.xcdatamodeld in Sources */,
+				68A570CF2384F43C002A3014 /* DetailTableViewCell.swift in Sources */,
 				B9F81F8D237D44DD0040F09C /* StudentCKModel.swift in Sources */,
 				B91BD49E237980010015C934 /* ViewController.swift in Sources */,
 				B9067477237C13BC00671632 /* ProfileViewController.swift in Sources */,
 				68A570B82383D479002A3014 /* ReportTableViewCell.swift in Sources */,
 				B9F81F93237E835E0040F09C /* TherapyScheduleCKModel.swift in Sources */,
 				B9D9B32A23829614005CCDBB /* TherapySessionCKModel.swift in Sources */,
+				68A570CD2384F423002A3014 /* DetailViewController.swift in Sources */,
 				68A57095237E7BE1002A3014 /* StudentsTableViewCell.swift in Sources */,
 				B9067479237C13D500671632 /* MaterialsViewController.swift in Sources */,
+				68A570D92386887C002A3014 /* ActivityTableViewCell.swift in Sources */,
 				B9BC0D99238420A30063DC95 /* ParentNotesCKModel.swift in Sources */,
 				68A570B62383D45E002A3014 /* ReportViewController.swift in Sources */,
 				B91BD49A237980010015C934 /* AppDelegate.swift in Sources */,
+				68A570DB2386A473002A3014 /* SummaryViewController.swift in Sources */,
 				B906747B237C13E800671632 /* StudentsViewController.swift in Sources */,
 				B91BD49C237980010015C934 /* SceneDelegate.swift in Sources */,
+				68A570D7238544F5002A3014 /* AttachmentsTableViewCell.swift in Sources */,
+				68A570D12384FFAD002A3014 /* ViewDetailViewController.swift in Sources */,
+				68A570C72384F378002A3014 /* AddReportViewController.swift in Sources */,
+				68A570D5238544E4002A3014 /* NotesTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
