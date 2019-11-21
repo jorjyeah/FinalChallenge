@@ -91,7 +91,6 @@ extension StudentsViewController: UITableViewDelegate, UITableViewDataSource{
             let destination = segue.destination as! ReportViewController
             destination.studentRecordID = recordIDTransfer
             
-//            print(recordIDTransfer)
             print("\(destination.studentRecordID)")
         }
     }

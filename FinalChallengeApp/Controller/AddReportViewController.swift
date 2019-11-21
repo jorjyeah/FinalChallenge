@@ -17,6 +17,4 @@ class AddReportViewController: UIViewController {
     }
     
 
-    
-
 }
