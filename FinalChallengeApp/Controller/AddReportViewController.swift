@@ -16,6 +16,7 @@ class AddReportViewController: UIViewController {
     //let uncheckedImage = UIImage(named: "CheckBoxUnChecked")! as UIImage
     
     var activityArray = ["Stomp feet", "Point to  body parts", "Extend index finger",  "Place thumbs up"]
+    
     var selectedActivity = [String]()
     
     override func viewDidLoad() {
@@ -24,13 +25,7 @@ class AddReportViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    
-    @IBAction func doneTapped(_ sender: Any) {
-        performSegue(withIdentifier: "showSummary", sender: self)
-        
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showSummary" {
             let destination = segue.destination as! SummaryViewController
             
@@ -38,7 +33,6 @@ class AddReportViewController: UIViewController {
         }
     }
     
-
 }
 
 extension AddReportViewController: UITableViewDelegate,UITableViewDataSource {
