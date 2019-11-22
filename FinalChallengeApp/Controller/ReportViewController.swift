@@ -19,7 +19,6 @@ class ReportViewController: UIViewController {
     
     //ini buat nampung student record id yg passing
     var studentRecordID = String()
-    var therapistRecordID = "7D852C1D-7E0C-B809-571E-65A551192798"
     var therapySession = [TherapySessionCKModel]()
     var parentNotes = [ParentNotesCKModel]()
     
@@ -28,7 +27,7 @@ class ReportViewController: UIViewController {
         
         navigationController?.navigationBar.prefersLargeTitles = false
         let therapySessionsData = TherapySessionCKModel.self
-        therapySessionsData.getTherapySession(studentRecordID: studentRecordID, therapistRecordID: therapistRecordID) { therapySessionsData in
+        therapySessionsData.getTherapySession(studentRecordID: studentRecordID) { therapySessionsData in
             self.therapySession = therapySessionsData
             DispatchQueue.main.async {
                 self.tableView.reloadData()

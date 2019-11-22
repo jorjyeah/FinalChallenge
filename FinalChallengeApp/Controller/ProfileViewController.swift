@@ -7,12 +7,18 @@
 //
 
 import UIKit
+import CloudKit
 
 class ProfileViewController: UIViewController {
 
+    @IBOutlet weak var therapistPhoto: UIImageView!
+    @IBOutlet weak var therapistNameLabel: UILabel!
+    @IBOutlet weak var institutionNameLabel: UILabel!
+    @IBOutlet weak var addressNameLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     
