@@ -8,11 +8,39 @@
 
 import UIKit
 import CoreData
+import CloudKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        let preloadedDataKey = "didPreloadData"
+        let userIDUserDef = "userID"
+        let therapistNameUserDef = "therapistName"
+        let userDefaults = UserDefaults.standard
+        
+        if userDefaults.bool(forKey: preloadedDataKey) == false {
+            // check if it's the firsttime user open the app
+            preloadData { (userRef, therapistName) in
+                // setUserDefaults
+                userDefaults.set(therapistName, forKey: therapistNameUserDef)
+                userDefaults.set(userRef, forKey: userIDUserDef)
+                profileTherapistCKModel.checkTherapistData(userRef: userRef) { (dataTherapistAvailability) in
+                    // check data availability about therapist
+                    if !dataTherapistAvailability{
+                        print("no data therapist, appDelegate")
+                        profileTherapistCKModel.addNewTherapist(therapistName: therapistName, userReference: userRef)
+                        // create new one data therapist if it's not available
+                        print("userID set at userDefaults")
+                    } else{
+                        print("data available therapist, appDelegate")
+                    }
+                    print("userID & therapistName : \(userDefaults.string(forKey: userIDUserDef)) & \(userDefaults.string(forKey: therapistNameUserDef))")
+                    userDefaults.set(true, forKey: preloadedDataKey) // dont forget to set true
+                }
+            }
+        }
         // Override point for customization after application launch.
         return true
     }
@@ -32,7 +60,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     // MARK: - Core Data stack
-
+    
+    private func preloadData(onComplete: @escaping(String,String) -> ()){
+        print("masuk")
+        var therapistName : String = ""
+        var userRef : String = ""
+        
+        CKContainer.default().requestApplicationPermission(.userDiscoverability) { (status, error) in
+            CKContainer.default().fetchUserRecordID { (record, error) in
+                guard let record = record else {return}
+                CKContainer.default().discoverUserIdentity(withUserRecordID: record) { (userID, error) in
+                    if let userID = userID {
+                        userRef = "\(userID.userRecordID?.recordName ?? "")"
+                        therapistName = "\(userID.nameComponents?.givenName ?? "") \(userID.nameComponents?.familyName ?? "")"
+                        print(therapistName, userRef)
+                        onComplete(userRef,therapistName)
+                    }
+                }
+            }
+        }
+    }
+    
     lazy var persistentContainer: NSPersistentCloudKitContainer = {
         /*
          The persistent container for the application. This implementation

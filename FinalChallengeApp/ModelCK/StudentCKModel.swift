@@ -85,7 +85,6 @@ class StudentCKModel: NSObject{
                 onComplete(studentModel)
             }
         }
-        print("studentModel",studentModel)
     }
     
     // bikin function buat request friend
