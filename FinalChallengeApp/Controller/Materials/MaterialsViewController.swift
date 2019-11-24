@@ -46,6 +46,7 @@ extension MaterialsViewController: UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedProgram = programArray[indexPath.row]
         performSegue(withIdentifier: "showActivity", sender: self)
     }
     
