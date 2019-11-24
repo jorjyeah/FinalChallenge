@@ -66,9 +66,50 @@ class StudentCKModel: NSObject{
         self.record = record
     }
     
-    class func getStudentData(onComplete: @escaping ([StudentCKModel]) -> Void){
+    class func getTherapySchedule(onComplete : @escaping ([String]) -> Void){
+        let therapistRecordID = String(UserDefaults.standard.string(forKey: "userID")!)
+        let therapistReference = CKRecord.Reference(recordID: CKRecord.ID(recordName: therapistRecordID), action: CKRecord_Reference_Action.none)
+
+        let predicate = NSPredicate(format: "therapistName == %@", therapistReference)
+        let query = CKQuery(recordType: "TherapySchedule", predicate: predicate)
+        
+        let operation = CKQueryOperation(query: query)
+        operation.desiredKeys = ["childName"]
+        
+        var studentsRecordID = [String] ()
+        
+        operation.recordFetchedBlock = { record in
+            let studentReference = record.object(forKey: "childName") as! CKRecord.Reference
+            let studentRecordID =  studentReference.recordID.recordName
+            
+            studentsRecordID.append(studentRecordID)
+        }
+        
+        operation.queryCompletionBlock = { (cursor, error) in
+            DispatchQueue.main.async {
+                if error == nil {
+                    print("error : \(error as Any)")
+                    onComplete(studentsRecordID.removingDuplicates()) // removing duplicate of multiple string
+                } else {
+                    let ac = UIAlertController(title: "Fetch failed", message: "There was a problem fetching the list of whistles; please try again: \(error!.localizedDescription)", preferredStyle: .alert)
+                    ac.addAction(UIAlertAction(title: "OK", style: .default))
+                    print(cursor as Any)
+                }
+            }
+        }
+        CKContainer.default().publicCloudDatabase.add(operation)
+    }
+    
+    class func getStudentData(studentsRecordID : [String], onComplete: @escaping ([StudentCKModel]) -> Void){
         var studentModel = [StudentCKModel]()
-        let predicate = NSPredicate(value: true)
+        var studentsReference = [CKRecord.Reference]()
+        studentsRecordID .forEach { (studentRecordID) in
+            // change [string] to [reference]
+            studentsReference.append(CKRecord.Reference(recordID: CKRecord.ID(recordName: studentRecordID), action: CKRecord_Reference_Action.none))
+        }
+        let predicate = NSPredicate(format: "recordID == %@", argumentArray: studentsReference)
+        //filter using [reference]
+        
         let query = CKQuery(recordType: "Child", predicate: predicate)
         let database = CKContainer.default().publicCloudDatabase
         database.perform(query, inZoneWith: nil) { (records, error) in
@@ -88,4 +129,18 @@ class StudentCKModel: NSObject{
     }
     
     // bikin function buat request friend
+}
+
+extension Array where Element: Hashable {
+    func removingDuplicates() -> [Element] {
+        var addedDict = [Element: Bool]()
+
+        return filter {
+            addedDict.updateValue(true, forKey: $0) == nil
+        }
+    }
+
+    mutating func removeDuplicates() {
+        self = self.removingDuplicates()
+    }
 }
