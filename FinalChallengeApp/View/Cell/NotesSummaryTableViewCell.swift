@@ -9,6 +9,9 @@
 import UIKit
 
 class NotesSummaryTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var notesTextView: UITextView!
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()

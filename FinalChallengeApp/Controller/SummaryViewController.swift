@@ -31,18 +31,15 @@ class SummaryViewController: UIViewController {
 
 extension SummaryViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 2
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
             return "Activities on Friday, 18 Oct 2019"
         }
-        else if section == 1 {
-            return "Notes"
-        }
         else {
-            return "Attachments"
+            return "Notes"
         }
     }
     
@@ -59,11 +56,8 @@ extension SummaryViewController: UITableViewDataSource, UITableViewDelegate {
         if indexPath.section  == 0 {
             return 128
         }
-        else if indexPath.section == 1  {
-            return 220
-        }
         else {
-            return 160
+            return 220
         }
     }
 
@@ -77,16 +71,12 @@ extension SummaryViewController: UITableViewDataSource, UITableViewDelegate {
             
             return  cell
             
-        } else if indexPath.section == 1 {
+        } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "notesCell", for: indexPath) as!  NotesSummaryTableViewCell
             
             return  cell
         }
-        else {
-             let cell = tableView.dequeueReusableCell(withIdentifier: "attachmentsCell", for: indexPath) as! AttachmentsSummaryTableViewCell
-            
-            return  cell
-        }
+        
     }
   
 }

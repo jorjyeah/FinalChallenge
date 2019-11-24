@@ -19,7 +19,6 @@
 		68A570D92386887C002A3014 /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A570D82386887C002A3014 /* ActivityTableViewCell.swift */; };
 		68A570DE2386C079002A3014 /* DetailSummaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A570DD2386C079002A3014 /* DetailSummaryTableViewCell.swift */; };
 		68A570E02386C09B002A3014 /* NotesSummaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A570DF2386C09B002A3014 /* NotesSummaryTableViewCell.swift */; };
-		68A570E22386C0AE002A3014 /* AttachmentsSummaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A570E12386C0AE002A3014 /* AttachmentsSummaryTableViewCell.swift */; };
 		68A570E42387C586002A3014 /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A570E32387C586002A3014 /* SummaryViewController.swift */; };
 		B906746D237C133E00671632 /* Students.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B906746B237C133E00671632 /* Students.storyboard */; };
 		B906746F237C135300671632 /* Materials.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B906746E237C135300671632 /* Materials.storyboard */; };
@@ -74,7 +73,6 @@
 		68A570D82386887C002A3014 /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
 		68A570DD2386C079002A3014 /* DetailSummaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSummaryTableViewCell.swift; sourceTree = "<group>"; };
 		68A570DF2386C09B002A3014 /* NotesSummaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesSummaryTableViewCell.swift; sourceTree = "<group>"; };
-		68A570E12386C0AE002A3014 /* AttachmentsSummaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentsSummaryTableViewCell.swift; sourceTree = "<group>"; };
 		68A570E32387C586002A3014 /* SummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
 		B906746C237C133E00671632 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = FinalChallengeApp/Base.lproj/Students.storyboard; sourceTree = "<group>"; };
 		B906746E237C135300671632 /* Materials.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Materials.storyboard; sourceTree = "<group>"; };
@@ -143,7 +141,6 @@
 				68A570D82386887C002A3014 /* ActivityTableViewCell.swift */,
 				68A570DD2386C079002A3014 /* DetailSummaryTableViewCell.swift */,
 				68A570DF2386C09B002A3014 /* NotesSummaryTableViewCell.swift */,
-				68A570E12386C0AE002A3014 /* AttachmentsSummaryTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -402,7 +399,6 @@
 				68A570E02386C09B002A3014 /* NotesSummaryTableViewCell.swift in Sources */,
 				68A570D92386887C002A3014 /* ActivityTableViewCell.swift in Sources */,
 				68A570E42387C586002A3014 /* SummaryViewController.swift in Sources */,
-				68A570E22386C0AE002A3014 /* AttachmentsSummaryTableViewCell.swift in Sources */,
 				B9BC0D99238420A30063DC95 /* ParentNotesCKModel.swift in Sources */,
 				68A570B62383D45E002A3014 /* ReportViewController.swift in Sources */,
 				B91BD49A237980010015C934 /* AppDelegate.swift in Sources */,
