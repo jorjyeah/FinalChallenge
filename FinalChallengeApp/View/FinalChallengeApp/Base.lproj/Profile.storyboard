@@ -75,12 +75,6 @@
                     <navigationItem key="navigationItem" title="My Profile" leftItemsSupplementBackButton="YES" id="hPd-hF-TlH">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="GY7-Qn-3nT"/>
                     </navigationItem>
-                    <connections>
-                        <outlet property="addressNameLabel" destination="7Wk-B9-GNO" id="K3M-l8-cfQ"/>
-                        <outlet property="institutionNameLabel" destination="qYs-IC-F02" id="LJp-mg-Y9Y"/>
-                        <outlet property="therapistNameLabel" destination="85G-i9-QM4" id="moc-fm-NyR"/>
-                        <outlet property="therapistPhoto" destination="Jse-oS-pXa" id="v2n-GF-drM"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dFB-gZ-d5c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
