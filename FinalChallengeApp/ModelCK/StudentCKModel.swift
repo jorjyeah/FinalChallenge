@@ -98,6 +98,7 @@ class StudentCKModel: NSObject{
             }
         }
         CKContainer.default().publicCloudDatabase.add(operation)
+        //checkcheck
     }
     
     class func getStudentData(studentsRecordID : [String], onComplete: @escaping ([StudentCKModel]) -> Void){
