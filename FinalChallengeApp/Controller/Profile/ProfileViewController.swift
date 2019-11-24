@@ -1,14 +1,14 @@
 //
-//  MaterialsViewController.swift
+//  ProfileViewController.swift
 //  FinalChallengeApp
 //
-//  Created by George Joseph Kristian on 13/11/19.
+//  Created by Ni Wayan Bianka Aristania on 24/11/19.
 //  Copyright © 2019 George Joseph Kristian. All rights reserved.
 //
 
 import UIKit
 
-class MaterialsViewController: UIViewController {
+class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

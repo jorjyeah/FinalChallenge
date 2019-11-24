@@ -451,42 +451,25 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="220"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vgp-4w-zGg">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Type here..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="VHc-4r-DU6">
                                                     <rect key="frame" x="16" y="16" width="382" height="188"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Vgp-4w-zGg" firstAttribute="top" secondItem="6Of-fK-YFj" secondAttribute="top" constant="16" id="53S-Cn-TMv"/>
-                                                <constraint firstItem="Vgp-4w-zGg" firstAttribute="leading" secondItem="6Of-fK-YFj" secondAttribute="leading" constant="16" id="XrX-fx-9GE"/>
-                                                <constraint firstAttribute="bottom" secondItem="Vgp-4w-zGg" secondAttribute="bottom" constant="16" id="j9m-Y0-UQ4"/>
-                                                <constraint firstAttribute="trailing" secondItem="Vgp-4w-zGg" secondAttribute="trailing" constant="16" id="oCF-jD-8dx"/>
+                                                <constraint firstAttribute="trailing" secondItem="VHc-4r-DU6" secondAttribute="trailing" constant="16" id="G80-Zo-ddG"/>
+                                                <constraint firstAttribute="bottom" secondItem="VHc-4r-DU6" secondAttribute="bottom" constant="16" id="Mg8-SZ-v7y"/>
+                                                <constraint firstItem="VHc-4r-DU6" firstAttribute="leading" secondItem="6Of-fK-YFj" secondAttribute="leading" constant="16" id="b3x-7I-1E2"/>
+                                                <constraint firstItem="VHc-4r-DU6" firstAttribute="top" secondItem="6Of-fK-YFj" secondAttribute="top" constant="16" id="qyt-aO-bdt"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="attachmentsCell" rowHeight="160" id="b7b-t5-Nve" customClass="AttachmentsSummaryTableViewCell" customModule="FinalChallengeApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="376" width="414" height="160"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="b7b-t5-Nve" id="wl7-Nt-aOD">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="160"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="i1k-gI-LhX">
-                                                    <rect key="frame" x="16" y="16" width="128" height="128"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="128" id="8aW-FV-AaF"/>
-                                                    </constraints>
-                                                </imageView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="i1k-gI-LhX" firstAttribute="top" secondItem="wl7-Nt-aOD" secondAttribute="top" constant="16" id="5L7-5l-R68"/>
-                                                <constraint firstItem="i1k-gI-LhX" firstAttribute="leading" secondItem="wl7-Nt-aOD" secondAttribute="leading" constant="16" id="pi7-Rb-CNc"/>
-                                                <constraint firstAttribute="bottom" secondItem="i1k-gI-LhX" secondAttribute="bottom" constant="16" id="v89-JT-TmB"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="notesTextView" destination="VHc-4r-DU6" id="UG4-8y-CiI"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -504,7 +487,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HgD-Cd-AS6"/>
                     </view>
-                    <navigationItem key="navigationItem" id="gav-1U-bMd"/>
+                    <navigationItem key="navigationItem" id="gav-1U-bMd">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="zAr-gS-bqd"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="YQR-Eg-8mE" id="1Ns-SY-7U5"/>
                     </connections>

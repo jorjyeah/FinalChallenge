@@ -1,5 +1,5 @@
 //
-//  AttachmentsSummaryTableViewCell.swift
+//  NotesSummaryTableViewCell.swift
 //  FinalChallengeApp
 //
 //  Created by Ni Wayan Bianka Aristania on 21/11/19.
@@ -8,7 +8,10 @@
 
 import UIKit
 
-class AttachmentsSummaryTableViewCell: UITableViewCell {
+class NotesSummaryTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var notesTextView: UITextView!
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()
