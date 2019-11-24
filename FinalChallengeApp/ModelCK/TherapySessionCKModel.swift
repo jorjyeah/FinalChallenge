@@ -51,17 +51,17 @@ class TherapySessionCKModel: NSObject{
         self.record = record
     }
     
-    class func getTherapySession(studentRecordID : String, therapistRecordID : String, onComplete: @escaping ([TherapySessionCKModel]) -> Void){
-        print("print masuk therapy session model, studentRecordID : \(studentRecordID), therapistRecordID : \(therapistRecordID)")
+    class func getTherapySession(studentRecordID : String, onComplete: @escaping ([TherapySessionCKModel]) -> Void){
         var therapySessionModel = [TherapySessionCKModel]()
+        
+        let therapistRecordID = String(UserDefaults.standard.string(forKey: "userID")!)
         
         let studentReference = CKRecord.Reference(recordID: CKRecord.ID(recordName: studentRecordID), action: CKRecord_Reference_Action.none)
         let therapistReference = CKRecord.Reference(recordID: CKRecord.ID(recordName: therapistRecordID), action: CKRecord_Reference_Action.none)
         
-        
         let predicate = NSPredicate(format: "childName == %@ AND therapistName  == %@", studentReference, therapistReference)
         
-        print("sukses predicate")
+//        print("sukses predicate")
         let query = CKQuery(recordType: "TherapySession", predicate: predicate)
         let database = CKContainer.default().publicCloudDatabase
         database.perform(query, inZoneWith: nil) { (records, error) in
@@ -79,14 +79,14 @@ class TherapySessionCKModel: NSObject{
                 onComplete(therapySessionModel)
             }
         }
-        print("therapySessionModel",therapySessionModel)
+//        print("therapySessionModel",therapySessionModel)
     }
     
     class func addTherapySession(){
         let database = CKContainer.default().publicCloudDatabase
         let record = CKRecord(recordType: "TherapySession")
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd.MM.yyyy HH:MM"
+        formatter.dateFormat = "dd.MM.yyyy HH:mm"
         let therapySessionDate = formatter.string(from: Date())
         let therapySessionNotes = "Please repeat activity one"
         record.setObject(therapySessionDate as __CKRecordObjCValue, forKey: "therapySessionDate")

@@ -19,17 +19,26 @@ class ReportViewController: UIViewController {
     
     //ini buat nampung student record id yg passing
     var studentRecordID = String()
-    var therapistRecordID = "7D852C1D-7E0C-B809-571E-65A551192798"
     var therapySession = [TherapySessionCKModel]()
-//    var parentNotes = [parentNotesCKModel]()
+    var parentNotes = [ParentNotesCKModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationController?.navigationBar.prefersLargeTitles = false
         let therapySessionsData = TherapySessionCKModel.self
-        therapySessionsData.getTherapySession(studentRecordID: studentRecordID, therapistRecordID: therapistRecordID) { therapySessionsData in
+        therapySessionsData.getTherapySession(studentRecordID: studentRecordID) { therapySessionsData in
             self.therapySession = therapySessionsData
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+        
+        let parentNotesData = ParentNotesCKModel.self
+        parentNotesData.getParentNotes(studentRecordID: studentRecordID) {
+            parentNotesData
+            in
+            self.parentNotes = parentNotesData
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -52,7 +61,7 @@ extension ReportViewController: UITableViewDelegate, UITableViewDataSource {
             return therapySession.count
             
         case 1:
-            return parentsReportArray.count
+            return parentNotes.count
             
         default:
             break
@@ -62,21 +71,26 @@ extension ReportViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reportCell", for: indexPath) as! ReportTableViewCell
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEEE, d MMM yyyy, HH:mm a"
         
         switch segmentedControl.selectedSegmentIndex {
         case 0:
-            let formatter = DateFormatter()
-            formatter.dateFormat = "EEEE, d MMM yyyy, HH:MM a"
             let therapySessionDate = formatter.string(from: therapySession[indexPath.row].therapySessionDate)
             cell.reportLabel.text = therapySessionDate
             
         case 1:
-            cell.reportLabel.text = parentsReportArray[indexPath.row]
+            let parentNotesDate = formatter.string(from: parentNotes[indexPath.row].parentNoteDay)
+            cell.reportLabel.text = parentNotesDate
             
         default:
             break
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "showDetailReport", sender: self)
     }
     
 }
