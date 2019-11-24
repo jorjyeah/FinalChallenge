@@ -15,7 +15,7 @@ class AddReportViewController: UIViewController {
     //let checkedImage = UIImage(named: "CheckBoxChecked")! as UIImage
     //let uncheckedImage = UIImage(named: "CheckBoxUnChecked")! as UIImage
     
-    var activityArray = ["Stomp feet", "Point to  body parts", "Extend index finger",  "Place thumbs up"]
+    let activityArray = ["Stomp feet", "Point to  body parts", "Extend index finger",  "Place thumbs up"]
     
     var selectedActivity = [String]()
     

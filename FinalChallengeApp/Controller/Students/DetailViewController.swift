@@ -12,9 +12,9 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var activityArray = ["Stomp feet", "Point to  body parts", "Extend index finger",  "Place thumbs up"]
-    var promptArray = ["Gesture, Physical, Verbal", "Gesture, Physical, Verbal", "Gesture, Physical, Verbal", "Gesture, Physical, Verbal"]
-    var mediaArray = ["", "Mirror, Doll", "Mirror, Doll", "Mirror, Doll"]
+    let activityArray = ["Stomp feet", "Point to  body parts", "Extend index finger",  "Place thumbs up"]
+    let promptArray = ["Gesture, Physical, Verbal", "Gesture, Physical, Verbal", "Gesture, Physical, Verbal", "Gesture, Physical, Verbal"]
+    let mediaArray = ["", "Mirror, Doll", "Mirror, Doll", "Mirror, Doll"]
     
     var howToArray = [""]
     var exampleArray = [""]

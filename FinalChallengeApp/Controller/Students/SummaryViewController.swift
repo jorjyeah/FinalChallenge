@@ -15,8 +15,8 @@ class SummaryViewController: UIViewController {
     
     var selectedActivity = [String]()
     
-    var promptArray = ["Gesture, Physical, Verbal", "Gesture, Physical, Verbal", "Gesture, Physical, Verbal", "Gesture, Physical, Verbal"]
-    var mediaArray = ["", "Mirror, Doll", "Mirror, Doll", "Mirror, Doll"]
+    let promptArray = ["Gesture, Physical, Verbal", "Gesture, Physical, Verbal", "Gesture, Physical, Verbal", "Gesture, Physical, Verbal"]
+    let mediaArray = ["", "Mirror, Doll", "Mirror, Doll", "Mirror, Doll"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
