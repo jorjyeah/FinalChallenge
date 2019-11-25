@@ -42,7 +42,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
-            return "Activities on Friday, 18 Oct 2019"
+            return "Activities on Wednesday, 20 Nov 2019"
         }
         else if section == 1 {
             return "Notes"
