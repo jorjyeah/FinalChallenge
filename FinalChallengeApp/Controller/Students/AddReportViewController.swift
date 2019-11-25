@@ -18,17 +18,28 @@ class AddReportViewController: UIViewController {
     let activityArray = ["Stomp feet", "Point to  body parts", "Extend index finger",  "Place thumbs up"]
     
     var selectedActivity = [String]()
-    
+    var allActivitiesList = [ActivityReportModelCK]()
+    var lastActivtiesList =  [ActivityReportModelCK]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        let allActivityData = ActivityReportModelCK.self
+        allActivityData.getActivity { allActivitiesData in
+            self.allActivitiesList = allActivitiesData
+            print(self.allActivitiesList)
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+        
+        let lastActivityData = ActivityReportModelCK.self
         // Do any additional setup after loading the view.
     }
     
- override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showSummary" {
             let destination = segue.destination as! SummaryViewController
-            
             destination.selectedActivity = selectedActivity
         }
     }
@@ -38,13 +49,14 @@ class AddReportViewController: UIViewController {
 extension AddReportViewController: UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return activityArray.count
+//        return activityArray.count
+        return allActivitiesList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "activityCell", for: indexPath) as!  ActivityTableViewCell
         
-        cell.activityNameLabel.text = activityArray[indexPath.row]
+        cell.activityNameLabel.text = allActivitiesList[indexPath.row].activityTitle
         cell.selectionStyle = .none
         cell.checkboxButton.tag = indexPath.row
         cell.checkboxButton.addTarget(self, action: #selector(checkboxTapped(sender:)), for: .touchUpInside)

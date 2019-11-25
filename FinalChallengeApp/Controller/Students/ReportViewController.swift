@@ -14,10 +14,10 @@ class ReportViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    let therapistReportArray = ["Fri, 18 Oct 2019",  "Wed, 16 Oct 2019", "Mon, 14 Oct 2019"]
-    let parentsReportArray = ["Thu, 17 Oct 2019", "Tue, 15 Oct 2019"]
+//    let therapistReportArray = ["Fri, 18 Oct 2019",  "Wed, 16 Oct 2019", "Mon, 14 Oct 2019"]
+//    let parentsReportArray = ["Thu, 17 Oct 2019", "Tue, 15 Oct 2019"]
     
-    //ini buat nampung student record id yg passing
+    //ini buat nampung student record id yg di-passing dari StudentVC
     var studentRecordID = String()
     var therapySession = [TherapySessionCKModel]()
     var parentNotes = [ParentNotesCKModel]()
@@ -57,6 +57,7 @@ class ReportViewController: UIViewController {
             if let senderVC = sender.source as? SummaryViewController{
                 print(senderVC.test)
             }
+            tableView.reloadData()
         }
     }
 }

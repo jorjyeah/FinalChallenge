@@ -40,6 +40,7 @@
 		B91BD4A9237980020015C934 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B91BD4A7237980020015C934 /* LaunchScreen.storyboard */; };
 		B91BD4B4237980020015C934 /* FinalChallengeAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91BD4B3237980020015C934 /* FinalChallengeAppTests.swift */; };
 		B91BD4BF237980020015C934 /* FinalChallengeAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91BD4BE237980020015C934 /* FinalChallengeAppUITests.swift */; };
+		B9A2EEDF238BD63E0041BB93 /* ActivityReportModelCK.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A2EEDE238BD63E0041BB93 /* ActivityReportModelCK.swift */; };
 		B9B548FE237C195000ACB625 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9B548FD237C195000ACB625 /* CloudKit.framework */; };
 		B9BC0D99238420A30063DC95 /* ParentNotesCKModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BC0D98238420A30063DC95 /* ParentNotesCKModel.swift */; };
 		B9BC0D9B238537040063DC95 /* ProfileTherapistCKModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BC0D9A238537040063DC95 /* ProfileTherapistCKModel.swift */; };
@@ -105,6 +106,7 @@
 		B91BD4BA237980020015C934 /* FinalChallengeAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FinalChallengeAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B91BD4BE237980020015C934 /* FinalChallengeAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalChallengeAppUITests.swift; sourceTree = "<group>"; };
 		B91BD4C0237980020015C934 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B9A2EEDE238BD63E0041BB93 /* ActivityReportModelCK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityReportModelCK.swift; sourceTree = "<group>"; };
 		B9B548FB237C193800ACB625 /* FinalChallengeApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FinalChallengeApp.entitlements; sourceTree = "<group>"; };
 		B9B548FD237C195000ACB625 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		B9BC0D98238420A30063DC95 /* ParentNotesCKModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentNotesCKModel.swift; sourceTree = "<group>"; };
@@ -300,6 +302,7 @@
 				B9D9B32923829614005CCDBB /* TherapySessionCKModel.swift */,
 				B9BC0D98238420A30063DC95 /* ParentNotesCKModel.swift */,
 				B9BC0D9A238537040063DC95 /* ProfileTherapistCKModel.swift */,
+				B9A2EEDE238BD63E0041BB93 /* ActivityReportModelCK.swift */,
 			);
 			path = ModelCK;
 			sourceTree = "<group>";
@@ -438,6 +441,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9A2EEDF238BD63E0041BB93 /* ActivityReportModelCK.swift in Sources */,
 				B91BD4A4237980010015C934 /* FinalChallengeApp.xcdatamodeld in Sources */,
 				B9BC0D9B238537040063DC95 /* ProfileTherapistCKModel.swift in Sources */,
 				68A570CF2384F43C002A3014 /* DetailTableViewCell.swift in Sources */,
