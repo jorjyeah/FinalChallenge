@@ -13,7 +13,9 @@ class MaterialsViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    let programArray = ["TO IMPROVE MUSCLE TONE, STRENGTH, ENDURANCE", "TO IMPROVE BALANCE", "TO IMPROVE UPPER / LOWER LIMB COORDINATION", "TO IMPROVE VISUAL MOTOR INTEGRATION"]
+    let grossMotorArray = ["TO IMPROVE MUSCLE TONE, STRENGTH, ENDURANCE", "TO IMPROVE BALANCE", "TO IMPROVE UPPER / LOWER LIMB COORDINATION", "TO IMPROVE VISUAL MOTOR INTEGRATION"]
+    let fineMotorArray = ["GRASP PATTERN SKILLS", "BILLATERAL COORDINATION", "MANIPULATION SKILLS", "EYE - HAND COORDINATION", "BEHAVIOUR MODIFICATION TECHNIQUE"]
+    let programCategory = ["Gross Motor Skill", "Fine Motor Skill"]
     
     var selectedProgram: String = ""
     
@@ -29,25 +31,48 @@ class MaterialsViewController: UIViewController {
 
 extension MaterialsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return  2
+    }
+    
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 120.0, height: 80.0)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        programArray.count
+        if section == 0 {
+            return grossMotorArray.count
+        } else {
+            return fineMotorArray.count
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "programCell", for: indexPath) as! ProgramCollectionViewCell
         
-        cell.programLabel.text = programArray[indexPath.row]
+        if indexPath.section == 0 {
+            cell.programLabel.text = grossMotorArray[indexPath.row]
+            return cell
+        } else {
+            cell.programLabel.text = fineMotorArray[indexPath.row]
+            return cell
+        }
+   
         
-        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectedProgram = programArray[indexPath.row]
-        performSegue(withIdentifier: "showActivity", sender: self)
+        
+        if indexPath.section == 0 {
+            selectedProgram = grossMotorArray[indexPath.row]
+            performSegue(withIdentifier: "showActivity", sender: self)
+        } else {
+            selectedProgram = fineMotorArray[indexPath.row]
+            performSegue(withIdentifier: "showActivity", sender: self)
+        }
+  
     }
     
     
@@ -57,5 +82,21 @@ extension MaterialsViewController: UICollectionViewDelegate, UICollectionViewDat
             destination.programTitle = selectedProgram
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if (kind == UICollectionView.elementKindSectionHeader) {
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SectionHeader", for: indexPath) as! HeaderCollectionReusableView
+            
+            if indexPath.section == 0 {
+                headerView.headerTitle.text = programCategory[indexPath.row]
+                return headerView
+            } else {
+                headerView.headerTitle.text = programCategory[indexPath.row+1]
+                return headerView
+            }
+        }
+        fatalError()
+    }
+
     
 }
