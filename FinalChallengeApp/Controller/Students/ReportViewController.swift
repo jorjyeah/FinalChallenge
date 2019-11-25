@@ -90,7 +90,17 @@ extension ReportViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showDetailReport", sender: self)
+        switch segmentedControl.selectedSegmentIndex {
+        case 0:
+            performSegue(withIdentifier: "showTherapistDetail", sender: self)
+            
+        case 1:
+            performSegue(withIdentifier: "showParentsDetail", sender: self)
+            
+        default:
+            break
+        }
+        
     }
     
 }

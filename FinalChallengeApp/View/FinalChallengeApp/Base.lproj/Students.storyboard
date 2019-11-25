@@ -75,7 +75,7 @@
         <!--Report View Controller-->
         <scene sceneID="NFd-gf-J6W">
             <objects>
-                <viewController id="I7P-FV-xcF" customClass="ReportViewController" customModule="FinalChallengeApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ReportViewController" id="I7P-FV-xcF" customClass="ReportViewController" customModule="FinalChallengeApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MOc-Aa-Bvm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -147,7 +147,8 @@
                     <connections>
                         <outlet property="segmentedControl" destination="Ts6-g7-oKh" id="vRO-YF-ThM"/>
                         <outlet property="tableView" destination="AhA-RL-CPH" id="GEY-72-zPn"/>
-                        <segue destination="81m-JS-Wsw" kind="show" identifier="showDetailReport" id="jAk-QA-Trv"/>
+                        <segue destination="81m-JS-Wsw" kind="show" identifier="showTherapistDetail" id="jAk-QA-Trv"/>
+                        <segue destination="TDo-67-mws" kind="show" identifier="showParentsDetail" id="dks-L2-MmJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zQE-PR-Uah" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -229,7 +230,7 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IMe-7I-wWs">
                                                     <rect key="frame" x="16" y="16" width="382" height="188"/>
-                                                    <mutableString key="text">Her mood is pretty good today, but there are still some tantrum from her. We did a bear hug to calm her down. She did good on doing stomp feet with a little bit of help of gesture prompt. On doing Point to body parts, she need to memorize better. Prompt is given but she can not understand it most of the time.  On doing Extend index finger, she can do it but she need help from prompt. On doing Place Thumbs Up, she can do it with a little bit of physical prompt. When doing any therapy activity at home, please only continue if your child or you are comfortable doing it.</mutableString>
+                                                    <string key="text">Her mood is pretty good today, but there are still some tantrum from her. We did a bear hug to calm her down. She did good on doing stomp feet with a little bit of help of gesture prompt. On doing Point to body parts, she need to memorize better. Prompt is given but she can not understand it most of the time.  On doing Extend index finger, she can do it but she need help from prompt. On doing Place Thumbs Up, she can do it with a little bit of physical prompt. When doing any therapy activity at home, please only continue if your child or you are comfortable doing it.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -295,6 +296,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mBW-fl-3Rf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2847.826086956522" y="1263.6160714285713"/>
+        </scene>
+        <!--Parents Detail View Controller-->
+        <scene sceneID="Ifk-Aa-F8n">
+            <objects>
+                <viewController id="TDo-67-mws" customClass="ParentsDetailViewController" customModule="FinalChallengeApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6Hn-VJ-0eT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRQ-bp-P1l">
+                                <rect key="frame" x="16" y="104" width="382" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="oRQ-bp-P1l" firstAttribute="top" secondItem="DxR-yb-5rG" secondAttribute="top" constant="16" id="8t0-jl-ugP"/>
+                            <constraint firstItem="DxR-yb-5rG" firstAttribute="trailing" secondItem="oRQ-bp-P1l" secondAttribute="trailing" constant="16" id="bzJ-PZ-rL0"/>
+                            <constraint firstItem="oRQ-bp-P1l" firstAttribute="leading" secondItem="DxR-yb-5rG" secondAttribute="leading" constant="16" id="llT-lV-Et8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="DxR-yb-5rG"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Uoi-YR-JP1"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hgt-ZO-Aph" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2855.072463768116" y="2016.9642857142856"/>
         </scene>
         <!--View Detail View Controller-->
         <scene sceneID="Mhg-4b-xAe">
@@ -367,7 +397,7 @@
                         <viewLayoutGuide key="safeArea" id="EW2-Al-361"/>
                     </view>
                     <navigationItem key="navigationItem" title="Today's Report" id="sDl-qj-IN9">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="q1i-uZ-J4S">
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="q1i-uZ-J4S">
                             <connections>
                                 <segue destination="rNe-Ul-54a" kind="show" identifier="showSummary" id="IHw-u1-17u"/>
                             </connections>
@@ -488,7 +518,11 @@
                         <viewLayoutGuide key="safeArea" id="HgD-Cd-AS6"/>
                     </view>
                     <navigationItem key="navigationItem" id="gav-1U-bMd">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="zAr-gS-bqd"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="zAr-gS-bqd">
+                            <connections>
+                                <action selector="saveTapped:" destination="rNe-Ul-54a" id="bBg-3I-LPp"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="YQR-Eg-8mE" id="1Ns-SY-7U5"/>

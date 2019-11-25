@@ -24,7 +24,25 @@ class SummaryViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    func showReportView() {
+      if let mvc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ReportViewController") as? ReportViewController {
+        self.present(mvc, animated: true, completion: nil)
+      }
+    }
+    
+    @IBAction func saveTapped(_ sender: Any) {
+        
+        let alert = UIAlertController(title: "Submit Note to Parents?", message: "", preferredStyle: UIAlertController.Style.alert)
 
+        alert.addAction(UIAlertAction(title: "Submit", style: UIAlertAction.Style.default, handler: { (UIAlertAction)in
+            self.performSegue(withIdentifier: <#T##String#>, sender: <#T##Any?#>)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+
+        self.present(alert, animated: true, completion: nil)
+    }
+    
 
 }
 
