@@ -14,6 +14,7 @@ class SummaryViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var selectedActivity = [String]()
+    var test : String!
     
     let promptArray = ["Gesture, Physical, Verbal", "Gesture, Physical, Verbal", "Gesture, Physical, Verbal", "Gesture, Physical, Verbal"]
     let mediaArray = ["", "Mirror, Doll", "Mirror, Doll", "Mirror, Doll"]
@@ -30,18 +31,25 @@ class SummaryViewController: UIViewController {
       }
     }
     
-    @IBAction func saveTapped(_ sender: Any) {
-        
-        let alert = UIAlertController(title: "Submit Note to Parents?", message: "", preferredStyle: UIAlertController.Style.alert)
-
-        alert.addAction(UIAlertAction(title: "Submit", style: UIAlertAction.Style.default, handler: { (UIAlertAction)in
-            self.performSegue(withIdentifier: <#T##String#>, sender: <#T##Any?#>)
-        }))
-        
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
-
-        self.present(alert, animated: true, completion: nil)
+    
+    override func prepare(for segue:
+        UIStoryboardSegue, sender: Any?) {
+        // ini unwind segue ke mana aja, tapi kebetulan ke ReportVC
+        test = "coba balik"
     }
+    
+//    @IBAction func saveTapped(_ sender: Any) {
+//
+//        let alert = UIAlertController(title: "Submit Note to Parents?", message: "", preferredStyle: UIAlertController.Style.alert)
+//
+//        alert.addAction(UIAlertAction(title: "Submit", style: UIAlertAction.Style.default, handler: { (UIAlertAction)in
+//            self.performSegue(withIdentifier: <#T##String#>, sender: <#T##Any?#>)
+//        }))
+//
+//        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+//
+//        self.present(alert, animated: true, completion: nil)
+//    }
     
 
 }

@@ -51,7 +51,14 @@ class ReportViewController: UIViewController {
         tableView.reloadData()
     }
     
-
+    @IBAction func unwindFromSummary(_ sender:UIStoryboardSegue){
+        // bikin function dulu buat unwind, nanti di exit di page summary
+        if sender.source is SummaryViewController{
+            if let senderVC = sender.source as? SummaryViewController{
+                print(senderVC.test)
+            }
+        }
+    }
 }
 
 extension ReportViewController: UITableViewDelegate, UITableViewDataSource {
