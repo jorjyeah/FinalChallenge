@@ -20,13 +20,13 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lb0-m6-S1B">
                                     <size key="itemSize" width="120" height="115"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="headerReferenceSize" width="50" height="50"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="programCell" id="HXQ-zV-ild" customClass="ProgramCollectionViewCell" customModule="FinalChallengeApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="120" height="80"/>
+                                        <rect key="frame" x="0.0" y="50" width="120" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="120" height="80"/>
@@ -48,6 +48,27 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="SectionHeader" id="vXe-Uy-CSJ" customClass="HeaderCollectionReusableView" customModule="FinalChallengeApp" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="382" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rwz-Yb-OJd">
+                                            <rect key="frame" x="0.0" y="4.5" width="382" height="41"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="34"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="rwz-Yb-OJd" secondAttribute="trailing" id="69A-9d-Ipk"/>
+                                        <constraint firstItem="rwz-Yb-OJd" firstAttribute="top" secondItem="vXe-Uy-CSJ" secondAttribute="top" constant="4.5" id="Y0t-iF-p3q"/>
+                                        <constraint firstAttribute="bottom" secondItem="rwz-Yb-OJd" secondAttribute="bottom" constant="4.5" id="nIj-YE-f7H"/>
+                                        <constraint firstItem="rwz-Yb-OJd" firstAttribute="leading" secondItem="vXe-Uy-CSJ" secondAttribute="leading" id="ryJ-4e-Wow"/>
+                                    </constraints>
+                                    <connections>
+                                        <outlet property="headerTitle" destination="rwz-Yb-OJd" id="Vri-oK-scN"/>
+                                    </connections>
+                                </collectionReusableView>
                                 <connections>
                                     <outlet property="dataSource" destination="hf1-vT-LHB" id="FeQ-q9-HiE"/>
                                     <outlet property="delegate" destination="hf1-vT-LHB" id="iEX-fc-crG"/>
@@ -64,7 +85,11 @@
                         <viewLayoutGuide key="safeArea" id="rrU-Gz-URB"/>
                     </view>
                     <navigationItem key="navigationItem" id="O7W-2j-32q">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ICi-4L-VGk"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ICi-4L-VGk">
+                            <connections>
+                                <segue destination="Xpo-RV-2Og" kind="modal" id="gnr-J2-xmG"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="3Jr-QP-sBg" id="IsR-Pj-IiV"/>
@@ -176,7 +201,7 @@
             <objects>
                 <viewController id="Xpo-RV-2Og" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2tY-Xz-4JU">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="hVz-Ar-imm"/>

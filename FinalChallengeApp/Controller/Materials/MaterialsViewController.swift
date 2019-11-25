@@ -15,7 +15,7 @@ class MaterialsViewController: UIViewController {
     
     let grossMotorArray = ["TO IMPROVE MUSCLE TONE, STRENGTH, ENDURANCE", "TO IMPROVE BALANCE", "TO IMPROVE UPPER / LOWER LIMB COORDINATION", "TO IMPROVE VISUAL MOTOR INTEGRATION"]
     let fineMotorArray = ["GRASP PATTERN SKILLS", "BILLATERAL COORDINATION", "MANIPULATION SKILLS", "EYE - HAND COORDINATION", "BEHAVIOUR MODIFICATION TECHNIQUE"]
-    let programCategory = ["Gross Motor", "Fine Motor"]
+    let programCategory = ["Gross Motor Skill", "Fine Motor Skill"]
     
     var selectedProgram: String = ""
     
@@ -82,5 +82,21 @@ extension MaterialsViewController: UICollectionViewDelegate, UICollectionViewDat
             destination.programTitle = selectedProgram
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if (kind == UICollectionView.elementKindSectionHeader) {
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SectionHeader", for: indexPath) as! HeaderCollectionReusableView
+            
+            if indexPath.section == 0 {
+                headerView.headerTitle.text = programCategory[indexPath.row]
+                return headerView
+            } else {
+                headerView.headerTitle.text = programCategory[indexPath.row+1]
+                return headerView
+            }
+        }
+        fatalError()
+    }
+
     
 }
