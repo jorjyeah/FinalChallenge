@@ -26,6 +26,7 @@
 		68A570F7238AB389002A3014 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A570F6238AB389002A3014 /* ActivityViewController.swift */; };
 		68A570FB238AB3EB002A3014 /* ActivityTaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A570FA238AB3EB002A3014 /* ActivityTaskTableViewCell.swift */; };
 		68A570FF238AB614002A3014 /* ProgramTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A570FE238AB614002A3014 /* ProgramTitleTableViewCell.swift */; };
+		68A57101238B6EBD002A3014 /* ParentsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A57100238B6EBD002A3014 /* ParentsDetailViewController.swift */; };
 		B906746D237C133E00671632 /* Students.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B906746B237C133E00671632 /* Students.storyboard */; };
 		B906746F237C135300671632 /* Materials.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B906746E237C135300671632 /* Materials.storyboard */; };
 		B9067472237C136400671632 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9067470237C136400671632 /* Profile.storyboard */; };
@@ -84,6 +85,7 @@
 		68A570F6238AB389002A3014 /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		68A570FA238AB3EB002A3014 /* ActivityTaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTaskTableViewCell.swift; sourceTree = "<group>"; };
 		68A570FE238AB614002A3014 /* ProgramTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramTitleTableViewCell.swift; sourceTree = "<group>"; };
+		68A57100238B6EBD002A3014 /* ParentsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentsDetailViewController.swift; sourceTree = "<group>"; };
 		B906746C237C133E00671632 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = FinalChallengeApp/Base.lproj/Students.storyboard; sourceTree = "<group>"; };
 		B906746E237C135300671632 /* Materials.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Materials.storyboard; sourceTree = "<group>"; };
 		B9067471237C136400671632 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = FinalChallengeApp/Base.lproj/Profile.storyboard; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				68A570D02384FFAD002A3014 /* ViewDetailViewController.swift */,
 				68A570C62384F378002A3014 /* AddReportViewController.swift */,
 				68A570E32387C586002A3014 /* SummaryViewController.swift */,
+				68A57100238B6EBD002A3014 /* ParentsDetailViewController.swift */,
 			);
 			path = Students;
 			sourceTree = "<group>";
@@ -460,6 +463,7 @@
 				B91BD49A237980010015C934 /* AppDelegate.swift in Sources */,
 				B906747B237C13E800671632 /* StudentsViewController.swift in Sources */,
 				B91BD49C237980010015C934 /* SceneDelegate.swift in Sources */,
+				68A57101238B6EBD002A3014 /* ParentsDetailViewController.swift in Sources */,
 				68A570D7238544F5002A3014 /* AttachmentsTableViewCell.swift in Sources */,
 				68A570D12384FFAD002A3014 /* ViewDetailViewController.swift in Sources */,
 				68A570C72384F378002A3014 /* AddReportViewController.swift in Sources */,
