@@ -75,6 +75,12 @@
                     <navigationItem key="navigationItem" title="My Profile" leftItemsSupplementBackButton="YES" id="hPd-hF-TlH">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="GY7-Qn-3nT"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="addressLabel" destination="7Wk-B9-GNO" id="Pqr-ia-mVN"/>
+                        <outlet property="institutionLabel" destination="qYs-IC-F02" id="Wgc-8q-xBc"/>
+                        <outlet property="nameProfileLabel" destination="85G-i9-QM4" id="VNA-qM-hlO"/>
+                        <outlet property="profilePhotoUIImage" destination="Jse-oS-pXa" id="wrS-Mf-3Mn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dFB-gZ-d5c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
