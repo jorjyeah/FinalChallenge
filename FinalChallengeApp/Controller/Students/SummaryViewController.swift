@@ -13,11 +13,13 @@ class SummaryViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var selectedActivity = [String]()
+    var selectedActivity = [AddReportModelCK]()
+//    var selectedActivityTitle = [String]()
+//    var selectedActivityRecordID = [String]()
     var test : String!
     
-    let promptArray = ["Gesture, Physical, Verbal", "Gesture, Physical, Verbal", "Gesture, Physical, Verbal", "Gesture, Physical, Verbal"]
-    let mediaArray = ["", "Mirror, Doll", "Mirror, Doll", "Mirror, Doll"]
+//    let promptArray = ["Gesture, Physical, Verbal", "Gesture, Physical, Verbal", "Gesture, Physical, Verbal", "Gesture, Physical, Verbal","Gesture, Physical, Verbal"]
+//    let mediaArray = ["", "Mirror, Doll", "Mirror, Doll", "Mirror, Doll"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,10 +79,14 @@ extension SummaryViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
+            var prompts = String()
+            selectedActivity[indexPath.row].activityPrompt .forEach { (prompt) in
+                prompts.append("\(prompt), ")
+            }
             let cell = tableView.dequeueReusableCell(withIdentifier: "detailCell", for: indexPath) as! DetailSummaryTableViewCell
-            cell.activityLabel.text = selectedActivity[indexPath.row]
-            cell.promptLabel.text = "Prompt: " + promptArray[indexPath.row]
-            cell.mediaLabel.text = "Media: " + mediaArray[indexPath.row]
+            cell.activityLabel.text = selectedActivity[indexPath.row].activityTitle
+            cell.promptLabel.text = "Prompt: " + prompts
+            cell.mediaLabel.text = "Media: " + selectedActivity[indexPath.row].activityMedia
             
             return  cell
             

@@ -45,7 +45,7 @@ class StudentCKModel: NSObject{
             {
                 return image
             }
-            return UIImage(named: "default")!
+            return UIImage(named: "Student Photo Default")!
         }
     }
     
@@ -71,6 +71,7 @@ class StudentCKModel: NSObject{
         let therapistReference = CKRecord.Reference(recordID: CKRecord.ID(recordName: therapistRecordID), action: CKRecord_Reference_Action.none)
 
         let predicate = NSPredicate(format: "therapistName == %@", therapistReference)
+//        let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: "TherapySchedule", predicate: predicate)
         
         let operation = CKQueryOperation(query: query)
@@ -88,9 +89,10 @@ class StudentCKModel: NSObject{
         operation.queryCompletionBlock = { (cursor, error) in
             DispatchQueue.main.async {
                 if error == nil {
-                    print("error : \(error as Any)")
+                    print(studentsRecordID.removingDuplicates())
                     onComplete(studentsRecordID.removingDuplicates()) // removing duplicate of multiple string
                 } else {
+                    print("error : \(error as Any)")
                     let ac = UIAlertController(title: "Fetch failed", message: "There was a problem fetching the list of whistles; please try again: \(error!.localizedDescription)", preferredStyle: .alert)
                     ac.addAction(UIAlertAction(title: "OK", style: .default))
                     print(cursor as Any)
@@ -102,12 +104,13 @@ class StudentCKModel: NSObject{
     
     class func getStudentData(studentsRecordID : [String], onComplete: @escaping ([StudentCKModel]) -> Void){
         var studentModel = [StudentCKModel]()
+        print(studentsRecordID)
         var studentsReference = [CKRecord.Reference]()
         studentsRecordID .forEach { (studentRecordID) in
             // change [string] to [reference]
             studentsReference.append(CKRecord.Reference(recordID: CKRecord.ID(recordName: studentRecordID), action: CKRecord_Reference_Action.none))
         }
-        let predicate = NSPredicate(format: "recordID == %@", argumentArray: studentsReference)
+        let predicate = NSPredicate(format: "recordID IN %@", argumentArray: [studentsReference])
         //filter using [reference]
         
         let query = CKQuery(recordType: "Child", predicate: predicate)
@@ -118,11 +121,11 @@ class StudentCKModel: NSObject{
             } else {
                 records?.forEach({ (record) in
                     let model = StudentCKModel(record: record)
-                    print("model",model)
+//                    print("model",model)
                     studentModel.append(model)
                     
                 })
-                print("complete")
+//                print("complete")
                 onComplete(studentModel)
             }
         }
