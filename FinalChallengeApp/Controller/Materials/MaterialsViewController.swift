@@ -32,7 +32,7 @@ class MaterialsViewController: UIViewController {
 extension MaterialsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return  2
+        return  programCategory.count
     }
     
     

@@ -169,10 +169,10 @@
 				B906747A237C13E800671632 /* StudentsViewController.swift */,
 				68A570B52383D45E002A3014 /* ReportViewController.swift */,
 				68A570CC2384F423002A3014 /* DetailViewController.swift */,
+				68A57100238B6EBD002A3014 /* ParentsDetailViewController.swift */,
 				68A570D02384FFAD002A3014 /* ViewDetailViewController.swift */,
 				68A570C62384F378002A3014 /* AddReportViewController.swift */,
 				68A570E32387C586002A3014 /* SummaryViewController.swift */,
-				68A57100238B6EBD002A3014 /* ParentsDetailViewController.swift */,
 			);
 			path = Students;
 			sourceTree = "<group>";

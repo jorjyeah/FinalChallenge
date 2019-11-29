@@ -26,11 +26,10 @@ class SummaryViewController: UIViewController {
     }
     
     func showReportView() {
-      if let mvc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ReportViewController") as? ReportViewController {
-        self.present(mvc, animated: true, completion: nil)
-      }
+        if let mvc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ReportViewController") as? ReportViewController {
+            self.present(mvc, animated: true, completion: nil)
+        }
     }
-    
     
     override func prepare(for segue:
         UIStoryboardSegue, sender: Any?) {
@@ -91,5 +90,6 @@ extension SummaryViewController: UITableViewDataSource, UITableViewDelegate {
         }
         
     }
+    
   
 }
