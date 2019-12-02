@@ -184,7 +184,7 @@ class AddReportModelCK: NSObject{
         let therapistRecordID = String(UserDefaults.standard.string(forKey: "userID")!)
         let creator = CKRecord.Reference(recordID: CKRecord.ID(recordName: therapistRecordID), action: CKRecord_Reference_Action.none)
     
-        let predicate = NSPredicate(format: "creatorUserRecordID == %@", creator)
+        let predicate = NSPredicate(value: true)
         
         let query = CKQuery(recordType: "Activity", predicate: predicate)
         let database = CKContainer.default().publicCloudDatabase

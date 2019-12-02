@@ -17,6 +17,8 @@ class ReportViewController: UIViewController {
 //    let therapistReportArray = ["Fri, 18 Oct 2019",  "Wed, 16 Oct 2019", "Mon, 14 Oct 2019"]
 //    let parentsReportArray = ["Thu, 17 Oct 2019", "Tue, 15 Oct 2019"]
     
+    let therapySessionDateArray = ["November"]
+    
     //ini buat nampung student record id yg di-passing dari StudentVC
     var studentRecordID = String()
     var therapySession = [TherapySessionCKModel]()
@@ -63,6 +65,24 @@ class ReportViewController: UIViewController {
 }
 
 extension ReportViewController: UITableViewDelegate, UITableViewDataSource {
+   
+   func numberOfSections(in tableView: UITableView) -> Int {
+        return therapySessionDateArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        //ini masih belum fix
+        /*for i in 0..<therapySessionDateArray.count {
+            if section == 0 {
+                return "\(therapySessionDateArray[i])"
+            }
+            else {
+                return "\(therapySessionDateArray[i+1])"
+            }
+        }*/
+        return "November"
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch segmentedControl.selectedSegmentIndex {
         case 0:

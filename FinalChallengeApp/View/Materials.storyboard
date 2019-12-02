@@ -111,6 +111,11 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="u31-R7-VTk">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="vdw-ZA-0fR">
+                                    <rect key="frame" x="0.0" y="318" width="414" height="0.0"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="programTitleCell" rowHeight="218" id="yCw-N0-5vN" customClass="ProgramTitleTableViewCell" customModule="FinalChallengeApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="218"/>
@@ -143,6 +148,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
+                                            <outlet property="programTitleImage" destination="jD3-Io-SCU" id="354-zm-uUa"/>
                                             <outlet property="programTitleLabel" destination="1c0-Dy-hFL" id="H84-df-oeR"/>
                                         </connections>
                                     </tableViewCell>
@@ -154,7 +160,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9H9-6p-9tU">
-                                                    <rect key="frame" x="16" y="16" width="382" height="12"/>
+                                                    <rect key="frame" x="16" y="12" width="382" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -162,9 +168,9 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="9H9-6p-9tU" firstAttribute="leading" secondItem="YaH-X9-bNQ" secondAttribute="leading" constant="16" id="QHk-Aw-C4O"/>
-                                                <constraint firstAttribute="bottom" secondItem="9H9-6p-9tU" secondAttribute="bottom" constant="16" id="WfM-q6-hRa"/>
+                                                <constraint firstAttribute="bottom" secondItem="9H9-6p-9tU" secondAttribute="bottom" constant="12" id="WfM-q6-hRa"/>
                                                 <constraint firstAttribute="trailing" secondItem="9H9-6p-9tU" secondAttribute="trailing" constant="16" id="X2L-yT-Q1S"/>
-                                                <constraint firstItem="9H9-6p-9tU" firstAttribute="top" secondItem="YaH-X9-bNQ" secondAttribute="top" constant="16" id="fN3-XD-IbQ"/>
+                                                <constraint firstItem="9H9-6p-9tU" firstAttribute="top" secondItem="YaH-X9-bNQ" secondAttribute="top" constant="12" id="fN3-XD-IbQ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
