@@ -12,12 +12,16 @@ class StudentsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
         
-
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     var student = [StudentCKModel]()
     var recordIDTransfer: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //navbar customize
+        navigationController?.navigationBar.backgroundColor = UIColor(red: 0.97, green: 0.97, blue: 0.97, alpha: 0)
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.topItem?.title = "Students"
         
@@ -43,12 +47,26 @@ class StudentsViewController: UIViewController {
            self.setNeedsStatusBarAppearanceUpdate()
            
        }*/
-    
 
 }
 
 
 extension StudentsViewController: UITableViewDelegate, UITableViewDataSource{
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if let headerView = view as? UITableViewHeaderFooterView {
+            headerView.contentView.backgroundColor = UIColor(red: 0.97, green: 0.97, blue: 0.97, alpha: 0.82)
+        }
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+           return 1
+       }
+       
+       func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+           return "All Student"
+       }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.student.count
     }

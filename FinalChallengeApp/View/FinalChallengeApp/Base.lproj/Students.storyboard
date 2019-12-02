@@ -7,6 +7,57 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Add Student View Controller-->
+        <scene sceneID="ODm-I1-fIi">
+            <objects>
+                <viewController id="cnY-k6-lYd" customClass="AddStudentViewController" customModule="FinalChallengeApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Eln-Ge-0bg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GDr-LC-D9Q">
+                                <rect key="frame" x="0.0" y="56" width="414" height="752"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="5KK-db-U39" firstAttribute="bottom" secondItem="GDr-LC-D9Q" secondAttribute="bottom" id="StS-bE-6by"/>
+                            <constraint firstItem="GDr-LC-D9Q" firstAttribute="top" secondItem="5KK-db-U39" secondAttribute="top" id="X1q-ix-ric"/>
+                            <constraint firstItem="5KK-db-U39" firstAttribute="trailing" secondItem="GDr-LC-D9Q" secondAttribute="trailing" id="a4K-Ts-LtM"/>
+                            <constraint firstItem="GDr-LC-D9Q" firstAttribute="leading" secondItem="5KK-db-U39" secondAttribute="leading" id="cux-x1-Vln"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="5KK-db-U39"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="zvy-VX-gt5">
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="oAd-CB-XcQ"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="done" id="kup-Bs-YJY"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="videoPreview" destination="GDr-LC-D9Q" id="24N-Rt-seD"/>
+                        <segue destination="5Ln-KQ-Znw" kind="show" identifier="showNewStudentPreview" id="QgU-UB-21Y"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zp3-f7-u4I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1880" y="-950"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="552-nj-8av">
+            <objects>
+                <viewController id="5Ln-KQ-Znw" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="G5B-fc-aao">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="gYh-jw-ThS"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="W79-gY-Hxt"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d79-1j-13H" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2784" y="-950"/>
+        </scene>
         <!--Students View Controller-->
         <scene sceneID="R5k-xG-qt2">
             <objects>
@@ -16,8 +67,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Bht-aX-avv">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <rect key="frame" x="0.0" y="188" width="414" height="674"/>
+                                <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="zWw-Qd-UtZ">
+                                    <rect key="frame" x="0.0" y="121" width="414" height="0.0"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="studentCell" rowHeight="65" id="WZe-l1-5xP" customClass="StudentsTableViewCell" customModule="FinalChallengeApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="65"/>
@@ -50,39 +106,55 @@
                                     <outlet property="delegate" destination="hm9-KI-3VW" id="OZc-Bj-8XW"/>
                                 </connections>
                             </tableView>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search" id="v4p-R0-9Fd">
+                                <rect key="frame" x="0.0" y="144" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.95686918497085571" green="0.9568513035774231" blue="0.95686346292495728" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="K6q-6A-I90" firstAttribute="trailing" secondItem="Bht-aX-avv" secondAttribute="trailing" id="7F3-Y3-3ck"/>
-                            <constraint firstItem="K6q-6A-I90" firstAttribute="bottom" secondItem="Bht-aX-avv" secondAttribute="bottom" id="Z95-6V-Pit"/>
-                            <constraint firstItem="Bht-aX-avv" firstAttribute="leading" secondItem="K6q-6A-I90" secondAttribute="leading" id="eNl-1b-YCT"/>
-                            <constraint firstItem="Bht-aX-avv" firstAttribute="top" secondItem="K6q-6A-I90" secondAttribute="top" id="jVr-jJ-dyt"/>
+                            <constraint firstItem="Bht-aX-avv" firstAttribute="leading" secondItem="K6q-6A-I90" secondAttribute="leading" id="5vK-kj-Wqx"/>
+                            <constraint firstItem="Bht-aX-avv" firstAttribute="trailing" secondItem="K6q-6A-I90" secondAttribute="trailing" id="owB-8V-tpa"/>
+                            <constraint firstItem="Bht-aX-avv" firstAttribute="bottom" secondItem="K6q-6A-I90" secondAttribute="bottom" id="uOT-3L-sqC"/>
+                            <constraint firstItem="Bht-aX-avv" firstAttribute="top" secondItem="v4p-R0-9Fd" secondAttribute="bottom" id="wuL-3q-uA4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="K6q-6A-I90"/>
                     </view>
                     <navigationItem key="navigationItem" id="vFQ-1V-U0u">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="qUn-Qc-Izy"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="qUn-Qc-Izy">
+                            <connections>
+                                <segue destination="j7t-UQ-q6q" kind="modal" identifier="showAddStudent" id="fSu-5i-UeL"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="searchBar" destination="v4p-R0-9Fd" id="Dcw-ce-2ao"/>
                         <outlet property="tableView" destination="Bht-aX-avv" id="896-KZ-H4o"/>
                         <segue destination="I7P-FV-xcF" kind="show" identifier="showStudentReport" id="jn5-am-iTU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DjU-jb-wPV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1139.1304347826087" y="831.69642857142856"/>
+            <point key="canvasLocation" x="-697.10144927536237" y="502.90178571428567"/>
         </scene>
         <!--Report View Controller-->
         <scene sceneID="NFd-gf-J6W">
             <objects>
-                <viewController id="I7P-FV-xcF" customClass="ReportViewController" customModule="FinalChallengeApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ReportViewController" id="I7P-FV-xcF" customClass="ReportViewController" customModule="FinalChallengeApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MOc-Aa-Bvm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AhA-RL-CPH">
                                 <rect key="frame" x="0.0" y="166" width="414" height="696"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" red="0.95686918497085571" green="0.9568513035774231" blue="0.95686346292495728" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="xZX-CJ-ROT">
+                                    <rect key="frame" x="0.0" y="99.5" width="414" height="0.0"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reportCell" id="nGG-R8-nzX" customClass="ReportTableViewCell" customModule="FinalChallengeApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
@@ -147,12 +219,13 @@
                     <connections>
                         <outlet property="segmentedControl" destination="Ts6-g7-oKh" id="vRO-YF-ThM"/>
                         <outlet property="tableView" destination="AhA-RL-CPH" id="GEY-72-zPn"/>
-                        <segue destination="81m-JS-Wsw" kind="show" identifier="showDetailReport" id="jAk-QA-Trv"/>
+                        <segue destination="81m-JS-Wsw" kind="show" identifier="showTherapistDetail" id="jAk-QA-Trv"/>
+                        <segue destination="TDo-67-mws" kind="show" identifier="showParentsDetail" id="dks-L2-MmJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zQE-PR-Uah" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2002.8985507246377" y="830.35714285714278"/>
+            <point key="canvasLocation" x="1119" y="822"/>
         </scene>
         <!--Report's Detail-->
         <scene sceneID="I8U-a0-4wu">
@@ -165,6 +238,11 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oHG-nK-2Lo">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="gir-EI-G99">
+                                    <rect key="frame" x="0.0" y="564" width="414" height="0.0"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="detailCell" rowHeight="128" id="QzZ-Fx-GzO" customClass="DetailTableViewCell" customModule="FinalChallengeApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="128"/>
@@ -229,7 +307,7 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IMe-7I-wWs">
                                                     <rect key="frame" x="16" y="16" width="382" height="188"/>
-                                                    <mutableString key="text">Her mood is pretty good today, but there are still some tantrum from her. We did a bear hug to calm her down. She did good on doing stomp feet with a little bit of help of gesture prompt. On doing Point to body parts, she need to memorize better. Prompt is given but she can not understand it most of the time.  On doing Extend index finger, she can do it but she need help from prompt. On doing Place Thumbs Up, she can do it with a little bit of physical prompt. When doing any therapy activity at home, please only continue if your child or you are comfortable doing it.</mutableString>
+                                                    <string key="text">Her mood is pretty good today, but there are still some tantrum from her. We did a bear hug to calm her down. She did good on doing stomp feet with a little bit of help of gesture prompt. On doing Point to body parts, she need to memorize better. Prompt is given but she can not understand it most of the time.  On doing Extend index finger, she can do it but she need help from prompt. On doing Place Thumbs Up, she can do it with a little bit of physical prompt. When doing any therapy activity at home, please only continue if your child or you are comfortable doing it.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -294,7 +372,36 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mBW-fl-3Rf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2847.826086956522" y="1263.6160714285713"/>
+            <point key="canvasLocation" x="2783" y="822"/>
+        </scene>
+        <!--Parents Detail View Controller-->
+        <scene sceneID="Ifk-Aa-F8n">
+            <objects>
+                <viewController id="TDo-67-mws" customClass="ParentsDetailViewController" customModule="FinalChallengeApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6Hn-VJ-0eT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRQ-bp-P1l">
+                                <rect key="frame" x="16" y="104" width="382" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="oRQ-bp-P1l" firstAttribute="top" secondItem="DxR-yb-5rG" secondAttribute="top" constant="16" id="8t0-jl-ugP"/>
+                            <constraint firstItem="DxR-yb-5rG" firstAttribute="trailing" secondItem="oRQ-bp-P1l" secondAttribute="trailing" constant="16" id="bzJ-PZ-rL0"/>
+                            <constraint firstItem="oRQ-bp-P1l" firstAttribute="leading" secondItem="DxR-yb-5rG" secondAttribute="leading" constant="16" id="llT-lV-Et8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="DxR-yb-5rG"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Uoi-YR-JP1"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hgt-ZO-Aph" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2783" y="1738"/>
         </scene>
         <!--View Detail View Controller-->
         <scene sceneID="Mhg-4b-xAe">
@@ -309,7 +416,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Exk-qc-xsb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3882.608695652174" y="1260.9375"/>
+            <point key="canvasLocation" x="3741" y="822"/>
         </scene>
         <!--Today's Report-->
         <scene sceneID="DjP-Ob-5zh">
@@ -319,9 +426,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uo3-a8-qQ3">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uo3-a8-qQ3">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="3Qk-LN-X0Z">
+                                    <rect key="frame" x="0.0" y="112" width="414" height="0.0"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="activityCell" rowHeight="56" id="Eg9-Lw-pQW" customClass="ActivityTableViewCell" customModule="FinalChallengeApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="56"/>
@@ -337,17 +449,15 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jau-PQ-kLd">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Unchecked box" translatesAutoresizingMaskIntoConstraints="NO" id="rDN-st-7NH">
                                                     <rect key="frame" x="20" y="19" width="18" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Button" image="Unchecked box"/>
-                                                    <state key="selected" image="Checked box"/>
-                                                </button>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="activityNameLabel" destination="80e-OW-I17" id="649-ky-bvD"/>
-                                            <outlet property="checkboxButton" destination="Jau-PQ-kLd" id="umw-Nd-bUf"/>
+                                            <outlet property="checkBoxImageView" destination="rDN-st-7NH" id="25v-JI-G0N"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -367,7 +477,7 @@
                         <viewLayoutGuide key="safeArea" id="EW2-Al-361"/>
                     </view>
                     <navigationItem key="navigationItem" title="Today's Report" id="sDl-qj-IN9">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="q1i-uZ-J4S">
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="q1i-uZ-J4S">
                             <connections>
                                 <segue destination="rNe-Ul-54a" kind="show" identifier="showSummary" id="IHw-u1-17u"/>
                             </connections>
@@ -379,7 +489,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tal-Rt-qOL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2847.826086956522" y="516.96428571428567"/>
+            <point key="canvasLocation" x="2783" y="-106"/>
         </scene>
         <!--Summary View Controller-->
         <scene sceneID="t9R-KQ-MEp">
@@ -488,15 +598,20 @@
                         <viewLayoutGuide key="safeArea" id="HgD-Cd-AS6"/>
                     </view>
                     <navigationItem key="navigationItem" id="gav-1U-bMd">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="zAr-gS-bqd"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="zAr-gS-bqd">
+                            <connections>
+                                <segue destination="wqA-Lj-Qfq" kind="unwind" unwindAction="unwindFromSummary:" id="HYd-PS-YOa"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="YQR-Eg-8mE" id="1Ns-SY-7U5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r87-Nm-aKv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="wqA-Lj-Qfq" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3805.7971014492755" y="516.96428571428567"/>
+            <point key="canvasLocation" x="3741" y="-106"/>
         </scene>
         <!--Students-->
         <scene sceneID="hZm-IH-neX">
@@ -515,11 +630,28 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wUP-ac-YpD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="228.98550724637684" y="831.69642857142856"/>
+            <point key="canvasLocation" x="-1607" y="503"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="sl9-gF-MOP">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="j7t-UQ-q6q" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bcQ-GS-Znr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="cnY-k6-lYd" kind="relationship" relationship="rootViewController" id="xvM-Yi-SHl"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hgu-a1-bB3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1016" y="-954"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Checked box" width="18" height="18"/>
-        <image name="Unchecked box" width="18" height="18"/>
+        <image name="Unchecked box" width="36" height="36"/>
     </resources>
 </document>

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="628-sI-Bge">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="628-sI-Bge">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tab Bar Controller-->
+        <!--View Controller-->
         <scene sceneID="bpE-O5-skr">
             <objects>
-                <tabBarController id="628-sI-Bge" sceneMemberID="viewController">
+                <tabBarController id="628-sI-Bge" customClass="ViewController" customModule="FinalChallengeApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="I50-rv-9bQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -29,7 +29,7 @@
         <scene sceneID="fk9-cT-daX">
             <objects>
                 <viewControllerPlaceholder storyboardName="Students" id="e6t-wx-8sf" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="LdB-yG-Rsj"/>
+                    <tabBarItem key="tabBarItem" title="" image="stara-active" id="LdB-yG-Rsj"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vIu-wR-ypo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -56,4 +56,7 @@
             <point key="canvasLocation" x="1236" y="539"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="stara-active" width="30" height="28"/>
+    </resources>
 </document>

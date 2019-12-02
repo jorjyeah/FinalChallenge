@@ -14,10 +14,12 @@ class ReportViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    let therapistReportArray = ["Fri, 18 Oct 2019",  "Wed, 16 Oct 2019", "Mon, 14 Oct 2019"]
-    let parentsReportArray = ["Thu, 17 Oct 2019", "Tue, 15 Oct 2019"]
+//    let therapistReportArray = ["Fri, 18 Oct 2019",  "Wed, 16 Oct 2019", "Mon, 14 Oct 2019"]
+//    let parentsReportArray = ["Thu, 17 Oct 2019", "Tue, 15 Oct 2019"]
     
-    //ini buat nampung student record id yg passing
+    let therapySessionDateArray = ["November"]
+    
+    //ini buat nampung student record id yg di-passing dari StudentVC
     var studentRecordID = String()
     var therapySession = [TherapySessionCKModel]()
     var parentNotes = [ParentNotesCKModel]()
@@ -51,10 +53,37 @@ class ReportViewController: UIViewController {
         tableView.reloadData()
     }
     
-
+    @IBAction func unwindFromSummary(_ sender:UIStoryboardSegue){
+        // bikin function dulu buat unwind, nanti di exit di page summary
+        if sender.source is SummaryViewController{
+            if let senderVC = sender.source as? SummaryViewController{
+                print(senderVC.test)
+                print(senderVC.selectedActivity)
+            }
+            tableView.reloadData()
+        }
+    }
 }
 
 extension ReportViewController: UITableViewDelegate, UITableViewDataSource {
+   
+   func numberOfSections(in tableView: UITableView) -> Int {
+        return therapySessionDateArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        //ini masih belum fix
+        /*for i in 0..<therapySessionDateArray.count {
+            if section == 0 {
+                return "\(therapySessionDateArray[i])"
+            }
+            else {
+                return "\(therapySessionDateArray[i+1])"
+            }
+        }*/
+        return "November"
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch segmentedControl.selectedSegmentIndex {
         case 0:
@@ -90,7 +119,24 @@ extension ReportViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showDetailReport", sender: self)
+        switch segmentedControl.selectedSegmentIndex {
+        case 0:
+            performSegue(withIdentifier: "showTherapistDetail", sender: self)
+            
+        case 1:
+            performSegue(withIdentifier: "showParentsDetail", sender: self)
+            
+        default:
+            break
+        }
+        
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showAddReport" {
+            let destination = segue.destination as! AddReportViewController
+            destination.studentRecordID = studentRecordID
+            print("\(destination.studentRecordID)")
+        }
+    }
 }
