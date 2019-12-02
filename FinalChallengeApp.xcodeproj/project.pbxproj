@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		687E7D5B2390D21500331EAE /* AddStudentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687E7D5A2390D21500331EAE /* AddStudentViewController.swift */; };
+		687E7D5D2390E3AB00331EAE /* NewStudentPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687E7D5C2390E3AB00331EAE /* NewStudentPreviewViewController.swift */; };
 		68A57095237E7BE1002A3014 /* StudentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A57094237E7BE1002A3014 /* StudentsTableViewCell.swift */; };
 		68A570B62383D45E002A3014 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A570B52383D45E002A3014 /* ReportViewController.swift */; };
 		68A570B82383D479002A3014 /* ReportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A570B72383D479002A3014 /* ReportTableViewCell.swift */; };
@@ -68,6 +70,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		687E7D5A2390D21500331EAE /* AddStudentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStudentViewController.swift; sourceTree = "<group>"; };
+		687E7D5C2390E3AB00331EAE /* NewStudentPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewStudentPreviewViewController.swift; sourceTree = "<group>"; };
 		68A57094237E7BE1002A3014 /* StudentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentsTableViewCell.swift; sourceTree = "<group>"; };
 		68A570B52383D45E002A3014 /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
 		68A570B72383D479002A3014 /* ReportTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportTableViewCell.swift; sourceTree = "<group>"; };
@@ -166,14 +170,15 @@
 		68A570E8238AA384002A3014 /* Students */ = {
 			isa = PBXGroup;
 			children = (
-				68A570B52383D45E002A3014 /* ReportViewController.swift */,
-				68A57100238B6EBD002A3014 /* ParentsDetailViewController.swift */,
 				B906747A237C13E800671632 /* StudentsViewController.swift */,
+				68A570B52383D45E002A3014 /* ReportViewController.swift */,
 				68A570CC2384F423002A3014 /* DetailViewController.swift */,
 				68A57100238B6EBD002A3014 /* ParentsDetailViewController.swift */,
 				68A570D02384FFAD002A3014 /* ViewDetailViewController.swift */,
 				68A570C62384F378002A3014 /* AddReportViewController.swift */,
 				68A570E32387C586002A3014 /* SummaryViewController.swift */,
+				687E7D5A2390D21500331EAE /* AddStudentViewController.swift */,
+				687E7D5C2390E3AB00331EAE /* NewStudentPreviewViewController.swift */,
 			);
 			path = Students;
 			sourceTree = "<group>";
@@ -455,6 +460,7 @@
 				B9F81F8D237D44DD0040F09C /* StudentCKModel.swift in Sources */,
 				B91BD49E237980010015C934 /* ViewController.swift in Sources */,
 				68A570B82383D479002A3014 /* ReportTableViewCell.swift in Sources */,
+				687E7D5D2390E3AB00331EAE /* NewStudentPreviewViewController.swift in Sources */,
 				B9F81F93237E835E0040F09C /* TherapyScheduleCKModel.swift in Sources */,
 				B9D9B32A23829614005CCDBB /* TherapySessionCKModel.swift in Sources */,
 				68A570F1238AA43C002A3014 /* ProfileViewController.swift in Sources */,
@@ -465,6 +471,7 @@
 				68A570FF238AB614002A3014 /* ProgramTitleTableViewCell.swift in Sources */,
 				68A570E02386C09B002A3014 /* NotesSummaryTableViewCell.swift in Sources */,
 				68A570D92386887C002A3014 /* ActivityTableViewCell.swift in Sources */,
+				687E7D5B2390D21500331EAE /* AddStudentViewController.swift in Sources */,
 				68A570FB238AB3EB002A3014 /* ActivityTaskTableViewCell.swift in Sources */,
 				68A570E42387C586002A3014 /* SummaryViewController.swift in Sources */,
 				B9BC0D99238420A30063DC95 /* ParentNotesCKModel.swift in Sources */,
