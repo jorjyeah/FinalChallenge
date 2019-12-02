@@ -12,11 +12,8 @@ class AddReportViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    //let checkedImage = UIImage(named: "CheckBoxChecked")! as UIImage
-    //let uncheckedImage = UIImage(named: "CheckBoxUnChecked")! as UIImage
-    
-//    let activityArray = ["Stomp feet", "Point to  body parts", "Extend index finger",  "Place thumbs up"]
-    
+    var studentRecordID = String()
+    var hideLastActivity = false
     var sections = ["Last Activities","All Activities"]
     var selectedActivityTitle = [String]()
     var selectedActivityRecordID = [String]()
@@ -38,16 +35,18 @@ class AddReportViewController: UIViewController {
         }
         
         let lastActivityData = AddReportModelCK.self
-        lastActivityData.getLastActivity { lastActivitiesData in
+        lastActivityData.getLastActivity(childRecordID: studentRecordID) { lastActivitiesData in
             if lastActivitiesData.count != 0 {
+                self.hideLastActivity = false
                 lastActivityData.getActivityBasedOnLastActivities(activitiesRecordID: lastActivitiesData) { activities in
                     self.lastActivitiesList = activities
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
                     }
                 }
-            } else {
-                self.lastActivitiesList[0].activityTitle = "No Last Activity"
+            }
+            else {
+                self.hideLastActivity = true
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
@@ -60,8 +59,6 @@ class AddReportViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showSummary" {
             let destination = segue.destination as! SummaryViewController
-//            destination.selectedActivityTitle = selectedActivityTitle
-//            destination.selectedActivityRecordID = selectedActivityRecordID
             destination.selectedActivity = selected
         }
     }
@@ -71,7 +68,11 @@ extension AddReportViewController: UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return lastActivitiesList.count
+            if hideLastActivity {
+                return 0
+            } else {
+                return lastActivitiesList.count
+            }
         } else  if section == 1 {
             return allActivitiesList.count
         } else  {
@@ -88,47 +89,63 @@ extension AddReportViewController: UITableViewDelegate,UITableViewDataSource {
         return sections[section]
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 0 && hideLastActivity {
+            return UIView.init(frame: CGRect.zero)
+        }
+        return nil
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 && hideLastActivity {
+            return 1
+        }
+        return 32
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        if section == 0 && hideLastActivity {
+            return UIView.init(frame: CGRect.zero)
+        }
+        return nil
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if section == 0 && hideLastActivity {
+            return 1
+        }
+        return 0
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             lastActivitiesList[indexPath.row].isSelected = true
-            selectedActivityTitle.append(lastActivitiesList[indexPath.row].activityTitle)
-            selectedActivityRecordID.append(lastActivitiesList[indexPath.row].activityRecordID)
             selected.append(lastActivitiesList[indexPath.row])
             
         } else if indexPath.section == 1 {
             allActivitiesList[indexPath.row].isSelected = true
-            selectedActivityTitle.append(allActivitiesList[indexPath.row].activityTitle)
-            selectedActivityRecordID.append(allActivitiesList[indexPath.row].activityRecordID)
             selected.append(allActivitiesList[indexPath.row])
         }
         
         if let sr = tableView.indexPathsForSelectedRows {
             print("didDeselectRowAtIndexPath selected rows:\(sr)")
         }
-        
-        print(selectedActivityTitle)
-        print(selectedActivityRecordID)
+        print(selected)
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             lastActivitiesList[indexPath.row].isSelected = false
-            selectedActivityTitle = selectedActivityTitle.filter{$0 != lastActivitiesList[indexPath.row].activityTitle}
-            selectedActivityRecordID = selectedActivityRecordID.filter{$0 != lastActivitiesList[indexPath.row].activityRecordID}
             selected = selected.filter{$0 != lastActivitiesList[indexPath.row]}
         } else if indexPath.section == 1 {
             allActivitiesList[indexPath.row].isSelected = false
-            selectedActivityTitle = selectedActivityTitle.filter{$0 != allActivitiesList[indexPath.row].activityTitle}
-            selectedActivityRecordID = selectedActivityRecordID.filter{$0 != allActivitiesList[indexPath.row].activityRecordID}
             selected = selected.filter{$0 != allActivitiesList[indexPath.row]}
         }
         
         if let sr = tableView.indexPathsForSelectedRows {
             print("didDeselectRowAtIndexPath selected rows:\(sr)")
         }
-        
-        print(selectedActivityTitle)
-        print(selectedActivityRecordID)
+        print(selected)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -153,9 +170,6 @@ extension AddReportViewController: UITableViewDelegate,UITableViewDataSource {
                 tableView.deselectRow(at: indexPath, animated: false) // (4)
             }
             cell.activityNameLabel.text = allActivitiesList[indexPath.row].activityTitle
-            cell.selectionStyle = .none
-//            cell.checkboxButton.tag = indexPath.row
-//            cell.checkboxButton.addTarget(self, action: #selector(checkboxTapped(sender:)), for: .touchUpInside)
         }
         
         return cell
@@ -165,18 +179,4 @@ extension AddReportViewController: UITableViewDelegate,UITableViewDataSource {
         return 50
     }
     
-    
-//    @objc func checkboxTapped(sender: UIButton) {
-//        let selectLabel = allActivitiesList[sender.tag].activityTitle
-//        if sender.isSelected {
-//            //uncheck the butoon
-//            sender.isSelected = false
-//            selectedActivity = selectedActivity.filter{$0 != selectLabel}
-//        } else {
-//            // checkmark it
-//            sender.isSelected = true
-//            selectedActivity.append(selectLabel)
-//        }
-//        print(selectedActivity)
-//    }
 }

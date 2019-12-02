@@ -43,6 +43,7 @@
 		B91BD4A9237980020015C934 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B91BD4A7237980020015C934 /* LaunchScreen.storyboard */; };
 		B91BD4B4237980020015C934 /* FinalChallengeAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91BD4B3237980020015C934 /* FinalChallengeAppTests.swift */; };
 		B91BD4BF237980020015C934 /* FinalChallengeAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91BD4BE237980020015C934 /* FinalChallengeAppUITests.swift */; };
+		B9820B7523941DD500C4A6C3 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9820B7423941DD500C4A6C3 /* EditProfileViewController.swift */; };
 		B9A2EEDF238BD63E0041BB93 /* AddReportModelCK.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A2EEDE238BD63E0041BB93 /* AddReportModelCK.swift */; };
 		B9B548FE237C195000ACB625 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9B548FD237C195000ACB625 /* CloudKit.framework */; };
 		B9BC0D99238420A30063DC95 /* ParentNotesCKModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BC0D98238420A30063DC95 /* ParentNotesCKModel.swift */; };
@@ -112,6 +113,7 @@
 		B91BD4BA237980020015C934 /* FinalChallengeAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FinalChallengeAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B91BD4BE237980020015C934 /* FinalChallengeAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalChallengeAppUITests.swift; sourceTree = "<group>"; };
 		B91BD4C0237980020015C934 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B9820B7423941DD500C4A6C3 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		B9A2EEDE238BD63E0041BB93 /* AddReportModelCK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReportModelCK.swift; sourceTree = "<group>"; };
 		B9B548FB237C193800ACB625 /* FinalChallengeApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FinalChallengeApp.entitlements; sourceTree = "<group>"; };
 		B9B548FD237C195000ACB625 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
@@ -212,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				68A570F0238AA43C002A3014 /* ProfileViewController.swift */,
+				B9820B7423941DD500C4A6C3 /* EditProfileViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -462,6 +465,7 @@
 				68A570B82383D479002A3014 /* ReportTableViewCell.swift in Sources */,
 				687E7D5D2390E3AB00331EAE /* NewStudentPreviewViewController.swift in Sources */,
 				B9F81F93237E835E0040F09C /* TherapyScheduleCKModel.swift in Sources */,
+				B9820B7523941DD500C4A6C3 /* EditProfileViewController.swift in Sources */,
 				B9D9B32A23829614005CCDBB /* TherapySessionCKModel.swift in Sources */,
 				68A570F1238AA43C002A3014 /* ProfileViewController.swift in Sources */,
 				68A570CD2384F423002A3014 /* DetailViewController.swift in Sources */,
@@ -674,7 +678,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = FinalChallengeApp/FinalChallengeApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = A59P6GV5MM;
 				INFOPLIST_FILE = FinalChallengeApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -694,7 +698,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = FinalChallengeApp/FinalChallengeApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = A59P6GV5MM;
 				INFOPLIST_FILE = FinalChallengeApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (

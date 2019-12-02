@@ -26,11 +26,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 // setUserDefaults
                 userDefaults.set(therapistName, forKey: therapistNameUserDef)
                 userDefaults.set(userRef, forKey: userIDUserDef)
-                profileTherapistCKModel.checkTherapistData(userRef: userRef) { (dataTherapistAvailability) in
+                ProfileTherapistCKModel.checkTherapistData(userRef: userRef) { (dataTherapistAvailability) in
                     // check data availability about therapist
                     if !dataTherapistAvailability{
                         print("no data therapist, appDelegate")
-                        profileTherapistCKModel.addNewTherapist(therapistName: therapistName, userReference: userRef)
+                        ProfileTherapistCKModel.addNewTherapist(therapistName: therapistName, userReference: userRef){
+                            (newTherapistSaved) in
+                            print(newTherapistSaved)
+                        }
                         // create new one data therapist if it's not available
                         print("userID set at userDefaults")
                     } else{
