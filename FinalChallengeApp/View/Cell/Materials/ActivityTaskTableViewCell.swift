@@ -13,6 +13,7 @@ class ActivityTaskTableViewCell: UITableViewCell {
     @IBOutlet weak var activityTaskLabel: UILabel!
     
     
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

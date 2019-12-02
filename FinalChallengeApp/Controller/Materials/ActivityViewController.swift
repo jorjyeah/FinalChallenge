@@ -12,14 +12,17 @@ class ActivityViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    
     var programTitle: String = ""
-    let activityTaskArray = ["Activity #1", "Activity #2", "Activity #3", "Activity #4", "Activity #5", "Activity #6", "Activity #7"]
+    let activityTaskArray = ["Play Doh", "Stomp Feet", "Point to Body Parts"]
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        
     }
 
 }
@@ -51,6 +54,8 @@ extension ActivityViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "programTitleCell", for: indexPath) as! ProgramTitleTableViewCell
             cell.programTitleLabel.text = programTitle

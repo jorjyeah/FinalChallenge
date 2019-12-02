@@ -17,7 +17,7 @@ class ReportViewController: UIViewController {
 //    let therapistReportArray = ["Fri, 18 Oct 2019",  "Wed, 16 Oct 2019", "Mon, 14 Oct 2019"]
 //    let parentsReportArray = ["Thu, 17 Oct 2019", "Tue, 15 Oct 2019"]
     
-    let therapySessionDateArray = ["November", "October", "August"]
+    let therapySessionDateArray = ["November"]
     
     //ini buat nampung student record id yg di-passing dari StudentVC
     var studentRecordID = String()
@@ -71,16 +71,16 @@ extension ReportViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
-        for i in 0..<therapySessionDateArray.count {
+        //ini masih belum fix
+        /*for i in 0..<therapySessionDateArray.count {
             if section == 0 {
                 return "\(therapySessionDateArray[i])"
             }
             else {
                 return "\(therapySessionDateArray[i+1])"
             }
-        }
-        return ""
+        }*/
+        return "November"
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
