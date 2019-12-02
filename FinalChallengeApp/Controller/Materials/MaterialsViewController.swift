@@ -24,6 +24,12 @@ class MaterialsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        collectionView.layer.cornerRadius = 8
+        collectionView.layer.shadowOffset = CGSize(width: 2, height: 2)
+        collectionView.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.16).cgColor
+        collectionView.layer.shadowOpacity = 1
+        collectionView.layer.shadowRadius = 4
     }
 
 }
@@ -32,7 +38,7 @@ class MaterialsViewController: UIViewController {
 extension MaterialsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return  2
+        return  programCategory.count
     }
     
     
@@ -51,6 +57,13 @@ extension MaterialsViewController: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "programCell", for: indexPath) as! ProgramCollectionViewCell
+        
+        //cell style
+        cell.layer.cornerRadius = 8
+        cell.layer.shadowOffset = CGSize(width: 2, height: 2)
+        cell.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.16).cgColor
+        cell.layer.shadowOpacity = 1
+        cell.layer.shadowRadius = 4
         
         if indexPath.section == 0 {
             cell.programLabel.text = grossMotorArray[indexPath.row]
