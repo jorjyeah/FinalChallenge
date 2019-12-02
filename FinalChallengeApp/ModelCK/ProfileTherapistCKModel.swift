@@ -7,9 +7,16 @@
 //
 
 import CloudKit
+import UIKit
 
-class profileTherapistCKModel: NSObject{
+class ProfileTherapistCKModel: NSObject{
     var record:CKRecord?
+    
+    var therapistRecordID : CKRecord.ID {
+        get{
+            return record!.recordID
+        }
+    }
     
     var therapistName : String {
         get{
@@ -22,7 +29,11 @@ class profileTherapistCKModel: NSObject{
     
     var therapistAddress : String {
         get{
-            return record?.value(forKey: "therapistAddress") as! String
+            if let therapistAddress = record?.value(forKey: "therapistAddress"){
+                return therapistAddress as! String
+            } else {
+                return "no data"
+            }
         }
         set{
             self.record?.setValue(newValue, forKey: "therapistAddress")
@@ -31,19 +42,26 @@ class profileTherapistCKModel: NSObject{
     
     var institutionName : String {
         get{
-            return record?.value(forKey: "institutionName") as! String
+            if let institutionName = record?.value(forKey: "institutionName"){
+                return institutionName as! String
+            } else {
+                return "no data"
+            }
         }
         set{
             self.record?.setValue(newValue, forKey: "institutionName")
         }
     }
     
-    var therapistPhoto : String {
+    var therapistPhoto : UIImage{
         get{
-            return record?.value(forKey: "therapistPhoto") as! String
-        }
-        set{
-            self.record?.setValue(newValue, forKey: "therapistPhoto")
+            if let asset = record?["therapistPhoto"] as? CKAsset,
+                let data = NSData(contentsOf: (asset.fileURL)!),
+                let image = UIImage(data: data as Data)
+            {
+                return image
+            }
+            return UIImage(named: "Student Photo Default")!
         }
     }
     
@@ -60,16 +78,75 @@ class profileTherapistCKModel: NSObject{
         self.record = record
     }
     
-    class func addNewTherapist(therapistName: String, userReference: String){
+    class func addNewTherapist(therapistName: String, userReference: String, onComplete: @escaping(Bool) -> ()){
         let database = CKContainer.default().publicCloudDatabase
         let record = CKRecord(recordType: "Therapist")
         record.setObject(therapistName as __CKRecordObjCValue, forKey: "therapistName")
         let userReference = CKRecord.Reference(recordID: CKRecord.ID(recordName: userReference), action: CKRecord_Reference_Action.none)
         record.setObject(userReference as __CKRecordObjCValue, forKey: "userReference")
         database.save(record) { savedRecord, error in
-            print("saved : \(savedRecord)")
-            print("error : \(error)")
-            // handle errors here
+            if error != nil{
+                print("saved : \(savedRecord!)")
+                onComplete(true)
+            } else {
+                // handle errors here
+                print("error saved: \(error!)")
+                onComplete(false)
+            }
+        }
+        
+        CKContainer.default().publicCloudDatabase.save(record) { (_, _) in
+            
+        }
+    }
+    
+    class func getTherapistData(userRef: String, onComplete: @escaping(ProfileTherapistCKModel) -> Void){
+        let userReference =  CKRecord.Reference(recordID: CKRecord.ID(recordName: userRef), action: CKRecord_Reference_Action.none)
+        let predicate = NSPredicate(format: "userReference == %@", userReference)
+        
+        let query = CKQuery(recordType: "Therapist", predicate: predicate)
+        let database = CKContainer.default().publicCloudDatabase
+        var profileTherapistModel : ProfileTherapistCKModel? = nil
+        database.perform(query, inZoneWith: nil) { (records, error) in
+            
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                
+                records?.forEach({ (record) in
+                    let model = ProfileTherapistCKModel(record: record)
+                    profileTherapistModel = model
+                })
+                onComplete(profileTherapistModel ?? error as! ProfileTherapistCKModel)
+            }
+        }
+    }
+    
+    class func updateTherapistData(newData: [String],  onComplete: @escaping(Bool) -> Void){
+        let therapistRecordID = String(UserDefaults.standard.string(forKey: "userID")!)
+        let userReference =  CKRecord.Reference(recordID: CKRecord.ID(recordName: therapistRecordID), action: CKRecord_Reference_Action.none)
+        let predicate = NSPredicate(format: "userReference == %@", userReference)
+        
+        let query = CKQuery(recordType: "Therapist", predicate: predicate)
+        let databaseN = CKContainer.default().publicCloudDatabase
+        
+
+        getTherapistData(userRef: therapistRecordID) { (existingProfileData) in
+            if !( newData[0] == existingProfileData.therapistName || newData[0] == "" ){
+                existingProfileData.therapistName = newData[0]
+            }
+            
+            if !( newData[1] == existingProfileData.institutionName || newData[1] == "" ) {
+                existingProfileData.institutionName = newData[1]
+            }
+            
+            if !( newData[2] == existingProfileData.therapistAddress || newData[2] == "" ){
+                existingProfileData.therapistAddress = newData[2]
+            }
+            
+//            databaseN.save(existingProfileData) { (returnRecord, Err) in
+//
+//            }
         }
     }
     

@@ -14,6 +14,7 @@ class SummaryViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var selectedActivity = [AddReportModelCK]()
+    
 //    var selectedActivityTitle = [String]()
 //    var selectedActivityRecordID = [String]()
     var test : String!
@@ -38,6 +39,7 @@ class SummaryViewController: UIViewController {
         UIStoryboardSegue, sender: Any?) {
         // ini unwind segue ke mana aja, tapi kebetulan ke ReportVC
         test = "coba balik"
+//        selectedActivity
     }
     
 

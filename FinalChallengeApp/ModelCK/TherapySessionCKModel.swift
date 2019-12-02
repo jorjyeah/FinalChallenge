@@ -83,6 +83,8 @@ class TherapySessionCKModel: NSObject{
     }
     
     class func addTherapySession(){
+        // ada dua function
+        // add therapySession
         let database = CKContainer.default().publicCloudDatabase
         let record = CKRecord(recordType: "TherapySession")
         let formatter = DateFormatter()
@@ -94,5 +96,6 @@ class TherapySessionCKModel: NSObject{
         database.save(record) { savedRecord, error in
             // handle errors here
         }
+        // add activitySessions -> RecordID dari session dan recordID dari setiap activity
     }
 }

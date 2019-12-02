@@ -12,8 +12,10 @@ class ActivityTableViewCell: UITableViewCell {
     
     
     @IBOutlet weak var activityNameLabel: UILabel!
-    @IBOutlet weak var checkboxButton: UIButton!
+    @IBOutlet weak var checkBoxImageView: UIImageView!
     
+    var checked : UIImage = UIImage(named: "Checked box")!
+    var unchecked : UIImage = UIImage(named: "Unchecked box")!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,7 +24,8 @@ class ActivityTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
        super.setSelected(selected, animated: animated)
        // update UI
-       accessoryType = selected ? .checkmark : .none
+        checkBoxImageView.image = selected ? checked : unchecked
+//        accessoryType = selected ? .checkmark : .none
     }
 
 }

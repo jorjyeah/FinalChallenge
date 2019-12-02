@@ -56,6 +56,7 @@ class ReportViewController: UIViewController {
         if sender.source is SummaryViewController{
             if let senderVC = sender.source as? SummaryViewController{
                 print(senderVC.test)
+                print(senderVC.selectedActivity)
             }
             tableView.reloadData()
         }
@@ -111,4 +112,11 @@ extension ReportViewController: UITableViewDelegate, UITableViewDataSource {
         
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showAddReport" {
+            let destination = segue.destination as! AddReportViewController
+            destination.studentRecordID = studentRecordID
+            print("\(destination.studentRecordID)")
+        }
+    }
 }

@@ -77,12 +77,13 @@ class AddReportModelCK: NSObject{
         self.record = record
     }
     
-    class func getLastActivity(onComplete: @escaping ([String]) -> Void){
+    class func getLastActivity(childRecordID : String, onComplete: @escaping ([String]) -> Void){
         print("ambil aktivitas terakhir")
         let therapistRecordID = String(UserDefaults.standard.string(forKey: "userID")!)
         let creator = CKRecord.Reference(recordID: CKRecord.ID(recordName: therapistRecordID), action: CKRecord_Reference_Action.none)
-    
-        let predicate = NSPredicate(format: "creatorUserRecordID == %@", creator)
+        let childName = CKRecord.Reference(recordID: CKRecord.ID(recordName: childRecordID), action: CKRecord_Reference_Action.none)
+        
+        let predicate = NSPredicate(format: "creatorUserRecordID == %@ AND childName == %@", creator, childName)
         let query = CKQuery(recordType: "ActivitySessions", predicate: predicate)
         query.sortDescriptors = [NSSortDescriptor(key: "modificationDate", ascending: true)]
         
@@ -184,7 +185,8 @@ class AddReportModelCK: NSObject{
         let therapistRecordID = String(UserDefaults.standard.string(forKey: "userID")!)
         let creator = CKRecord.Reference(recordID: CKRecord.ID(recordName: therapistRecordID), action: CKRecord_Reference_Action.none)
     
-        let predicate = NSPredicate(format: "creatorUserRecordID == %@", creator)
+//        let predicate = NSPredicate(format: "creatorUserRecordID == %@", creator)
+        let predicate = NSPredicate(value: true)
         
         let query = CKQuery(recordType: "Activity", predicate: predicate)
         let database = CKContainer.default().publicCloudDatabase
