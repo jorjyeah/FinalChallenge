@@ -21,9 +21,7 @@ class ProfileViewController: UIViewController {
         if sender.source is EditProfileViewController{
             if let senderVC = sender.source as? EditProfileViewController{
                 print(senderVC.test)
-//                print(senderVC.selectedActivity)
             }
-            populateProfileTherapist()
         }
     }
     
@@ -33,7 +31,12 @@ class ProfileViewController: UIViewController {
         populateProfileTherapist()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        populateProfileTherapist()
+    }
+    
     func populateProfileTherapist(){
+        print("populate")
         let therapistData = ProfileTherapistCKModel.self
         let therapistRecordID = String(UserDefaults.standard.string(forKey: "userID")!)
         let therapistName = String(UserDefaults.standard.string(forKey: "therapistName")!)
@@ -59,10 +62,13 @@ class ProfileViewController: UIViewController {
                 }
             } else {
                 print("no data")
-                self.nameProfileLabel.text = therapistName
-                self.profilePhotoUIImage.image = UIImage(named: "Student Photo Default")!
-                self.institutionLabel.text = "Institution name hasn't been set yet"
-                self.addressLabel.text = "Address hasn't been set yet"
+                DispatchQueue.main.async {
+                    self.nameProfileLabel.text = therapistName
+                    self.profilePhotoUIImage.image = UIImage(named: "Student Photo Default")!
+                    self.institutionLabel.text = "Institution name hasn't been set yet"
+                    self.addressLabel.text = "Address hasn't been set yet"
+                }
+                
             }
         }
     }

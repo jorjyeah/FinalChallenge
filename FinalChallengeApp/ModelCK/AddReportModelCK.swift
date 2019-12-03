@@ -89,8 +89,11 @@ class AddReportModelCK: NSObject{
         
         let operation = CKQueryOperation(query: query)
         operation.desiredKeys = ["activityReference"]
+        operation.resultsLimit = 3
         
         var activitiesRecordID = [String] ()
+        
+        
         
         operation.recordFetchedBlock = { record in
             let activityReference = record.object(forKey: "activityReference") as! CKRecord.Reference
