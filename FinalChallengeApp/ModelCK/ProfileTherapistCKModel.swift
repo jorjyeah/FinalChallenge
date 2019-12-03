@@ -94,10 +94,6 @@ class ProfileTherapistCKModel: NSObject{
                 onComplete(false)
             }
         }
-        
-        CKContainer.default().publicCloudDatabase.save(record) { (_, _) in
-            
-        }
     }
     
     class func getTherapistData(userRef: String, onComplete: @escaping(ProfileTherapistCKModel) -> Void){
@@ -119,34 +115,6 @@ class ProfileTherapistCKModel: NSObject{
                 })
                 onComplete(profileTherapistModel ?? error as! ProfileTherapistCKModel)
             }
-        }
-    }
-    
-    class func updateTherapistData(newData: [String],  onComplete: @escaping(Bool) -> Void){
-        let therapistRecordID = String(UserDefaults.standard.string(forKey: "userID")!)
-        let userReference =  CKRecord.Reference(recordID: CKRecord.ID(recordName: therapistRecordID), action: CKRecord_Reference_Action.none)
-        let predicate = NSPredicate(format: "userReference == %@", userReference)
-        
-        let query = CKQuery(recordType: "Therapist", predicate: predicate)
-        let databaseN = CKContainer.default().publicCloudDatabase
-        
-
-        getTherapistData(userRef: therapistRecordID) { (existingProfileData) in
-            if !( newData[0] == existingProfileData.therapistName || newData[0] == "" ){
-                existingProfileData.therapistName = newData[0]
-            }
-            
-            if !( newData[1] == existingProfileData.institutionName || newData[1] == "" ) {
-                existingProfileData.institutionName = newData[1]
-            }
-            
-            if !( newData[2] == existingProfileData.therapistAddress || newData[2] == "" ){
-                existingProfileData.therapistAddress = newData[2]
-            }
-            
-//            databaseN.save(existingProfileData) { (returnRecord, Err) in
-//
-//            }
         }
     }
     
