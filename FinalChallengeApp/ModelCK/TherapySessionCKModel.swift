@@ -11,6 +11,12 @@ import CloudKit
 class TherapySessionCKModel: NSObject{
     var record:CKRecord?
     
+   var therapySessionRecordID : CKRecord.ID {
+        get{
+            return record!.recordID
+        }
+    }
+    
     var therapySessionDate : Date {
         get{
             return record?.value(forKey: "therapySessionDate") as! Date
@@ -22,10 +28,10 @@ class TherapySessionCKModel: NSObject{
     
     var therapySessionNotes : String {
         get{
-            return record?.value(forKey: "therapySchedulNotes") as! String
+            return record?.value(forKey: "therapySessionNotes") as! String
         }
         set{
-            self.record?.setValue(newValue, forKey: "therapyScheduleNotes")
+            self.record?.setValue(newValue, forKey: "therapySessionNotes")
         }
     }
     
@@ -61,8 +67,8 @@ class TherapySessionCKModel: NSObject{
         
         let predicate = NSPredicate(format: "childName == %@ AND therapistName  == %@", studentReference, therapistReference)
         
-//        print("sukses predicate")
         let query = CKQuery(recordType: "TherapySession", predicate: predicate)
+        query.sortDescriptors = [NSSortDescriptor(key: "therapySessionDate", ascending: false)]
         let database = CKContainer.default().publicCloudDatabase
         database.perform(query, inZoneWith: nil) { (records, error) in
             if let error = error {
@@ -80,22 +86,5 @@ class TherapySessionCKModel: NSObject{
             }
         }
 //        print("therapySessionModel",therapySessionModel)
-    }
-    
-    class func addTherapySession(){
-        // ada dua function
-        // add therapySession
-        let database = CKContainer.default().publicCloudDatabase
-        let record = CKRecord(recordType: "TherapySession")
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd.MM.yyyy HH:mm"
-        let therapySessionDate = formatter.string(from: Date())
-        let therapySessionNotes = "Please repeat activity one"
-        record.setObject(therapySessionDate as __CKRecordObjCValue, forKey: "therapySessionDate")
-        record.setObject(therapySessionNotes as __CKRecordObjCValue, forKey: "therapySessionNotes")
-        database.save(record) { savedRecord, error in
-            // handle errors here
-        }
-        // add activitySessions -> RecordID dari session dan recordID dari setiap activity
     }
 }

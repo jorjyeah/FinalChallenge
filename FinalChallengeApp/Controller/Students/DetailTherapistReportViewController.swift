@@ -7,26 +7,32 @@
 //
 
 import UIKit
+import CloudKit
 
-class DetailViewController: UIViewController {
+class DetailTherapistReportViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    let activityArray = ["Stomp feet", "Point to  body parts", "Extend index finger",  "Place thumbs up"]
-    let promptArray = ["Gesture, Physical, Verbal", "Gesture, Physical, Verbal", "Gesture, Physical, Verbal", "Gesture, Physical, Verbal"]
-    let mediaArray = ["", "Mirror, Doll", "Mirror, Doll", "Mirror, Doll"]
+    var detailActivity = [DetailedReportCKModel]()
+    var therapySessionRecordID = CKRecord.ID()
+    var therapySessionNotes = String()
+    var therapySessionDate = Date()
     
-    var howToArray = [""]
-    var exampleArray = [""]
-    var tipsArray = [""]
-    var skillArray = [""]
-    var programArray = [""]
-    var imageArray = [""]
-    var audioArray = [""]
-
+    func getActivitySession(){
+        print(therapySessionNotes)
+        DetailedReportDataManager.getDetailedTherapySession(therapySessionRecordID: therapySessionRecordID) { (activityRecordsID) in
+            DetailedReportDataManager.getDetailedActivity(activityRecordID: activityRecordsID) { (DetailActivitiesData) in
+                self.detailActivity = DetailActivitiesData
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        getActivitySession()
         // Do any additional setup after loading the view.
     }
     
@@ -34,7 +40,7 @@ class DetailViewController: UIViewController {
 }
 
 
-extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
+extension DetailTherapistReportViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
@@ -44,7 +50,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
         if section == 0 {
             let formatter = DateFormatter()
             formatter.dateFormat = "EEEE, d MMM yyyy"
-            return "Activities on \(formatter.string(from: Date()))"
+            return "Activities on \(formatter.string(from: therapySessionDate))" // diganti date dari Data
         }
         else if section == 1 {
             return "Notes"
@@ -56,7 +62,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return activityArray.count
+            return detailActivity.count
         }
         else {
             return 1
@@ -78,16 +84,20 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.section == 0 {
+            var prompts = String()
+            detailActivity[indexPath.row].activityPrompt .forEach { (prompt) in
+                prompts.append("\(prompt), ")
+            }
             let cell = tableView.dequeueReusableCell(withIdentifier: "detailCell", for: indexPath) as! DetailTableViewCell
-            cell.activityLabel.text = activityArray[indexPath.row]
-            cell.promptLabel.text = "Prompt: " + promptArray[indexPath.row]
-            cell.mediaLabel.text = "Media: " + mediaArray[indexPath.row]
+            cell.activityLabel.text = detailActivity[indexPath.row].activityTitle
+            cell.promptLabel.text = "Prompt: " + prompts
+            cell.mediaLabel.text = "Media: " + detailActivity[indexPath.row].activityMedia
             
             return  cell
             
         } else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "notesCell", for: indexPath) as!  NotesTableViewCell
-            
+            cell.notesLabel.text = therapySessionNotes
             return  cell
         }
         else {
@@ -99,12 +109,16 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let destination = storyboard?.instantiateViewController(withIdentifier: "showViewDetail") as! ViewDetailViewController
-        destination.activity = activityArray[indexPath.row]
-        destination.prompt = promptArray[indexPath.row]
-        destination.media = mediaArray[indexPath.row]
-        destination.tips  = mediaArray[indexPath.row]
-        destination.skill = mediaArray[indexPath.row]
-        destination.program = mediaArray[indexPath.row]
+        var prompts = String()
+        detailActivity[indexPath.row].activityPrompt .forEach { (prompt) in
+            prompts.append("\(prompt), ")
+        }
+        destination.activity = detailActivity[indexPath.row].activityTitle
+        destination.prompt = prompts
+        destination.media = detailActivity[indexPath.row].activityMedia
+        destination.tips  = detailActivity[indexPath.row].activityTips
+        destination.skill = "\(detailActivity[indexPath.row].skillTitle)"
+        destination.program = detailActivity[indexPath.row].baseProgramTitle
 
         performSegue(withIdentifier: "showViewDetail", sender: self)
     }
