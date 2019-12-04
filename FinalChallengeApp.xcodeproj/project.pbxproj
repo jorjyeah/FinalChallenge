@@ -53,10 +53,12 @@
 		B91BD4B4237980020015C934 /* FinalChallengeAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91BD4B3237980020015C934 /* FinalChallengeAppTests.swift */; };
 		B91BD4BF237980020015C934 /* FinalChallengeAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91BD4BE237980020015C934 /* FinalChallengeAppUITests.swift */; };
 		B9820B7523941DD500C4A6C3 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9820B7423941DD500C4A6C3 /* EditProfileViewController.swift */; };
+		B982CE2F239626D00065FB1D /* SaveNewReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = B982CE2E239626D00065FB1D /* SaveNewReport.swift */; };
 		B9A2EEDF238BD63E0041BB93 /* AddReportModelCK.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A2EEDE238BD63E0041BB93 /* AddReportModelCK.swift */; };
 		B9B548FE237C195000ACB625 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9B548FD237C195000ACB625 /* CloudKit.framework */; };
 		B9BC0D99238420A30063DC95 /* ParentNotesCKModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BC0D98238420A30063DC95 /* ParentNotesCKModel.swift */; };
 		B9BC0D9B238537040063DC95 /* ProfileTherapistCKModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BC0D9A238537040063DC95 /* ProfileTherapistCKModel.swift */; };
+		B9C016FF2395291E0051D9FC /* SaveEditedProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C016FE2395291E0051D9FC /* SaveEditedProfile.swift */; };
 		B9D9B32A23829614005CCDBB /* TherapySessionCKModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D9B32923829614005CCDBB /* TherapySessionCKModel.swift */; };
 		B9F81F8D237D44DD0040F09C /* StudentCKModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F81F8C237D44DD0040F09C /* StudentCKModel.swift */; };
 		B9F81F93237E835E0040F09C /* TherapyScheduleCKModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F81F92237E835E0040F09C /* TherapyScheduleCKModel.swift */; };
@@ -132,11 +134,13 @@
 		B91BD4BE237980020015C934 /* FinalChallengeAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalChallengeAppUITests.swift; sourceTree = "<group>"; };
 		B91BD4C0237980020015C934 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B9820B7423941DD500C4A6C3 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		B982CE2E239626D00065FB1D /* SaveNewReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveNewReport.swift; sourceTree = "<group>"; };
 		B9A2EEDE238BD63E0041BB93 /* AddReportModelCK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReportModelCK.swift; sourceTree = "<group>"; };
 		B9B548FB237C193800ACB625 /* FinalChallengeApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FinalChallengeApp.entitlements; sourceTree = "<group>"; };
 		B9B548FD237C195000ACB625 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		B9BC0D98238420A30063DC95 /* ParentNotesCKModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentNotesCKModel.swift; sourceTree = "<group>"; };
 		B9BC0D9A238537040063DC95 /* ProfileTherapistCKModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTherapistCKModel.swift; sourceTree = "<group>"; };
+		B9C016FE2395291E0051D9FC /* SaveEditedProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveEditedProfile.swift; sourceTree = "<group>"; };
 		B9D9B32923829614005CCDBB /* TherapySessionCKModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TherapySessionCKModel.swift; sourceTree = "<group>"; };
 		B9F81F8C237D44DD0040F09C /* StudentCKModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentCKModel.swift; sourceTree = "<group>"; };
 		B9F81F92237E835E0040F09C /* TherapyScheduleCKModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TherapyScheduleCKModel.swift; sourceTree = "<group>"; };
@@ -315,6 +319,7 @@
 		B91BD498237980010015C934 /* FinalChallengeApp */ = {
 			isa = PBXGroup;
 			children = (
+				B9C01700239529280051D9FC /* Manager */,
 				B9B548FB237C193800ACB625 /* FinalChallengeApp.entitlements */,
 				B9067475237C139A00671632 /* Controller */,
 				B9067474237C138C00671632 /* View */,
@@ -355,6 +360,15 @@
 				B9B548FD237C195000ACB625 /* CloudKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B9C01700239529280051D9FC /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				B9C016FE2395291E0051D9FC /* SaveEditedProfile.swift */,
+				B982CE2E239626D00065FB1D /* SaveNewReport.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		B9F81F8B237D44BE0040F09C /* ModelCK */ = {
@@ -515,6 +529,7 @@
 				68A570F7238AB389002A3014 /* ActivityViewController.swift in Sources */,
 				68A570DE2386C079002A3014 /* DetailSummaryTableViewCell.swift in Sources */,
 				B9F81F8D237D44DD0040F09C /* StudentCKModel.swift in Sources */,
+				B982CE2F239626D00065FB1D /* SaveNewReport.swift in Sources */,
 				B91BD49E237980010015C934 /* ViewController.swift in Sources */,
 				687E7D8A2396524100331EAE /* EditProgramCollectionViewCell.swift in Sources */,
 				68A570B82383D479002A3014 /* ReportTableViewCell.swift in Sources */,
@@ -546,6 +561,7 @@
 				68A57101238B6EBD002A3014 /* ParentsDetailViewController.swift in Sources */,
 				68A570D7238544F5002A3014 /* AttachmentsTableViewCell.swift in Sources */,
 				68A570D12384FFAD002A3014 /* ViewDetailViewController.swift in Sources */,
+				B9C016FF2395291E0051D9FC /* SaveEditedProfile.swift in Sources */,
 				68A570C72384F378002A3014 /* AddReportViewController.swift in Sources */,
 				68A570D5238544E4002A3014 /* NotesTableViewCell.swift in Sources */,
 			);
