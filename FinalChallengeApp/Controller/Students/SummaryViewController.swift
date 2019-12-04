@@ -28,17 +28,26 @@ class SummaryViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    func showReportView() {
-        if let mvc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ReportViewController") as? ReportViewController {
-            self.present(mvc, animated: true, completion: nil)
-        }
-    }
+//    func showReportView() {
+//        if let mvc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ReportViewController") as? ReportViewController {
+//            self.present(mvc, animated: true, completion: nil)
+//        }
+//    }
     
     override func prepare(for segue:
         UIStoryboardSegue, sender: Any?) {
         // ini unwind segue ke mana aja, tapi kebetulan ke ReportVC
         test = "coba balik"
 //        selectedActivity
+    }
+    
+    
+    
+    @IBAction func unwindFromSummary(_ sender:UIStoryboardSegue){
+        // bikin function dulu buat unwind, nanti di exit di page summary
+        if sender.source is ViewDetailViewController{
+            tableView.reloadData()
+        }
     }
     
 
@@ -97,6 +106,13 @@ extension SummaryViewController: UITableViewDataSource, UITableViewDelegate {
             return  cell
         }
         
+    }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            performSegue(withIdentifier: "showViewDetail", sender: self)
+        }
     }
     
   
