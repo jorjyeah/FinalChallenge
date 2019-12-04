@@ -17,6 +17,10 @@ class StudentsViewController: UIViewController {
     var student = [StudentCKModel]()
     var recordIDTransfer: String = ""
     
+    //[BI] search bar
+//    let studentNameArray = ["Bianca", "Dea", "George", "Daniel"]
+    var filteredData = [StudentCKModel]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,33 +29,26 @@ class StudentsViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.topItem?.title = "Students"
         
+        // search bar
+        searchBar.delegate =  self
         
         let studentsData = StudentCKModel.self
         studentsData.getTherapySchedule{ studentsRecordID in
             print("studentsRecordID:\(studentsRecordID)")
             studentsData.getStudentData(studentsRecordID: studentsRecordID) { studentsData in
-                self.student = studentsData
+                self.student = studentsData // tampung data semua
+                self.filteredData = studentsData // tampung data yang terfilter
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
             }
         }
     }
-    
-    
-    /*override func viewWillAppear(_ animated: Bool) {
-           super.viewWillAppear(animated)
-           
-           self.retrieveCanteenData()
-           self.navigationController?.navigationBar.prefersLargeTitles = true
-           self.setNeedsStatusBarAppearanceUpdate()
-           
-       }*/
 
 }
 
 
-extension StudentsViewController: UITableViewDelegate, UITableViewDataSource{
+extension StudentsViewController: UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate{
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         if let headerView = view as? UITableViewHeaderFooterView {
@@ -68,7 +65,7 @@ extension StudentsViewController: UITableViewDelegate, UITableViewDataSource{
        }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.student.count
+        return filteredData.count // HItung data yang terfilter, biar dinamis
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -78,9 +75,9 @@ extension StudentsViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "studentCell", for: indexPath) as! StudentsTableViewCell
         
-        cell.studentNameLabel.text = student[indexPath.row].studentName
+        cell.studentNameLabel.text = filteredData[indexPath.row].studentName //[BI]
         cell.studentPhotoImageView.layer.cornerRadius = 25
-        cell.studentPhotoImageView.image = student[indexPath.row].studentPhoto
+        cell.studentPhotoImageView.image = filteredData[indexPath.row].studentPhoto
 
         return cell
     }
@@ -99,5 +96,28 @@ extension StudentsViewController: UITableViewDelegate, UITableViewDataSource{
             print("\(destination.studentRecordID)")
         }
     }
+
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        // filter data sudah pakai data model
+        filteredData = searchText.isEmpty ? student : student.filter({ (students) -> Bool in
+            return students.studentName.range(of: searchText, options: .caseInsensitive) != nil
+        })
+        print("data student filtered : \(filteredData)")
+        tableView.reloadData()
+    }
+    
+    //[BI] ini untuk cancel
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.searchBar.showsCancelButton = true
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        filteredData = student // reset data ulang
+        tableView.reloadData()
+        
+        searchBar.showsCancelButton = false
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+    }
 }

@@ -22,13 +22,18 @@ class ReportViewController: UIViewController {
     //ini buat nampung student record id yg di-passing dari StudentVC
     var studentRecordID = String()
     var therapySession = [TherapySessionCKModel]()
-    var parentNotes = [ParentNotesCKModel]()
+    var parentsNotesData = [ParentNotesCKModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        populateTableView()
+        
         // Do any additional setup after loading the view.
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        populateTableView()
+    }
+    
     
     func populateTableView(){
         navigationController?.navigationBar.prefersLargeTitles = false
@@ -40,11 +45,11 @@ class ReportViewController: UIViewController {
             }
         }
         
-        let parentNotesData = ParentNotesCKModel.self
-        parentNotesData.getParentNotes(studentRecordID: studentRecordID) {
-            parentNotesData
+        
+        DetailedParentNotesDataManager.getParentNotes(studentRecordID: studentRecordID) {
+            parentsNotesData
             in
-            self.parentNotes = parentNotesData
+            self.parentsNotesData = parentsNotesData
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -92,7 +97,7 @@ extension ReportViewController: UITableViewDelegate, UITableViewDataSource {
             return therapySession.count
             
         case 1:
-            return parentNotes.count
+            return parentsNotesData.count
             
         default:
             break
@@ -111,7 +116,7 @@ extension ReportViewController: UITableViewDelegate, UITableViewDataSource {
             cell.reportLabel.text = therapySessionDate
             
         case 1:
-            let parentNotesDate = formatter.string(from: parentNotes[indexPath.row].parentNoteDay)
+            let parentNotesDate = formatter.string(from: parentsNotesData[indexPath.row].parentNoteDay)
             cell.reportLabel.text = parentNotesDate
             
         default:
@@ -123,11 +128,9 @@ extension ReportViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch segmentedControl.selectedSegmentIndex {
         case 0:
-            performSegue(withIdentifier: "showTherapistDetail", sender: self)
-            
+            performSegue(withIdentifier: "showTherapistDetail", sender: indexPath.row)
         case 1:
-            performSegue(withIdentifier: "showParentsDetail", sender: self)
-            
+            performSegue(withIdentifier: "showParentsDetail", sender: indexPath.row)
         default:
             break
         }
@@ -139,6 +142,17 @@ extension ReportViewController: UITableViewDelegate, UITableViewDataSource {
             let destination = segue.destination as! AddReportViewController
             destination.studentRecordID = studentRecordID
             print("\(destination.studentRecordID)")
+        } else if segue.identifier == "showTherapistDetail" {
+            let destination = segue.destination as? DetailTherapistReportViewController
+            let row = sender as! Int
+            destination?.therapySessionRecordID = therapySession[row].therapySessionRecordID
+            destination?.therapySessionNotes = therapySession[row].therapySessionNotes
+            destination?.therapySessionDate = therapySession[row].therapySessionDate
+        } else if segue.identifier == "showParentsDetail" {
+            let destination = segue.destination as? ParentsDetailViewController
+            let row = sender as! Int
+            destination?.parentNote = parentsNotesData[row].parentNoteContent
+            destination?.parentNoteDate = parentsNotesData[row].parentNoteDay
         }
     }
 }

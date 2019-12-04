@@ -11,7 +11,7 @@ import CloudKit
 
 class SaveEditedProfile{
     
-    func saveProfile(newData: [String], profileData : CKRecord.ID, onComplete: @escaping (Bool) -> Void){
+    class func saveProfile(newData: [String], profileData : CKRecord.ID, onComplete: @escaping (Bool) -> Void){
         
         CKContainer.default().publicCloudDatabase.fetch(withRecordID: profileData) { (record, error) in
             DispatchQueue.main.async {

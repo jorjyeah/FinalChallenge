@@ -158,5 +158,12 @@ extension SummaryViewController: UITableViewDataSource, UITableViewDelegate, UIT
         
     }
     
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            performSegue(withIdentifier: "showViewDetail", sender: self)
+        }
+    }
+    
   
 }
