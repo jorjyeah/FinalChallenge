@@ -9,7 +9,7 @@
 import UIKit
 
 class AddReportViewController: UIViewController {
-    
+                                                    
     @IBOutlet weak var tableView: UITableView!
     
     var studentRecordID = String()
@@ -60,6 +60,7 @@ class AddReportViewController: UIViewController {
         if segue.identifier == "showSummary" {
             let destination = segue.destination as! SummaryViewController
             destination.selectedActivity = selected
+            destination.studentRecordID = studentRecordID
         }
     }
 }

@@ -19,6 +19,7 @@ class EditProfileViewController: UIViewController {
     
     override func prepare(for segue:
         UIStoryboardSegue, sender: Any?) {
+//        sleep(1000)
         // ini unwind segue ke profilevc
         test = "coba save"
         saveEditedProfile()
@@ -41,11 +42,13 @@ class EditProfileViewController: UIViewController {
         newData.append(String(self.nameTextField.text!))
         newData.append(String(self.institutionTextField.text!))
         newData.append(String(self.addressTextField.text!))
-        print(newData)
-        therapistData.updateTherapistData(newData : newData) { (success) in
-            print(success)
+        let therapistRecordID = String(UserDefaults.standard.string(forKey: "userID")!)
+        therapistData.getTherapistData(userRef:therapistRecordID) { profileData in
+            let saveProfile = SaveEditedProfile()
+            saveProfile.saveProfile(newData: newData, profileData: profileData.therapistRecordID) { (success) in
+                print(success)
+            }
         }
-        
     }
     
     func populateProfileTherapist(){

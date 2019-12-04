@@ -42,7 +42,9 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
-            return "Activities on Wednesday, 20 Nov 2019"
+            let formatter = DateFormatter()
+            formatter.dateFormat = "EEEE, d MMM yyyy"
+            return "Activities on \(formatter.string(from: Date()))"
         }
         else if section == 1 {
             return "Notes"

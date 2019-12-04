@@ -26,7 +26,11 @@ class ReportViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        populateTableView()
+        // Do any additional setup after loading the view.
+    }
+    
+    func populateTableView(){
         navigationController?.navigationBar.prefersLargeTitles = false
         let therapySessionsData = TherapySessionCKModel.self
         therapySessionsData.getTherapySession(studentRecordID: studentRecordID) { therapySessionsData in
@@ -45,9 +49,7 @@ class ReportViewController: UIViewController {
                 self.tableView.reloadData()
             }
         }
-        // Do any additional setup after loading the view.
     }
-    
 
     @IBAction func segmentedTapped(_ sender: Any) {
         tableView.reloadData()
@@ -60,7 +62,7 @@ class ReportViewController: UIViewController {
                 print(senderVC.test)
                 print(senderVC.selectedActivity)
             }
-            tableView.reloadData()
+            populateTableView()
         }
     }
 }
