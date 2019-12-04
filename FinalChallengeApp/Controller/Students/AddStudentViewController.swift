@@ -34,9 +34,7 @@ class AddStudentViewController: UIViewController, AVCaptureMetadataOutputObjects
         
     }
     
-    
-    
-    func captureOutput(_ captureOutput: AVCaptureMetadataOutput, didOutput metadataObjects: [Any], from connection: AVCaptureConnection) {
+    func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         if metadataObjects.count > 0 {
             let machineReadableCode = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
             if machineReadableCode.type == AVMetadataObject.ObjectType.qr {
@@ -45,6 +43,16 @@ class AddStudentViewController: UIViewController, AVCaptureMetadataOutputObjects
             }
         }
     }
+    
+    /*func captureOutput(_ captureOutput: AVCaptureMetadataOutput, didOutput metadataObjects: [Any], from connection: AVCaptureConnection) {
+        if metadataObjects.count > 0 {
+            let machineReadableCode = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
+            if machineReadableCode.type == AVMetadataObject.ObjectType.qr {
+                stringURL = machineReadableCode.stringValue!
+                performSegue(withIdentifier: "showNewStudentPreview", sender: self)
+            }
+        }
+    }*/
     
     func scanQrCode() throws {
         let avCaptureSession = AVCaptureSession()
