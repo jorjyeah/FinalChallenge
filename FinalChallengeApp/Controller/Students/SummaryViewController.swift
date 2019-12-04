@@ -24,11 +24,11 @@ class SummaryViewController: UIViewController {
         super.viewDidLoad()
     }
     
-//    func showReportView() {
-//        if let mvc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ReportViewController") as? ReportViewController {
-//            self.present(mvc, animated: true, completion: nil)
-//        }
-//    }
+    func showReportView() {
+        if let mvc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ReportViewController") as? ReportViewController {
+            self.present(mvc, animated: true, completion: nil)
+        }
+    }
     
     override func prepare(for segue:
         UIStoryboardSegue, sender: Any?) {
