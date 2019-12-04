@@ -43,9 +43,9 @@ class EditProfileViewController: UIViewController {
         newData.append(String(self.institutionTextField.text!))
         newData.append(String(self.addressTextField.text!))
         let therapistRecordID = String(UserDefaults.standard.string(forKey: "userID")!)
-        therapistData.getTherapistData(userRef:therapistRecordID) { profileData in
+        ProfileTherapistCKModel.getTherapistData(userRef:therapistRecordID) { profileData in
             let saveProfile = SaveEditedProfile()
-            saveProfile.saveProfile(newData: newData, profileData: profileData.therapistRecordID) { (success) in
+            SaveEditedProfile.saveProfile(newData: newData, profileData: profileData.therapistRecordID) { (success) in
                 print(success)
             }
         }
