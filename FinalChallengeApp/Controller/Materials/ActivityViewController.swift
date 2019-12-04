@@ -30,16 +30,18 @@ class ActivityViewController: UIViewController {
 
 
 extension ActivityViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 1
-        }
-        else {
+        } else if section == 1 {
             return activityTaskArray.count
+        } else {
+            return 1
         }
     }
     
@@ -62,14 +64,25 @@ extension ActivityViewController: UITableViewDelegate, UITableViewDataSource {
             
             return  cell
             
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "activityTaskCell", for: indexPath) as!  ActivityTaskTableViewCell
+        } else if indexPath.section == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "activityTaskCell", for: indexPath) as! ActivityTaskTableViewCell
             cell.activityTaskLabel.text = activityTaskArray[indexPath.row]
         
             return  cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "addNewCell", for: indexPath) as! AddActivityTableViewCell
+            
+            return cell
         }
         
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 1 {
+            performSegue(withIdentifier: "showActivityDetail", sender: self)
+        } else if indexPath.section == 2{
+            performSegue(withIdentifier: "showAddActivity", sender: self)
+        }
+    }
     
 }
