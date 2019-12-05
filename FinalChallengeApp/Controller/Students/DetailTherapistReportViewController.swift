@@ -108,19 +108,21 @@ extension DetailTherapistReportViewController: UITableViewDataSource, UITableVie
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let destination = storyboard?.instantiateViewController(withIdentifier: "showViewDetail") as! ViewDetailViewController
-        var prompts = String()
-        detailActivity[indexPath.row].activityPrompt .forEach { (prompt) in
-            prompts.append("\(prompt), ")
-        }
-        destination.activity = detailActivity[indexPath.row].activityTitle
-        destination.prompt = prompts
-        destination.media = detailActivity[indexPath.row].activityMedia
-        destination.tips  = detailActivity[indexPath.row].activityTips
-        destination.skill = "\(detailActivity[indexPath.row].skillTitle)"
-        destination.program = detailActivity[indexPath.row].baseProgramTitle
+        if indexPath.section == 0 {
+            let destination = storyboard?.instantiateViewController(withIdentifier: "showViewDetail") as! ViewDetailViewController
+            var prompts = String()
+            detailActivity[indexPath.row].activityPrompt .forEach { (prompt) in
+                prompts.append("\(prompt), ")
+            }
+            destination.activity = detailActivity[indexPath.row].activityTitle
+            destination.prompt = prompts
+            destination.media = detailActivity[indexPath.row].activityMedia
+            destination.tips  = detailActivity[indexPath.row].activityTips
+            destination.skill = "\(detailActivity[indexPath.row].skillTitle)"
+            destination.program = detailActivity[indexPath.row].baseProgramTitle
 
-        performSegue(withIdentifier: "showViewDetail", sender: self)
+            performSegue(withIdentifier: "showViewDetail", sender: self)
+        }
     }
     
 }

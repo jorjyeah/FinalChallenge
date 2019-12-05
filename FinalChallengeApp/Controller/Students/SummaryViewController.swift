@@ -149,10 +149,10 @@ extension SummaryViewController: UITableViewDataSource, UITableViewDelegate, UIT
             
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "notesCell", for: indexPath) as!  NotesSummaryTableViewCell
-            cell.notesTextView.text = "Write your notes about today's activity"
-            cell.notesTextView.textColor = UIColor.lightGray
-            cell.notesTextView.becomeFirstResponder()
-            cell.notesTextView.selectedTextRange = cell.notesTextView.textRange(from: cell.notesTextView.beginningOfDocument, to: cell.notesTextView.beginningOfDocument)
+            cell.notesTextField.text = "Write your notes about today's activity"
+            cell.notesTextField.textColor = UIColor.lightGray
+            cell.notesTextField.becomeFirstResponder()
+            cell.notesTextField.selectedTextRange = cell.notesTextField.textRange(from: cell.notesTextField.beginningOfDocument, to: cell.notesTextField.beginningOfDocument)
             return  cell
         }
         
@@ -161,7 +161,7 @@ extension SummaryViewController: UITableViewDataSource, UITableViewDelegate, UIT
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
-            performSegue(withIdentifier: "showViewDetail", sender: self)
+            performSegue(withIdentifier: "showSummaryViewDetail", sender: self)
         }
     }
     

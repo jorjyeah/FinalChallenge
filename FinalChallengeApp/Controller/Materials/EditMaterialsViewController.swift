@@ -20,7 +20,8 @@ class EditMaterialsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.navigationItem.setHidesBackButton(true, animated:true);
+        
     }
     
 
@@ -39,9 +40,9 @@ extension EditMaterialsViewController: UICollectionViewDelegate, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
-            return grossMotorArray.count
+            return grossMotorArray.count+1
         } else {
-            return fineMotorArray.count
+            return fineMotorArray.count+1
         }
         
     }
@@ -49,27 +50,31 @@ extension EditMaterialsViewController: UICollectionViewDelegate, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "programCell", for: indexPath) as! EditProgramCollectionViewCell
         
-        let addCell = collectionView.dequeueReusableCell(withReuseIdentifier: "addProgramCell", for: indexPath) as! AddProgramCollectionViewCell
-        
         //cell style
-        
-        addCell.layer.cornerRadius = 8
         cell.layer.cornerRadius = 8
         cell.layer.shadowOffset = CGSize(width: 2, height: 2)
         cell.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.16).cgColor
         cell.layer.shadowOpacity = 1
         cell.layer.shadowRadius = 4
         
-        if indexPath.section == 0 {
-            cell.programLabel.text = grossMotorArray[indexPath.row]
-            return cell
-            
+        if indexPath.row == grossMotorArray.count, indexPath.section == 0 {
+            let addCell = collectionView.dequeueReusableCell(withReuseIdentifier: "addProgramCell", for: indexPath) as! AddProgramCollectionViewCell
+                addCell.layer.cornerRadius = 8
+            return addCell
+        } else if indexPath.row == fineMotorArray.count, indexPath.section == 1 {
+            let addCell = collectionView.dequeueReusableCell(withReuseIdentifier: "addProgramCell", for: indexPath) as! AddProgramCollectionViewCell
+                addCell.layer.cornerRadius = 8
+            return addCell
         } else {
-            cell.programLabel.text = fineMotorArray[indexPath.row]
-            return cell
+            if indexPath.section == 0 {
+                cell.programLabel.text = grossMotorArray[indexPath.row]
+                return cell
+                
+            } else {
+                cell.programLabel.text = fineMotorArray[indexPath.row]
+                return cell
+            }
         }
-        
-        
     }
     
     

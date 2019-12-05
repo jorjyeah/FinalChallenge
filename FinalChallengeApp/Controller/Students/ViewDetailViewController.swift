@@ -21,11 +21,31 @@ class ViewDetailViewController: UIViewController {
     var program: String = ""
     var image: UIImage = UIImage()
     var audio: AVAudioFile = AVAudioFile()
+    
+    @IBOutlet weak var activityNameLabel: UILabel!
+    @IBOutlet weak var howToLabel: UILabel!
+    @IBOutlet weak var promptLabel: UILabel!
+    @IBOutlet weak var mediaLabel: UILabel!
+    @IBOutlet weak var helpfulTipsLabel: UILabel!
+    @IBOutlet weak var skillLabel: UILabel!
+    @IBOutlet weak var programLabel: UILabel!
+    @IBOutlet weak var imageAttachmentLabel: UIImageView!
+    
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        activityNameLabel.text = activity
+        howToLabel.text = howTo
+        promptLabel.text = prompt
+        mediaLabel.text = media
+        helpfulTipsLabel.text = tips
+        skillLabel.text = skill
+        programLabel.text = program
     }
 
 }
