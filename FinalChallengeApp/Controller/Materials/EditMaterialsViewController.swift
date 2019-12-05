@@ -57,6 +57,7 @@ extension EditMaterialsViewController: UICollectionViewDelegate, UICollectionVie
         cell.layer.shadowOpacity = 1
         cell.layer.shadowRadius = 4
         
+        
         if indexPath.row == grossMotorArray.count, indexPath.section == 0 {
             let addCell = collectionView.dequeueReusableCell(withReuseIdentifier: "addProgramCell", for: indexPath) as! AddProgramCollectionViewCell
                 addCell.layer.cornerRadius = 8
@@ -91,5 +92,16 @@ extension EditMaterialsViewController: UICollectionViewDelegate, UICollectionVie
             }
         }
         fatalError()
-    }  
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if indexPath.row == grossMotorArray.count, indexPath.section == 0 {
+            performSegue(withIdentifier: "showAddSkill", sender: self)
+        } else if indexPath.row == fineMotorArray.count, indexPath.section == 1 {
+            performSegue(withIdentifier: "showAddSkill", sender: self)
+        }
+        
+    }
 }
