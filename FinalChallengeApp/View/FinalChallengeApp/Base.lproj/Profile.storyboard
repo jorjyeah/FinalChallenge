@@ -142,6 +142,9 @@
                                 <state key="normal" title="Edit">
                                     <color key="titleColor" systemColor="systemBrownColor" red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="editPhotoButton:" destination="0nd-hS-3DZ" eventType="touchUpInside" id="YhC-Ns-vIf"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -179,17 +182,17 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="addressTextField" destination="c3P-gd-LBe" id="tQ3-1x-xxa"/>
-                        <outlet property="editButton" destination="UDN-6l-ccE" id="hXD-7b-m7f"/>
-                        <outlet property="institutionTextField" destination="eIq-ok-uQA" id="860-Mn-mrb"/>
-                        <outlet property="nameTextField" destination="zOy-DB-2S9" id="KdJ-OM-psT"/>
+                        <outlet property="addressTextField" destination="c3P-gd-LBe" id="mwD-W4-TUI"/>
+                        <outlet property="doneButton" destination="prk-iW-ZMJ" id="AHG-0j-5tB"/>
+                        <outlet property="institutionTextField" destination="eIq-ok-uQA" id="cUc-kd-YsJ"/>
+                        <outlet property="nameTextField" destination="zOy-DB-2S9" id="wQA-in-RbY"/>
                         <outlet property="profileImageVIew" destination="7W3-x1-amd" id="Lwa-e7-BrZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hQM-gP-Oer" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="8cO-UL-pWO" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3273.913043478261" y="831.69642857142856"/>
+            <point key="canvasLocation" x="3414" y="832"/>
         </scene>
         <!--Profile-->
         <scene sceneID="WaK-QC-cJv">

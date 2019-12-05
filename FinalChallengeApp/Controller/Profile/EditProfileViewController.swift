@@ -11,41 +11,47 @@ import UIKit
 class EditProfileViewController: UIViewController {
     var test:String = ""
     
+    @IBOutlet weak var doneButton: UIBarButtonItem!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var institutionTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var profileImageVIew: UIImageView!
-    @IBOutlet weak var editButton: UIButton!
+    var newProfilePicture = UIImage(named: "Student Photo Default")
+    let therapistData = ProfileTherapistCKModel.self
+    var imagePicker: ImagePicker!
+    var newData = [String]()
     
     override func prepare(for segue:
         UIStoryboardSegue, sender: Any?) {
-//        sleep(1000)
         // ini unwind segue ke profilevc
         test = "coba save"
         saveEditedProfile()
     }
 
     
+    @IBAction func editPhotoButton(_ sender: Any) {
+        self.imagePicker.present(from: sender as! UIView)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        profileImageVIew.layer.cornerRadius = 50
+        self.imagePicker = ImagePicker(presentationController: self, delegate: self)
         populateProfileTherapist()
+        
+        nameTextField.delegate = self
+        institutionTextField.delegate = self
+        addressTextField.delegate = self
         // Do any additional setup after loading the view.
     }
     
-    func uploadPhoto(){
-        
-    }
-    
     func saveEditedProfile(){
-        let therapistData = ProfileTherapistCKModel.self
-        var newData = [String]()
-        newData.append(String(self.nameTextField.text!))
-        newData.append(String(self.institutionTextField.text!))
-        newData.append(String(self.addressTextField.text!))
         let therapistRecordID = String(UserDefaults.standard.string(forKey: "userID")!)
+        newData.append(String(nameTextField.text!))
+        newData.append(String(institutionTextField.text!))
+        newData.append(String(addressTextField.text!))
         ProfileTherapistCKModel.getTherapistData(userRef:therapistRecordID) { profileData in
-            let saveProfile = SaveEditedProfile()
-            SaveEditedProfile.saveProfile(newData: newData, profileData: profileData.therapistRecordID) { (success) in
+            SaveEditedProfile.saveProfile(newData: self.newData, newProfilePicture: self.newProfilePicture!, profileData: profileData.therapistRecordID) { (success) in
                 print(success)
             }
         }
@@ -85,4 +91,12 @@ class EditProfileViewController: UIViewController {
             }
         }
     }
+}
+
+extension EditProfileViewController : ImagePickerDelegate, UITextFieldDelegate {
+    func didSelect(image: UIImage?) {
+        self.profileImageVIew.image = image
+        newProfilePicture = (image ?? UIImage(named: "Student Photo Default"))!
+    }
+    
 }
