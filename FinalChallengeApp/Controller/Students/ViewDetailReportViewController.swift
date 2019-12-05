@@ -9,18 +9,18 @@
 import UIKit
 import AVFoundation
 
-class ViewDetailViewController: UIViewController {
+class ViewDetailReportViewController: UIViewController {
     
-    var activity: String = ""
-    var prompt: String = ""
-    var media: String = ""
-    var howTo: String = ""
-    var example: String = ""
-    var tips: String = ""
-    var skill: String = ""
-    var program: String = ""
-    var image: UIImage = UIImage()
-    var audio: AVAudioFile = AVAudioFile()
+    var activity:String?
+    var prompt:String?
+    var media:String?
+    var howTo:String?
+    var example:String?
+    var tips:String?
+    var skill:String?
+    var program:String?
+    var image:String?
+    var audio:String?
     
     @IBOutlet weak var activityNameLabel: UILabel!
     @IBOutlet weak var howToLabel: UILabel!
@@ -31,21 +31,18 @@ class ViewDetailViewController: UIViewController {
     @IBOutlet weak var programLabel: UILabel!
     @IBOutlet weak var imageAttachmentLabel: UIImageView!
     
-    
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
+        DispatchQueue.main.async {
+            self.activityNameLabel.text = self.activity
+            self.howToLabel.text = self.howTo
+            self.promptLabel.text = self.prompt
+            self.mediaLabel.text = self.media
+            self.helpfulTipsLabel.text = self.tips
+            self.skillLabel.text = self.skill
+            self.programLabel.text = self.program
+        }
 
-        // Do any additional setup after loading the view.
-        
-        activityNameLabel.text = activity
-        howToLabel.text = howTo
-        promptLabel.text = prompt
-        mediaLabel.text = media
-        helpfulTipsLabel.text = tips
-        skillLabel.text = skill
-        programLabel.text = program
     }
 
 }
