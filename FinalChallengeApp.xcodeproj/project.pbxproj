@@ -39,6 +39,7 @@
 		68A570FF238AB614002A3014 /* ProgramTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A570FE238AB614002A3014 /* ProgramTitleTableViewCell.swift */; };
 		68A57101238B6EBD002A3014 /* ParentsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A57100238B6EBD002A3014 /* ParentsDetailViewController.swift */; };
 		68A5710B238BD3EB002A3014 /* HeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A5710A238BD3EB002A3014 /* HeaderCollectionReusableView.swift */; };
+		68DEA8632399382500FC59D3 /* NewSkillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DEA8622399382500FC59D3 /* NewSkillViewController.swift */; };
 		B906746D237C133E00671632 /* Students.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B906746B237C133E00671632 /* Students.storyboard */; };
 		B906746F237C135300671632 /* Materials.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B906746E237C135300671632 /* Materials.storyboard */; };
 		B9067472237C136400671632 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9067470237C136400671632 /* Profile.storyboard */; };
@@ -119,6 +120,7 @@
 		68A570FE238AB614002A3014 /* ProgramTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramTitleTableViewCell.swift; sourceTree = "<group>"; };
 		68A57100238B6EBD002A3014 /* ParentsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentsDetailViewController.swift; sourceTree = "<group>"; };
 		68A5710A238BD3EB002A3014 /* HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		68DEA8622399382500FC59D3 /* NewSkillViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSkillViewController.swift; sourceTree = "<group>"; };
 		B906746C237C133E00671632 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = FinalChallengeApp/Base.lproj/Students.storyboard; sourceTree = "<group>"; };
 		B906746E237C135300671632 /* Materials.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Materials.storyboard; sourceTree = "<group>"; };
 		B9067471237C136400671632 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = FinalChallengeApp/Base.lproj/Profile.storyboard; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 				68A570F6238AB389002A3014 /* ActivityViewController.swift */,
 				687E7D84239651A000331EAE /* EditMaterialsViewController.swift */,
 				687E7D9123966E6600331EAE /* NewActivityViewController.swift */,
+				68DEA8622399382500FC59D3 /* NewSkillViewController.swift */,
 				687E7D88239651E600331EAE /* Header */,
 			);
 			path = Materials;
@@ -569,6 +572,7 @@
 				687E7D5B2390D21500331EAE /* AddStudentViewController.swift in Sources */,
 				68A570FB238AB3EB002A3014 /* ActivityTaskTableViewCell.swift in Sources */,
 				68A570E42387C586002A3014 /* SummaryViewController.swift in Sources */,
+				68DEA8632399382500FC59D3 /* NewSkillViewController.swift in Sources */,
 				687E7D85239651A000331EAE /* EditMaterialsViewController.swift in Sources */,
 				B9BC0D99238420A30063DC95 /* ParentNotesCKModel.swift in Sources */,
 				68A570B62383D45E002A3014 /* ReportViewController.swift in Sources */,
