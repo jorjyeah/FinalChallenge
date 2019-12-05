@@ -12,6 +12,9 @@ class AddReportViewController: UIViewController {
                                                     
     @IBOutlet weak var tableView: UITableView!
     
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     var studentRecordID = String()
     var hideLastActivity = false
     var sections = ["Last Activities","All Activities"]
