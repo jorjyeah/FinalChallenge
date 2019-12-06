@@ -1,27 +1,27 @@
 //
-//  NewActivityViewController.swift
+//  EditActivityViewController.swift
 //  FinalChallengeApp
 //
-//  Created by Ni Wayan Bianka Aristania on 03/12/19.
+//  Created by Ni Wayan Bianka Aristania on 06/12/19.
 //  Copyright © 2019 George Joseph Kristian. All rights reserved.
 //
 
 import UIKit
 
-class NewActivityViewController: UIViewController {
-    
-    var activityName: String = ""
-    var howTo: String = "Type here..."
-    var selectedPrompt: String = ""
-    var media: String = ""
-    var helpfulTips: String = ""
-    var videoLink: String = ""
-    
-    let promptArray = ["Gesture", "Physical", "Verbal", "Textual/Written", "Visual", "Auditory", "Positional"]
+class EditActivityViewController: UIViewController {
     
     
     @IBOutlet weak var tableView: UITableView!
     
+    var activityName: String = "Abcdefg"
+    var howTo: String = "AbcdefgAbcdefgAbcdefgAbcdefgAbcdefgAbcdefgAbcdefgAbcdefgAbcdefg"
+    var selectedPrompt: String = ""
+    var media: String = "AbcdefgAbcdefgAbcdefg"
+    var helpfulTips: String = "AbcdefgAbcdefgAbcdefg"
+    var videoLink: String = "AbcdefgAbcdefg"
+    
+    let promptArray = ["Gesture", "Physical", "Verbal", "Textual/Written", "Visual", "Auditory", "Positional"]
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,7 +30,8 @@ class NewActivityViewController: UIViewController {
 
 }
 
-extension NewActivityViewController: UITableViewDelegate, UITableViewDataSource {
+
+extension EditActivityViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 6
     }
@@ -67,13 +68,14 @@ extension NewActivityViewController: UITableViewDelegate, UITableViewDataSource 
         }
     }
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let defaultCell = tableView.dequeueReusableCell(withIdentifier: "defaultTextFieldCell", for: indexPath) as! DefaultTextFieldTableViewCell
+        let defaultCell = tableView.dequeueReusableCell(withIdentifier: "defaultTextFieldCell", for: indexPath) as! EditDefaultTextFieldTableViewCell
         
-        let customCell = tableView.dequeueReusableCell(withIdentifier: "customTextViewCell", for: indexPath) as! CustomTextViewTableViewCell
+        let customCell = tableView.dequeueReusableCell(withIdentifier: "customTextViewCell", for: indexPath) as! EditCustomTextViewTableViewCell
         
-        let checkboxCell = tableView.dequeueReusableCell(withIdentifier: "checkboxCell", for: indexPath) as! CheckBoxTableViewCell
+        let checkboxCell = tableView.dequeueReusableCell(withIdentifier: "checkboxCell", for: indexPath) as! EditCheckBoxTableViewCell
         
         if indexPath.section == 0 {
             defaultCell.defaultTextField.text = activityName
@@ -95,5 +97,4 @@ extension NewActivityViewController: UITableViewDelegate, UITableViewDataSource 
             return defaultCell
         }
     }
-    
 }
