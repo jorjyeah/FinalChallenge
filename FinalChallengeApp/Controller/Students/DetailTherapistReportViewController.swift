@@ -128,8 +128,8 @@ extension DetailTherapistReportViewController: UITableViewDataSource, UITableVie
             print(prompts)
             destination?.media = detailActivity[row].activityMedia
             destination?.tips  = detailActivity[row].activityTips
-            destination?.skill = "\(detailActivity[row].skillTitle)"
-            destination?.program = detailActivity[row].baseProgramTitle
+            destination?.skill = detailActivity[row].skillTitle.recordID
+            destination?.program = CKRecord.ID(recordName: detailActivity[row].baseProgramTitle)
         }
     }
 }

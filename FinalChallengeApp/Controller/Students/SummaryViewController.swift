@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CloudKit
 
 class SummaryViewController: UIViewController {
     
@@ -173,8 +174,8 @@ extension SummaryViewController: UITableViewDataSource, UITableViewDelegate, UIT
             print(prompts)
             destination?.media = selectedActivity[row].activityMedia
             destination?.tips  = selectedActivity[row].activityTips
-            destination?.skill = "\(selectedActivity[row].skillTitle)"
-            destination?.program = selectedActivity[row].baseProgramTitle
+            destination?.skill = selectedActivity[row].skillTitle.recordID
+            destination?.program = CKRecord.ID(recordName: selectedActivity[row].baseProgramTitle)
         } else {
             test = "coba balik"
             saveTherapySession()
