@@ -78,7 +78,9 @@ extension ActivityViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 1 {
+        if indexPath.section == 0 {
+            performSegue(withIdentifier: "showDeletePage", sender: self)
+        } else if indexPath.section == 1 {
             performSegue(withIdentifier: "showActivityDetail", sender: self)
         } else if indexPath.section == 2{
             performSegue(withIdentifier: "showAddActivity", sender: self)
