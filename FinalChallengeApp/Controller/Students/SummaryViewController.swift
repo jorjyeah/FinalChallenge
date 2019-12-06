@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CloudKit
 
 class SummaryViewController: UIViewController {
     
@@ -28,13 +29,6 @@ class SummaryViewController: UIViewController {
         if let mvc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ReportViewController") as? ReportViewController {
             self.present(mvc, animated: true, completion: nil)
         }
-    }
-    
-    override func prepare(for segue:
-        UIStoryboardSegue, sender: Any?) {
-        // ini unwind segue ke mana aja, tapi kebetulan ke ReportVC
-        test = "coba balik"
-        saveTherapySession()
     }
     
     func saveTherapySession(){
@@ -161,9 +155,30 @@ extension SummaryViewController: UITableViewDataSource, UITableViewDelegate, UIT
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
-            performSegue(withIdentifier: "showSummaryViewDetail", sender: self)
+            performSegue(withIdentifier: "showSummaryViewDetail", sender: indexPath.row)
         }
     }
     
-  
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showSummaryViewDetail" {
+            let destination = segue.destination as? ViewDetailSummaryViewController
+            let row = sender as! Int
+            var prompts = String()
+            selectedActivity[row].activityPrompt .forEach { (prompt) in
+                prompts.append("\(prompt), ")
+            }
+            print("masuk summary")
+            destination?.activity = selectedActivity[row].activityTitle
+            destination?.howTo = selectedActivity[row].activityDesc
+            destination?.prompt = prompts
+            print(prompts)
+            destination?.media = selectedActivity[row].activityMedia
+            destination?.tips  = selectedActivity[row].activityTips
+            destination?.skill = selectedActivity[row].skillTitle.recordID
+            destination?.program = CKRecord.ID(recordName: selectedActivity[row].baseProgramTitle)
+        } else {
+            test = "coba balik"
+            saveTherapySession()
+        }
+    }
 }
