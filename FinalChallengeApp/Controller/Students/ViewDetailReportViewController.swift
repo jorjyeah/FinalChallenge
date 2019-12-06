@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CloudKit
 import AVFoundation
 
 class ViewDetailReportViewController: UIViewController {
@@ -17,8 +18,8 @@ class ViewDetailReportViewController: UIViewController {
     var howTo:String?
     var example:String?
     var tips:String?
-    var skill:String?
-    var program:String?
+    var skill:CKRecord.ID?
+    var program:CKRecord.ID?
     var image:String?
     var audio:String?
     
@@ -39,10 +40,13 @@ class ViewDetailReportViewController: UIViewController {
             self.promptLabel.text = self.prompt
             self.mediaLabel.text = self.media
             self.helpfulTipsLabel.text = self.tips
-            self.skillLabel.text = self.skill
-            self.programLabel.text = self.program
+            ReadableData.translateSkill(skillRecordID: self.skill!) { (readableSkill) in
+                self.skillLabel.text = readableSkill
+            }
+            ReadableData.translateBaseProgram(baseProgramRecordID: self.program!) { (readableBaseProgram) in
+                self.programLabel.text = readableBaseProgram
+            }
         }
-
     }
 
 }

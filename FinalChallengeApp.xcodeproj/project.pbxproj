@@ -68,6 +68,7 @@
 		B9F81F93237E835E0040F09C /* TherapyScheduleCKModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F81F92237E835E0040F09C /* TherapyScheduleCKModel.swift */; };
 		B9F87B142398DF6B00985864 /* ImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F87B132398DF6B00985864 /* ImagePickerManager.swift */; };
 		B9F87B18239948A400985864 /* ViewDetailSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F87B17239948A400985864 /* ViewDetailSummaryViewController.swift */; };
+		B9F87B1A239A0BE600985864 /* ReadableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F87B19239A0BE600985864 /* ReadableData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,6 +157,7 @@
 		B9F81F92237E835E0040F09C /* TherapyScheduleCKModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TherapyScheduleCKModel.swift; sourceTree = "<group>"; };
 		B9F87B132398DF6B00985864 /* ImagePickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerManager.swift; sourceTree = "<group>"; };
 		B9F87B17239948A400985864 /* ViewDetailSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDetailSummaryViewController.swift; sourceTree = "<group>"; };
+		B9F87B19239A0BE600985864 /* ReadableData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadableData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -384,6 +386,7 @@
 				B982CE2E239626D00065FB1D /* SaveNewReport.swift */,
 				B9D1302B23969E1100A4F8B2 /* DetailedReportDataManager.swift */,
 				B9D1302F23981F5B00A4F8B2 /* DetailedParentNotesDataManager.swift */,
+				B9F87B19239A0BE600985864 /* ReadableData.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -561,6 +564,7 @@
 				68A570F1238AA43C002A3014 /* ProfileViewController.swift in Sources */,
 				68A570CD2384F423002A3014 /* DetailTherapistReportViewController.swift in Sources */,
 				687E7D9A239676B100331EAE /* CheckBoxTableViewCell.swift in Sources */,
+				B9F87B1A239A0BE600985864 /* ReadableData.swift in Sources */,
 				68A570CD2384F423002A3014 /* DetailTherapistReportViewController.swift in Sources */,
 				68A5710B238BD3EB002A3014 /* HeaderCollectionReusableView.swift in Sources */,
 				B9D1303023981F5B00A4F8B2 /* DetailedParentNotesDataManager.swift in Sources */,
