@@ -30,7 +30,6 @@
 		68A570CF2384F43C002A3014 /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A570CE2384F43C002A3014 /* DetailTableViewCell.swift */; };
 		68A570D12384FFAD002A3014 /* ViewDetailReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A570D02384FFAD002A3014 /* ViewDetailReportViewController.swift */; };
 		68A570D5238544E4002A3014 /* NotesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A570D4238544E4002A3014 /* NotesTableViewCell.swift */; };
-		68A570D7238544F5002A3014 /* AttachmentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A570D6238544F5002A3014 /* AttachmentsTableViewCell.swift */; };
 		68A570D92386887C002A3014 /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A570D82386887C002A3014 /* ActivityTableViewCell.swift */; };
 		68A570DE2386C079002A3014 /* DetailSummaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A570DD2386C079002A3014 /* DetailSummaryTableViewCell.swift */; };
 		68A570E02386C09B002A3014 /* NotesSummaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A570DF2386C09B002A3014 /* NotesSummaryTableViewCell.swift */; };
@@ -117,7 +116,6 @@
 		68A570CE2384F43C002A3014 /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
 		68A570D02384FFAD002A3014 /* ViewDetailReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDetailReportViewController.swift; sourceTree = "<group>"; };
 		68A570D4238544E4002A3014 /* NotesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewCell.swift; sourceTree = "<group>"; };
-		68A570D6238544F5002A3014 /* AttachmentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentsTableViewCell.swift; sourceTree = "<group>"; };
 		68A570D82386887C002A3014 /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
 		68A570DD2386C079002A3014 /* DetailSummaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSummaryTableViewCell.swift; sourceTree = "<group>"; };
 		68A570DF2386C09B002A3014 /* NotesSummaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesSummaryTableViewCell.swift; sourceTree = "<group>"; };
@@ -279,7 +277,6 @@
 				68A570B72383D479002A3014 /* ReportTableViewCell.swift */,
 				68A570CE2384F43C002A3014 /* DetailTableViewCell.swift */,
 				68A570D4238544E4002A3014 /* NotesTableViewCell.swift */,
-				68A570D6238544F5002A3014 /* AttachmentsTableViewCell.swift */,
 				68A570D82386887C002A3014 /* ActivityTableViewCell.swift */,
 				68A570DD2386C079002A3014 /* DetailSummaryTableViewCell.swift */,
 				68A570DF2386C09B002A3014 /* NotesSummaryTableViewCell.swift */,
@@ -605,7 +602,6 @@
 				687E7D87239651D900331EAE /* HeaderEditCollectionReusableView.swift in Sources */,
 				B91BD49C237980010015C934 /* SceneDelegate.swift in Sources */,
 				68A57101238B6EBD002A3014 /* ParentsDetailViewController.swift in Sources */,
-				68A570D7238544F5002A3014 /* AttachmentsTableViewCell.swift in Sources */,
 				B9D1302C23969E1100A4F8B2 /* DetailedReportDataManager.swift in Sources */,
 				68A570D12384FFAD002A3014 /* ViewDetailReportViewController.swift in Sources */,
 				B9F87B142398DF6B00985864 /* ImagePickerManager.swift in Sources */,

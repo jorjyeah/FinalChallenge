@@ -9,10 +9,15 @@
 import UIKit
 import CloudKit
 
-class SummaryViewController: UIViewController {
+class SummaryViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var addAttachmentView: UIView!
+    
+    
+    @IBOutlet weak var addImageAttachment: UIImageView!
     
     let saveReport = SaveNewReport()
     var selectedActivity = [AddReportModelCK]()
@@ -21,8 +26,27 @@ class SummaryViewController: UIViewController {
     var notes = String()
     var test : String!
     
+    
+    var imagePicker = UIImagePickerController()
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        self.navigationController?.view.addSubview(addAttachmentView)
+    
+        addImageAttachment.image = UIImage(named: "placeholder")
+        
+        //UIImageTapGesture
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        addImageAttachment.isUserInteractionEnabled = true
+        addImageAttachment.addGestureRecognizer(tapGestureRecognizer)
+        
+//        let attrs = [
+//            NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 17)
+//        ]
+//        saveBarItem.setTitleTextAttributes(attrs, for: UIControl.State.normal)
     }
     
     func showReportView() {
@@ -41,8 +65,33 @@ class SummaryViewController: UIViewController {
             }
         }
     }
-
-
+    
+    
+    //buat import image dari gallery
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        _ = tapGestureRecognizer.view as! UIImageView
+        
+        // Your action
+        imagePicker.delegate = self
+        imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
+        imagePicker.allowsEditing = true
+        self.present(imagePicker, animated: true, completion: nil)
+    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let selectedImage = info[.editedImage] as? UIImage else {
+            fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
+        }
+        
+        self.addImageAttachment.image = selectedImage
+        
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        
+        dismiss(animated: true, completion: nil)
+    }
 }
 
 
@@ -129,6 +178,7 @@ extension SummaryViewController: UITableViewDataSource, UITableViewDelegate, UIT
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         if indexPath.section == 0 {
             var prompts = String()
             selectedActivity[indexPath.row].activityPrompt .forEach { (prompt) in
@@ -143,10 +193,10 @@ extension SummaryViewController: UITableViewDataSource, UITableViewDelegate, UIT
             
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "notesCell", for: indexPath) as!  NotesSummaryTableViewCell
-            cell.notesTextField.text = "Write your notes about today's activity"
-            cell.notesTextField.textColor = UIColor.lightGray
-            cell.notesTextField.becomeFirstResponder()
-            cell.notesTextField.selectedTextRange = cell.notesTextField.textRange(from: cell.notesTextField.beginningOfDocument, to: cell.notesTextField.beginningOfDocument)
+            cell.notesTextView.text = "Write your notes about today's activity"
+            cell.notesTextView.textColor = UIColor.lightGray
+            cell.notesTextView.becomeFirstResponder()
+            cell.notesTextView.selectedTextRange = cell.notesTextView.textRange(from: cell.notesTextView.beginningOfDocument, to: cell.notesTextView.beginningOfDocument)
             return  cell
         }
         

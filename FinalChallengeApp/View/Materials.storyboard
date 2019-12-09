@@ -26,7 +26,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="programCell" id="HXQ-zV-ild" customClass="ProgramCollectionViewCell" customModule="FinalChallengeApp" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" semanticContentAttribute="forceLeftToRight" reuseIdentifier="programCell" id="HXQ-zV-ild" customClass="ProgramCollectionViewCell" customModule="FinalChallengeApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="120" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -862,21 +862,36 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lt7-cL-8VT">
+                                <rect key="frame" x="0.0" y="306" width="414" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Delete Skill">
+                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteButtonTapped:" destination="JjK-pn-Wm9" eventType="touchUpInside" id="w0C-6F-K7w"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="ye5-4U-iuf" firstAttribute="top" secondItem="fqp-4K-wpg" secondAttribute="top" id="1b2-n4-1ie"/>
                             <constraint firstItem="fqp-4K-wpg" firstAttribute="bottom" secondItem="hjZ-Ei-kiK" secondAttribute="bottom" constant="546" id="1eK-Ai-ViI"/>
+                            <constraint firstItem="lt7-cL-8VT" firstAttribute="top" secondItem="hjZ-Ei-kiK" secondAttribute="bottom" constant="44" id="BGg-GJ-QWM"/>
                             <constraint firstItem="hjZ-Ei-kiK" firstAttribute="leading" secondItem="fqp-4K-wpg" secondAttribute="leading" constant="16" id="Eln-kh-71v"/>
                             <constraint firstItem="hjZ-Ei-kiK" firstAttribute="top" secondItem="ye5-4U-iuf" secondAttribute="bottom" constant="29" id="ILb-51-owE"/>
                             <constraint firstItem="fqp-4K-wpg" firstAttribute="trailing" secondItem="hjZ-Ei-kiK" secondAttribute="trailing" constant="16" id="M9Z-6j-OBf"/>
+                            <constraint firstItem="fqp-4K-wpg" firstAttribute="trailing" secondItem="lt7-cL-8VT" secondAttribute="trailing" id="Oip-SZ-IlA"/>
                             <constraint firstItem="ye5-4U-iuf" firstAttribute="centerX" secondItem="hjZ-Ei-kiK" secondAttribute="centerX" id="jFZ-Y4-AfW"/>
+                            <constraint firstItem="fqp-4K-wpg" firstAttribute="bottom" secondItem="lt7-cL-8VT" secondAttribute="bottom" constant="458" id="m1l-1b-DeB"/>
                             <constraint firstItem="ye5-4U-iuf" firstAttribute="leading" secondItem="8s6-Bk-g3Q" secondAttribute="leading" id="oc6-aC-Tnd"/>
+                            <constraint firstItem="lt7-cL-8VT" firstAttribute="leading" secondItem="fqp-4K-wpg" secondAttribute="leading" id="ttf-Lz-VBV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fqp-4K-wpg"/>
                     </view>
                     <connections>
                         <outlet property="backgroundImageView" destination="hjZ-Ei-kiK" id="d9E-Dd-sC8"/>
+                        <outlet property="deleteSkillButton" destination="lt7-cL-8VT" id="9WH-jr-ozc"/>
                         <outlet property="skillTitleTextView" destination="15f-cP-0hT" id="xrh-eQ-qSz"/>
                     </connections>
                 </viewController>
