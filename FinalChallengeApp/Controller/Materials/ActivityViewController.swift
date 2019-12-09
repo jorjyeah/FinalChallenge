@@ -7,21 +7,34 @@
 //
 
 import UIKit
+import CloudKit
 
 class ActivityViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
     
-    var programTitle: String = ""
+    var skillRecordID = CKRecord.ID()
+    var skillTitle = String()
+    var activities = [ActivityCKModel]()
     let activityTaskArray = ["Play Doh", "Stomp Feet", "Point to Body Parts"]
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        populateData()
         // Do any additional setup after loading the view.
         
+        
+    }
+    
+    func populateData(){
+        ActivityDataManager.getActivity(skillRecordID: skillRecordID) { (activityModel) in
+            self.activities = activityModel
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
         
     }
 
@@ -39,7 +52,7 @@ extension ActivityViewController: UITableViewDelegate, UITableViewDataSource {
         if section == 0 {
             return 1
         } else if section == 1 {
-            return activityTaskArray.count
+            return activities.count
         } else {
             return 1
         }
@@ -60,13 +73,13 @@ extension ActivityViewController: UITableViewDelegate, UITableViewDataSource {
         
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "programTitleCell", for: indexPath) as! ProgramTitleTableViewCell
-            cell.programTitleLabel.text = programTitle
+            cell.programTitleLabel.text = "\(skillTitle)"
             
             return  cell
             
         } else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "activityTaskCell", for: indexPath) as! ActivityTaskTableViewCell
-            cell.activityTaskLabel.text = activityTaskArray[indexPath.row]
+            cell.activityTaskLabel.text = activities[indexPath.row].activityTitle
         
             return  cell
         } else {

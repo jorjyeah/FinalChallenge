@@ -58,6 +58,8 @@
 		B91BD4A9237980020015C934 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B91BD4A7237980020015C934 /* LaunchScreen.storyboard */; };
 		B91BD4B4237980020015C934 /* FinalChallengeAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91BD4B3237980020015C934 /* FinalChallengeAppTests.swift */; };
 		B91BD4BF237980020015C934 /* FinalChallengeAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91BD4BE237980020015C934 /* FinalChallengeAppUITests.swift */; };
+		B96299C0239E31670009DE32 /* ActivityCKModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96299BF239E31670009DE32 /* ActivityCKModel.swift */; };
+		B96299C2239E34F00009DE32 /* ActivityDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96299C1239E34F00009DE32 /* ActivityDataManager.swift */; };
 		B9820B7523941DD500C4A6C3 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9820B7423941DD500C4A6C3 /* EditProfileViewController.swift */; };
 		B982CE2F239626D00065FB1D /* SaveNewReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = B982CE2E239626D00065FB1D /* SaveNewReport.swift */; };
 		B9A2EEDF238BD63E0041BB93 /* AddReportModelCK.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A2EEDE238BD63E0041BB93 /* AddReportModelCK.swift */; };
@@ -74,6 +76,10 @@
 		B9F87B142398DF6B00985864 /* ImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F87B132398DF6B00985864 /* ImagePickerManager.swift */; };
 		B9F87B18239948A400985864 /* ViewDetailSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F87B17239948A400985864 /* ViewDetailSummaryViewController.swift */; };
 		B9F87B1A239A0BE600985864 /* ReadableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F87B19239A0BE600985864 /* ReadableData.swift */; };
+		B9F87B1C239A393000985864 /* SkillCKModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F87B1B239A393000985864 /* SkillCKModel.swift */; };
+		B9F87B1E239A3A8A00985864 /* SkillDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F87B1D239A3A8A00985864 /* SkillDataManager.swift */; };
+		B9F87B20239A438000985864 /* BaseProgramDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F87B1F239A438000985864 /* BaseProgramDataManager.swift */; };
+		B9F87B22239A43D300985864 /* BaseProgramCKModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F87B21239A43D300985864 /* BaseProgramCKModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -151,6 +157,8 @@
 		B91BD4BA237980020015C934 /* FinalChallengeAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FinalChallengeAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B91BD4BE237980020015C934 /* FinalChallengeAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalChallengeAppUITests.swift; sourceTree = "<group>"; };
 		B91BD4C0237980020015C934 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B96299BF239E31670009DE32 /* ActivityCKModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCKModel.swift; sourceTree = "<group>"; };
+		B96299C1239E34F00009DE32 /* ActivityDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDataManager.swift; sourceTree = "<group>"; };
 		B9820B7423941DD500C4A6C3 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		B982CE2E239626D00065FB1D /* SaveNewReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveNewReport.swift; sourceTree = "<group>"; };
 		B9A2EEDE238BD63E0041BB93 /* AddReportModelCK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReportModelCK.swift; sourceTree = "<group>"; };
@@ -168,6 +176,10 @@
 		B9F87B132398DF6B00985864 /* ImagePickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerManager.swift; sourceTree = "<group>"; };
 		B9F87B17239948A400985864 /* ViewDetailSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDetailSummaryViewController.swift; sourceTree = "<group>"; };
 		B9F87B19239A0BE600985864 /* ReadableData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadableData.swift; sourceTree = "<group>"; };
+		B9F87B1B239A393000985864 /* SkillCKModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillCKModel.swift; sourceTree = "<group>"; };
+		B9F87B1D239A3A8A00985864 /* SkillDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillDataManager.swift; sourceTree = "<group>"; };
+		B9F87B1F239A438000985864 /* BaseProgramDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseProgramDataManager.swift; sourceTree = "<group>"; };
+		B9F87B21239A43D300985864 /* BaseProgramCKModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseProgramCKModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -402,6 +414,9 @@
 				B9D1302B23969E1100A4F8B2 /* DetailedReportDataManager.swift */,
 				B9D1302F23981F5B00A4F8B2 /* DetailedParentNotesDataManager.swift */,
 				B9F87B19239A0BE600985864 /* ReadableData.swift */,
+				B9F87B1D239A3A8A00985864 /* SkillDataManager.swift */,
+				B9F87B1F239A438000985864 /* BaseProgramDataManager.swift */,
+				B96299C1239E34F00009DE32 /* ActivityDataManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -416,6 +431,9 @@
 				B9BC0D9A238537040063DC95 /* ProfileTherapistCKModel.swift */,
 				B9A2EEDE238BD63E0041BB93 /* AddReportModelCK.swift */,
 				B9D1302D2397686500A4F8B2 /* DetailedReportCKModel.swift */,
+				B9F87B1B239A393000985864 /* SkillCKModel.swift */,
+				B9F87B21239A43D300985864 /* BaseProgramCKModel.swift */,
+				B96299BF239E31670009DE32 /* ActivityCKModel.swift */,
 			);
 			path = ModelCK;
 			sourceTree = "<group>";
@@ -561,6 +579,7 @@
 				68A570CF2384F43C002A3014 /* DetailTableViewCell.swift in Sources */,
 				687E7D9223966E6600331EAE /* NewActivityViewController.swift in Sources */,
 				68A570E6238AA34B002A3014 /* ProgramCollectionViewCell.swift in Sources */,
+				B9F87B22239A43D300985864 /* BaseProgramCKModel.swift in Sources */,
 				B9F87B18239948A400985864 /* ViewDetailSummaryViewController.swift in Sources */,
 				687E7D962396769100331EAE /* DefaultTextFieldTableViewCell.swift in Sources */,
 				68A570F7238AB389002A3014 /* ActivityViewController.swift in Sources */,
@@ -569,12 +588,14 @@
 				B982CE2F239626D00065FB1D /* SaveNewReport.swift in Sources */,
 				B9D1302E2397686500A4F8B2 /* DetailedReportCKModel.swift in Sources */,
 				B91BD49E237980010015C934 /* ViewController.swift in Sources */,
+				B96299C2239E34F00009DE32 /* ActivityDataManager.swift in Sources */,
 				6837ED98239A3FD000CF1FCC /* EditDefaultTextFieldTableViewCell.swift in Sources */,
 				687E7D8A2396524100331EAE /* EditProgramCollectionViewCell.swift in Sources */,
 				68A570B82383D479002A3014 /* ReportTableViewCell.swift in Sources */,
 				687E7D5D2390E3AB00331EAE /* NewStudentPreviewViewController.swift in Sources */,
 				6837ED9C239A3FF900CF1FCC /* EditCheckBoxTableViewCell.swift in Sources */,
 				B9F81F93237E835E0040F09C /* TherapyScheduleCKModel.swift in Sources */,
+				B9F87B1E239A3A8A00985864 /* SkillDataManager.swift in Sources */,
 				B9820B7523941DD500C4A6C3 /* EditProfileViewController.swift in Sources */,
 				687E7D8C2396597F00331EAE /* AddProgramCollectionViewCell.swift in Sources */,
 				B9D9B32A23829614005CCDBB /* TherapySessionCKModel.swift in Sources */,
@@ -592,6 +613,7 @@
 				68A570E02386C09B002A3014 /* NotesSummaryTableViewCell.swift in Sources */,
 				68DEA865239A209500FC59D3 /* DeleteSkillViewController.swift in Sources */,
 				68A570D92386887C002A3014 /* ActivityTableViewCell.swift in Sources */,
+				B9F87B1C239A393000985864 /* SkillCKModel.swift in Sources */,
 				687E7D5B2390D21500331EAE /* AddStudentViewController.swift in Sources */,
 				68A570FB238AB3EB002A3014 /* ActivityTaskTableViewCell.swift in Sources */,
 				68A570E42387C586002A3014 /* SummaryViewController.swift in Sources */,
@@ -611,8 +633,10 @@
 				B9F87B142398DF6B00985864 /* ImagePickerManager.swift in Sources */,
 				6837ED96239A3D0E00CF1FCC /* EditActivityViewController.swift in Sources */,
 				B9C016FF2395291E0051D9FC /* SaveEditedProfile.swift in Sources */,
+				B96299C0239E31670009DE32 /* ActivityCKModel.swift in Sources */,
 				68A570C72384F378002A3014 /* AddReportViewController.swift in Sources */,
 				68A570D5238544E4002A3014 /* NotesTableViewCell.swift in Sources */,
+				B9F87B20239A438000985864 /* BaseProgramDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
