@@ -8,13 +8,11 @@
 
 import UIKit
 
-class CustomTextFieldTableViewCell: UITableViewCell {
+class CustomTextViewTableViewCell: UITableViewCell {
     
     
-    @IBOutlet weak var customTitleLabel: UILabel!
+    @IBOutlet weak var customTextView: UITextView!
     
-    
-    @IBOutlet weak var customTextField: UITextField!
     
     override func awakeFromNib() {
         super.awakeFromNib()
