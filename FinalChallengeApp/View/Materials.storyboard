@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MUY-hO-l3I">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MUY-hO-l3I">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -19,15 +19,15 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3Jr-QP-sBg">
                                 <rect key="frame" x="16" y="104" width="382" height="742"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lb0-m6-S1B">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lb0-m6-S1B">
                                     <size key="itemSize" width="120" height="115"/>
                                     <size key="headerReferenceSize" width="50" height="50"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="10" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" semanticContentAttribute="forceLeftToRight" reuseIdentifier="programCell" id="HXQ-zV-ild" customClass="ProgramCollectionViewCell" customModule="FinalChallengeApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="120" height="80"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" reuseIdentifier="programCell" id="HXQ-zV-ild" customClass="ProgramCollectionViewCell" customModule="FinalChallengeApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="60" width="120" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="120" height="80"/>
@@ -113,7 +113,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="vdw-ZA-0fR">
-                                    <rect key="frame" x="0.0" y="363.5" width="414" height="0.0"/>
+                                    <rect key="frame" x="0.0" y="363" width="414" height="0.0"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 </view>
@@ -179,10 +179,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="addNewCell" id="zra-uJ-Aam" customClass="AddActivityTableViewCell" customModule="FinalChallengeApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="290" width="414" height="45.5"/>
+                                        <rect key="frame" x="0.0" y="290" width="414" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zra-uJ-Aam" id="37K-i8-Qk4">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="45.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="45"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="plA-SG-ffk">
@@ -193,7 +193,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add New Activity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PqV-Ul-xDK">
-                                                    <rect key="frame" x="55" y="12" width="343" height="21.5"/>
+                                                    <rect key="frame" x="55" y="12" width="343" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -686,7 +686,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="programCell" id="6ji-Zw-VxP" customClass="EditProgramCollectionViewCell" customModule="FinalChallengeApp" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" reuseIdentifier="programCell" id="6ji-Zw-VxP" customClass="EditProgramCollectionViewCell" customModule="FinalChallengeApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="120" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="gSK-pA-dVz">
@@ -862,36 +862,21 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lt7-cL-8VT">
-                                <rect key="frame" x="0.0" y="306" width="414" height="44"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Delete Skill">
-                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="deleteButtonTapped:" destination="JjK-pn-Wm9" eventType="touchUpInside" id="w0C-6F-K7w"/>
-                                </connections>
-                            </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="ye5-4U-iuf" firstAttribute="top" secondItem="fqp-4K-wpg" secondAttribute="top" id="1b2-n4-1ie"/>
                             <constraint firstItem="fqp-4K-wpg" firstAttribute="bottom" secondItem="hjZ-Ei-kiK" secondAttribute="bottom" constant="546" id="1eK-Ai-ViI"/>
-                            <constraint firstItem="lt7-cL-8VT" firstAttribute="top" secondItem="hjZ-Ei-kiK" secondAttribute="bottom" constant="44" id="BGg-GJ-QWM"/>
                             <constraint firstItem="hjZ-Ei-kiK" firstAttribute="leading" secondItem="fqp-4K-wpg" secondAttribute="leading" constant="16" id="Eln-kh-71v"/>
                             <constraint firstItem="hjZ-Ei-kiK" firstAttribute="top" secondItem="ye5-4U-iuf" secondAttribute="bottom" constant="29" id="ILb-51-owE"/>
                             <constraint firstItem="fqp-4K-wpg" firstAttribute="trailing" secondItem="hjZ-Ei-kiK" secondAttribute="trailing" constant="16" id="M9Z-6j-OBf"/>
-                            <constraint firstItem="fqp-4K-wpg" firstAttribute="trailing" secondItem="lt7-cL-8VT" secondAttribute="trailing" id="Oip-SZ-IlA"/>
                             <constraint firstItem="ye5-4U-iuf" firstAttribute="centerX" secondItem="hjZ-Ei-kiK" secondAttribute="centerX" id="jFZ-Y4-AfW"/>
-                            <constraint firstItem="fqp-4K-wpg" firstAttribute="bottom" secondItem="lt7-cL-8VT" secondAttribute="bottom" constant="458" id="m1l-1b-DeB"/>
                             <constraint firstItem="ye5-4U-iuf" firstAttribute="leading" secondItem="8s6-Bk-g3Q" secondAttribute="leading" id="oc6-aC-Tnd"/>
-                            <constraint firstItem="lt7-cL-8VT" firstAttribute="leading" secondItem="fqp-4K-wpg" secondAttribute="leading" id="ttf-Lz-VBV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fqp-4K-wpg"/>
                     </view>
                     <connections>
                         <outlet property="backgroundImageView" destination="hjZ-Ei-kiK" id="d9E-Dd-sC8"/>
-                        <outlet property="deleteSkillButton" destination="lt7-cL-8VT" id="9WH-jr-ozc"/>
                         <outlet property="skillTitleTextView" destination="15f-cP-0hT" id="xrh-eQ-qSz"/>
                     </connections>
                 </viewController>
