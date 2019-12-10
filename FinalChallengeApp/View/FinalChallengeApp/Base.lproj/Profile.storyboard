@@ -177,7 +177,7 @@
                     <navigationItem key="navigationItem" title="Edit Profile" id="pM8-gA-4p0">
                         <barButtonItem key="rightBarButtonItem" title="Done" id="prk-iW-ZMJ">
                             <connections>
-                                <segue destination="8cO-UL-pWO" kind="unwind" unwindAction="unwindFromEditProfile:" id="CnS-I8-ckq"/>
+                                <action selector="doneButtonTapped:" destination="0nd-hS-3DZ" id="AZp-q1-2yh"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -187,6 +187,7 @@
                         <outlet property="institutionTextField" destination="eIq-ok-uQA" id="cUc-kd-YsJ"/>
                         <outlet property="nameTextField" destination="zOy-DB-2S9" id="wQA-in-RbY"/>
                         <outlet property="profileImageVIew" destination="7W3-x1-amd" id="Lwa-e7-BrZ"/>
+                        <segue destination="8cO-UL-pWO" kind="unwind" identifier="backToProfile" unwindAction="unwindFromEditProfile:" id="ZNE-lo-XCU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hQM-gP-Oer" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

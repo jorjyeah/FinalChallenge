@@ -63,11 +63,18 @@ class ActivityCKModel{
         }
     }
     
-    var skillRecordID : CKRecord.ID {
+    var skillRecordID : CKRecord.Reference {
         get{
-            return (record?.recordID)!
+            return record?.value(forKey: "skillTitle") as! CKRecord.Reference
+        }
+        set{
+            self.record?.setValue(newValue, forKey: "skillTitle")
         }
     }
+    
+    var baseProgram : String!
+    
+    var skillTitle : String!
     
     var defaultData : Int{
         get{
