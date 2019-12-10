@@ -9,6 +9,10 @@
 import UIKit
 import AVFoundation
 
+protocol AudioRecorderViewControllerDelegate {
+    func sendBack(string: URL)
+}
+
 class AudioRecorderViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
     
     @IBOutlet weak var recordButton: UIButton!
@@ -21,7 +25,7 @@ class AudioRecorderViewController: UIViewController, AVAudioRecorderDelegate, AV
     var audioFilename = URL(string: "")
     
     var fileName: String = "audioFile.m4a"
-    
+    var delegate:AudioRecorderViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +62,6 @@ class AudioRecorderViewController: UIViewController, AVAudioRecorderDelegate, AV
     }
     
     func setupPlayer(){
-        //let audioFileName = getDocumentsDirectory().appendingPathComponent(fileName)
         audioFilename = getDocumentsDirectory().appendingPathComponent(fileName)
         
         do {
@@ -92,17 +95,12 @@ class AudioRecorderViewController: UIViewController, AVAudioRecorderDelegate, AV
             recordButton.setTitle("R", for: .normal)
             recordButton.setImage(UIImage(named: "Record"), for: .normal)
             playButton.isEnabled = false
+            self.dismiss(animated: true) {
+                self.delegate?.sendBack(string: self.audioFilename!)
+            }
+            
         }
     }
-    
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        dismiss(animated: true, completion: nil)
-//        var destination = segue.destination as? SummaryViewController {
-//
-//        }
-//
-//    }
 
     @IBAction func playAct(_ sender: Any) {
         if playButton.titleLabel?.text == "Play" {

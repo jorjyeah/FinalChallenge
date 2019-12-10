@@ -492,6 +492,14 @@
                                                 <constraint firstAttribute="width" constant="100" id="BA1-qj-Nhd"/>
                                             </constraints>
                                         </imageView>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IRw-X8-9Fi">
+                                            <rect key="frame" x="192" y="51" width="80" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Play"/>
+                                            <connections>
+                                                <action selector="playAct:" destination="rNe-Ul-54a" eventType="touchUpInside" id="ow1-LS-cpu"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <constraints>
@@ -630,14 +638,11 @@
                         <viewLayoutGuide key="safeArea" id="HgD-Cd-AS6"/>
                     </view>
                     <navigationItem key="navigationItem" title="Summary" id="gav-1U-bMd">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="zAr-gS-bqd">
-                            <connections>
-                                <segue destination="wqA-Lj-Qfq" kind="unwind" unwindAction="unwindFromSummary:" id="HYd-PS-YOa"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="zAr-gS-bqd"/>
                     </navigationItem>
                     <connections>
                         <outlet property="attachmentView" destination="9Dm-lq-d6h" id="bwv-z6-p26"/>
+                        <outlet property="playButton" destination="IRw-X8-9Fi" id="eRi-Pf-Vaw"/>
                         <outlet property="selectedImageView" destination="H5r-nS-TLx" id="o1E-3z-ylO"/>
                         <outlet property="tableView" destination="YQR-Eg-8mE" id="1Ns-SY-7U5"/>
                         <segue destination="rNn-XN-T2g" kind="presentation" identifier="showSummaryViewDetail" id="OM4-Ty-hmZ"/>
@@ -645,7 +650,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r87-Nm-aKv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="wqA-Lj-Qfq" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3740.579710144928" y="-106.47321428571428"/>
         </scene>

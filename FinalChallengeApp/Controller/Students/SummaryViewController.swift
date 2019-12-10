@@ -18,6 +18,9 @@ class SummaryViewController: UIViewController, AVAudioPlayerDelegate {
     
     @IBOutlet weak var attachmentView: UIView!
     
+    @IBOutlet weak var playButton: UIButton!
+    
+    
     let saveReport = SaveNewReport()
     var selectedActivity = [AddReportModelCK]()
     var studentRecordID = String()
@@ -27,11 +30,14 @@ class SummaryViewController: UIViewController, AVAudioPlayerDelegate {
     
     
     var imagePicker = UIImagePickerController()
-    var audioFilename = URL(string: "")
     
     //yang selected ditampung kesini
     var selectedImage = UIImage(named: "Student Photo Default")
     
+    //audio
+    var fileName: String = "audioFile.m4a"
+    var audioFilename = URL(string: "")
+    var audioPlayer: AVAudioPlayer!
     
     
     override func viewDidLoad() {
@@ -78,6 +84,48 @@ class SummaryViewController: UIViewController, AVAudioPlayerDelegate {
             }
         }
     }
+    
+    
+    
+    //play audio
+    
+    
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
+    
+    func setupPlayer(){
+        //let audioFileName = getDocumentsDirectory().appendingPathComponent(fileName)
+        audioFilename = getDocumentsDirectory().appendingPathComponent(fileName)
+        
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: audioFilename!)
+            audioPlayer.delegate = self
+            audioPlayer.prepareToPlay()
+            audioPlayer.volume = 1.0
+        } catch {
+            print(error)
+        }
+    }
+    
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        playButton.setTitle("Play", for: .normal)
+    }
+    
+    @IBAction func playAct(_ sender: Any) {
+        if playButton.titleLabel?.text == "Play" {
+            playButton.setTitle("Stop", for: .normal)
+            //recordButton.isEnabled = false
+            setupPlayer()
+            audioPlayer.play()
+        } else {
+            audioPlayer.stop()
+            playButton.setTitle("Play", for: .normal)
+            //recordButton.isEnabled = true
+        }
+    }
+    
 }
 
 
@@ -235,8 +283,14 @@ extension SummaryViewController: UITableViewDataSource, UITableViewDelegate, UIT
             destination?.skill = selectedActivity[row].skillTitle.recordID
             destination?.program = CKRecord.ID(recordName: selectedActivity[row].baseProgramTitle)
         } else {
-            test = "coba balik"
-            saveTherapySession()
+                    test = "coba balik"
+                    saveTherapySession()
+                }
+        
+        
+        if segue.identifier == "showRecordView" {
+            let destination = segue.destination as? AudioRecorderViewController
+            destination?.delegate = self
         }
     }
 }
@@ -251,4 +305,10 @@ extension SummaryViewController: UIImagePickerControllerDelegate, UINavigationCo
         attachmentView.isHidden = false
     }
     
+}
+
+extension SummaryViewController: AudioRecorderViewControllerDelegate {
+    func sendBack(string: URL) {
+        attachmentView.isHidden = false
+    }
 }
