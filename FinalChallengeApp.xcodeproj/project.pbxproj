@@ -60,6 +60,7 @@
 		B91BD4BF237980020015C934 /* FinalChallengeAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91BD4BE237980020015C934 /* FinalChallengeAppUITests.swift */; };
 		B96299C0239E31670009DE32 /* ActivityCKModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96299BF239E31670009DE32 /* ActivityCKModel.swift */; };
 		B96299C2239E34F00009DE32 /* ActivityDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96299C1239E34F00009DE32 /* ActivityDataManager.swift */; };
+		B96299C4239E4FDA0009DE32 /* ActivityDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96299C3239E4FDA0009DE32 /* ActivityDetailViewController.swift */; };
 		B9820B7523941DD500C4A6C3 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9820B7423941DD500C4A6C3 /* EditProfileViewController.swift */; };
 		B982CE2F239626D00065FB1D /* SaveNewReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = B982CE2E239626D00065FB1D /* SaveNewReport.swift */; };
 		B9A2EEDF238BD63E0041BB93 /* AddReportModelCK.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A2EEDE238BD63E0041BB93 /* AddReportModelCK.swift */; };
@@ -159,6 +160,7 @@
 		B91BD4C0237980020015C934 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B96299BF239E31670009DE32 /* ActivityCKModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCKModel.swift; sourceTree = "<group>"; };
 		B96299C1239E34F00009DE32 /* ActivityDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDataManager.swift; sourceTree = "<group>"; };
+		B96299C3239E4FDA0009DE32 /* ActivityDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDetailViewController.swift; sourceTree = "<group>"; };
 		B9820B7423941DD500C4A6C3 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		B982CE2E239626D00065FB1D /* SaveNewReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveNewReport.swift; sourceTree = "<group>"; };
 		B9A2EEDE238BD63E0041BB93 /* AddReportModelCK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReportModelCK.swift; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 			children = (
 				68A570EC238AA3DE002A3014 /* MaterialsViewController.swift */,
 				68A570F6238AB389002A3014 /* ActivityViewController.swift */,
+				B96299C3239E4FDA0009DE32 /* ActivityDetailViewController.swift */,
 				687E7D84239651A000331EAE /* EditMaterialsViewController.swift */,
 				687E7D9123966E6600331EAE /* NewActivityViewController.swift */,
 				68DEA8622399382500FC59D3 /* NewSkillViewController.swift */,
@@ -572,6 +575,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B96299C4239E4FDA0009DE32 /* ActivityDetailViewController.swift in Sources */,
 				B9A2EEDF238BD63E0041BB93 /* AddReportModelCK.swift in Sources */,
 				B91BD4A4237980010015C934 /* FinalChallengeApp.xcdatamodeld in Sources */,
 				687E7D8E2396680700331EAE /* AddActivityTableViewCell.swift in Sources */,

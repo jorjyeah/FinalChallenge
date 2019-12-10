@@ -7,30 +7,70 @@
 //
 
 import UIKit
+import CloudKit
 
 class EditMaterialsViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    
-    
-    var grossMotorArray = ["TO IMPROVE MUSCLE TONE, STRENGTH, ENDURANCE", "TO IMPROVE BALANCE", "TO IMPROVE UPPER / LOWER LIMB COORDINATION", "TO IMPROVE VISUAL MOTOR INTEGRATION"]
-    let fineMotorArray = ["GRASP PATTERN SKILLS", "BILLATERAL COORDINATION", "MANIPULATION SKILLS", "EYE - HAND COORDINATION", "BEHAVIOUR MODIFICATION TECHNIQUE"]
-    let programCategory = ["Gross Motor Skill", "Fine Motor Skill"]
 
+    var skillData = [CKRecord.ID:[SkillCKModel]]()
+    var baseProgram = [BaseProgramCKModel]()
+    var newbaseProgram = [BaseProgramCKModel]()
+    
+    
+//    var selectedSkillRecordID = CKRecord.ID()
+//    var selectedSkillTitle = String()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.navigationItem.setHidesBackButton(true, animated:true);
-        
+//        self.navigationItem.setHidesBackButton(true, animated:true);
+        populateData()
     }
     
-
+//    override func viewWillAppear(_ animated: Bool) {
+//        populateData()
+//    }
+    
+    @IBAction func doneButtonTapped(_ sender: Any) {
+        performSegue(withIdentifier: "backToMaterialsFromEditMaterials", sender: nil)
+    }
+    
+    @IBAction func unwindFromAddNewSkill(_ sender:UIStoryboardSegue){
+        // bikin function dulu buat unwind, nanti di exit di page summary
+        if sender.source is NewSkillViewController{
+            
+        }
+    }
+    
+    func populateData(){
+        BaseProgramDataManager.getBaseProgram { (baseProgramModel) in
+            self.baseProgram = baseProgramModel
+            self.newbaseProgram = baseProgramModel
+            SkillDataManager.getAllSkill { (skillModel) in
+                skillModel.map { (skill) in
+                    if self.skillData[skill.baseProgramRecordID] == nil{
+                        self.skillData[skill.baseProgramRecordID] = []
+                    }
+                    
+                    self.skillData[skill.baseProgramRecordID]?.append(skill)
+                }
+                
+                
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+//                    self.collectionView.collectionViewLayout.invalidateLayout()
+                }
+            }
+        }
+        
+    }
 }
 
 extension EditMaterialsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return  programCategory.count
+        return  baseProgram.count
     }
     
     
@@ -39,11 +79,16 @@ extension EditMaterialsViewController: UICollectionViewDelegate, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if section == 0 {
-            return grossMotorArray.count+1
-        } else {
-            return fineMotorArray.count+1
+        let subsID = baseProgram[section].baseProgramRecordID
+
+        let skills = skillData[subsID]
+        
+        if let unwrapSkills = skills{
+            print(section)
+            print(unwrapSkills.count)
+            return unwrapSkills.count + 1
         }
+        return 0
         
     }
     
@@ -58,50 +103,43 @@ extension EditMaterialsViewController: UICollectionViewDelegate, UICollectionVie
         cell.layer.shadowRadius = 4
         
         
-        if indexPath.row == grossMotorArray.count, indexPath.section == 0 {
+        if indexPath.row == skillData[baseProgram[indexPath.section].baseProgramRecordID]?.count{
             let addCell = collectionView.dequeueReusableCell(withReuseIdentifier: "addProgramCell", for: indexPath) as! AddProgramCollectionViewCell
                 addCell.layer.cornerRadius = 8
             return addCell
-        } else if indexPath.row == fineMotorArray.count, indexPath.section == 1 {
-            let addCell = collectionView.dequeueReusableCell(withReuseIdentifier: "addProgramCell", for: indexPath) as! AddProgramCollectionViewCell
-                addCell.layer.cornerRadius = 8
-            return addCell
+
         } else {
-            if indexPath.section == 0 {
-                cell.programLabel.text = grossMotorArray[indexPath.row]
-                return cell
-                
-            } else {
-                cell.programLabel.text = fineMotorArray[indexPath.row]
-                return cell
+            if let baseProgram =  skillData[baseProgram[indexPath.section].baseProgramRecordID]{
+                cell.programLabel.text = "\(baseProgram[indexPath.row].skillTitle) + \(indexPath.row)"
+            }else{
+                cell.programLabel.text = ""
             }
+            return cell
         }
     }
-    
-    
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView { // for header
         if (kind == UICollectionView.elementKindSectionHeader) {
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerSection", for: indexPath) as! HeaderEditCollectionReusableView
-            
-            if indexPath.section == 0 {
-                headerView.editHeaderTitle.text = programCategory[indexPath.row]
-                return headerView
-            } else {
-                headerView.editHeaderTitle.text = programCategory[indexPath.row+1]
-                return headerView
-            }
+            // ini header textnya (editable)
+            headerView.editHeaderTitle.text = baseProgram[indexPath.section].baseProgramTitle
+            return headerView
         }
         fatalError()
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        if indexPath.row == grossMotorArray.count, indexPath.section == 0 {
-            performSegue(withIdentifier: "showAddSkill", sender: self)
-        } else if indexPath.row == fineMotorArray.count, indexPath.section == 1 {
-            performSegue(withIdentifier: "showAddSkill", sender: self)
+        if indexPath.row == skillData[baseProgram[indexPath.section].baseProgramRecordID]?.count{
+            performSegue(withIdentifier: "showAddSkill", sender: indexPath.section)
         }
-        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showAddSkill" {
+            let section = sender as! Int
+            let destination = segue.destination as! NewSkillViewController
+            destination.baseProgramRecordID = baseProgram[section].baseProgramRecordID
+        }
     }
 }

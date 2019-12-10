@@ -31,5 +31,24 @@ class BaseProgramDataManager{
                 onComplete(baseProgramModel)
             }
         }
-        }
+    }
+    
+//    class func saveEdited(baseProgramsRecordID : [CKRecord.ID], baseProgramsTitle : [String], onComplete: @escaping(Bool) -> Void){
+//        let database = CKContainer.default().publicCloudDatabase
+//        
+//        basePrograms
+//        database.fetch(withRecordID: baseProgramRecordID) { (baseProgramRecord, error) in
+//            <#code#>
+//        }
+//        let record = CKRecord(recordType: "BaseProgram")
+//        
+//        record.setObject(baseProgramTitle as __CKRecordObjCValue, forKey: "baseProgramTitle")
+//        
+//        database.save(record) { (savedRecord, error) in
+//            if let record = savedRecord{
+//                onComplete(record.recordID, baseProgramTitle)
+//            }
+//            print("err : \(error)")
+//        }
+//    }
 }

@@ -21,13 +21,19 @@ class MaterialsViewController: UIViewController {
     var skillData = [CKRecord.ID:[SkillCKModel]]()
     var baseProgram = [BaseProgramCKModel]()
     
+    var selectedBaseProgram = String()
     var selectedSkillRecordID = CKRecord.ID()
     var selectedSkillTitle = String()
     
+    @IBAction func unwindFromEditMaterials(_ sender:UIStoryboardSegue){
+        // bikin function dulu buat unwind, nanti di exit di page summary
+        if sender.source is EditMaterialsViewController{
+            
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         populateData()
         // Do any additional setup after loading the view.
         collectionView.layer.cornerRadius = 8
@@ -35,8 +41,11 @@ class MaterialsViewController: UIViewController {
         collectionView.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.16).cgColor
         collectionView.layer.shadowOpacity = 1
         collectionView.layer.shadowRadius = 4
-
     }
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        populateData()
+//    }
     
     func populateData(){
         BaseProgramDataManager.getBaseProgram { (baseProgramModel) in
@@ -79,7 +88,6 @@ extension MaterialsViewController: UICollectionViewDelegate, UICollectionViewDat
         let skills = skillData[subsID]
 
         if let unwrapSkills = skills{
-            print(section)
             print(unwrapSkills.count)
             return unwrapSkills.count
         }
@@ -105,7 +113,8 @@ extension MaterialsViewController: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        if let baseProgram =  skillData[baseProgram[indexPath.section].baseProgramRecordID]{
+        if let baseProgram = skillData[baseProgram[indexPath.section].baseProgramRecordID]{
+            self.selectedBaseProgram = self.baseProgram[indexPath.section].baseProgramTitle
             self.selectedSkillRecordID = baseProgram[indexPath.row].skillRecordID
             self.selectedSkillTitle = baseProgram[indexPath.row].skillTitle
             performSegue(withIdentifier: "showActivity", sender: self)
@@ -125,6 +134,7 @@ extension MaterialsViewController: UICollectionViewDelegate, UICollectionViewDat
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showActivity" {
             let destination = segue.destination as! ActivityViewController
+            destination.baseProgram = selectedBaseProgram
             destination.skillRecordID = selectedSkillRecordID
             destination.skillTitle = selectedSkillTitle
         }
@@ -136,22 +146,6 @@ extension MaterialsViewController: UICollectionViewDelegate, UICollectionViewDat
             
             headerView.headerTitle.text = baseProgram[indexPath.section].baseProgramTitle
             return headerView
-            
-//            if let baseProgram = skillData[baseProgram[indexPath.section].baseProgramRecordID]{
-//                headerView.headerTitle.text = baseProgram[indexPath.row].baseProgramTitle
-//            }else{
-//                headerView.headerTitle.text = ""
-//            }
-//
-    
-//
-//            if indexPath.section == 0 {
-//                headerView.headerTitle.text = programCategory[indexPath.row]
-//                return headerView
-//            } else {
-//                headerView.headerTitle.text = programCategory[indexPath.row]
-//                return headerView
-//            }
         }
         fatalError()
     }
