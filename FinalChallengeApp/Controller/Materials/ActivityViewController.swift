@@ -16,6 +16,7 @@ class ActivityViewController: UIViewController {
     
     var skillRecordID = CKRecord.ID()
     var skillTitle = String()
+    var baseProgram = String()
     var activities = [ActivityCKModel]()
     let activityTaskArray = ["Play Doh", "Stomp Feet", "Point to Body Parts"]
     
@@ -31,6 +32,11 @@ class ActivityViewController: UIViewController {
     func populateData(){
         ActivityDataManager.getActivity(skillRecordID: skillRecordID) { (activityModel) in
             self.activities = activityModel
+            self.activities .forEach { (activity) in
+                activity.skillTitle = self.skillTitle
+                activity.baseProgram = self.baseProgram
+            }
+            
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -94,9 +100,25 @@ extension ActivityViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 0 {
             performSegue(withIdentifier: "showDeletePage", sender: self)
         } else if indexPath.section == 1 {
-            performSegue(withIdentifier: "showActivityDetail", sender: self)
+            performSegue(withIdentifier: "showActivityDetail", sender: indexPath.row)
         } else if indexPath.section == 2{
             performSegue(withIdentifier: "showAddActivity", sender: self)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showActivityDetail" {
+            let row = sender as! Int
+            let destination = segue.destination as! ActivityDetailViewController
+            destination.activityTitle = activities[row].activityTitle
+            destination.activityDesc = activities[row].activityDesc
+            destination.activityRecordID = activities[row].activityRecordID
+            destination.activityMedia = activities[row].activityMedia
+            destination.activityPrompts = activities[row].activityPrompt
+            destination.activityTips = activities[row].activityTips
+            destination.activitySkill = skillTitle
+            destination.activityProgram = baseProgram
+            
         }
     }
     

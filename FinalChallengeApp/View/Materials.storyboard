@@ -376,7 +376,7 @@
         <!--Acivity Detail-->
         <scene sceneID="hsj-jK-tTf">
             <objects>
-                <viewController id="gB7-BO-Vcb" sceneMemberID="viewController">
+                <viewController id="gB7-BO-Vcb" customClass="ActivityDetailViewController" customModule="FinalChallengeApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TSX-5b-5vV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -536,6 +536,15 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="activityDescLabel" destination="nTP-1O-311" id="qT2-fl-gaE"/>
+                        <outlet property="activityMediaLabel" destination="UnF-sF-YY8" id="Pk9-qg-2yY"/>
+                        <outlet property="activityProgramLabel" destination="e2o-Zo-6iL" id="bU6-3e-Sxi"/>
+                        <outlet property="activityPromptsLabel" destination="b8c-Fb-cmS" id="4ru-Te-eKi"/>
+                        <outlet property="activitySkillLabel" destination="Ea3-jg-NBH" id="yht-xF-Dzm"/>
+                        <outlet property="activityTipsLabel" destination="6C4-Uy-5Oe" id="dDt-e4-UyD"/>
+                        <outlet property="activityTitleLabel" destination="aJr-Ph-02q" id="vhw-dW-WTQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H5h-O3-yNy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -679,7 +688,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="tBG-E5-9w4">
                                 <rect key="frame" x="16" y="104" width="382" height="742"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CD0-M3-55e">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CD0-M3-55e">
                                     <size key="itemSize" width="120" height="80"/>
                                     <size key="headerReferenceSize" width="50" height="50"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -767,14 +776,20 @@
                         <viewLayoutGuide key="safeArea" id="hVz-Ar-imm"/>
                     </view>
                     <navigationItem key="navigationItem" id="g0u-MA-GE3">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="hgv-E2-w05"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="hgv-E2-w05">
+                            <connections>
+                                <action selector="doneButtonTapped:" destination="Xpo-RV-2Og" id="cif-mE-vzC"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="tBG-E5-9w4" id="Zsn-Tl-Lpz"/>
                         <segue destination="Ey5-5w-Z8j" kind="presentation" identifier="showAddSkill" id="CTx-BJ-VB4"/>
+                        <segue destination="Gx7-fu-YbS" kind="unwind" identifier="backToMaterialsFromEditMaterials" unwindAction="unwindFromEditMaterials:" id="Xth-OF-Tvy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GdA-oU-Jwe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="Gx7-fu-YbS" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3232" y="-25"/>
         </scene>
@@ -793,7 +808,18 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gE9-Qy-om5">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                                 <items>
-                                    <navigationItem title="Add New Skill" id="Rgf-Mw-9AG"/>
+                                    <navigationItem title="Add New Skill" id="Rgf-Mw-9AG">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Xvd-tc-Zq1">
+                                            <connections>
+                                                <action selector="cancelButtonTapped:" destination="Ey5-5w-Z8j" id="ecc-aJ-WV2"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="WTP-cf-oqC">
+                                            <connections>
+                                                <action selector="doneButtonTapped:" destination="Ey5-5w-Z8j" id="7S7-0f-JJT"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="vvC-zd-xP9">
@@ -827,9 +853,11 @@
                     <connections>
                         <outlet property="backgroundImageView" destination="U28-Je-LhS" id="uVZ-nb-Oek"/>
                         <outlet property="skillTitleTextView" destination="vvC-zd-xP9" id="0iN-Ga-Zhy"/>
+                        <segue destination="cka-b2-kju" kind="unwind" identifier="backToEditMaterialsFromAddNewSkill" unwindAction="unwindFromAddNewSkill:" id="wK6-Ao-tdi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="znd-GT-ysd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="cka-b2-kju" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4377" y="-25"/>
         </scene>

@@ -21,12 +21,12 @@ class EditProfileViewController: UIViewController {
     var imagePicker: ImagePicker!
     var newData = [String]()
     
-    override func prepare(for segue:
-        UIStoryboardSegue, sender: Any?) {
-        // ini unwind segue ke profilevc
-        test = "coba save"
-        saveEditedProfile()
-    }
+//    override func prepare(for segue:
+//        UIStoryboardSegue, sender: Any?) {
+//        // ini unwind segue ke profilevc
+//        test = "coba save"
+//        saveEditedProfile()
+//    }
 
     
     @IBAction func editPhotoButton(_ sender: Any) {
@@ -45,14 +45,17 @@ class EditProfileViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    func saveEditedProfile(){
+    @IBAction func doneButtonTapped(_ sender: Any) {
         let therapistRecordID = String(UserDefaults.standard.string(forKey: "userID")!)
         newData.append(String(nameTextField.text!))
         newData.append(String(institutionTextField.text!))
         newData.append(String(addressTextField.text!))
         ProfileTherapistCKModel.getTherapistData(userRef:therapistRecordID) { profileData in
             SaveEditedProfile.saveProfile(newData: self.newData, newProfilePicture: self.newProfilePicture!, profileData: profileData.therapistRecordID) { (success) in
-                print(success)
+                if success {
+                    self.performSegue(withIdentifier: "backToProfile", sender: nil)
+                }
+//                print(success)
             }
         }
     }

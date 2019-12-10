@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import CloudKit
 
 class NewSkillViewController: UIViewController, UITextViewDelegate {
+    
+    var baseProgramRecordID = CKRecord.ID()
     
     @IBOutlet weak var backgroundImageView: UIImageView!
     
@@ -30,6 +33,25 @@ class NewSkillViewController: UIViewController, UITextViewDelegate {
         skillTitleTextView.textContainer.lineBreakMode = .byClipping
         
     }
+    
+    @IBAction func doneButtonTapped(_ sender: Any) {
+        let newSkillTitle = skillTitleTextView.text
+        if !(newSkillTitle == "Create New Skill" || newSkillTitle == ""){
+            SkillDataManager.saveNewSkill(baseProgramRecordID: baseProgramRecordID, skillTitle: newSkillTitle!) { (skillRecordID, skillTitle) in
+                if skillRecordID != nil {
+                    DispatchQueue.main.async {
+                        self.performSegue(withIdentifier: "backToEditMaterialsFromAddNewSkill", sender: nil)
+                    }
+                }
+            }
+        }
+    }
+    
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+        
     
     override func viewDidLayoutSubviews() {
         skillTitleTextView.centerVertically()
