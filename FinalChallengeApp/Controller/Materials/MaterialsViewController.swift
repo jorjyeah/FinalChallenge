@@ -14,7 +14,7 @@ class MaterialsViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    let grossMotorArray = ["TO IMPROVE MUSCLE TONE, STRENGTH, ENDURANCE", "TO IMPROVE BALANCE", "TO IMPROVE UPPER / LOWER LIMB COORDINATION", "TO IMPROVE VISUAL MOTOR INTEGRATION"]
+    let grossMotorArray = ["TO IMPROVE MUSCLE TONE"]
     let fineMotorArray = ["GRASP PATTERN SKILLS", "BILLATERAL COORDINATION", "MANIPULATION SKILLS", "EYE - HAND COORDINATION", "BEHAVIOUR MODIFICATION TECHNIQUE"]
     let programCategory = ["Gross Motor Skill", "Fine Motor Skill"]
     
