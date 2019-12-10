@@ -641,6 +641,7 @@
                         <outlet property="selectedImageView" destination="H5r-nS-TLx" id="o1E-3z-ylO"/>
                         <outlet property="tableView" destination="YQR-Eg-8mE" id="1Ns-SY-7U5"/>
                         <segue destination="rNn-XN-T2g" kind="presentation" identifier="showSummaryViewDetail" id="OM4-Ty-hmZ"/>
+                        <segue destination="5eo-9j-gaP" kind="presentation" identifier="showRecordView" id="euj-EB-M3D"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r87-Nm-aKv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -829,20 +830,47 @@
             </objects>
             <point key="canvasLocation" x="3741" y="822"/>
         </scene>
-        <!--View Controller-->
+        <!--Audio Recorder View Controller-->
         <scene sceneID="x8y-kl-UNw">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mdK-bu-NBZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <viewController id="5eo-9j-gaP" sceneMemberID="viewController">
+                <viewController id="5eo-9j-gaP" customClass="AudioRecorderViewController" customModule="FinalChallengeApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d6u-Wi-NGM">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cx5-4k-5Ei">
+                                <rect key="frame" x="140" y="362" width="134" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Play"/>
+                                <connections>
+                                    <action selector="playAct:" destination="5eo-9j-gaP" eventType="touchUpInside" id="3m3-17-ru5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8L5-iX-7Jf">
+                                <rect key="frame" x="132" y="171" width="150" height="150"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="R">
+                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="recordAct:" destination="5eo-9j-gaP" eventType="touchUpInside" id="zBT-qb-jXd"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <viewLayoutGuide key="safeArea" id="f4n-YA-qtv"/>
                     </view>
+                    <connections>
+                        <outlet property="playButton" destination="Cx5-4k-5Ei" id="bVe-gj-UNj"/>
+                        <outlet property="recordButton" destination="8L5-iX-7Jf" id="gvz-3L-494"/>
+                    </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="4704" y="563"/>
+            <point key="canvasLocation" x="4702.898550724638" y="344.86607142857139"/>
         </scene>
         <!--Students-->
         <scene sceneID="hZm-IH-neX">
@@ -1060,7 +1088,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fjj-qa-o6G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4664" y="-106"/>
+            <point key="canvasLocation" x="4703" y="-388"/>
         </scene>
     </scenes>
     <resources>

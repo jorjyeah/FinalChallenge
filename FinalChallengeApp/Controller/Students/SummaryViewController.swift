@@ -8,8 +8,9 @@
 
 import UIKit
 import CloudKit
+import AVFoundation
 
-class SummaryViewController: UIViewController {
+class SummaryViewController: UIViewController, AVAudioPlayerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -26,6 +27,7 @@ class SummaryViewController: UIViewController {
     
     
     var imagePicker = UIImagePickerController()
+    var audioFilename = URL(string: "")
     
     //yang selected ditampung kesini
     var selectedImage = UIImage(named: "Student Photo Default")
@@ -38,6 +40,9 @@ class SummaryViewController: UIViewController {
         attachmentView.isHidden = true
     }
     
+    
+    //ini handlernya image attachment
+    
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
         print("tinggal masuk ke gallery")
         _ = tapGestureRecognizer.view as! UIImageView
@@ -47,6 +52,14 @@ class SummaryViewController: UIViewController {
         self.present(imagePicker, animated: true, completion: nil)
         
         print("udah masuk ke gallery")
+    }
+    
+    
+    
+    //ini handlernya audio attachment
+    @objc func recordTapped(tapGestureRecognizer: UITapGestureRecognizer) {
+        _ = tapGestureRecognizer.view as! UIImageView
+        self.performSegue(withIdentifier: "showRecordView", sender: self)
     }
     
     func showReportView() {
@@ -178,10 +191,15 @@ extension SummaryViewController: UITableViewDataSource, UITableViewDelegate, UIT
             let cell = tableView.dequeueReusableCell(withIdentifier: "attachmentCell", for: indexPath) as! AttachmentTableViewCell
             
             let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+            let audioTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(recordTapped(tapGestureRecognizer:)))
             
+            //ini untuk action image
             cell.imageAttachment.isUserInteractionEnabled = true
             cell.imageAttachment.addGestureRecognizer(tapGestureRecognizer)
             
+            //ini untuk action audio
+            cell.audioAttachment.isUserInteractionEnabled = true
+            cell.audioAttachment.addGestureRecognizer(audioTapRecognizer)
 
             return cell
         }

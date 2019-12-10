@@ -45,6 +45,7 @@
 		68DEA8632399382500FC59D3 /* NewSkillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DEA8622399382500FC59D3 /* NewSkillViewController.swift */; };
 		68DEA865239A209500FC59D3 /* DeleteSkillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DEA864239A209500FC59D3 /* DeleteSkillViewController.swift */; };
 		68FEA198239E614B00EF30C7 /* AttachmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68FEA197239E614B00EF30C7 /* AttachmentTableViewCell.swift */; };
+		68FEA19C239F857300EF30C7 /* AudioRecorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68FEA19B239F857300EF30C7 /* AudioRecorderViewController.swift */; };
 		B906746D237C133E00671632 /* Students.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B906746B237C133E00671632 /* Students.storyboard */; };
 		B906746F237C135300671632 /* Materials.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B906746E237C135300671632 /* Materials.storyboard */; };
 		B9067472237C136400671632 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9067470237C136400671632 /* Profile.storyboard */; };
@@ -138,6 +139,7 @@
 		68DEA8622399382500FC59D3 /* NewSkillViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSkillViewController.swift; sourceTree = "<group>"; };
 		68DEA864239A209500FC59D3 /* DeleteSkillViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteSkillViewController.swift; sourceTree = "<group>"; };
 		68FEA197239E614B00EF30C7 /* AttachmentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentTableViewCell.swift; sourceTree = "<group>"; };
+		68FEA19B239F857300EF30C7 /* AudioRecorderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorderViewController.swift; sourceTree = "<group>"; };
 		B906746C237C133E00671632 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = FinalChallengeApp/Base.lproj/Students.storyboard; sourceTree = "<group>"; };
 		B906746E237C135300671632 /* Materials.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Materials.storyboard; sourceTree = "<group>"; };
 		B9067471237C136400671632 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = FinalChallengeApp/Base.lproj/Profile.storyboard; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 				68A570E32387C586002A3014 /* SummaryViewController.swift */,
 				687E7D5A2390D21500331EAE /* AddStudentViewController.swift */,
 				687E7D5C2390E3AB00331EAE /* NewStudentPreviewViewController.swift */,
+				68FEA19B239F857300EF30C7 /* AudioRecorderViewController.swift */,
 			);
 			path = Students;
 			sourceTree = "<group>";
@@ -627,6 +630,7 @@
 				B906747B237C13E800671632 /* StudentsViewController.swift in Sources */,
 				687E7D87239651D900331EAE /* HeaderEditCollectionReusableView.swift in Sources */,
 				B91BD49C237980010015C934 /* SceneDelegate.swift in Sources */,
+				68FEA19C239F857300EF30C7 /* AudioRecorderViewController.swift in Sources */,
 				68A57101238B6EBD002A3014 /* ParentsDetailViewController.swift in Sources */,
 				B9D1302C23969E1100A4F8B2 /* DetailedReportDataManager.swift in Sources */,
 				68A570D12384FFAD002A3014 /* ViewDetailReportViewController.swift in Sources */,
