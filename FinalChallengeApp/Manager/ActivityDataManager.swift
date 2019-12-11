@@ -14,7 +14,6 @@ class ActivityDataManager{
         let therapistRecordID = String(UserDefaults.standard.string(forKey: "userID")!)
         let creator = CKRecord.Reference(recordID: CKRecord.ID(recordName: therapistRecordID), action: CKRecord_Reference_Action.none)
             
-    
         let predicate = NSPredicate(format: "creatorUserRecordID == %@ AND default == 1 AND skillTitle == %@", creator, skillRecordID)
 //        let predicate = NSPredicate(value: true)
         
@@ -34,5 +33,15 @@ class ActivityDataManager{
         }
     }
     
+    class func addNewActivity(activityName : String, activityDesc : String, activityMedia : String, activityTips : String, activityPrompts : String){
+        let record = CKRecord(recordType: "Activity")
+        let database = CKContainer.default().publicCloudDatabase
+        
+//        record.setObject(<#T##object: __CKRecordObjCValue?##__CKRecordObjCValue?#>, forKey: <#T##CKRecord.FieldKey#>)
+        record.setValue(activityName, forKey: "activityTitle")
+        record.setValue(activityDesc, forKey: "activityDesc")
+        record.setValue(activityMedia, forKey: "activityMedia")
+        record.setValue(activityTips, forKey: "activityTips")
+    }
     
 }

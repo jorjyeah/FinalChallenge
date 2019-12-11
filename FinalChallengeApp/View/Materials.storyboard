@@ -363,7 +363,11 @@
                         <viewLayoutGuide key="safeArea" id="dHQ-AB-LE2"/>
                     </view>
                     <navigationItem key="navigationItem" title="New Activity" id="url-1g-P6b">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="tuV-OF-I2g"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="tuV-OF-I2g">
+                            <connections>
+                                <action selector="doneButtonTapped:" destination="5wo-UB-jX5" id="bWP-Hp-SUk"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="cL1-Cv-bBd" id="Rid-gy-QjS"/>

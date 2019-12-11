@@ -14,7 +14,8 @@ class CheckBoxTableViewCell: UITableViewCell {
     
     @IBOutlet weak var promptLabel: UILabel!
     
-    
+    var checked : UIImage = UIImage(named: "Checked box")!
+    var unchecked : UIImage = UIImage(named: "Unchecked box")!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,7 +23,7 @@ class CheckBoxTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        checkboxImage.image = selected ? checked : unchecked
         // Configure the view for the selected state
     }
 
