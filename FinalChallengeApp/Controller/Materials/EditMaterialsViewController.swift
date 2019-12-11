@@ -44,7 +44,7 @@ class EditMaterialsViewController: UIViewController {
     }
     
     func populateData(){
-        BaseProgramDataManager.getBaseProgram { (baseProgramModel) in
+        BaseProgramDataManager.getAllBaseProgram { (baseProgramModel) in
             self.baseProgram = baseProgramModel
             self.newbaseProgram = baseProgramModel
             SkillDataManager.getAllSkill { (skillModel) in
