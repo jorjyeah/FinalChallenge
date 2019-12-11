@@ -56,19 +56,24 @@ class DeleteSkillViewController: UIViewController, UITextViewDelegate {
         }
     }
     
-//    @IBAction func deleteButtonTapped(_ sender: Any) {
-//
-//        let alert = UIAlertController(title: "Delete This Skill?", message: "All the activities will also be deleted", preferredStyle: .alert)
-//        let OKAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
-//            self.performSegue(withIdentifier: "unwindToMaterialVC", sender: self)
-//        })
-//        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil)
+    
+    @IBAction func deleteButtonTapped(_ sender: Any) {
+        let alert = UIAlertController(title: "Delete This Skill?", message: "All the activities will also be deleted", preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
+            
+            //unwind segue ke materialVC
+            //self.performSegue(withIdentifier: "unwindToMaterialVC", sender: self)
+            
+            
+        })
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil)
         
         
-//        alert.addAction(OKAction)
-//        alert.addAction(cancelAction)
-//        self.present(alert, animated: true, completion: nil)
-//    }
+        alert.addAction(OKAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+        
+    }
     
     
 }
