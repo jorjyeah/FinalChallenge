@@ -14,7 +14,7 @@ class MaterialsViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    let grossMotorArray = ["TO IMPROVE MUSCLE TONE, STRENGTH, ENDURANCE", "TO IMPROVE BALANCE", "TO IMPROVE UPPER / LOWER LIMB COORDINATION", "TO IMPROVE VISUAL MOTOR INTEGRATION"]
+    let grossMotorArray = ["TO IMPROVE MUSCLE TONE"]
     let fineMotorArray = ["GRASP PATTERN SKILLS", "BILLATERAL COORDINATION", "MANIPULATION SKILLS", "EYE - HAND COORDINATION", "BEHAVIOUR MODIFICATION TECHNIQUE"]
     let programCategory = ["Gross Motor Skill", "Fine Motor Skill"]
     
@@ -103,6 +103,7 @@ extension MaterialsViewController: UICollectionViewDelegate, UICollectionViewDat
         cell.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.16).cgColor
         cell.layer.shadowOpacity = 1
         cell.layer.shadowRadius = 4
+        
         if let baseProgram =  skillData[baseProgram[indexPath.section].baseProgramRecordID]{
             cell.programLabel.text = "\(baseProgram[indexPath.row].skillTitle) + \(indexPath.row)"
         }else{

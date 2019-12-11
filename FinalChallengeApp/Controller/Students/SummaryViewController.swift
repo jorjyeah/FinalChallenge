@@ -8,11 +8,18 @@
 
 import UIKit
 import CloudKit
+import AVFoundation
 
-class SummaryViewController: UIViewController {
-    
+class SummaryViewController: UIViewController, AVAudioPlayerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var selectedImageView: UIImageView!
+    
+    @IBOutlet weak var attachmentView: UIView!
+    
+    @IBOutlet weak var playButton: UIButton!
+    
     
     let saveReport = SaveNewReport()
     var selectedActivity = [AddReportModelCK]()
@@ -21,8 +28,47 @@ class SummaryViewController: UIViewController {
     var notes = String()
     var test : String!
     
+    
+    var imagePicker = UIImagePickerController()
+    
+    //yang selected ditampung kesini
+    var selectedImage = UIImage(named: "Student Photo Default")
+    
+    //audio
+    var fileName: String = "audioFile.m4a"
+    var audioFilename = URL(string: "")
+    var audioPlayer: AVAudioPlayer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let recordingPlay = UIImage(named: "Recordings Play")?.withRenderingMode(.alwaysOriginal)
+        
+        attachmentView.isHidden = true
+        playButton.isHidden = true
+        playButton.setImage(recordingPlay, for: .normal)
+    }
+    
+    
+    //ini handlernya image attachment
+    
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
+        print("tinggal masuk ke gallery")
+        _ = tapGestureRecognizer.view as! UIImageView
+        imagePicker.delegate = self
+        imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
+        imagePicker.allowsEditing = true
+        self.present(imagePicker, animated: true, completion: nil)
+        
+        print("udah masuk ke gallery")
+    }
+    
+    
+    
+    //ini handlernya audio attachment
+    @objc func recordTapped(tapGestureRecognizer: UITapGestureRecognizer) {
+        _ = tapGestureRecognizer.view as! UIImageView
+        self.performSegue(withIdentifier: "showRecordView", sender: self)
     }
     
     func showReportView() {
@@ -41,8 +87,56 @@ class SummaryViewController: UIViewController {
             }
         }
     }
-
-
+    
+    
+    
+    //play audio
+    
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
+    
+    func setupPlayer(){
+        //let audioFileName = getDocumentsDirectory().appendingPathComponent(fileName)
+        audioFilename = getDocumentsDirectory().appendingPathComponent(fileName)
+        
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: audioFilename!)
+            audioPlayer.delegate = self
+            audioPlayer.prepareToPlay()
+            audioPlayer.volume = 1.0
+        } catch {
+            print(error)
+        }
+    }
+    
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        let recordingPlay = UIImage(named: "Recordings Play")?.withRenderingMode(.alwaysOriginal)
+        
+        playButton.setTitle("Play", for: .normal)
+        playButton.setImage(recordingPlay, for: .normal)
+    }
+    
+    @IBAction func playAct(_ sender: Any) {
+        let recordingPlay = UIImage(named: "Recordings Play")?.withRenderingMode(.alwaysOriginal)
+        let recordingPause = UIImage(named: "Recordings Pause")?.withRenderingMode(.alwaysOriginal)
+        
+        if playButton.titleLabel?.text == "Play" {
+            playButton.setTitle("Stop", for: .normal)
+            setupPlayer()
+            audioPlayer.play()
+            //playButton.setImage(UIImage(named: "Recordings Pause"), for: .normal)
+            playButton.setImage(recordingPause, for: .normal)
+        } else {
+            audioPlayer.stop()
+            playButton.setTitle("Play", for: .normal)
+            //playButton.setImage(UIImage(named: "Recordings Play"), for: .normal)
+            playButton.setImage(recordingPlay, for: .normal)
+            
+        }
+    }
+    
 }
 
 
@@ -95,7 +189,7 @@ extension SummaryViewController: UITableViewDataSource, UITableViewDelegate, UIT
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -104,8 +198,10 @@ extension SummaryViewController: UITableViewDataSource, UITableViewDelegate, UIT
             formatter.dateFormat = "EEEE, d MMM yyyy"
             return "Activities on \(formatter.string(from: Date()))"
         }
-        else {
+        else if section == 1{
             return "Notes"
+        } else {
+            return ""
         }
     }
     
@@ -121,14 +217,16 @@ extension SummaryViewController: UITableViewDataSource, UITableViewDelegate, UIT
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section  == 0 {
             return 128
-        }
-        else {
+        } else if indexPath.section == 1 {
             return 220
+        } else {
+            return 55
         }
     }
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         if indexPath.section == 0 {
             var prompts = String()
             selectedActivity[indexPath.row].activityPrompt .forEach { (prompt) in
@@ -141,21 +239,40 @@ extension SummaryViewController: UITableViewDataSource, UITableViewDelegate, UIT
             
             return  cell
             
-        } else {
+        } else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "notesCell", for: indexPath) as!  NotesSummaryTableViewCell
-            cell.notesTextField.text = "Write your notes about today's activity"
-            cell.notesTextField.textColor = UIColor.lightGray
-            cell.notesTextField.becomeFirstResponder()
-            cell.notesTextField.selectedTextRange = cell.notesTextField.textRange(from: cell.notesTextField.beginningOfDocument, to: cell.notesTextField.beginningOfDocument)
+            cell.notesTextView.text = "Write your notes about today's activity"
+            cell.notesTextView.textColor = UIColor.lightGray
+            cell.notesTextView.becomeFirstResponder()
+            cell.notesTextView.selectedTextRange = cell.notesTextView.textRange(from: cell.notesTextView.beginningOfDocument, to: cell.notesTextView.beginningOfDocument)
             return  cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "attachmentCell", for: indexPath) as! AttachmentTableViewCell
+            
+            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+            let audioTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(recordTapped(tapGestureRecognizer:)))
+            
+            //ini untuk action image
+            cell.imageAttachment.isUserInteractionEnabled = true
+            cell.imageAttachment.addGestureRecognizer(tapGestureRecognizer)
+            
+            //ini untuk action audio
+            cell.audioAttachment.isUserInteractionEnabled = true
+            cell.audioAttachment.addGestureRecognizer(audioTapRecognizer)
+
+            return cell
         }
-        
     }
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             performSegue(withIdentifier: "showSummaryViewDetail", sender: indexPath.row)
+        } else if indexPath.section == 2 {
+            //sementara kalo tap attachment cell nya bakal muncul view
+            attachmentView.isHidden = false
+        } else {
+            print("Ini textview nya")
         }
     }
     
@@ -177,8 +294,33 @@ extension SummaryViewController: UITableViewDataSource, UITableViewDelegate, UIT
             destination?.skill = selectedActivity[row].skillTitle.recordID
             destination?.program = CKRecord.ID(recordName: selectedActivity[row].baseProgramTitle)
         } else {
-            test = "coba balik"
-            saveTherapySession()
+                    test = "coba balik"
+                    saveTherapySession()
+                }
+        
+        
+        if segue.identifier == "showRecordView" {
+            let destination = segue.destination as? AudioRecorderViewController
+            destination?.delegate = self
         }
+    }
+}
+
+extension SummaryViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            selectedImageView.image = image
+        }
+        print("udah pilih image nih")
+        dismiss(animated: true, completion: nil)
+        attachmentView.isHidden = false
+    }
+    
+}
+
+extension SummaryViewController: AudioRecorderViewControllerDelegate {
+    func sendBack(string: URL) {
+        attachmentView.isHidden = false
+        playButton.isHidden = false
     }
 }

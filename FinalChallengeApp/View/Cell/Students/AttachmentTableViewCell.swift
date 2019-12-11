@@ -1,15 +1,19 @@
 //
-//  AttachmentsTableViewCell.swift
+//  AttachmentTableViewCell.swift
 //  FinalChallengeApp
 //
-//  Created by Ni Wayan Bianka Aristania on 20/11/19.
+//  Created by Ni Wayan Bianka Aristania on 09/12/19.
 //  Copyright © 2019 George Joseph Kristian. All rights reserved.
 //
 
 import UIKit
 
-class AttachmentsTableViewCell: UITableViewCell {
-
+class AttachmentTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var imageAttachment: UIImageView!
+    
+    @IBOutlet weak var audioAttachment: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
