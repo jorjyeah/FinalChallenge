@@ -18,8 +18,6 @@ class AudioRecorderViewController: UIViewController, AVAudioRecorderDelegate, AV
     @IBOutlet weak var recordButton: UIButton!
     
     
-    @IBOutlet weak var playButton: UIButton!
-    
     var audioRecorder: AVAudioRecorder!
     var audioPlayer: AVAudioPlayer!
     var audioFilename = URL(string: "")
@@ -32,9 +30,7 @@ class AudioRecorderViewController: UIViewController, AVAudioRecorderDelegate, AV
         //recordButton.setImage(UIImage(named: "play.png"), for: .normal)
         
         recordButton.setImage(UIImage(named: "Record"), for: .normal)
-        
         setupRecorder()
-        playButton.isEnabled = false
 
     }
     
@@ -74,14 +70,9 @@ class AudioRecorderViewController: UIViewController, AVAudioRecorderDelegate, AV
         }
     }
     
-    func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
-        playButton.isEnabled = true
-    }
-    
-    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        recordButton.isEnabled = true
-        playButton.setTitle("Play", for: .normal)
-    }
+//    func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
+//        playButton.isEnabled = true
+//    }
        
     @IBAction func recordAct(_ sender: Any) {
         //recordButton.setImage(UIImage(named: "play.png"), for: .normal)
@@ -89,29 +80,14 @@ class AudioRecorderViewController: UIViewController, AVAudioRecorderDelegate, AV
             audioRecorder.record()
             recordButton.setTitle("S", for: .normal)
             recordButton.setImage(UIImage(named: "Stop Record"), for: .normal)
-            playButton.isEnabled = false
         } else {
             audioRecorder.stop()
             recordButton.setTitle("R", for: .normal)
             recordButton.setImage(UIImage(named: "Record"), for: .normal)
-            playButton.isEnabled = false
             self.dismiss(animated: true) {
                 self.delegate?.sendBack(string: self.audioFilename!)
             }
             
-        }
-    }
-
-    @IBAction func playAct(_ sender: Any) {
-        if playButton.titleLabel?.text == "Play" {
-            playButton.setTitle("Stop", for: .normal)
-            recordButton.isEnabled = false
-            setupPlayer()
-            audioPlayer.play()
-        } else {
-            audioPlayer.stop()
-            playButton.setTitle("Play", for: .normal)
-            recordButton.isEnabled = true
         }
     }
     

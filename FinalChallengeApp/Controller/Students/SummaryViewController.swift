@@ -39,11 +39,14 @@ class SummaryViewController: UIViewController, AVAudioPlayerDelegate {
     var audioFilename = URL(string: "")
     var audioPlayer: AVAudioPlayer!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let recordingPlay = UIImage(named: "Recordings Play")?.withRenderingMode(.alwaysOriginal)
+        
         attachmentView.isHidden = true
+        playButton.isHidden = true
+        playButton.setImage(recordingPlay, for: .normal)
     }
     
     
@@ -89,7 +92,6 @@ class SummaryViewController: UIViewController, AVAudioPlayerDelegate {
     
     //play audio
     
-    
     func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return paths[0]
@@ -110,19 +112,28 @@ class SummaryViewController: UIViewController, AVAudioPlayerDelegate {
     }
     
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        let recordingPlay = UIImage(named: "Recordings Play")?.withRenderingMode(.alwaysOriginal)
+        
         playButton.setTitle("Play", for: .normal)
+        playButton.setImage(recordingPlay, for: .normal)
     }
     
     @IBAction func playAct(_ sender: Any) {
+        let recordingPlay = UIImage(named: "Recordings Play")?.withRenderingMode(.alwaysOriginal)
+        let recordingPause = UIImage(named: "Recordings Pause")?.withRenderingMode(.alwaysOriginal)
+        
         if playButton.titleLabel?.text == "Play" {
             playButton.setTitle("Stop", for: .normal)
-            //recordButton.isEnabled = false
             setupPlayer()
             audioPlayer.play()
+            //playButton.setImage(UIImage(named: "Recordings Pause"), for: .normal)
+            playButton.setImage(recordingPause, for: .normal)
         } else {
             audioPlayer.stop()
             playButton.setTitle("Play", for: .normal)
-            //recordButton.isEnabled = true
+            //playButton.setImage(UIImage(named: "Recordings Play"), for: .normal)
+            playButton.setImage(recordingPlay, for: .normal)
+            
         }
     }
     
@@ -310,5 +321,6 @@ extension SummaryViewController: UIImagePickerControllerDelegate, UINavigationCo
 extension SummaryViewController: AudioRecorderViewControllerDelegate {
     func sendBack(string: URL) {
         attachmentView.isHidden = false
+        playButton.isHidden = false
     }
 }

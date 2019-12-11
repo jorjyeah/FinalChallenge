@@ -103,6 +103,7 @@ extension MaterialsViewController: UICollectionViewDelegate, UICollectionViewDat
         cell.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.16).cgColor
         cell.layer.shadowOpacity = 1
         cell.layer.shadowRadius = 4
+        
         if let baseProgram =  skillData[baseProgram[indexPath.section].baseProgramRecordID]{
             cell.programLabel.text = "\(baseProgram[indexPath.row].skillTitle) + \(indexPath.row)"
         }else{
