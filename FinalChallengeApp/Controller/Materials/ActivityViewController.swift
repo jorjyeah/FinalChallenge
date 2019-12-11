@@ -13,6 +13,14 @@ class ActivityViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBAction func unwindFromAddNewActivity(_ sender:UIStoryboardSegue){
+        // bikin function dulu buat unwind, nanti di exit di page summary
+        if sender.source is NewActivityViewController{
+//            if let senderVC = sender.source as? NewActivityViewController{
+//                print(senderVC.test)
+//            }
+        }
+    }
     
     var skillRecordID = CKRecord.ID()
     var skillTitle = String()
@@ -30,7 +38,7 @@ class ActivityViewController: UIViewController {
     }
     
     func populateData(){
-        ActivityDataManager.getActivity(skillRecordID: skillRecordID) { (activityModel) in
+        ActivityDataManager.getAllActivity(skillRecordID: skillRecordID) { (activityModel) in
             self.activities = activityModel
             self.activities .forEach { (activity) in
                 activity.skillTitle = self.skillTitle
@@ -118,7 +126,9 @@ extension ActivityViewController: UITableViewDelegate, UITableViewDataSource {
             destination.activityTips = activities[row].activityTips
             destination.activitySkill = skillTitle
             destination.activityProgram = baseProgram
-            
+        } else if segue.identifier == "showAddActivity" {
+            let destination = segue.destination as! NewActivityViewController
+            destination.skillRecrodID = skillRecordID
         }
     }
     

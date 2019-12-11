@@ -35,20 +35,6 @@ class SkillDataManager{
         }
     }
     
-    class func getAllSkill(onComplete : @escaping ([SkillCKModel]) -> Void){
-        var skillsModel = [SkillCKModel]()
-        print("masuk getall skill")
-        getAllSkillDefault { (skillModelDef) in
-            print("masuk getall skill default")
-            skillsModel = skillModelDef
-            getAllSkillCreator { (skillModelCreator) in
-                print("masuk getall skill Creator")
-                skillsModel.append(contentsOf: skillModelCreator)
-                onComplete(skillsModel)
-            }
-        }
-    }
-    
     class func getAllSkillDefault(onComplete : @escaping ([SkillCKModel]) -> Void){
         var skillModel = [SkillCKModel]()
         
@@ -73,6 +59,20 @@ class SkillDataManager{
         }
     }
     
+    
+    class func getAllSkill(onComplete : @escaping ([SkillCKModel]) -> Void){
+        var skillsModel = [SkillCKModel]()
+        print("masuk getall skill")
+        getAllSkillDefault { (skillModelDef) in
+            print("masuk getall skill default")
+            skillsModel = skillModelDef
+            getAllSkillCreator { (skillModelCreator) in
+                print("masuk getall skill Creator")
+                skillsModel.append(contentsOf: skillModelCreator)
+                onComplete(skillsModel)
+            }
+        }
+    }
     
     
     
