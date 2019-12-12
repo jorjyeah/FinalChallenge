@@ -190,6 +190,14 @@ class SummaryViewController: UIViewController, AVAudioPlayerDelegate {
 }
 
 
+
+
+
+
+
+
+
+//  tableview
 extension SummaryViewController: UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
@@ -331,6 +339,7 @@ extension SummaryViewController: UIImagePickerControllerDelegate, UINavigationCo
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             selectedImageView.image = image
+            selectedImage = image
         }
         print("udah pilih image nih")
         dismiss(animated: true, completion: nil)
