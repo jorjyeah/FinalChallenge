@@ -12,6 +12,9 @@ import CloudKit
 class EditMaterialsViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    @IBOutlet weak var newCategoryButton: UIButton!
+    
 
     var skillData = [CKRecord.ID:[SkillCKModel]]()
     var baseProgram = [BaseProgramCKModel]()
@@ -26,6 +29,17 @@ class EditMaterialsViewController: UIViewController {
         super.viewDidLoad()
 //        self.navigationItem.setHidesBackButton(true, animated:true);
         populateData()
+        
+        // add image di button add new category
+        let addCategory = UIImage(named: "Add")?.withRenderingMode(.alwaysOriginal)
+        newCategoryButton.setImage(addCategory, for: .normal)
+        
+        //styling
+        
+        
+//        CGFloat.spacing = 10; // the amount of spacing to appear between image and title
+//        newCategoryButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, spacing);
+//        newCategoryButton.titleEdgeInsets = UIEdgeInsetsMake(0, spacing, 0, 0);
     }
     
 //    override func viewWillAppear(_ animated: Bool) {
@@ -63,6 +77,17 @@ class EditMaterialsViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    
+    @IBAction func newCategoryTapped(_ sender: Any) {
+        let addNewProgram = BaseProgramCKModel(record: nil)
+        baseProgram.append(addNewProgram)
+        DispatchQueue.main.async {
+                            self.collectionView.reloadData()
+        //                    self.collectionView.collectionViewLayout.invalidateLayout()
+        }
+//        baseProgram
         
     }
 }
@@ -79,7 +104,11 @@ extension EditMaterialsViewController: UICollectionViewDelegate, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let subsID = baseProgram[section].baseProgramRecordID
+        let program = baseProgram[section]
+        if program.record == nil {
+            return 1
+        }
+        let subsID = program.baseProgramRecordID
 
         let skills = skillData[subsID]
         
@@ -102,8 +131,8 @@ extension EditMaterialsViewController: UICollectionViewDelegate, UICollectionVie
         cell.layer.shadowOpacity = 1
         cell.layer.shadowRadius = 4
         
-        
-        if indexPath.row == skillData[baseProgram[indexPath.section].baseProgramRecordID]?.count{
+        let program = baseProgram[indexPath.section]
+        if program.record == nil || indexPath.row == skillData[program.baseProgramRecordID]?.count{
             let addCell = collectionView.dequeueReusableCell(withReuseIdentifier: "addProgramCell", for: indexPath) as! AddProgramCollectionViewCell
                 addCell.layer.cornerRadius = 8
             return addCell
@@ -119,14 +148,23 @@ extension EditMaterialsViewController: UICollectionViewDelegate, UICollectionVie
     }
 
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView { // for header
-        if (kind == UICollectionView.elementKindSectionHeader) {
+        if kind == UICollectionView.elementKindSectionHeader {
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerSection", for: indexPath) as! HeaderEditCollectionReusableView
             // ini header textnya (editable)
-            headerView.editHeaderTitle.text = baseProgram[indexPath.section].baseProgramTitle
+            let program = baseProgram[indexPath.section]
+            if program.record == nil {
+                headerView.editHeaderTitle.text = ""
+            }else{
+                headerView.editHeaderTitle.text = program.baseProgramTitle
+            }
             return headerView
         }
-        fatalError()
+        else {
+            fatalError()
+        }
     }
+    
+    
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
@@ -142,4 +180,6 @@ extension EditMaterialsViewController: UICollectionViewDelegate, UICollectionVie
             destination.baseProgramRecordID = baseProgram[section].baseProgramRecordID
         }
     }
+    
+    
 }
