@@ -81,13 +81,15 @@ class EditMaterialsViewController: UIViewController {
     
     
     @IBAction func newCategoryTapped(_ sender: Any) {
-        let addNewProgram = BaseProgramCKModel(record: nil)
+        let newRecord = CKRecord(recordType: "BaseProgram")
+        newRecord.setValue(0, forKey: "default")
+        newRecord.setValue("Edit", forKey: "baseProgramTitle")
+        
+        let addNewProgram = BaseProgramCKModel(record: newRecord)
         baseProgram.append(addNewProgram)
         DispatchQueue.main.async {
-                            self.collectionView.reloadData()
-        //                    self.collectionView.collectionViewLayout.invalidateLayout()
+            self.collectionView.reloadData()
         }
-//        baseProgram
         
     }
 }
@@ -105,9 +107,6 @@ extension EditMaterialsViewController: UICollectionViewDelegate, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let program = baseProgram[section]
-        if program.record == nil {
-            return 1
-        }
         let subsID = program.baseProgramRecordID
 
         let skills = skillData[subsID]
@@ -117,7 +116,7 @@ extension EditMaterialsViewController: UICollectionViewDelegate, UICollectionVie
             print(unwrapSkills.count)
             return unwrapSkills.count + 1
         }
-        return 0
+        return 1
         
     }
     
@@ -131,8 +130,9 @@ extension EditMaterialsViewController: UICollectionViewDelegate, UICollectionVie
         cell.layer.shadowOpacity = 1
         cell.layer.shadowRadius = 4
         
-        let program = baseProgram[indexPath.section]
-        if program.record == nil || indexPath.row == skillData[program.baseProgramRecordID]?.count{
+        let program = skillData[baseProgram[indexPath.section].baseProgramRecordID]
+        
+        if program == nil || indexPath.row == program?.count{
             let addCell = collectionView.dequeueReusableCell(withReuseIdentifier: "addProgramCell", for: indexPath) as! AddProgramCollectionViewCell
                 addCell.layer.cornerRadius = 8
             return addCell
@@ -152,11 +152,7 @@ extension EditMaterialsViewController: UICollectionViewDelegate, UICollectionVie
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerSection", for: indexPath) as! HeaderEditCollectionReusableView
             // ini header textnya (editable)
             let program = baseProgram[indexPath.section]
-            if program.record == nil {
-                headerView.editHeaderTitle.text = ""
-            }else{
-                headerView.editHeaderTitle.text = program.baseProgramTitle
-            }
+            headerView.editHeaderTitle.text = program.baseProgramTitle
             return headerView
         }
         else {
@@ -167,8 +163,10 @@ extension EditMaterialsViewController: UICollectionViewDelegate, UICollectionVie
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        if indexPath.row == skillData[baseProgram[indexPath.section].baseProgramRecordID]?.count{
+    
+//        if  indexPath.row == skillData[baseProgram[indexPath.section].baseProgramRecordID]?.count{
+        if indexPath.row == collectionView.numberOfItems(inSection: indexPath.section) - 1 {
+            print("udah nyampe sini-2")
             performSegue(withIdentifier: "showAddSkill", sender: indexPath.section)
         }
     }
