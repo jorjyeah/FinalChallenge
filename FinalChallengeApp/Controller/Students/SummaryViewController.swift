@@ -21,7 +21,6 @@ class SummaryViewController: UIViewController, AVAudioPlayerDelegate {
     @IBOutlet weak var playButton: UIButton!
     
     
-    let saveReport = SaveNewReport()
     var selectedActivity = [AddReportModelCK]()
     var studentRecordID = String()
     let therapistRecordID = String(UserDefaults.standard.string(forKey: "userID")!)
@@ -36,6 +35,7 @@ class SummaryViewController: UIViewController, AVAudioPlayerDelegate {
     
     //audio
     var fileName: String = "audioFile.m4a"
+    var audioData = Data()
     var audioFilename = URL(string: "")
     var audioPlayer: AVAudioPlayer!
     
@@ -49,9 +49,69 @@ class SummaryViewController: UIViewController, AVAudioPlayerDelegate {
         playButton.setImage(recordingPlay, for: .normal)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showSummaryViewDetail" {
+            let destination = segue.destination as? ViewDetailSummaryViewController
+            let row = sender as! Int
+            var prompts = String()
+            selectedActivity[row].activityPrompt .forEach { (prompt) in
+                prompts.append("\(prompt), ")
+            }
+            print("masuk summary")
+            destination?.activity = selectedActivity[row].activityTitle
+            destination?.howTo = selectedActivity[row].activityDesc
+            destination?.prompt = prompts
+            print(prompts)
+            destination?.media = selectedActivity[row].activityMedia
+            destination?.tips  = selectedActivity[row].activityTips
+            destination?.skill = selectedActivity[row].skillTitle.recordID
+            destination?.program = CKRecord.ID(recordName: selectedActivity[row].baseProgramTitle)
+        } else if segue.identifier == "showRecordView" {
+            let destination = segue.destination as? AudioRecorderViewController
+            destination?.delegate = self
+        } else if segue.identifier == "backToAddReportFromSummary" {
+            
+        }
+    }
+    
+    // save button tapped
+    @IBAction func saveButtonTapped(_ sender: Any) {
+        SaveNewReport.saveReport(childName: studentRecordID, therapistName: therapistRecordID, therapySessionNotes: notes) { (therapySessionRecordID) in
+            self.selectedActivity .forEach { (detailedActivity) in
+                print(detailedActivity.activityRecordID)
+                SaveNewReport.saveActivitySessions(activityReference: detailedActivity.activityRecordID, childName: self.studentRecordID, therapySession: therapySessionRecordID) { (success) in
+                    if success {
+                    
+                    }
+                }
+            }
+            
+            if let image = self.selectedImage{
+                SaveNewReport.savePhoto(therapySession: therapySessionRecordID, photo: image) { (success) in
+                    if success {
+                    }
+                }
+            }
+            
+            if let audioFilename = self.audioFilename {
+                if let data = try? Data(contentsOf: audioFilename) {
+                    print(data)
+                    self.audioData = data
+                    SaveNewReport.saveAudio(therapySession: therapySessionRecordID, audio: self.audioData) { (success) in
+                        if success{
+                            
+                        }
+                    }
+                }
+            }
+            
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "backToAddReportFromSummary", sender: self)
+            }
+        }
+    }
     
     //ini handlernya image attachment
-    
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
         print("tinggal masuk ke gallery")
         _ = tapGestureRecognizer.view as! UIImageView
@@ -77,21 +137,9 @@ class SummaryViewController: UIViewController, AVAudioPlayerDelegate {
         }
     }
     
-    func saveTherapySession(){
-        saveReport.saveReport(childName: studentRecordID, therapistName: therapistRecordID, therapySessionNotes: notes) { (therapySessionRecordID) in
-            self.selectedActivity .forEach { (detailedActivity) in
-                print(detailedActivity.activityRecordID)
-                self.saveReport.saveActivitySessions(activityReference: detailedActivity.activityRecordID, childName: self.studentRecordID, therapySession: therapySessionRecordID) { (success) in
-                    print("\(success) saved")
-                }
-            }
-        }
-    }
-    
     
     
     //play audio
-    
     func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return paths[0]
@@ -101,8 +149,9 @@ class SummaryViewController: UIViewController, AVAudioPlayerDelegate {
         //let audioFileName = getDocumentsDirectory().appendingPathComponent(fileName)
         audioFilename = getDocumentsDirectory().appendingPathComponent(fileName)
         
+        guard let audioFilename = audioFilename else { return }
         do {
-            audioPlayer = try AVAudioPlayer(contentsOf: audioFilename!)
+            audioPlayer = try AVAudioPlayer(contentsOf: audioFilename)
             audioPlayer.delegate = self
             audioPlayer.prepareToPlay()
             audioPlayer.volume = 1.0
@@ -136,7 +185,6 @@ class SummaryViewController: UIViewController, AVAudioPlayerDelegate {
             
         }
     }
-    
 }
 
 
@@ -273,35 +321,6 @@ extension SummaryViewController: UITableViewDataSource, UITableViewDelegate, UIT
             attachmentView.isHidden = false
         } else {
             print("Ini textview nya")
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showSummaryViewDetail" {
-            let destination = segue.destination as? ViewDetailSummaryViewController
-            let row = sender as! Int
-            var prompts = String()
-            selectedActivity[row].activityPrompt .forEach { (prompt) in
-                prompts.append("\(prompt), ")
-            }
-            print("masuk summary")
-            destination?.activity = selectedActivity[row].activityTitle
-            destination?.howTo = selectedActivity[row].activityDesc
-            destination?.prompt = prompts
-            print(prompts)
-            destination?.media = selectedActivity[row].activityMedia
-            destination?.tips  = selectedActivity[row].activityTips
-            destination?.skill = selectedActivity[row].skillTitle.recordID
-            destination?.program = CKRecord.ID(recordName: selectedActivity[row].baseProgramTitle)
-        } else {
-                    test = "coba balik"
-                    saveTherapySession()
-                }
-        
-        
-        if segue.identifier == "showRecordView" {
-            let destination = segue.destination as? AudioRecorderViewController
-            destination?.delegate = self
         }
     }
 }
