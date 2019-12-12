@@ -21,13 +21,6 @@ class EditProfileViewController: UIViewController {
     var imagePicker: ImagePicker!
     var newData = [String]()
     
-//    override func prepare(for segue:
-//        UIStoryboardSegue, sender: Any?) {
-//        // ini unwind segue ke profilevc
-//        test = "coba save"
-//        saveEditedProfile()
-//    }
-
     
     @IBAction func editPhotoButton(_ sender: Any) {
         self.imagePicker.present(from: sender as! UIView)

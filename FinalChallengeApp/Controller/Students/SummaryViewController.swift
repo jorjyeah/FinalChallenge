@@ -22,6 +22,7 @@ class SummaryViewController: UIViewController, AVAudioPlayerDelegate {
     
     
     var selectedActivity = [AddReportModelCK]()
+    var newTherapySession = [TherapySessionCKModel]()
     var studentRecordID = String()
     let therapistRecordID = String(UserDefaults.standard.string(forKey: "userID")!)
     var notes = String()
@@ -70,20 +71,18 @@ class SummaryViewController: UIViewController, AVAudioPlayerDelegate {
             let destination = segue.destination as? AudioRecorderViewController
             destination?.delegate = self
         } else if segue.identifier == "backToAddReportFromSummary" {
-            
+            let destination = segue.destination as? ReportViewController
+            destination?.therapySession = newTherapySession
         }
     }
     
     // save button tapped
     @IBAction func saveButtonTapped(_ sender: Any) {
-        SaveNewReport.saveReport(childName: studentRecordID, therapistName: therapistRecordID, therapySessionNotes: notes) { (therapySessionRecordID) in
-            self.selectedActivity .forEach { (detailedActivity) in
-                print(detailedActivity.activityRecordID)
-                SaveNewReport.saveActivitySessions(activityReference: detailedActivity.activityRecordID, childName: self.studentRecordID, therapySession: therapySessionRecordID) { (success) in
-                    if success {
-                    
-                    }
-                }
+        SaveNewReport.saveReport(childName: studentRecordID, therapistName: therapistRecordID, therapySessionNotes: notes) { (therapySessionModel, therapySessionRecordID) in
+            self.newTherapySession = therapySessionModel
+            
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "backToAddReportFromSummary", sender: self)
             }
             
             if let image = self.selectedImage{
@@ -105,8 +104,11 @@ class SummaryViewController: UIViewController, AVAudioPlayerDelegate {
                 }
             }
             
-            DispatchQueue.main.async {
-                self.performSegue(withIdentifier: "backToAddReportFromSummary", sender: self)
+            self.selectedActivity .forEach { (detailedActivity) in
+                print(detailedActivity.activityRecordID)
+                SaveNewReport.saveActivitySessions(activityReference: detailedActivity.activityRecordID, childName: self.studentRecordID, therapySession: therapySessionRecordID) { (success) in
+                    print(success)
+                }
             }
         }
     }

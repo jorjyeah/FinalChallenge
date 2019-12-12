@@ -15,22 +15,56 @@ class EditActivityViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var skillRecordID = CKRecord.ID()
+    var activityRecordID = CKRecord.ID()
     var activityName: String = ""
     var desc: String = ""
     var selectedPrompts = [String]()
     var previousPrompts = [String]()
     var media: String = ""
     var helpfulTips: String = ""
+    var baseProgramTitle: String = ""
+    var skillTitle: String = ""
     var videoLink: String = ""
     
     let promptArray = ["Gesture", "Physical", "Verbal", "Textual/Written", "Visual", "Auditory", "Positional"]
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard
+            let destination = segue.destination as? ActivityDetailViewController
+        else {
+            return
+        }
+        
+        destination.activityPrompts = selectedPrompts
+        destination.activityDesc = desc
+        destination.activityMedia = media
+        destination.activityProgram = baseProgramTitle
+        destination.activitySkill = skillTitle
+        destination.activityTips = helpfulTips
+        destination.activityTitle = activityName
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.allowsMultipleSelection = true
         // Do any additional setup after loading the view.
     }
 
+    @IBAction func doneButtonTapped(_ sender: Any) {
+        if activityName == "" || desc == "" || media == "" || helpfulTips == "" || selectedPrompts.count == 0{
+            print("harus ada data")
+            // bikin alert "Semua field harus diisi"
+        } else {
+            print("ada data")
+            ActivityDataManager.updateActivity(activityRecordID: activityRecordID, skillRecordID: skillRecordID, activityName: activityName, activityDesc: desc, activityMedia: media, activityTips: helpfulTips, activityPrompts: selectedPrompts) { (success) in
+                if success{
+                    DispatchQueue.main.async {
+                        self.performSegue(withIdentifier: "backToDetailActivityFromEditActivity", sender: self)
+                    }
+                }
+            }
+        }
+    }
 }
 
 
@@ -91,6 +125,14 @@ extension EditActivityViewController: UITableViewDelegate, UITableViewDataSource
             customCell.customTextView.tag = indexPath.section
             return customCell
         } else if indexPath.section == 2 {
+            previousPrompts .forEach { (prompt) in
+                // set selected based on promptArray index
+                if let row = promptArray.firstIndex(of: prompt){
+                    let indexSelected = IndexPath(row: row, section: 2)
+                    tableView.selectRow(at: indexSelected, animated: true, scrollPosition: UITableView.ScrollPosition.none)
+                }
+            }
+            selectedPrompts = previousPrompts
             checkboxCell.promptLabel.text = promptArray[indexPath.row]
             checkboxCell.setSelected(true, animated: true)
             return checkboxCell

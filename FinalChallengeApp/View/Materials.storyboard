@@ -673,13 +673,19 @@
                         <viewLayoutGuide key="safeArea" id="ogj-vf-Fcs"/>
                     </view>
                     <navigationItem key="navigationItem" title="Activity Detail" id="6Pr-Ya-n2P">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="stg-sk-Gc1"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="stg-sk-Gc1">
+                            <connections>
+                                <action selector="doneButtonTapped:" destination="S2v-1R-hIz" id="jO0-mc-leB"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="pLS-DZ-eIw" id="Sfj-cL-P1J"/>
+                        <segue destination="YI9-bG-wdK" kind="unwind" identifier="backToDetailActivityFromEditActivity" unwindAction="unwindFromEditActivity:" id="fif-gh-9xG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aeV-D7-qeS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="YI9-bG-wdK" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="5340.579710144928" y="1932.5892857142856"/>
         </scene>

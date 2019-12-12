@@ -85,11 +85,11 @@ class AddReportModelCK: NSObject{
         
         let predicate = NSPredicate(format: "creatorUserRecordID == %@ AND childName == %@", creator, childName)
         let query = CKQuery(recordType: "ActivitySessions", predicate: predicate)
-        query.sortDescriptors = [NSSortDescriptor(key: "modificationDate", ascending: true)]
+        query.sortDescriptors = [NSSortDescriptor(key: "modificationDate", ascending: false)]
         
         let operation = CKQueryOperation(query: query)
         operation.desiredKeys = ["activityReference"]
-        operation.resultsLimit = 3
+        operation.resultsLimit = 5
         
         var activitiesRecordID = [String] ()
         

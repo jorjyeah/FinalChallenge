@@ -131,7 +131,7 @@ extension ActivityViewController: UITableViewDelegate, UITableViewDataSource {
             destination.activityProgram = baseProgram
         } else if segue.identifier == "showAddActivity" {
             let destination = segue.destination as! NewActivityViewController
-            destination.skillRecrodID = skillRecordID
+            destination.skillRecordID = skillRecordID
         }
     }
     

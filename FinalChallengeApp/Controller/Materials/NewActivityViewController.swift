@@ -11,7 +11,7 @@ import CloudKit
 
 class NewActivityViewController: UIViewController {
     
-    var skillRecrodID = CKRecord.ID()
+    var skillRecordID = CKRecord.ID()
     var activityName: String = ""
     var desc: String = ""
     var media: String = ""
@@ -47,7 +47,7 @@ class NewActivityViewController: UIViewController {
             // bikin alert "Semua field harus diisi"
         } else {
             print("ada data")
-            ActivityDataManager.addNewActivity(skillRecordID: skillRecrodID, activityName: activityName, activityDesc: desc, activityMedia: media, activityTips: helpfulTips, activityPrompts: selectedPrompts) { (record) in
+            ActivityDataManager.addNewActivity(skillRecordID: skillRecordID, activityName: activityName, activityDesc: desc, activityMedia: media, activityTips: helpfulTips, activityPrompts: selectedPrompts) { (record) in
                 
                     DispatchQueue.main.async {
                         self.performSegue(withIdentifier: "backToActivityFromAddNewActivity", sender: record)
