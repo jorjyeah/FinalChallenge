@@ -13,14 +13,13 @@ class ActivityViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    @IBAction func unwindFromAddNewActivity(_ sender:UIStoryboardSegue){
+    @IBAction func unwindFromAddNewActivity(_ segue:UIStoryboardSegue){
         // bikin function dulu buat unwind, nanti di exit di page summary
-        if sender.source is NewActivityViewController{
-//            if let senderVC = sender.source as? NewActivityViewController{
-//                print(senderVC.test)
-//            }
+        if segue.source is NewActivityViewController{
+            tableView.reloadData()
         }
     }
+    
     
     var skillRecordID = CKRecord.ID()
     var skillTitle = String()
@@ -28,10 +27,13 @@ class ActivityViewController: UIViewController {
     var activities = [ActivityCKModel]()
     let activityTaskArray = ["Play Doh", "Stomp Feet", "Point to Body Parts"]
     
+    override func viewWillAppear(_ animated: Bool) {
+        populateData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        populateData()
+//        populateData()
         // Do any additional setup after loading the view.
         
         
@@ -124,6 +126,7 @@ extension ActivityViewController: UITableViewDelegate, UITableViewDataSource {
             destination.activityMedia = activities[row].activityMedia
             destination.activityPrompts = activities[row].activityPrompt
             destination.activityTips = activities[row].activityTips
+            destination.skillRecordID = skillRecordID
             destination.activitySkill = skillTitle
             destination.activityProgram = baseProgram
         } else if segue.identifier == "showAddActivity" {

@@ -12,6 +12,7 @@ import CloudKit
 class ActivityDetailViewController: UIViewController {
 
     var activityRecordID = CKRecord.ID()
+    var skillRecordID = CKRecord.ID()
     var activityTitle = String()
     var activityDesc = String()
     var activityPrompts = [String]()
@@ -32,6 +33,19 @@ class ActivityDetailViewController: UIViewController {
         super.viewDidLoad()
         populateData()
         // Do any additional setup after loading the view.
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showEditActivity" {
+            let destination = segue.destination as! EditActivityViewController
+            destination.skillRecordID = skillRecordID
+            destination.activityName = activityTitle
+            destination.previousPrompts = activityPrompts
+            destination.desc = activityDesc
+            destination.helpfulTips = activityTips
+            destination.media = activityMedia
+            
+        }
     }
     
     func populateData(){
