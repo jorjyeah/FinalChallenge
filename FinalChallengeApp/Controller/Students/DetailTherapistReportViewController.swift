@@ -8,15 +8,29 @@
 
 import UIKit
 import CloudKit
+import AVFoundation
 
-class DetailTherapistReportViewController: UIViewController {
+class DetailTherapistReportViewController: UIViewController, AVAudioPlayerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
+    
+    
+    @IBOutlet weak var audioAttachmentButton: UIButton!
+    
+    @IBOutlet weak var imageAttachment: UIImageView!
+    
     
     var detailActivity = [DetailedReportCKModel]()
     var therapySessionRecordID = CKRecord.ID()
     var therapySessionNotes = String()
     var therapySessionDate = Date()
+    
+    
+    //audio
+    var fileName: String = "audioFile.m4a"
+    var audioData = Data()
+    var audioFilename = URL(string: "")
+    var audioPlayer: AVAudioPlayer!
     
     func getActivitySession(){
         print(therapySessionNotes)
@@ -34,6 +48,60 @@ class DetailTherapistReportViewController: UIViewController {
         super.viewDidLoad()
         getActivitySession()
         // Do any additional setup after loading the view.
+        
+        
+        let recordingPlay = UIImage(named: "Recordings Play")?.withRenderingMode(.alwaysOriginal)
+        
+        audioAttachmentButton.setImage(recordingPlay, for: .normal)
+    }
+    
+    
+    //play audio
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
+    
+    func setupPlayer(){
+        //let audioFileName = getDocumentsDirectory().appendingPathComponent(fileName)
+        audioFilename = getDocumentsDirectory().appendingPathComponent(fileName)
+        
+        guard let audioFilename = audioFilename else { return }
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: audioFilename)
+            audioPlayer.delegate = self
+            audioPlayer.prepareToPlay()
+            audioPlayer.volume = 1.0
+        } catch {
+            print(error)
+        }
+    }
+    
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        let recordingPlay = UIImage(named: "Recordings Play")?.withRenderingMode(.alwaysOriginal)
+        
+        audioAttachmentButton.setTitle("Play", for: .normal)
+        audioAttachmentButton.setImage(recordingPlay, for: .normal)
+    }
+    
+    
+    @IBAction func playAct(_ sender: Any) {
+        let recordingPlay = UIImage(named: "Recordings Play")?.withRenderingMode(.alwaysOriginal)
+        let recordingPause = UIImage(named: "Recordings Pause")?.withRenderingMode(.alwaysOriginal)
+        
+        if audioAttachmentButton.titleLabel?.text == "Play" {
+            audioAttachmentButton.setTitle("Stop", for: .normal)
+            setupPlayer()
+            audioPlayer.play()
+            //playButton.setImage(UIImage(named: "Recordings Pause"), for: .normal)
+            audioAttachmentButton.setImage(recordingPause, for: .normal)
+        } else {
+            audioPlayer.stop()
+            audioAttachmentButton.setTitle("Play", for: .normal)
+            //playButton.setImage(UIImage(named: "Recordings Play"), for: .normal)
+            audioAttachmentButton.setImage(recordingPlay, for: .normal)
+            
+        }
     }
     
     

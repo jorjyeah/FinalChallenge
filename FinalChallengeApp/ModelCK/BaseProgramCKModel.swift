@@ -30,7 +30,7 @@ class BaseProgramCKModel{
         }
     }
     
-    init(record : CKRecord){
+    init(record : CKRecord?){
         self.record = record
     }
 }
