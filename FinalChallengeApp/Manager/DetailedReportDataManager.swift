@@ -71,6 +71,7 @@ class DetailedReportDataManager{
         }
     }
     
+    
     class func getDetailedTherapySession(therapySessionRecordID : CKRecord.ID, onComplete: @escaping ([CKRecord.ID]) -> Void){
         // this function must start first -> get activityRecordID
         var activityRecordID = [CKRecord.ID]()
@@ -91,6 +92,78 @@ class DetailedReportDataManager{
             DispatchQueue.main.async {
                 if error == nil {
                     onComplete(activityRecordID)
+                } else {
+                    print("error : \(error as Any)")
+                    let ac = UIAlertController(title: "Fetch failed", message: "There was a problem fetching the list of whistles; please try again: \(error!.localizedDescription)", preferredStyle: .alert)
+                    ac.addAction(UIAlertAction(title: "OK", style: .default))
+                    print(cursor as Any)
+                }
+            }
+        }
+        
+        CKContainer.default().publicCloudDatabase.add(operation)
+    }
+    
+    class func getPhoto(therapySessionRecordID: CKRecord.ID, onComplete: @escaping (UIImage) ->Void){
+        let therapySessionReference = CKRecord.Reference(recordID: therapySessionRecordID, action: CKRecord_Reference_Action.none)
+        let predicate = NSPredicate(format: "ext == %@", therapySessionReference)
+        let query = CKQuery(recordType: "Photo", predicate: predicate)
+        var photo : UIImage?
+        let operation = CKQueryOperation(query: query)
+        operation.desiredKeys = ["image"]
+        
+        operation.recordFetchedBlock = { record in
+            if let imageAsset = record.object(forKey: "image") as? CKAsset,
+                let data = NSData(contentsOf: (imageAsset.fileURL)!),
+                let image = UIImage(data: data as Data)
+            {
+                photo = image
+            }
+        }
+        
+        operation.queryCompletionBlock = { (cursor, error) in
+            DispatchQueue.main.async {
+                if error == nil {
+                    guard let imagePhoto = photo else {
+                        return
+                    }
+                    onComplete(imagePhoto)
+                } else {
+                    print("error : \(error as Any)")
+                    let ac = UIAlertController(title: "Fetch failed", message: "There was a problem fetching the list of whistles; please try again: \(error!.localizedDescription)", preferredStyle: .alert)
+                    ac.addAction(UIAlertAction(title: "OK", style: .default))
+                    print(cursor as Any)
+                }
+            }
+        }
+        
+        CKContainer.default().publicCloudDatabase.add(operation)
+    }
+    
+    class func getAudio(therapySessionRecordID: CKRecord.ID, onComplete: @escaping (NSURL) -> Void){
+        let therapySessionReference = CKRecord.Reference(recordID: therapySessionRecordID, action: CKRecord_Reference_Action.none)
+        let predicate = NSPredicate(format: "ext == %@", therapySessionReference)
+        let query = CKQuery(recordType: "audio", predicate: predicate)
+        var audio : NSURL!
+        let operation = CKQueryOperation(query: query)
+        operation.desiredKeys = ["sound"]
+        
+        operation.recordFetchedBlock = { record in
+            if let musicAsset = record.object(forKey: "sound") as? CKAsset{
+                let audioData = NSData(contentsOf: musicAsset.fileURL!)
+                let documentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+                let destinationPath = documentPath.appending("audio.m4a")
+                FileManager.default.createFile(atPath: destinationPath, contents: audioData as Data?, attributes: nil)
+                print(destinationPath)
+                audio = NSURL(fileURLWithPath: destinationPath)
+            }
+        }
+        
+        operation.queryCompletionBlock = { (cursor, error) in
+            DispatchQueue.main.async {
+                if error == nil {
+                    guard let audioNSURL = audio else { return }
+                    onComplete(audioNSURL)
                 } else {
                     print("error : \(error as Any)")
                     let ac = UIAlertController(title: "Fetch failed", message: "There was a problem fetching the list of whistles; please try again: \(error!.localizedDescription)", preferredStyle: .alert)

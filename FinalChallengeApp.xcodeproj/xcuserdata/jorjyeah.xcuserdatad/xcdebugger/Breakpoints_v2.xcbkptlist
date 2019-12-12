@@ -23,16 +23,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A15DA9EB-D379-4A7C-9C5C-D94F14A2EA03"
-            shouldBeEnabled = "Yes"
+            uuid = "80474E92-236E-4EC2-912D-FC15CC5FF37C"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FinalChallengeApp/Controller/Materials/ActivityViewController.swift"
+            filePath = "FinalChallengeApp/Controller/Students/DetailTherapistReportViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "19"
-            endingLineNumber = "19"
-            landmarkName = "unwindFromAddNewActivity(_:)"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "getActivitySession()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

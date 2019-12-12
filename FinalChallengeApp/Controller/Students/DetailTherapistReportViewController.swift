@@ -32,6 +32,8 @@ class DetailTherapistReportViewController: UIViewController, AVAudioPlayerDelega
     var audioFilename = URL(string: "")
     var audioPlayer: AVAudioPlayer!
     
+    
+    
     func getActivitySession(){
         print(therapySessionNotes)
         DetailedReportDataManager.getDetailedTherapySession(therapySessionRecordID: therapySessionRecordID) { (activityRecordsID) in
@@ -42,14 +44,29 @@ class DetailTherapistReportViewController: UIViewController, AVAudioPlayerDelega
                 }
             }
         }
+        
+        DetailedReportDataManager.getAudio(therapySessionRecordID: therapySessionRecordID) { (audioNSURL) in
+            if audioNSURL != nil{
+                self.setupPlayer(audioNSURL: audioNSURL)
+                self.audioAttachmentButton.isEnabled = true
+            }
+        }
+        
+        DetailedReportDataManager.getPhoto(therapySessionRecordID: therapySessionRecordID) { (imagePhoto) in
+            guard let photo = imagePhoto as? UIImage else {
+                return
+            }
+            self.imageAttachment.image = photo
+            self.imageAttachment.isHidden = false
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         getActivitySession()
         // Do any additional setup after loading the view.
-        
-        
+        audioAttachmentButton.isEnabled = false
+        imageAttachment.isHidden = true
         let recordingPlay = UIImage(named: "Recordings Play")?.withRenderingMode(.alwaysOriginal)
         
         audioAttachmentButton.setImage(recordingPlay, for: .normal)
@@ -62,18 +79,17 @@ class DetailTherapistReportViewController: UIViewController, AVAudioPlayerDelega
         return paths[0]
     }
     
-    func setupPlayer(){
-        //let audioFileName = getDocumentsDirectory().appendingPathComponent(fileName)
-        audioFilename = getDocumentsDirectory().appendingPathComponent(fileName)
-        
-        guard let audioFilename = audioFilename else { return }
+    func setupPlayer(audioNSURL : NSURL){
         do {
-            audioPlayer = try AVAudioPlayer(contentsOf: audioFilename)
+            self.audioPlayer = try AVAudioPlayer(contentsOf: audioNSURL as URL)
             audioPlayer.delegate = self
             audioPlayer.prepareToPlay()
             audioPlayer.volume = 1.0
+        } catch let error as NSError {
+            //self.player = nil
+            print(error.localizedDescription)
         } catch {
-            print(error)
+            print("AVAudioPlayer init failed")
         }
     }
     
@@ -91,10 +107,12 @@ class DetailTherapistReportViewController: UIViewController, AVAudioPlayerDelega
         
         if audioAttachmentButton.titleLabel?.text == "Play" {
             audioAttachmentButton.setTitle("Stop", for: .normal)
-            setupPlayer()
-            audioPlayer.play()
+//            DetailedReportDataManager.getAudio(therapySessionRecordID: therapySessionRecordID) { (audioNSURL) in
+//                self.setupPlayer(audioNSURL: audioNSURL)
+            self.audioPlayer.play()
             //playButton.setImage(UIImage(named: "Recordings Pause"), for: .normal)
-            audioAttachmentButton.setImage(recordingPause, for: .normal)
+            self.audioAttachmentButton.setImage(recordingPause, for: .normal)
+//            }
         } else {
             audioPlayer.stop()
             audioAttachmentButton.setTitle("Play", for: .normal)
