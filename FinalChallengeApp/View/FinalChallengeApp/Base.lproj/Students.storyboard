@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JLt-p9-X3O">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JLt-p9-X3O">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -10,7 +10,7 @@
         <!--Add Student View Controller-->
         <scene sceneID="ODm-I1-fIi">
             <objects>
-                <viewController id="cnY-k6-lYd" customClass="AddStudentViewController" customModule="FinalChallengeApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="cnY-k6-lYd" customClass="AddStudentViewController" customModule="Stara" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Eln-Ge-0bg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -61,7 +61,7 @@
         <!--Students View Controller-->
         <scene sceneID="R5k-xG-qt2">
             <objects>
-                <viewController id="hm9-KI-3VW" customClass="StudentsViewController" customModule="FinalChallengeApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="hm9-KI-3VW" customClass="StudentsViewController" customModule="Stara" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eHT-hn-ddY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -75,7 +75,7 @@
                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="studentCell" rowHeight="65" id="WZe-l1-5xP" customClass="StudentsTableViewCell" customModule="FinalChallengeApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="studentCell" rowHeight="65" id="WZe-l1-5xP" customClass="StudentsTableViewCell" customModule="Stara" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WZe-l1-5xP" id="gRi-gW-LR5">
@@ -142,7 +142,7 @@
         <!--Report View Controller-->
         <scene sceneID="NFd-gf-J6W">
             <objects>
-                <viewController storyboardIdentifier="ReportViewController" id="I7P-FV-xcF" customClass="ReportViewController" customModule="FinalChallengeApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ReportViewController" id="I7P-FV-xcF" customClass="ReportViewController" customModule="Stara" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MOc-Aa-Bvm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -156,7 +156,7 @@
                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reportCell" id="nGG-R8-nzX" customClass="ReportTableViewCell" customModule="FinalChallengeApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reportCell" id="nGG-R8-nzX" customClass="ReportTableViewCell" customModule="Stara" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nGG-R8-nzX" id="ebG-uB-Acs">
@@ -225,12 +225,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zQE-PR-Uah" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1119" y="822"/>
+            <point key="canvasLocation" x="642" y="503"/>
         </scene>
         <!--Report's Detail-->
         <scene sceneID="I8U-a0-4wu">
             <objects>
-                <viewController id="81m-JS-Wsw" customClass="DetailTherapistReportViewController" customModule="FinalChallengeApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="81m-JS-Wsw" customClass="DetailTherapistReportViewController" customModule="Stara" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0Gl-uK-jzB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -239,7 +239,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="detailCell" rowHeight="128" id="QzZ-Fx-GzO" customClass="DetailTableViewCell" customModule="FinalChallengeApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="detailCell" rowHeight="128" id="QzZ-Fx-GzO" customClass="DetailTableViewCell" customModule="Stara" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="128"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QzZ-Fx-GzO" id="JDG-Xm-foC">
@@ -291,7 +291,7 @@
                                             <outlet property="promptLabel" destination="F5b-aO-4PE" id="RrN-ha-r3W"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="notesCell" rowHeight="55" id="l3S-e2-82F" customClass="NotesTableViewCell" customModule="FinalChallengeApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="notesCell" rowHeight="55" id="l3S-e2-82F" customClass="NotesTableViewCell" customModule="Stara" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="156" width="414" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="l3S-e2-82F" id="UQQ-Xh-Bia">
@@ -350,7 +350,7 @@
         <!--Parents Detail View Controller-->
         <scene sceneID="Ifk-Aa-F8n">
             <objects>
-                <viewController id="TDo-67-mws" customClass="ParentsDetailViewController" customModule="FinalChallengeApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="TDo-67-mws" customClass="ParentsDetailViewController" customModule="Stara" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6Hn-VJ-0eT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -385,12 +385,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hgt-ZO-Aph" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2782.608695652174" y="1737.7232142857142"/>
+            <point key="canvasLocation" x="641" y="1633"/>
         </scene>
         <!--Today's Report-->
         <scene sceneID="DjP-Ob-5zh">
             <objects>
-                <viewController id="3HD-r0-5Ss" customClass="AddReportViewController" customModule="FinalChallengeApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="3HD-r0-5Ss" customClass="AddReportViewController" customModule="Stara" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mHb-4t-wvQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -407,7 +407,7 @@
                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="activityCell" rowHeight="56" id="Eg9-Lw-pQW" customClass="ActivityTableViewCell" customModule="FinalChallengeApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="activityCell" rowHeight="56" id="Eg9-Lw-pQW" customClass="ActivityTableViewCell" customModule="Stara" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="56"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Eg9-Lw-pQW" id="cRs-CV-A4Y">
@@ -473,7 +473,7 @@
         <!--Summary-->
         <scene sceneID="t9R-KQ-MEp">
             <objects>
-                <viewController id="rNe-Ul-54a" customClass="SummaryViewController" customModule="FinalChallengeApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="rNe-Ul-54a" customClass="SummaryViewController" customModule="Stara" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LOD-M6-d48">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -511,7 +511,7 @@
                                     </constraints>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="detailCell" rowHeight="128" id="FA6-id-cbY" customClass="DetailSummaryTableViewCell" customModule="FinalChallengeApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="detailCell" rowHeight="128" id="FA6-id-cbY" customClass="DetailSummaryTableViewCell" customModule="Stara" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="128"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FA6-id-cbY" id="37c-YH-oxz">
@@ -563,7 +563,7 @@
                                             <outlet property="promptLabel" destination="exC-rl-cCO" id="i3y-iU-sdV"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="notesCell" rowHeight="220" id="62l-FL-SUx" customClass="NotesSummaryTableViewCell" customModule="FinalChallengeApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="notesCell" rowHeight="220" id="62l-FL-SUx" customClass="NotesSummaryTableViewCell" customModule="Stara" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="156" width="414" height="220"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="62l-FL-SUx" id="6Of-fK-YFj">
@@ -593,7 +593,7 @@
                                             <outlet property="notesTextView" destination="J7x-Vj-lrA" id="8xd-JV-kKR"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="attachmentCell" rowHeight="56" id="gVh-Ra-eya" customClass="AttachmentTableViewCell" customModule="FinalChallengeApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="attachmentCell" rowHeight="56" id="gVh-Ra-eya" customClass="AttachmentTableViewCell" customModule="Stara" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="376" width="414" height="56"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gVh-Ra-eya" id="II0-IR-kce">
@@ -601,11 +601,11 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="sU4-24-Fyn">
-                                                    <rect key="frame" x="16" y="16.5" width="24" height="22.5"/>
+                                                    <rect key="frame" x="16" y="16.5" width="24" height="22"/>
                                                     <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </imageView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mic.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="aaj-Vg-5Zf">
-                                                    <rect key="frame" x="56" y="15.5" width="16" height="24"/>
+                                                    <rect key="frame" x="56" y="15.5" width="17" height="24"/>
                                                     <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </imageView>
                                             </subviews>
@@ -641,7 +641,11 @@
                         <viewLayoutGuide key="safeArea" id="HgD-Cd-AS6"/>
                     </view>
                     <navigationItem key="navigationItem" title="Summary" id="gav-1U-bMd">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="zAr-gS-bqd"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="zAr-gS-bqd">
+                            <connections>
+                                <action selector="saveButtonTapped:" destination="rNe-Ul-54a" id="0ET-DQ-gOr"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="attachmentView" destination="9Dm-lq-d6h" id="bwv-z6-p26"/>
@@ -650,16 +654,18 @@
                         <outlet property="tableView" destination="YQR-Eg-8mE" id="1Ns-SY-7U5"/>
                         <segue destination="rNn-XN-T2g" kind="presentation" identifier="showSummaryViewDetail" id="OM4-Ty-hmZ"/>
                         <segue destination="5eo-9j-gaP" kind="presentation" identifier="showRecordView" id="euj-EB-M3D"/>
+                        <segue destination="TP1-vB-pP5" kind="unwind" identifier="backToAddReportFromSummary" unwindAction="unwindFromSummary:" id="B3a-QH-iGC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r87-Nm-aKv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="TP1-vB-pP5" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3740.579710144928" y="-106.47321428571428"/>
         </scene>
         <!--View Detail Report View Controller-->
         <scene sceneID="arP-Ld-W3L">
             <objects>
-                <viewController id="eOn-S4-O2o" customClass="ViewDetailReportViewController" customModule="FinalChallengeApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="eOn-S4-O2o" customClass="ViewDetailReportViewController" customModule="Stara" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="riu-0r-97D">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -840,8 +846,7 @@
         <!--Audio Recorder View Controller-->
         <scene sceneID="x8y-kl-UNw">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mdK-bu-NBZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <viewController id="5eo-9j-gaP" customClass="AudioRecorderViewController" customModule="FinalChallengeApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="5eo-9j-gaP" customClass="AudioRecorderViewController" customModule="Stara" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d6u-Wi-NGM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -866,6 +871,7 @@
                         <outlet property="recordButton" destination="8L5-iX-7Jf" id="gvz-3L-494"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mdK-bu-NBZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4702.898550724638" y="344.86607142857139"/>
         </scene>
@@ -909,7 +915,7 @@
         <!--View Detail Summary View Controller-->
         <scene sceneID="nO0-hV-61c">
             <objects>
-                <viewController id="rNn-XN-T2g" customClass="ViewDetailSummaryViewController" customModule="FinalChallengeApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="rNn-XN-T2g" customClass="ViewDetailSummaryViewController" customModule="Stara" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tvr-DN-CDl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1091,6 +1097,6 @@
     <resources>
         <image name="Unchecked box" width="36" height="36"/>
         <image name="camera.fill" catalog="system" width="64" height="48"/>
-        <image name="mic.fill" catalog="system" width="50" height="64"/>
+        <image name="mic.fill" catalog="system" width="54" height="64"/>
     </resources>
 </document>

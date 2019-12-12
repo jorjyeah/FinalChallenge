@@ -68,7 +68,7 @@ class ActivityDataManager{
        }
    }
     
-    class func addNewActivity(skillRecordID: CKRecord.ID, activityName : String, activityDesc : String, activityMedia : String, activityTips : String, activityPrompts : [String], onComplete: @escaping (Bool) -> Void){
+    class func addNewActivity(skillRecordID: CKRecord.ID, activityName : String, activityDesc : String, activityMedia : String, activityTips : String, activityPrompts : [String], onComplete: @escaping (CKRecord) -> Void){
         let record = CKRecord(recordType: "Activity")
         let database = CKContainer.default().publicCloudDatabase
         
@@ -83,10 +83,11 @@ class ActivityDataManager{
         record.setValue(0, forKey: "default")
         
         database.save(record) { (savedRecord, error) in
-            if savedRecord != nil{
-                onComplete(true)
+            if let record = savedRecord{
+                onComplete(record)
+            }else{
+                print("err : \(error)")
             }
-            print("err : \(error)")
         }
     }
     

@@ -145,7 +145,7 @@
 		B906746E237C135300671632 /* Materials.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Materials.storyboard; sourceTree = "<group>"; };
 		B9067471237C136400671632 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = FinalChallengeApp/Base.lproj/Profile.storyboard; sourceTree = "<group>"; };
 		B906747A237C13E800671632 /* StudentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentsViewController.swift; sourceTree = "<group>"; };
-		B91BD496237980010015C934 /* FinalChallengeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalChallengeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B91BD496237980010015C934 /* Stara.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stara.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B91BD499237980010015C934 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B91BD49B237980010015C934 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		B91BD49D237980010015C934 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -263,10 +263,10 @@
 				68A570F6238AB389002A3014 /* ActivityViewController.swift */,
 				687E7D9123966E6600331EAE /* NewActivityViewController.swift */,
 				B96299C3239E4FDA0009DE32 /* ActivityDetailViewController.swift */,
+				6837ED95239A3D0E00CF1FCC /* EditActivityViewController.swift */,
 				687E7D84239651A000331EAE /* EditMaterialsViewController.swift */,
 				68DEA8622399382500FC59D3 /* NewSkillViewController.swift */,
 				68DEA864239A209500FC59D3 /* DeleteSkillViewController.swift */,
-				6837ED95239A3D0E00CF1FCC /* EditActivityViewController.swift */,
 				687E7D88239651E600331EAE /* Header */,
 			);
 			path = Materials;
@@ -359,7 +359,7 @@
 		B91BD497237980010015C934 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B91BD496237980010015C934 /* FinalChallengeApp.app */,
+				B91BD496237980010015C934 /* Stara.app */,
 				B91BD4AF237980020015C934 /* FinalChallengeAppTests.xctest */,
 				B91BD4BA237980020015C934 /* FinalChallengeAppUITests.xctest */,
 			);
@@ -461,7 +461,7 @@
 			);
 			name = FinalChallengeApp;
 			productName = FinalChallengeApp;
-			productReference = B91BD496237980010015C934 /* FinalChallengeApp.app */;
+			productReference = B91BD496237980010015C934 /* Stara.app */;
 			productType = "com.apple.product-type.application";
 		};
 		B91BD4AE237980020015C934 /* FinalChallengeAppTests */ = {
@@ -835,7 +835,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = FinalChallengeApp/FinalChallengeApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = A59P6GV5MM;
 				INFOPLIST_FILE = FinalChallengeApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -843,7 +843,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jorjyeah.FinalChallengeAppNew;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Stara;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -855,7 +855,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = FinalChallengeApp/FinalChallengeApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2FD6L3R59K;
+				DEVELOPMENT_TEAM = A59P6GV5MM;
 				INFOPLIST_FILE = FinalChallengeApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -863,7 +863,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jorjyeah.FinalChallengeAppNew;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Stara;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

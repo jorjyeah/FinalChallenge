@@ -29,26 +29,38 @@ class NewActivityViewController: UIViewController {
         tableView.allowsMultipleSelection = true
         // Do any additional setup after loading the view.
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard
+            let destination = segue.destination as? ActivityViewController,
+            let record = sender as? CKRecord
+        else {
+            return
+        }
+        
+        destination.activities.append(ActivityCKModel(record: record))
+    }
+    
     @IBAction func doneButtonTapped(_ sender: Any) {
         if activityName == "" || desc == "" || media == "" || helpfulTips == "" || selectedPrompts.count == 0{
             print("harus ada data")
             // bikin alert "Semua field harus diisi"
         } else {
             print("ada data")
-            ActivityDataManager.addNewActivity(skillRecordID: skillRecrodID, activityName: activityName, activityDesc: desc, activityMedia: media, activityTips: helpfulTips, activityPrompts: selectedPrompts) { (success) in
-                if success{
+            ActivityDataManager.addNewActivity(skillRecordID: skillRecrodID, activityName: activityName, activityDesc: desc, activityMedia: media, activityTips: helpfulTips, activityPrompts: selectedPrompts) { (record) in
+                
                     DispatchQueue.main.async {
-                        self.performSegue(withIdentifier: "backToActivityFromAddNewActivity", sender: nil)
+                        self.performSegue(withIdentifier: "backToActivityFromAddNewActivity", sender: record)
                     }
-                }
             }
         }
     }
+    
+    
+    
 }
 
 extension NewActivityViewController: UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, UITextFieldDelegate {
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 6
     }
