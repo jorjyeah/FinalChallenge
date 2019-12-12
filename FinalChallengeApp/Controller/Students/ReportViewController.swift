@@ -64,10 +64,10 @@ class ReportViewController: UIViewController {
         // bikin function dulu buat unwind, nanti di exit di page summary
         if sender.source is SummaryViewController{
             if let senderVC = sender.source as? SummaryViewController{
+                tableView.reloadData()
                 print(senderVC.test)
                 print(senderVC.selectedActivity)
             }
-            populateTableView()
         }
     }
 }

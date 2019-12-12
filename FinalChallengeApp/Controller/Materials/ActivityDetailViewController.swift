@@ -35,6 +35,14 @@ class ActivityDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func unwindFromEditActivity(_ sender:UIStoryboardSegue){
+        if sender.source is EditActivityViewController{
+            populateData()
+//            if let senderVC = sender.source as? EditActivityViewController{
+//                print(sender.)
+//            }
+        }
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showEditActivity" {
             let destination = segue.destination as! EditActivityViewController
@@ -44,7 +52,9 @@ class ActivityDetailViewController: UIViewController {
             destination.desc = activityDesc
             destination.helpfulTips = activityTips
             destination.media = activityMedia
-            
+            destination.activityRecordID = activityRecordID
+            destination.baseProgramTitle = activityProgram
+            destination.skillTitle = activitySkill
         }
     }
     
