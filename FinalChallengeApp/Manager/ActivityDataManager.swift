@@ -91,4 +91,37 @@ class ActivityDataManager{
         }
     }
     
+    class func updateActivity(activityRecordID : CKRecord.ID, skillRecordID: CKRecord.ID, activityName : String, activityDesc : String, activityMedia : String, activityTips : String, activityPrompts : [String], onComplete: @escaping (Bool) -> Void){
+        let record = CKRecord(recordType: "Activity")
+        let database = CKContainer.default().publicCloudDatabase
+        let skillReference = CKRecord.Reference(recordID: skillRecordID, action: CKRecord_Reference_Action.none)
+        
+        database.fetch(withRecordID: activityRecordID) { (record, error) in
+            if error != nil {
+                return
+            }
+            guard let record = record else {return}
+            
+            record["skillTitle"] = skillReference
+            record["activityTitle"] = activityName
+            record["activityDesc"] = activityDesc
+            record["activityMedia"] = activityMedia
+            record["activityTips"] = activityTips
+            record["activityPrompt"] = activityPrompts
+            record["default"] = 0
+        }
+        
+        database.save(record) { (savedRecord, error) in
+            DispatchQueue.main.async {
+                if error != nil {
+                    return
+                }
+                guard record != nil else {
+                    return
+                }
+                onComplete(true)
+            }
+        }
+    }
+    
 }

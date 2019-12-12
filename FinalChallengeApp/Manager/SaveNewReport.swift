@@ -12,13 +12,14 @@ import AVFoundation
 
 class SaveNewReport{
     
-    class func saveReport(childName: String, therapistName: String, therapySessionNotes: String, onComplete: @escaping (CKRecord.ID) -> Void){
+    class func saveReport(childName: String, therapistName: String, therapySessionNotes: String, onComplete: @escaping ([TherapySessionCKModel],CKRecord.ID) -> Void){
         // save buat untuk dapet therapy session ID
         // yang nantinya disave di activitySessions
         var therapySessionRecordID = CKRecord.ID()
         let dateNow = Date()
         let database = CKContainer.default().publicCloudDatabase
         let record = CKRecord(recordType: "TherapySession")
+        
         
         let childRecordID = CKRecord.Reference(recordID: CKRecord.ID(recordName: childName), action: CKRecord_Reference_Action.none)
         let therapistRecordID = CKRecord.Reference(recordID: CKRecord.ID(recordName: therapistName), action: CKRecord_Reference_Action.none)
@@ -31,7 +32,9 @@ class SaveNewReport{
             if savedRecord != nil{
                 therapySessionRecordID = savedRecord!.recordID
                 print(therapySessionRecordID.recordName)
-                onComplete(therapySessionRecordID)
+                TherapySessionCKModel.getTherapySession(studentRecordID: childName) { (therapySessionModel) in
+                    onComplete(therapySessionModel, therapySessionRecordID)
+                }
             }
             print("err : \(error)")
         }
