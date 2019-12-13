@@ -7,58 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Add Student View Controller-->
-        <scene sceneID="ODm-I1-fIi">
-            <objects>
-                <viewController id="cnY-k6-lYd" customClass="AddStudentViewController" customModule="Stara" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Eln-Ge-0bg">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GDr-LC-D9Q">
-                                <rect key="frame" x="0.0" y="56" width="414" height="752"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="5KK-db-U39" firstAttribute="bottom" secondItem="GDr-LC-D9Q" secondAttribute="bottom" id="StS-bE-6by"/>
-                            <constraint firstItem="GDr-LC-D9Q" firstAttribute="top" secondItem="5KK-db-U39" secondAttribute="top" id="X1q-ix-ric"/>
-                            <constraint firstItem="5KK-db-U39" firstAttribute="trailing" secondItem="GDr-LC-D9Q" secondAttribute="trailing" id="a4K-Ts-LtM"/>
-                            <constraint firstItem="GDr-LC-D9Q" firstAttribute="leading" secondItem="5KK-db-U39" secondAttribute="leading" id="cux-x1-Vln"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="5KK-db-U39"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="zvy-VX-gt5">
-                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="oAd-CB-XcQ"/>
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="done" id="kup-Bs-YJY"/>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="videoPreview" destination="GDr-LC-D9Q" id="24N-Rt-seD"/>
-                        <segue destination="5Ln-KQ-Znw" kind="show" identifier="showNewStudentPreview" id="QgU-UB-21Y"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Zp3-f7-u4I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1880" y="-950"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="552-nj-8av">
-            <objects>
-                <viewController id="5Ln-KQ-Znw" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="G5B-fc-aao">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="gYh-jw-ThS"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="W79-gY-Hxt"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="d79-1j-13H" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2784" y="-950"/>
-        </scene>
-        <!--Students View Controller-->
+        <!--Students-->
         <scene sceneID="R5k-xG-qt2">
             <objects>
                 <viewController id="hm9-KI-3VW" customClass="StudentsViewController" customModule="Stara" customModuleProvider="target" sceneMemberID="viewController">
@@ -122,10 +71,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="K6q-6A-I90"/>
                     </view>
-                    <navigationItem key="navigationItem" id="vFQ-1V-U0u">
+                    <navigationItem key="navigationItem" title="Students" largeTitleDisplayMode="always" id="vFQ-1V-U0u">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="qUn-Qc-Izy">
                             <connections>
-                                <segue destination="j7t-UQ-q6q" kind="modal" identifier="showAddStudent" id="fSu-5i-UeL"/>
+                                <segue destination="vjL-os-rdh" kind="presentation" identifier="showQRCodeScanner" id="UQK-Ev-oYj"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -137,7 +86,140 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DjU-jb-wPV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-697.10144927536237" y="502.90178571428567"/>
+            <point key="canvasLocation" x="-1425" y="-47"/>
+        </scene>
+        <!--Code Scanner View Controller-->
+        <scene sceneID="qD3-LV-psj">
+            <objects>
+                <viewController id="vjL-os-rdh" customClass="QRCodeScannerViewController" customModule="Stara" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="r7w-bc-5md">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="grY-Tr-C2a">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="jOK-Md-Slf"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Add New Student" id="GHZ-Qe-eBB">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="MPh-2o-raH"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gne-Cl-jNd">
+                                <rect key="frame" x="0.0" y="44" width="414" height="764"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Gne-Cl-jNd" firstAttribute="top" secondItem="grY-Tr-C2a" secondAttribute="bottom" id="1Pn-yi-ZpG"/>
+                            <constraint firstItem="grY-Tr-C2a" firstAttribute="top" secondItem="CuY-yD-Rdr" secondAttribute="top" id="3BS-qS-WPb"/>
+                            <constraint firstItem="grY-Tr-C2a" firstAttribute="trailing" secondItem="Gne-Cl-jNd" secondAttribute="trailing" id="E16-0b-isM"/>
+                            <constraint firstItem="grY-Tr-C2a" firstAttribute="leading" secondItem="Gne-Cl-jNd" secondAttribute="leading" id="NXq-V3-DJe"/>
+                            <constraint firstItem="Gne-Cl-jNd" firstAttribute="leading" secondItem="CuY-yD-Rdr" secondAttribute="leading" id="h0H-vi-jZM"/>
+                            <constraint firstItem="CuY-yD-Rdr" firstAttribute="bottom" secondItem="Gne-Cl-jNd" secondAttribute="bottom" id="jMo-de-jlN"/>
+                            <constraint firstItem="CuY-yD-Rdr" firstAttribute="trailing" secondItem="Gne-Cl-jNd" secondAttribute="trailing" id="tze-Gs-2zD"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="CuY-yD-Rdr"/>
+                    </view>
+                    <connections>
+                        <outlet property="scannerView" destination="Gne-Cl-jNd" id="uV9-g5-ipO"/>
+                        <segue destination="5yL-SS-DEk" kind="presentation" identifier="showProfilePreview" id="hDR-xe-fEA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jdW-eN-uNv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="640.57971014492762" y="-886.60714285714278"/>
+        </scene>
+        <!--Student Profile Preview View Controller-->
+        <scene sceneID="Arr-ac-Gkw">
+            <objects>
+                <viewController id="5yL-SS-DEk" customClass="StudentProfilePreviewViewController" customModule="Stara" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lQm-Vl-bn5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YOQ-eC-QBA">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="SKW-Uq-ebC"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Add New Student" id="T6g-73-NNY">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="sGL-fp-qSg"/>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="NHb-rR-GKX"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oen-ee-A9A">
+                                <rect key="frame" x="16" y="244" width="382" height="355"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adding New Student Profile Success" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QFN-se-7Qw">
+                                        <rect key="frame" x="16" y="40" width="350" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Student Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qn3-Dq-f40">
+                                        <rect key="frame" x="0.0" y="116" width="382" height="41"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="34"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m9J-iM-2Q3">
+                                        <rect key="frame" x="16" y="282" width="350" height="33"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="See Full Profile">
+                                            <color key="titleColor" red="0.72549019609999998" green="0.51764705879999995" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                    </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="zoa-7V-3qB">
+                                        <rect key="frame" x="169" y="192.5" width="44" height="44"/>
+                                        <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="44" id="C6c-N0-YK8"/>
+                                            <constraint firstAttribute="height" constant="44.5" id="Wff-IG-3yV"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="m9J-iM-2Q3" secondAttribute="bottom" constant="40" id="EtX-mZ-Izg"/>
+                                    <constraint firstItem="zoa-7V-3qB" firstAttribute="top" secondItem="qn3-Dq-f40" secondAttribute="bottom" constant="35" id="FGr-Ll-hyt"/>
+                                    <constraint firstAttribute="trailing" secondItem="qn3-Dq-f40" secondAttribute="trailing" id="IUK-4u-boM"/>
+                                    <constraint firstItem="QFN-se-7Qw" firstAttribute="leading" secondItem="oen-ee-A9A" secondAttribute="leading" constant="16" id="KXz-07-x06"/>
+                                    <constraint firstItem="m9J-iM-2Q3" firstAttribute="leading" secondItem="oen-ee-A9A" secondAttribute="leading" constant="16" id="OI6-Ku-mRv"/>
+                                    <constraint firstAttribute="trailing" secondItem="zoa-7V-3qB" secondAttribute="trailing" constant="169" id="UWl-VR-4Tp"/>
+                                    <constraint firstAttribute="trailing" secondItem="m9J-iM-2Q3" secondAttribute="trailing" constant="16" id="aaR-k7-Fg5"/>
+                                    <constraint firstItem="qn3-Dq-f40" firstAttribute="leading" secondItem="oen-ee-A9A" secondAttribute="leading" id="arp-cQ-SIn"/>
+                                    <constraint firstAttribute="trailing" secondItem="QFN-se-7Qw" secondAttribute="trailing" constant="16" id="cru-cz-UND"/>
+                                    <constraint firstItem="QFN-se-7Qw" firstAttribute="top" secondItem="oen-ee-A9A" secondAttribute="top" constant="40" id="jU4-bj-dWa"/>
+                                    <constraint firstItem="qn3-Dq-f40" firstAttribute="top" secondItem="QFN-se-7Qw" secondAttribute="bottom" constant="55" id="r4T-NL-nUv"/>
+                                    <constraint firstItem="zoa-7V-3qB" firstAttribute="leading" secondItem="oen-ee-A9A" secondAttribute="leading" constant="169" id="xaL-FE-EbQ"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.95686918499999996" green="0.95685130360000004" blue="0.95686346290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="oen-ee-A9A" firstAttribute="leading" secondItem="4O1-hw-r2n" secondAttribute="leading" constant="16" id="2qZ-YD-6mI"/>
+                            <constraint firstItem="YOQ-eC-QBA" firstAttribute="top" secondItem="4O1-hw-r2n" secondAttribute="top" id="B2q-9V-fu7"/>
+                            <constraint firstItem="oen-ee-A9A" firstAttribute="top" secondItem="YOQ-eC-QBA" secondAttribute="bottom" constant="200" id="Cm2-LW-ra8"/>
+                            <constraint firstItem="YOQ-eC-QBA" firstAttribute="leading" secondItem="4O1-hw-r2n" secondAttribute="leading" id="GdA-EF-Awe"/>
+                            <constraint firstItem="YOQ-eC-QBA" firstAttribute="centerX" secondItem="oen-ee-A9A" secondAttribute="centerX" id="POo-HT-Ycd"/>
+                            <constraint firstItem="4O1-hw-r2n" firstAttribute="trailing" secondItem="oen-ee-A9A" secondAttribute="trailing" constant="16" id="XNg-13-4LQ"/>
+                            <constraint firstItem="4O1-hw-r2n" firstAttribute="bottom" secondItem="oen-ee-A9A" secondAttribute="bottom" constant="209" id="ogw-GC-7pU"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="4O1-hw-r2n"/>
+                    </view>
+                    <connections>
+                        <outlet property="studentNameLabel" destination="qn3-Dq-f40" id="eeJ-eB-UZB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JqK-P1-8Lp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1722" y="-887"/>
         </scene>
         <!--Report View Controller-->
         <scene sceneID="NFd-gf-J6W">
@@ -209,7 +291,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="V0d-rt-tyO"/>
                     </view>
-                    <navigationItem key="navigationItem" id="hyE-Wc-AaS">
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="hyE-Wc-AaS">
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="HKF-4a-yO0">
                             <connections>
                                 <segue destination="3HD-r0-5Ss" kind="show" identifier="showAddReport" id="O8K-YH-yGU"/>
@@ -417,7 +499,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hgt-ZO-Aph" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="641" y="1633"/>
+            <point key="canvasLocation" x="2783" y="1774"/>
         </scene>
         <!--Today's Report-->
         <scene sceneID="DjP-Ob-5zh">
@@ -927,25 +1009,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wUP-ac-YpD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1607" y="503"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="sl9-gF-MOP">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="j7t-UQ-q6q" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bcQ-GS-Znr">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="cnY-k6-lYd" kind="relationship" relationship="rootViewController" id="xvM-Yi-SHl"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hgu-a1-bB3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1016" y="-954"/>
+            <point key="canvasLocation" x="-2335" y="-47"/>
         </scene>
         <!--View Detail Summary View Controller-->
         <scene sceneID="nO0-hV-61c">
@@ -1132,6 +1196,7 @@
     <resources>
         <image name="Unchecked box" width="36" height="36"/>
         <image name="camera.fill" catalog="system" width="64" height="48"/>
+        <image name="checkmark.circle.fill" catalog="system" width="64" height="62"/>
         <image name="mic.fill" catalog="system" width="50" height="64"/>
     </resources>
 </document>
