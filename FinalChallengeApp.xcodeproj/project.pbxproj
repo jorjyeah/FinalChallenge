@@ -260,13 +260,13 @@
 			isa = PBXGroup;
 			children = (
 				68A570EC238AA3DE002A3014 /* MaterialsViewController.swift */,
+				687E7D84239651A000331EAE /* EditMaterialsViewController.swift */,
+				68DEA8622399382500FC59D3 /* NewSkillViewController.swift */,
+				68DEA864239A209500FC59D3 /* DeleteSkillViewController.swift */,
 				68A570F6238AB389002A3014 /* ActivityViewController.swift */,
 				687E7D9123966E6600331EAE /* NewActivityViewController.swift */,
 				B96299C3239E4FDA0009DE32 /* ActivityDetailViewController.swift */,
 				6837ED95239A3D0E00CF1FCC /* EditActivityViewController.swift */,
-				687E7D84239651A000331EAE /* EditMaterialsViewController.swift */,
-				68DEA8622399382500FC59D3 /* NewSkillViewController.swift */,
-				68DEA864239A209500FC59D3 /* DeleteSkillViewController.swift */,
 				687E7D88239651E600331EAE /* Header */,
 			);
 			path = Materials;
