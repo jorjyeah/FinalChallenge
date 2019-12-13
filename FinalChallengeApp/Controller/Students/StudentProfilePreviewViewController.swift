@@ -12,7 +12,7 @@ class StudentProfilePreviewViewController: UIViewController {
     
     @IBOutlet weak var studentNameLabel: UILabel!
     
-    
+    var newStudent : StudentCKModel?
     var scannedString: String = ""
 
     override func viewDidLoad() {
