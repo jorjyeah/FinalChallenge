@@ -7,18 +7,21 @@
 //
 
 import UIKit
+import CloudKit
 import AVFoundation
 
 class QRCodeScannerViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, AVCapturePhotoCaptureDelegate, AVCaptureMetadataOutputObjectsDelegate {
 
     @IBOutlet weak var scannerView: UIView!
     
+    var newStudent: StudentCKModel?
     var imageOrientation: AVCaptureVideoOrientation?
     var captureSession: AVCaptureSession?
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     var capturePhotoOutput: AVCapturePhotoOutput?
     
     var scannedString: String = ""
+    var studentRecordID = CKRecord.ID()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,7 +97,25 @@ class QRCodeScannerViewController: UIViewController, UIImagePickerControllerDele
                 DispatchQueue.main.async {
                     print(outputString)
                     self.scannedString = outputString
-                    self.performSegue(withIdentifier: "showPreview", sender: self)
+                    self.studentRecordID = CKRecord.ID(recordName: outputString)
+                    TherapyScheduleDataManager.checkAvailabilityStudent(studentRecordID: self.studentRecordID) { (available) in
+                        if !available {
+                            TherapyScheduleDataManager.saveNewTherapySchedule(studentRecordID: self.studentRecordID) { (new) in
+                                self.newStudent = new
+                                if let student = self.newStudent?.studentName {
+                                    self.scannedString = student
+                                    DispatchQueue.main.async {
+                                        self.performSegue(withIdentifier: "showProfilePreview", sender: self)
+                                    }
+                                    
+                                } else {
+                                    //fail
+                                }
+                            }
+                        } else {
+                            print ("sudah berteman") // alert
+                        }
+                    }
                 }
             }
         }
@@ -102,10 +123,13 @@ class QRCodeScannerViewController: UIViewController, UIImagePickerControllerDele
         self.captureSession?.stopRunning()
     }
     
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showProfilePreview" {
             if let destination = segue.destination as? StudentProfilePreviewViewController {
                 destination.scannedString = scannedString
+                destination.newStudent = newStudent
             }
         }
     }
