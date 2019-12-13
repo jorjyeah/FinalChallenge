@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		680EA4AA23A37A130082F1F5 /* QRCodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680EA4A923A37A130082F1F5 /* QRCodeScannerViewController.swift */; };
+		680EA4AC23A37A360082F1F5 /* StudentProfilePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680EA4AB23A37A360082F1F5 /* StudentProfilePreviewViewController.swift */; };
 		6837ED96239A3D0E00CF1FCC /* EditActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6837ED95239A3D0E00CF1FCC /* EditActivityViewController.swift */; };
 		6837ED98239A3FD000CF1FCC /* EditDefaultTextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6837ED97239A3FD000CF1FCC /* EditDefaultTextFieldTableViewCell.swift */; };
 		6837ED9A239A3FE800CF1FCC /* EditCustomTextViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6837ED99239A3FE800CF1FCC /* EditCustomTextViewTableViewCell.swift */; };
@@ -102,6 +104,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		680EA4A923A37A130082F1F5 /* QRCodeScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScannerViewController.swift; sourceTree = "<group>"; };
+		680EA4AB23A37A360082F1F5 /* StudentProfilePreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentProfilePreviewViewController.swift; sourceTree = "<group>"; };
 		6837ED95239A3D0E00CF1FCC /* EditActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditActivityViewController.swift; sourceTree = "<group>"; };
 		6837ED97239A3FD000CF1FCC /* EditDefaultTextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDefaultTextFieldTableViewCell.swift; sourceTree = "<group>"; };
 		6837ED99239A3FE800CF1FCC /* EditCustomTextViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCustomTextViewTableViewCell.swift; sourceTree = "<group>"; };
@@ -286,6 +290,8 @@
 				687E7D5A2390D21500331EAE /* AddStudentViewController.swift */,
 				687E7D5C2390E3AB00331EAE /* NewStudentPreviewViewController.swift */,
 				68FEA19B239F857300EF30C7 /* AudioRecorderViewController.swift */,
+				680EA4A923A37A130082F1F5 /* QRCodeScannerViewController.swift */,
+				680EA4AB23A37A360082F1F5 /* StudentProfilePreviewViewController.swift */,
 			);
 			path = Students;
 			sourceTree = "<group>";
@@ -588,6 +594,7 @@
 				68A570E6238AA34B002A3014 /* ProgramCollectionViewCell.swift in Sources */,
 				B9F87B22239A43D300985864 /* BaseProgramCKModel.swift in Sources */,
 				B9F87B18239948A400985864 /* ViewDetailSummaryViewController.swift in Sources */,
+				680EA4AC23A37A360082F1F5 /* StudentProfilePreviewViewController.swift in Sources */,
 				687E7D962396769100331EAE /* DefaultTextFieldTableViewCell.swift in Sources */,
 				68A570F7238AB389002A3014 /* ActivityViewController.swift in Sources */,
 				68A570DE2386C079002A3014 /* DetailSummaryTableViewCell.swift in Sources */,
@@ -619,6 +626,7 @@
 				68A570FF238AB614002A3014 /* ProgramTitleTableViewCell.swift in Sources */,
 				68FEA198239E614B00EF30C7 /* AttachmentTableViewCell.swift in Sources */,
 				68A570E02386C09B002A3014 /* NotesSummaryTableViewCell.swift in Sources */,
+				680EA4AA23A37A130082F1F5 /* QRCodeScannerViewController.swift in Sources */,
 				68DEA865239A209500FC59D3 /* DeleteSkillViewController.swift in Sources */,
 				68A570D92386887C002A3014 /* ActivityTableViewCell.swift in Sources */,
 				B9F87B1C239A393000985864 /* SkillCKModel.swift in Sources */,
