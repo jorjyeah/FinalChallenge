@@ -21,5 +21,20 @@ class StudentProfilePreviewViewController: UIViewController {
         // Do any additional setup after loading the view.
         studentNameLabel.text = scannedString
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showFullProfile"{
+            let destination = segue.destination as! StudentProfileViewController
+            destination.studentModel = newStudent
+        }
+    }
+    
+    @IBAction func doneButtonTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
 
+    @IBAction func seeFullProfile(_ sender: Any) {
+        performSegue(withIdentifier: "showFullProfile", sender: self)
+    }
+    
 }
