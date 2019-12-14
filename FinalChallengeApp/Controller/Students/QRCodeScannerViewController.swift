@@ -94,7 +94,7 @@ class QRCodeScannerViewController: UIViewController, UIImagePickerControllerDele
                 DispatchQueue.main.async {
                     print(outputString)
                     self.scannedString = outputString
-                    self.performSegue(withIdentifier: "showPreview", sender: self)
+                    self.performSegue(withIdentifier: "showProfilePreview", sender: self)
                 }
             }
         }

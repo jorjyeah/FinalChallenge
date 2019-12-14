@@ -71,7 +71,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="K6q-6A-I90"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Students" largeTitleDisplayMode="always" id="vFQ-1V-U0u">
+                    <navigationItem key="navigationItem" title="Students" id="vFQ-1V-U0u">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="qUn-Qc-Izy">
                             <connections>
                                 <segue destination="vjL-os-rdh" kind="presentation" identifier="showQRCodeScanner" id="UQK-Ev-oYj"/>
@@ -112,7 +112,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.95686918499999996" green="0.95685130360000004" blue="0.95686346290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="Gne-Cl-jNd" firstAttribute="top" secondItem="grY-Tr-C2a" secondAttribute="bottom" id="1Pn-yi-ZpG"/>
                             <constraint firstItem="grY-Tr-C2a" firstAttribute="top" secondItem="CuY-yD-Rdr" secondAttribute="top" id="3BS-qS-WPb"/>
@@ -221,7 +221,7 @@
             </objects>
             <point key="canvasLocation" x="1722" y="-887"/>
         </scene>
-        <!--Report View Controller-->
+        <!--All Reports-->
         <scene sceneID="NFd-gf-J6W">
             <objects>
                 <viewController storyboardIdentifier="ReportViewController" id="I7P-FV-xcF" customClass="ReportViewController" customModule="Stara" customModuleProvider="target" sceneMemberID="viewController">
@@ -291,7 +291,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="V0d-rt-tyO"/>
                     </view>
-                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="hyE-Wc-AaS">
+                    <navigationItem key="navigationItem" title="All Reports" id="hyE-Wc-AaS">
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="HKF-4a-yO0">
                             <connections>
                                 <segue destination="3HD-r0-5Ss" kind="show" identifier="showAddReport" id="O8K-YH-yGU"/>
@@ -436,7 +436,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.95686918499999996" green="0.95685130360000004" blue="0.95686346290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="oHG-nK-2Lo" firstAttribute="leading" secondItem="i4F-KT-N1t" secondAttribute="leading" id="37g-Hm-CUI"/>
                             <constraint firstItem="i4F-KT-N1t" firstAttribute="bottom" secondItem="oHG-nK-2Lo" secondAttribute="bottom" id="8q3-Ix-zWf"/>
@@ -483,7 +483,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.95686918499999996" green="0.95685130360000004" blue="0.95686346290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="oRQ-bp-P1l" firstAttribute="top" secondItem="DxR-yb-5rG" secondAttribute="top" constant="16" id="8t0-jl-ugP"/>
                             <constraint firstItem="DxR-yb-5rG" firstAttribute="trailing" secondItem="oRQ-bp-P1l" secondAttribute="trailing" constant="16" id="bzJ-PZ-rL0"/>
@@ -504,7 +504,7 @@
         <!--Today's Report-->
         <scene sceneID="DjP-Ob-5zh">
             <objects>
-                <viewController id="3HD-r0-5Ss" customClass="AddReportViewController" customModule="Stara" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="3HD-r0-5Ss" customClass="AddReportViewController" customModule="Stara" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mHb-4t-wvQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -557,7 +557,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.95686918499999996" green="0.95685130360000004" blue="0.95686346290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="uo3-a8-qQ3" firstAttribute="top" secondItem="fWr-Jf-juO" secondAttribute="bottom" id="D8I-LG-i1H"/>
                             <constraint firstItem="EW2-Al-361" firstAttribute="bottom" secondItem="uo3-a8-qQ3" secondAttribute="bottom" id="E1T-bG-uou"/>
@@ -587,7 +587,7 @@
         <!--Summary-->
         <scene sceneID="t9R-KQ-MEp">
             <objects>
-                <viewController id="rNe-Ul-54a" customClass="SummaryViewController" customModule="Stara" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="rNe-Ul-54a" customClass="SummaryViewController" customModule="Stara" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LOD-M6-d48">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -748,7 +748,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.95686918499999996" green="0.95685130360000004" blue="0.95686346290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="YQR-Eg-8mE" firstAttribute="leading" secondItem="HgD-Cd-AS6" secondAttribute="leading" id="G3a-SO-4PQ"/>
                             <constraint firstItem="YQR-Eg-8mE" firstAttribute="top" secondItem="HgD-Cd-AS6" secondAttribute="top" id="KOP-LS-OXS"/>
@@ -981,7 +981,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.95686918499999996" green="0.95685130360000004" blue="0.95686346290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="f4n-YA-qtv"/>
                     </view>
                     <connections>
@@ -1111,7 +1111,7 @@
                                                 </constraints>
                                             </imageView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" red="0.95686918499999996" green="0.95685130360000004" blue="0.95686346290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstItem="Nny-JU-2ki" firstAttribute="leading" secondItem="bgN-g6-ahB" secondAttribute="leading" constant="16" id="18f-gF-q2j"/>
                                             <constraint firstItem="29D-Qe-FUs" firstAttribute="leading" secondItem="bgN-g6-ahB" secondAttribute="leading" constant="16" id="1cY-oW-HVZ"/>
@@ -1167,7 +1167,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.95686918499999996" green="0.95685130360000004" blue="0.95686346290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="EDM-Xm-ksg" firstAttribute="top" secondItem="8IM-zv-TXt" secondAttribute="top" id="0wG-JL-RPP"/>
                             <constraint firstItem="EDM-Xm-ksg" firstAttribute="leading" secondItem="8IM-zv-TXt" secondAttribute="leading" id="P7M-e9-r6j"/>

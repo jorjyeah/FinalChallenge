@@ -26,6 +26,7 @@ class ReportViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.prefersLargeTitles = false
         
         // Do any additional setup after loading the view.
     }
@@ -36,7 +37,7 @@ class ReportViewController: UIViewController {
     
     
     func populateTableView(){
-        navigationController?.navigationBar.prefersLargeTitles = false
+        //navigationController?.navigationBar.prefersLargeTitles = false
         let therapySessionsData = TherapySessionCKModel.self
         therapySessionsData.getTherapySession(studentRecordID: studentRecordID) { therapySessionsData in
             self.therapySession = therapySessionsData
@@ -78,18 +79,18 @@ extension ReportViewController: UITableViewDelegate, UITableViewDataSource {
         return therapySessionDateArray.count
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        //ini masih belum fix
-        /*for i in 0..<therapySessionDateArray.count {
-            if section == 0 {
-                return "\(therapySessionDateArray[i])"
-            }
-            else {
-                return "\(therapySessionDateArray[i+1])"
-            }
-        }*/
-        return "November"
-    }
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        //ini masih belum fix
+//        /*for i in 0..<therapySessionDateArray.count {
+//            if section == 0 {
+//                return "\(therapySessionDateArray[i])"
+//            }
+//            else {
+//                return "\(therapySessionDateArray[i+1])"
+//            }
+//        }*/
+//        return "November"
+//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch segmentedControl.selectedSegmentIndex {
