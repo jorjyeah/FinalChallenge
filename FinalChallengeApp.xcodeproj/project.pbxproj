@@ -24,6 +24,8 @@
 		687E7D962396769100331EAE /* DefaultTextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687E7D952396769100331EAE /* DefaultTextFieldTableViewCell.swift */; };
 		687E7D98239676A200331EAE /* CustomTextViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687E7D97239676A200331EAE /* CustomTextViewTableViewCell.swift */; };
 		687E7D9A239676B100331EAE /* CheckBoxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687E7D99239676B100331EAE /* CheckBoxTableViewCell.swift */; };
+		6892BF3723A79DAB00E8FDC8 /* SlideInPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6892BF3623A79DAB00E8FDC8 /* SlideInPresentationController.swift */; };
+		6892BF3923A79E0F00E8FDC8 /* SlideInPresentationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6892BF3823A79E0F00E8FDC8 /* SlideInPresentationManager.swift */; };
 		68A57095237E7BE1002A3014 /* StudentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A57094237E7BE1002A3014 /* StudentsTableViewCell.swift */; };
 		68A570B62383D45E002A3014 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A570B52383D45E002A3014 /* ReportViewController.swift */; };
 		68A570B82383D479002A3014 /* ReportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A570B72383D479002A3014 /* ReportTableViewCell.swift */; };
@@ -121,6 +123,8 @@
 		687E7D952396769100331EAE /* DefaultTextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTextFieldTableViewCell.swift; sourceTree = "<group>"; };
 		687E7D97239676A200331EAE /* CustomTextViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextViewTableViewCell.swift; sourceTree = "<group>"; };
 		687E7D99239676B100331EAE /* CheckBoxTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxTableViewCell.swift; sourceTree = "<group>"; };
+		6892BF3623A79DAB00E8FDC8 /* SlideInPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideInPresentationController.swift; sourceTree = "<group>"; };
+		6892BF3823A79E0F00E8FDC8 /* SlideInPresentationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideInPresentationManager.swift; sourceTree = "<group>"; };
 		68A57094237E7BE1002A3014 /* StudentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentsTableViewCell.swift; sourceTree = "<group>"; };
 		68A570B52383D45E002A3014 /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
 		68A570B72383D479002A3014 /* ReportTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportTableViewCell.swift; sourceTree = "<group>"; };
@@ -254,6 +258,8 @@
 		6892BF0F23A78F6700E8FDC8 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				6892BF3623A79DAB00E8FDC8 /* SlideInPresentationController.swift */,
+				6892BF3823A79E0F00E8FDC8 /* SlideInPresentationManager.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -630,6 +636,7 @@
 				B9D1303023981F5B00A4F8B2 /* DetailedParentNotesDataManager.swift in Sources */,
 				6837ED9A239A3FE800CF1FCC /* EditCustomTextViewTableViewCell.swift in Sources */,
 				68A570ED238AA3DE002A3014 /* MaterialsViewController.swift in Sources */,
+				6892BF3723A79DAB00E8FDC8 /* SlideInPresentationController.swift in Sources */,
 				68A57095237E7BE1002A3014 /* StudentsTableViewCell.swift in Sources */,
 				68A570FF238AB614002A3014 /* ProgramTitleTableViewCell.swift in Sources */,
 				68FEA198239E614B00EF30C7 /* AttachmentTableViewCell.swift in Sources */,
@@ -659,6 +666,7 @@
 				B9C016FF2395291E0051D9FC /* SaveEditedProfile.swift in Sources */,
 				B96299C0239E31670009DE32 /* ActivityCKModel.swift in Sources */,
 				68A570C72384F378002A3014 /* AddReportViewController.swift in Sources */,
+				6892BF3923A79E0F00E8FDC8 /* SlideInPresentationManager.swift in Sources */,
 				68A570D5238544E4002A3014 /* NotesTableViewCell.swift in Sources */,
 				B9F87B20239A438000985864 /* BaseProgramDataManager.swift in Sources */,
 			);

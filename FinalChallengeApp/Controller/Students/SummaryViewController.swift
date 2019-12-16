@@ -21,6 +21,8 @@ class SummaryViewController: UIViewController, AVAudioPlayerDelegate {
     
     // MARK: - Properties
     
+    //modal  view
+    lazy var slideInTransitioningDelegate = SlideInPresentationManager()
     
     var selectedActivity = [AddReportModelCK]()
     var newTherapySession = [TherapySessionCKModel]()
@@ -58,7 +60,7 @@ class SummaryViewController: UIViewController, AVAudioPlayerDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showSummaryViewDetail" {
+    if segue.identifier == "showSummaryViewDetail" {
             let destination = segue.destination as? ViewDetailSummaryViewController
             let row = sender as! Int
             var prompts = String()
@@ -76,6 +78,9 @@ class SummaryViewController: UIViewController, AVAudioPlayerDelegate {
             destination?.program = CKRecord.ID(recordName: selectedActivity[row].baseProgramTitle)
         } else if segue.identifier == "showRecordView" {
             let destination = segue.destination as? AudioRecorderViewController
+            slideInTransitioningDelegate.direction = .bottom
+            destination!.transitioningDelegate = slideInTransitioningDelegate
+            destination!.modalPresentationStyle = .custom
             destination?.delegate = self
         } else if segue.identifier == "backToAddReportFromSummary" {
             let destination = segue.destination as? ReportViewController

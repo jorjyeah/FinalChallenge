@@ -25,7 +25,7 @@ class StudentsViewController: UIViewController {
         super.viewDidLoad()
         
         //navbar customize
-        navigationController?.navigationBar.backgroundColor = UIColor(red: 0.97, green: 0.97, blue: 0.97, alpha: 1)
+        //navigationController?.navigationBar.backgroundColor = UIColor(red: 0.97, green: 0.97, blue: 0.97, alpha: 1)
      
 
         // search bar

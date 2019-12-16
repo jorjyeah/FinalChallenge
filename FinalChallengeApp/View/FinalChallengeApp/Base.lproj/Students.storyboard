@@ -71,7 +71,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.95686918499999996" green="0.95685130360000004" blue="0.95686346290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="Bht-aX-avv" firstAttribute="leading" secondItem="K6q-6A-I90" secondAttribute="leading" id="5vK-kj-Wqx"/>
                             <constraint firstItem="Bht-aX-avv" firstAttribute="top" secondItem="v4p-R0-9Fd" secondAttribute="bottom" id="Vtt-sM-dtk"/>
@@ -1005,9 +1005,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8L5-iX-7Jf">
-                                <rect key="frame" x="132" y="171" width="150" height="150"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8L5-iX-7Jf">
+                                <rect key="frame" x="132" y="608" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="Ni5-3t-Dz7"/>
+                                    <constraint firstAttribute="height" constant="150" id="i0V-OX-KuO"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="R">
@@ -1019,6 +1022,11 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.95686918499999996" green="0.95685130360000004" blue="0.95686346290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="f4n-YA-qtv" firstAttribute="bottom" secondItem="8L5-iX-7Jf" secondAttribute="bottom" constant="50" id="7bh-9R-Gf5"/>
+                            <constraint firstItem="8L5-iX-7Jf" firstAttribute="leading" secondItem="f4n-YA-qtv" secondAttribute="leading" constant="132" id="a4w-rm-e3F"/>
+                            <constraint firstItem="f4n-YA-qtv" firstAttribute="trailing" secondItem="8L5-iX-7Jf" secondAttribute="trailing" constant="132" id="vvN-5u-gHh"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="f4n-YA-qtv"/>
                     </view>
                     <connections>
