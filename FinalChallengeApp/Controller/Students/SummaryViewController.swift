@@ -12,13 +12,14 @@ import AVFoundation
 
 class SummaryViewController: UIViewController, AVAudioPlayerDelegate {
     
+    // MARK: - IBOutlets
     @IBOutlet weak var tableView: UITableView!
-    
     @IBOutlet weak var selectedImageView: UIImageView!
-    
     @IBOutlet weak var attachmentView: UIView!
-    
     @IBOutlet weak var playButton: UIButton!
+    
+    
+    // MARK: - Properties
     
     
     var selectedActivity = [AddReportModelCK]()
@@ -40,6 +41,8 @@ class SummaryViewController: UIViewController, AVAudioPlayerDelegate {
     var audioFilename = URL(string: "")
     var audioPlayer: AVAudioPlayer!
     
+    
+    // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -195,6 +198,24 @@ class SummaryViewController: UIViewController, AVAudioPlayerDelegate {
 
 //  tableview
 extension SummaryViewController: UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+
+        let myLabel = UILabel()
+        myLabel.frame = CGRect(x: 20, y: 8, width: 320, height: 20)
+        myLabel.font = UIFont.systemFont(ofSize: 13)
+        myLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
+
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor(red: 0.97, green: 0.97, blue: 0.97, alpha: 1)
+        headerView.addSubview(myLabel)
+
+        return headerView
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 38
+    }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
 

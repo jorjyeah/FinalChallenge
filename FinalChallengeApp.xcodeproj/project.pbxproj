@@ -251,6 +251,13 @@
 			path = "Tabel View Cell";
 			sourceTree = "<group>";
 		};
+		6892BF0F23A78F6700E8FDC8 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
 		68A57093237E7BCF002A3014 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -347,6 +354,7 @@
 				68A570EF238AA42A002A3014 /* Profile */,
 				68A570E8238AA384002A3014 /* Students */,
 				68A570E7238AA361002A3014 /* Materials */,
+				6892BF0F23A78F6700E8FDC8 /* Presentation */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -843,7 +851,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = FinalChallengeApp/FinalChallengeApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = A59P6GV5MM;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = FinalChallengeApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -863,7 +871,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = FinalChallengeApp/FinalChallengeApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = A59P6GV5MM;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = FinalChallengeApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (

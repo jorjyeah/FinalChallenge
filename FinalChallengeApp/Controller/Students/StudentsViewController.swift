@@ -25,10 +25,9 @@ class StudentsViewController: UIViewController {
         super.viewDidLoad()
         
         //navbar customize
-        navigationController?.navigationBar.backgroundColor = UIColor(red: 0.97, green: 0.97, blue: 0.97, alpha: 0)
-                
-        
-        
+        navigationController?.navigationBar.backgroundColor = UIColor(red: 0.97, green: 0.97, blue: 0.97, alpha: 1)
+     
+
         // search bar
         searchBar.delegate =  self
         
@@ -52,7 +51,7 @@ extension StudentsViewController: UITableViewDelegate, UITableViewDataSource, UI
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         if let headerView = view as? UITableViewHeaderFooterView {
-            headerView.contentView.backgroundColor = UIColor(red: 0.97, green: 0.97, blue: 0.97, alpha: 0.82)
+            headerView.contentView.backgroundColor = UIColor(red: 0.97, green: 0.97, blue: 0.97, alpha: 1)
         }
     }
     

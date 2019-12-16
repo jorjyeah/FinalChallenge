@@ -19,7 +19,7 @@ class NotesTableViewCell: UITableViewCell {
         notesLabel.backgroundColor = .white
         notesLabel.layer.cornerRadius = 14
         notesLabel.layer.cornerRadius = 14
-        notesLabel.layer.borderWidth = 0.3
+        notesLabel.layer.borderWidth = 0.5
         notesLabel.layer.borderColor = UIColor(red: 0.59, green: 0.59, blue: 0.59, alpha: 1).cgColor
     }
 

@@ -19,7 +19,7 @@ class NotesSummaryTableViewCell: UITableViewCell {
         notesTextView.backgroundColor = .white
         notesTextView.layer.cornerRadius = 14
         notesTextView.layer.cornerRadius = 14
-        notesTextView.layer.borderWidth = 0.3
+        notesTextView.layer.borderWidth = 0.5
         notesTextView.layer.borderColor = UIColor(red: 0.59, green: 0.59, blue: 0.59, alpha: 1).cgColor
         
         // Initialization code
