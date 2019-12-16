@@ -124,7 +124,8 @@ class SummaryViewController: UIViewController, AVAudioPlayerDelegate {
         print("udah masuk ke gallery")
     }
     
-    
+//=============================================================================================================================//
+
     
     //ini handlernya audio attachment
     @objc func recordTapped(tapGestureRecognizer: UITapGestureRecognizer) {

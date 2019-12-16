@@ -688,7 +688,7 @@
                     <navigationItem key="navigationItem" title="Today's Report" id="sDl-qj-IN9">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="q1i-uZ-J4S">
                             <connections>
-                                <segue destination="rNe-Ul-54a" kind="show" identifier="showSummary" id="IHw-u1-17u"/>
+                                <segue destination="rNe-Ul-54a" kind="show" identifier="showSummary" id="idH-LC-sKB"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
