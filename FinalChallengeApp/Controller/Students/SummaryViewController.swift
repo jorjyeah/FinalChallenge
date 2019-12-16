@@ -40,9 +40,18 @@ class SummaryViewController: UIViewController, AVAudioPlayerDelegate {
     var audioFilename = URL(string: "")
     var audioPlayer: AVAudioPlayer!
     
+    let loadingView = UIView()
+    let logoMoveImage = UIImageView.init(image: UIImage(named: "stara-active"))
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loadingView.autoresizingMask = [ .flexibleHeight, .flexibleWidth]
+        loadingView.addSubview(logoMoveImage)
+        loadingView.isOpaque = true
+        loadingView.backgroundColor = .lightGray
+        loadingView.isHidden = true
         let recordingPlay = UIImage(named: "Recordings Play")?.withRenderingMode(.alwaysOriginal)
         
         attachmentView.isHidden = true
@@ -78,6 +87,7 @@ class SummaryViewController: UIViewController, AVAudioPlayerDelegate {
     
     // save button tapped
     @IBAction func saveButtonTapped(_ sender: Any) {
+        
         SaveNewReport.saveReport(childName: studentRecordID, therapistName: therapistRecordID, therapySessionNotes: notes) { (therapySessionModel, therapySessionRecordID) in
             self.newTherapySession = therapySessionModel
             
