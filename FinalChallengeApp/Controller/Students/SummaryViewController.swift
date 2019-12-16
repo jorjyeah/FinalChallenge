@@ -12,14 +12,17 @@ import AVFoundation
 
 class SummaryViewController: UIViewController, AVAudioPlayerDelegate {
     
+    // MARK: - IBOutlets
     @IBOutlet weak var tableView: UITableView!
-    
     @IBOutlet weak var selectedImageView: UIImageView!
-    
     @IBOutlet weak var attachmentView: UIView!
-    
     @IBOutlet weak var playButton: UIButton!
     
+    
+    // MARK: - Properties
+    
+    //modal  view
+    lazy var slideInTransitioningDelegate = SlideInPresentationManager()
     
     var selectedActivity = [AddReportModelCK]()
     var newTherapySession = [TherapySessionCKModel]()
@@ -44,6 +47,7 @@ class SummaryViewController: UIViewController, AVAudioPlayerDelegate {
     let logoMoveImage = UIImageView.init(image: UIImage(named: "stara-active"))
 
     
+    // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -57,10 +61,14 @@ class SummaryViewController: UIViewController, AVAudioPlayerDelegate {
         attachmentView.isHidden = true
         playButton.isHidden = true
         playButton.setImage(recordingPlay, for: .normal)
+        
+        
+        //styling
+        attachmentView.backgroundColor = UIColor(red: 0.97, green: 0.97, blue: 0.97, alpha: 0.82)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showSummaryViewDetail" {
+    if segue.identifier == "showSummaryViewDetail" {
             let destination = segue.destination as? ViewDetailSummaryViewController
             let row = sender as! Int
             var prompts = String()
@@ -78,6 +86,9 @@ class SummaryViewController: UIViewController, AVAudioPlayerDelegate {
             destination?.program = CKRecord.ID(recordName: selectedActivity[row].baseProgramTitle)
         } else if segue.identifier == "showRecordView" {
             let destination = segue.destination as? AudioRecorderViewController
+            slideInTransitioningDelegate.direction = .bottom
+            destination!.transitioningDelegate = slideInTransitioningDelegate
+            destination!.modalPresentationStyle = .custom
             destination?.delegate = self
         } else if segue.identifier == "backToAddReportFromSummary" {
             let destination = segue.destination as? ReportViewController
@@ -205,6 +216,24 @@ class SummaryViewController: UIViewController, AVAudioPlayerDelegate {
 //  tableview
 extension SummaryViewController: UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+
+        let myLabel = UILabel()
+        myLabel.frame = CGRect(x: 20, y: 8, width: 320, height: 20)
+        myLabel.font = UIFont.systemFont(ofSize: 13)
+        myLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
+
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor(red: 0.97, green: 0.97, blue: 0.97, alpha: 1)
+        headerView.addSubview(myLabel)
+
+        return headerView
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 38
+    }
+    
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
 
         // Combine the textView text and the replacement text to
@@ -300,6 +329,9 @@ extension SummaryViewController: UITableViewDataSource, UITableViewDelegate, UIT
             cell.promptLabel.text = "Prompt: " + prompts
             cell.mediaLabel.text = "Media: " + selectedActivity[indexPath.row].activityMedia
             
+            //styling
+//            tableView.separatorColor = .darkGray
+            
             return  cell
             
         } else if indexPath.section == 1 {
@@ -310,6 +342,10 @@ extension SummaryViewController: UITableViewDataSource, UITableViewDelegate, UIT
             cell.notesTextView.tag = indexPath.section
             cell.notesTextView.delegate = self // agar fungsi check changed dan placeholdernya nyala, harus di delegasikan ke UIVC
             cell.notesTextView.selectedTextRange = cell.notesTextView.textRange(from: cell.notesTextView.beginningOfDocument, to: cell.notesTextView.beginningOfDocument)
+            
+            //styling
+//            tableView.separatorColor = .clear
+            
             return  cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "attachmentCell", for: indexPath) as! AttachmentTableViewCell
@@ -324,6 +360,9 @@ extension SummaryViewController: UITableViewDataSource, UITableViewDelegate, UIT
             //ini untuk action audio
             cell.audioAttachment.isUserInteractionEnabled = true
             cell.audioAttachment.addGestureRecognizer(audioTapRecognizer)
+            
+            //styling
+//            tableView.separatorColor = .clear
 
             return cell
         }

@@ -25,10 +25,9 @@ class StudentsViewController: UIViewController {
         super.viewDidLoad()
         
         //navbar customize
-        navigationController?.navigationBar.backgroundColor = UIColor(red: 0.97, green: 0.97, blue: 0.97, alpha: 0)
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.topItem?.title = "Students"
-        
+        //navigationController?.navigationBar.backgroundColor = UIColor(red: 0.97, green: 0.97, blue: 0.97, alpha: 1)
+     
+
         // search bar
         searchBar.delegate =  self
         
@@ -52,7 +51,7 @@ extension StudentsViewController: UITableViewDelegate, UITableViewDataSource, UI
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         if let headerView = view as? UITableViewHeaderFooterView {
-            headerView.contentView.backgroundColor = UIColor(red: 0.97, green: 0.97, blue: 0.97, alpha: 0.82)
+            headerView.contentView.backgroundColor = UIColor(red: 0.97, green: 0.97, blue: 0.97, alpha: 1)
         }
     }
     
@@ -140,3 +139,24 @@ extension StudentsViewController: UITableViewDelegate, UITableViewDataSource, UI
         self.tableView.tableFooterView = footer
     }
 }
+
+//extension UIViewController {
+//
+//    func setLargeTitleDisplayMode(_ largeTitleDisplayMode: UINavigationItem.LargeTitleDisplayMode) {
+//        switch largeTitleDisplayMode {
+//        case .automatic:
+//              guard let navigationController = navigationController else { break }
+//            if let index = navigationController.children.firstIndex(of: self) {
+//                setLargeTitleDisplayMode(index == 0 ? .always : .never)
+//            } else {
+//                setLargeTitleDisplayMode(.always)
+//            }
+//        case .always, .never:
+//            navigationItem.largeTitleDisplayMode = largeTitleDisplayMode
+//            // Even when .never, needs to be true otherwise animation will be broken on iOS11, 12, 13
+//            navigationController?.navigationBar.prefersLargeTitles = true
+//        @unknown default:
+//            assertionFailure("\(#function): Missing handler for \(largeTitleDisplayMode)")
+//        }
+//    }
+//}

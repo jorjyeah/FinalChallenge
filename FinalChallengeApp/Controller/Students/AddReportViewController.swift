@@ -35,6 +35,10 @@ class AddReportViewController: UIViewController {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
+            
+            
+            //styling
+            self.tableView.separatorColor = .clear
         }
         
         let lastActivityData = AddReportModelCK.self
@@ -77,6 +81,13 @@ class AddReportViewController: UIViewController {
 }
 
 extension AddReportViewController: UITableViewDelegate,UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if let headerView = view as? UITableViewHeaderFooterView {
+            headerView.contentView.backgroundColor = UIColor(red: 0.97, green: 0.97, blue: 0.97, alpha: 0.82)
+        }
+    }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
@@ -190,5 +201,6 @@ extension AddReportViewController: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
+    
     
 }

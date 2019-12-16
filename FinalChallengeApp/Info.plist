@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>want to use image library</string>
+	<string>$(PRODUCT_NAME) wants to import picture from library</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>want to use microphone</string>
+	<string>$(PRODUCT_NAME) wants to use microphone</string>
 	<key>NSCameraUsageDescription</key>
-	<string>Test</string>
+	<string>$(PRODUCT_NAME) wats to use camera</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>

@@ -20,6 +20,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let therapistNameUserDef = "therapistName"
         let userDefaults = UserDefaults.standard
         
+        //navbar styling
+//        var navigationBarAppearace = UINavigationBar.appearance()
+//
+//        navigationBarAppearace.tintColor = uicolorFromHex(rgbValue: 0xffffff)
+//        navigationBarAppearace.barTintColor = uicolorFromHex(rgbValue: 0x034517)
+
+        
         if userDefaults.bool(forKey: preloadedDataKey) == false {
             // check if it's the firsttime user open the app
             preloadData { (userRef, therapistName) in
@@ -47,7 +54,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         return true
     }
-
+    
+    
+//    func uicolorFromHex(rgbValue:UInt32)->UIColor{
+//        let red = CGFloat((rgbValue & 0xFF0000) >> 16)/256.0
+//        let green = CGFloat((rgbValue & 0xFF00) >> 8)/256.0
+//        let blue = CGFloat(rgbValue & 0xFF)/256.0
+//
+//        return UIColor(red:red, green:green, blue:blue, alpha:1.0)
+//    }
+    
+    
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
