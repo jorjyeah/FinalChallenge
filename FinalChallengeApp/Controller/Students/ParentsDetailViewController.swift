@@ -19,13 +19,13 @@ class ParentsDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let layer = UIView()
-//        layer.frame = CGRect(x: 16, y: 137, width: 382, height: 104)
-//        layer.backgroundColor = .white
-//        layer.layer.cornerRadius = 14
-//        layer.layer.borderWidth = 0.3
-//        layer.layer.borderColor = UIColor(red: 0.59, green: 0.59, blue: 0.59, alpha: 1).cgColor
-//        view.addSubview(layer)
+        
+        notesLabel.frame = CGRect(x: 16, y: 137, width: 382, height: 104)
+        notesLabel.backgroundColor = .white
+        notesLabel.layer.cornerRadius = 14
+        notesLabel.layer.borderWidth = 0.3
+        notesLabel.layer.borderColor = UIColor(red: 0.59, green: 0.59, blue: 0.59, alpha: 1).cgColor
+        
         // Do any additional setup after loading the view.
     }
     
