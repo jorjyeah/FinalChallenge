@@ -55,7 +55,7 @@
                                     <outlet property="delegate" destination="hm9-KI-3VW" id="OZc-Bj-8XW"/>
                                 </connections>
                             </tableView>
-                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search" id="v4p-R0-9Fd">
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" text="" placeholder="Search" id="v4p-R0-9Fd">
                                 <rect key="frame" x="0.0" y="144" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.95686918497085571" green="0.9568513035774231" blue="0.95686346292495728" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -73,6 +73,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Students" id="vFQ-1V-U0u">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="qUn-Qc-Izy">
+                            <color key="tintColor" red="0.72549019609999998" green="0.51764705879999995" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="vjL-os-rdh" kind="presentation" identifier="showQRCodeScanner" id="UQK-Ev-oYj"/>
                             </connections>
@@ -103,7 +104,9 @@
                                 </constraints>
                                 <items>
                                     <navigationItem title="Add New Student" id="GHZ-Qe-eBB">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="MPh-2o-raH"/>
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="MPh-2o-raH">
+                                            <color key="tintColor" red="0.72549019609999998" green="0.51764705879999995" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -148,8 +151,12 @@
                                 </constraints>
                                 <items>
                                     <navigationItem title="Add New Student" id="T6g-73-NNY">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="sGL-fp-qSg"/>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="NHb-rR-GKX"/>
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="sGL-fp-qSg">
+                                            <color key="tintColor" red="0.72549019609999998" green="0.51764705879999995" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="NHb-rR-GKX">
+                                            <color key="tintColor" red="0.72549019609999998" green="0.51764705879999995" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -275,7 +282,7 @@
                                 </connections>
                             </segmentedControl>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.95686918499999996" green="0.95685130360000004" blue="0.95686346290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="AhA-RL-CPH" firstAttribute="top" secondItem="Ts6-g7-oKh" secondAttribute="bottom" constant="31" id="8qH-qu-2QS"/>
                             <constraint firstItem="AhA-RL-CPH" firstAttribute="top" secondItem="Ts6-g7-oKh" secondAttribute="bottom" constant="31" id="DKM-Aj-KjL"/>
@@ -291,8 +298,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="V0d-rt-tyO"/>
                     </view>
-                    <navigationItem key="navigationItem" title="All Reports" id="hyE-Wc-AaS">
+                    <navigationItem key="navigationItem" title="All Reports" largeTitleDisplayMode="never" id="hyE-Wc-AaS">
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="HKF-4a-yO0">
+                            <color key="tintColor" red="0.72549019609999998" green="0.51764705879999995" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="3HD-r0-5Ss" kind="show" identifier="showAddReport" id="O8K-YH-yGU"/>
                             </connections>
@@ -511,7 +519,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uo3-a8-qQ3">
                                 <rect key="frame" x="0.0" y="132" width="414" height="730"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" red="0.95686918499999996" green="0.95685130360000004" blue="0.95686346290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="730" id="acG-lE-mtZ"/>
                                 </constraints>
@@ -570,6 +578,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Today's Report" id="sDl-qj-IN9">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="q1i-uZ-J4S">
+                            <color key="tintColor" red="0.72549019609999998" green="0.51764705879999995" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="rNe-Ul-54a" kind="show" identifier="showSummary" id="IHw-u1-17u"/>
                             </connections>
@@ -594,7 +603,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YQR-Eg-8mE">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="9Dm-lq-d6h">
                                     <rect key="frame" x="0.0" y="460" width="414" height="192"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -617,7 +626,7 @@
                                             </connections>
                                         </button>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <color key="backgroundColor" red="0.95686918499999996" green="0.95685130360000004" blue="0.95686346290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="H5r-nS-TLx" secondAttribute="bottom" constant="16" id="7af-RL-Hfz"/>
                                         <constraint firstItem="IRw-X8-9Fi" firstAttribute="top" secondItem="9Dm-lq-d6h" secondAttribute="top" constant="16" id="DyZ-m1-UE8"/>
@@ -759,6 +768,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Summary" id="gav-1U-bMd">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="zAr-gS-bqd">
+                            <color key="tintColor" red="0.72549019609999998" green="0.51764705879999995" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="saveButtonTapped:" destination="rNe-Ul-54a" id="0ET-DQ-gOr"/>
                             </connections>
@@ -998,8 +1008,8 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JLt-p9-X3O" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Students" id="Bw1-0m-OdF"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7tk-LG-dbY">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="7tk-LG-dbY">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

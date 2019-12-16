@@ -48,6 +48,10 @@ class SummaryViewController: UIViewController, AVAudioPlayerDelegate {
         attachmentView.isHidden = true
         playButton.isHidden = true
         playButton.setImage(recordingPlay, for: .normal)
+        
+        
+        //styling
+        attachmentView.backgroundColor = UIColor(red: 0.97, green: 0.97, blue: 0.97, alpha: 0.82)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -189,14 +193,6 @@ class SummaryViewController: UIViewController, AVAudioPlayerDelegate {
     }
 }
 
-
-
-
-
-
-
-
-
 //  tableview
 extension SummaryViewController: UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
     
@@ -295,6 +291,9 @@ extension SummaryViewController: UITableViewDataSource, UITableViewDelegate, UIT
             cell.promptLabel.text = "Prompt: " + prompts
             cell.mediaLabel.text = "Media: " + selectedActivity[indexPath.row].activityMedia
             
+            //styling
+//            tableView.separatorColor = .darkGray
+            
             return  cell
             
         } else if indexPath.section == 1 {
@@ -303,6 +302,10 @@ extension SummaryViewController: UITableViewDataSource, UITableViewDelegate, UIT
             cell.notesTextView.textColor = UIColor.lightGray
             cell.notesTextView.becomeFirstResponder()
             cell.notesTextView.selectedTextRange = cell.notesTextView.textRange(from: cell.notesTextView.beginningOfDocument, to: cell.notesTextView.beginningOfDocument)
+            
+            //styling
+//            tableView.separatorColor = .clear
+            
             return  cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "attachmentCell", for: indexPath) as! AttachmentTableViewCell
@@ -317,6 +320,9 @@ extension SummaryViewController: UITableViewDataSource, UITableViewDelegate, UIT
             //ini untuk action audio
             cell.audioAttachment.isUserInteractionEnabled = true
             cell.audioAttachment.addGestureRecognizer(audioTapRecognizer)
+            
+            //styling
+//            tableView.separatorColor = .clear
 
             return cell
         }

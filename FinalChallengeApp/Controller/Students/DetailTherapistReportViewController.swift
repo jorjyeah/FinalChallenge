@@ -153,11 +153,8 @@ extension DetailTherapistReportViewController: UITableViewDataSource, UITableVie
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section  == 0 {
+        if indexPath.section == 0 {
             return 128
-        }
-        else {
-            return 220
         }
     }
     

@@ -35,6 +35,10 @@ class AddReportViewController: UIViewController {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
+            
+            
+            //styling
+            self.tableView.separatorColor = .clear
         }
         
         let lastActivityData = AddReportModelCK.self
@@ -182,5 +186,6 @@ extension AddReportViewController: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
+    
     
 }
