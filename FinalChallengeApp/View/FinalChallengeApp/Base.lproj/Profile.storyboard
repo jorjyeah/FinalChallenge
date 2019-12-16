@@ -40,14 +40,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e7S-m4-TzR">
-                                <rect key="frame" x="180.5" y="706" width="53" height="28"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <rect key="frame" x="179.5" y="706" width="55" height="28"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                                 <state key="normal" title="Sign Out">
-                                    <color key="titleColor" systemColor="systemBrownColor" red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="0.72549019609999998" green="0.51764705879999995" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.95686918499999996" green="0.95685130360000004" blue="0.95686346290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="e7S-m4-TzR" firstAttribute="centerX" secondItem="KrK-S7-Edr" secondAttribute="centerX" id="0yp-OE-xJE"/>
                             <constraint firstItem="Jse-oS-pXa" firstAttribute="top" secondItem="wIb-Qa-V28" secondAttribute="top" constant="120" id="8yd-G5-YT7"/>
@@ -114,33 +114,33 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Institution" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YlU-3d-z71">
-                                <rect key="frame" x="16" y="468" width="60.5" height="16"/>
+                                <rect key="frame" x="16" y="460" width="60.5" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eIq-ok-uQA">
-                                <rect key="frame" x="16" y="488" width="382" height="34"/>
+                                <rect key="frame" x="16" y="480" width="382" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="od1-vb-za6">
-                                <rect key="frame" x="16" y="546" width="49.5" height="16"/>
+                                <rect key="frame" x="16" y="530" width="49.5" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c3P-gd-LBe">
-                                <rect key="frame" x="16" y="566" width="382" height="34"/>
+                                <rect key="frame" x="16" y="550" width="382" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UDN-6l-ccE">
-                                <rect key="frame" x="193" y="328" width="30" height="28"/>
+                                <rect key="frame" x="193" y="329" width="30" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                                 <state key="normal" title="Edit">
-                                    <color key="titleColor" systemColor="systemBrownColor" red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="0.72549019609999998" green="0.51764705879999995" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="editPhotoButton:" destination="0nd-hS-3DZ" eventType="touchUpInside" id="YhC-Ns-vIf"/>
@@ -152,7 +152,7 @@
                             <constraint firstItem="7W3-x1-amd" firstAttribute="top" secondItem="PKP-Qg-zCH" secondAttribute="bottom" constant="72" id="3Ua-is-bEz"/>
                             <constraint firstItem="2ns-wz-C1N" firstAttribute="leading" secondItem="mbZ-1O-9Ht" secondAttribute="leading" constant="16" id="8JL-Oe-eNN"/>
                             <constraint firstItem="c3P-gd-LBe" firstAttribute="leading" secondItem="mbZ-1O-9Ht" secondAttribute="leading" constant="16" id="BDI-ga-Ee1"/>
-                            <constraint firstItem="YlU-3d-z71" firstAttribute="top" secondItem="zOy-DB-2S9" secondAttribute="bottom" constant="24" id="Dfo-eo-4Y6"/>
+                            <constraint firstItem="YlU-3d-z71" firstAttribute="top" secondItem="zOy-DB-2S9" secondAttribute="bottom" constant="16" id="Dfo-eo-4Y6"/>
                             <constraint firstItem="c3P-gd-LBe" firstAttribute="top" secondItem="od1-vb-za6" secondAttribute="bottom" constant="4" id="FpH-tN-jFk"/>
                             <constraint firstItem="zOy-DB-2S9" firstAttribute="top" secondItem="2ns-wz-C1N" secondAttribute="bottom" constant="4" id="Fwe-wW-adG"/>
                             <constraint firstItem="2ns-wz-C1N" firstAttribute="top" secondItem="PKP-Qg-zCH" secondAttribute="bottom" constant="302" id="GVc-zs-Sar"/>
@@ -165,7 +165,7 @@
                             <constraint firstItem="7W3-x1-amd" firstAttribute="centerX" secondItem="Qan-gX-keV" secondAttribute="centerX" id="WR4-Cw-c53"/>
                             <constraint firstItem="7W3-x1-amd" firstAttribute="leading" secondItem="mbZ-1O-9Ht" secondAttribute="leading" constant="127" id="YuT-cM-om1"/>
                             <constraint firstItem="eIq-ok-uQA" firstAttribute="top" secondItem="YlU-3d-z71" secondAttribute="bottom" constant="4" id="Z5s-hA-Qzy"/>
-                            <constraint firstItem="od1-vb-za6" firstAttribute="top" secondItem="eIq-ok-uQA" secondAttribute="bottom" constant="24" id="aqV-Kg-Niz"/>
+                            <constraint firstItem="od1-vb-za6" firstAttribute="top" secondItem="eIq-ok-uQA" secondAttribute="bottom" constant="16" id="aqV-Kg-Niz"/>
                             <constraint firstItem="mbZ-1O-9Ht" firstAttribute="trailing" secondItem="eIq-ok-uQA" secondAttribute="trailing" constant="16" id="bB0-gw-pFO"/>
                             <constraint firstItem="zOy-DB-2S9" firstAttribute="leading" secondItem="mbZ-1O-9Ht" secondAttribute="leading" constant="16" id="bQc-gG-M6i"/>
                             <constraint firstItem="eIq-ok-uQA" firstAttribute="leading" secondItem="mbZ-1O-9Ht" secondAttribute="leading" constant="16" id="cvc-1s-yM9"/>
