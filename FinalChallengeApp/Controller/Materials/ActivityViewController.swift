@@ -17,7 +17,7 @@ class ActivityViewController: UIViewController {
         // bikin function dulu buat unwind, nanti di exit di page summary
         if segue.source is NewActivityViewController{
             tableView.reloadData()
-            emptyState()
+//            emptyState()
         }
     }
     
@@ -40,23 +40,23 @@ class ActivityViewController: UIViewController {
         
     }
     
-    func emptyState(){
-        let footer = UIView()
-        if self.activities.count == 0 {
-            let emptyStateImage = UIImageView()
-            emptyStateImage.image = UIImage(named: "Search not found")
-            emptyStateImage.frame = CGRect(x: 0, y: 0, width: 296, height: 284)
-            footer.addSubview(emptyStateImage)
-            
-            emptyStateImage.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activate([
-                emptyStateImage.centerXAnchor.constraint(equalTo: footer.centerXAnchor),
-                emptyStateImage.topAnchor.constraint(equalTo: footer.topAnchor, constant: 8)
-            ])
-        }
-        
-        self.tableView.tableFooterView = footer
-    }
+//    func emptyState(){
+//        let footer = UIView()
+//        if self.activities.count == 0 {
+//            let emptyStateImage = UIImageView()
+//            emptyStateImage.image = UIImage(named: "Search not found")
+//            emptyStateImage.frame = CGRect(x: 0, y: 0, width: 296, height: 284)
+//            footer.addSubview(emptyStateImage)
+//
+//            emptyStateImage.translatesAutoresizingMaskIntoConstraints = false
+//            NSLayoutConstraint.activate([
+//                emptyStateImage.centerXAnchor.constraint(equalTo: footer.centerXAnchor),
+//                emptyStateImage.topAnchor.constraint(equalTo: footer.topAnchor, constant: 8)
+//            ])
+//        }
+//
+//        self.tableView.tableFooterView = footer
+//    }
     
     
     func populateData(){
@@ -68,7 +68,7 @@ class ActivityViewController: UIViewController {
             }
             
             DispatchQueue.main.async {
-                self.emptyState()
+//                self.emptyState()
                 self.tableView.reloadData()
             }
         }
