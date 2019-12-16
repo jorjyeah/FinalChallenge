@@ -2,7 +2,7 @@
 //  SlideInPresentationManager.swift
 //  FinalChallengeApp
 //
-//  Created by Ni Wayan Bianka Aristania on 16/12/19.
+//  Created by Ni Wayan Bianka Aristania on 17/12/19.
 //  Copyright © 2019 George Joseph Kristian. All rights reserved.
 //
 
@@ -13,7 +13,7 @@ enum PresentationDirection {
 }
 
 class SlideInPresentationManager: NSObject {
-     var direction: PresentationDirection = .bottom
+    var direction: PresentationDirection = .bottom
 }
 
 extension SlideInPresentationManager: UIViewControllerTransitioningDelegate {
@@ -30,3 +30,4 @@ extension SlideInPresentationManager: UIViewControllerTransitioningDelegate {
       return presentationController
     }
 }
+
