@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JLt-p9-X3O">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JLt-p9-X3O">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -187,7 +187,7 @@
                                         </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="zoa-7V-3qB">
-                                        <rect key="frame" x="169" y="192.5" width="44" height="43.5"/>
+                                        <rect key="frame" x="169" y="192.5" width="44" height="44"/>
                                         <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="44" id="C6c-N0-YK8"/>
@@ -835,11 +835,11 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="sU4-24-Fyn">
-                                                    <rect key="frame" x="16" y="16.5" width="24" height="22"/>
+                                                    <rect key="frame" x="16" y="16.5" width="24" height="22.5"/>
                                                     <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </imageView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mic.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="aaj-Vg-5Zf">
-                                                    <rect key="frame" x="56" y="15.5" width="17" height="24"/>
+                                                    <rect key="frame" x="56" y="15.5" width="16" height="24"/>
                                                     <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </imageView>
                                             </subviews>
@@ -1085,9 +1085,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8L5-iX-7Jf">
-                                <rect key="frame" x="132" y="171" width="150" height="150"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8L5-iX-7Jf">
+                                <rect key="frame" x="174" y="688" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="C9I-aT-Xvc"/>
+                                    <constraint firstAttribute="height" constant="80" id="Gui-oi-0EP"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="R">
@@ -1097,8 +1100,22 @@
                                     <action selector="recordAct:" destination="5eo-9j-gaP" eventType="touchUpInside" id="zBT-qb-jXd"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Recording" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K7Q-8F-Dpl">
+                                <rect key="frame" x="128" y="579" width="158" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" red="0.95686918499999996" green="0.95685130360000004" blue="0.95686346290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="8L5-iX-7Jf" firstAttribute="top" secondItem="K7Q-8F-Dpl" secondAttribute="bottom" constant="80" id="8Dr-AR-Rse"/>
+                            <constraint firstItem="f4n-YA-qtv" firstAttribute="bottom" secondItem="8L5-iX-7Jf" secondAttribute="bottom" constant="40" id="9LD-nM-Jkb"/>
+                            <constraint firstItem="f4n-YA-qtv" firstAttribute="trailing" secondItem="8L5-iX-7Jf" secondAttribute="trailing" constant="160" id="OIE-0w-5Wf"/>
+                            <constraint firstItem="f4n-YA-qtv" firstAttribute="trailing" secondItem="K7Q-8F-Dpl" secondAttribute="trailing" constant="128" id="XBl-2t-Rz0"/>
+                            <constraint firstItem="K7Q-8F-Dpl" firstAttribute="leading" secondItem="f4n-YA-qtv" secondAttribute="leading" constant="128" id="e6e-cQ-n3q"/>
+                            <constraint firstItem="8L5-iX-7Jf" firstAttribute="leading" secondItem="f4n-YA-qtv" secondAttribute="leading" constant="174" id="v9e-Qd-LJ5"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="f4n-YA-qtv"/>
                     </view>
                     <connections>
@@ -1313,7 +1330,7 @@
     <resources>
         <image name="Unchecked box" width="36" height="36"/>
         <image name="camera.fill" catalog="system" width="64" height="48"/>
-        <image name="checkmark.circle.fill" catalog="system" width="64" height="60"/>
-        <image name="mic.fill" catalog="system" width="54" height="64"/>
+        <image name="checkmark.circle.fill" catalog="system" width="64" height="62"/>
+        <image name="mic.fill" catalog="system" width="50" height="64"/>
     </resources>
 </document>

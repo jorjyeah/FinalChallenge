@@ -2,94 +2,94 @@
 //  SlideInPresentationController.swift
 //  FinalChallengeApp
 //
-//  Created by Ni Wayan Bianka Aristania on 16/12/19.
+//  Created by Ni Wayan Bianka Aristania on 17/12/19.
 //  Copyright © 2019 George Joseph Kristian. All rights reserved.
 //
 
 import UIKit
 
 class SlideInPresentationController: UIPresentationController {
-    //1
-    // MARK: - Properties
-    private var dimmingView: UIView!
-    private var direction: PresentationDirection
     
-    override var frameOfPresentedViewInContainerView: CGRect {
-      //1
-      var frame: CGRect = .zero
-      frame.size = size(forChildContentContainer: presentedViewController,
-                        withParentContainerSize: containerView!.bounds.size)
+       // MARK: - Properties
+       private var dimmingView: UIView!
+       private var direction: PresentationDirection
+       
+       override var frameOfPresentedViewInContainerView: CGRect {
+         
+         var frame: CGRect = .zero
+         frame.size = size(forChildContentContainer: presentedViewController,
+                           withParentContainerSize: containerView!.bounds.size)
 
-      //2
-      switch direction {
-      case .bottom:
-        frame.origin.y = containerView!.frame.height*(2.0/3.0)
-      default:
-        frame.origin = .zero
-      }
-      return frame
-    }
+         
+         switch direction {
+         case .bottom:
+           frame.origin.y = containerView!.frame.height*(2.0/3.0)
+         default:
+           frame.origin = .zero
+         }
+         return frame
+       }
 
-    //2
-    init(presentedViewController: UIViewController,
-         presenting presentingViewController: UIViewController?,
-         direction: PresentationDirection) {
-      self.direction = direction
+       
+       init(presentedViewController: UIViewController,
+            presenting presentingViewController: UIViewController?,
+            direction: PresentationDirection) {
+         self.direction = direction
 
-      //3
-      super.init(presentedViewController: presentedViewController,
-                 presenting: presentingViewController)
-        setupDimmingView()
-    }
-    
-    override func presentationTransitionWillBegin() {
-      guard let dimmingView = dimmingView else {
-        return
-      }
-      // 1
-      containerView?.insertSubview(dimmingView, at: 0)
+         
+         super.init(presentedViewController: presentedViewController,
+                    presenting: presentingViewController)
+           setupDimmingView()
+       }
+       
+       override func presentationTransitionWillBegin() {
+         guard let dimmingView = dimmingView else {
+           return
+         }
+         // 1
+         containerView?.insertSubview(dimmingView, at: 0)
 
-      // 2
-      NSLayoutConstraint.activate(
-        NSLayoutConstraint.constraints(withVisualFormat: "V:|[dimmingView]|",
-          options: [], metrics: nil, views: ["dimmingView": dimmingView]))
-      NSLayoutConstraint.activate(
-        NSLayoutConstraint.constraints(withVisualFormat: "H:|[dimmingView]|",
-          options: [], metrics: nil, views: ["dimmingView": dimmingView]))
+         // 2
+         NSLayoutConstraint.activate(
+           NSLayoutConstraint.constraints(withVisualFormat: "V:|[dimmingView]|",
+             options: [], metrics: nil, views: ["dimmingView": dimmingView]))
+         NSLayoutConstraint.activate(
+           NSLayoutConstraint.constraints(withVisualFormat: "H:|[dimmingView]|",
+             options: [], metrics: nil, views: ["dimmingView": dimmingView]))
 
-      //3
-      guard let coordinator = presentedViewController.transitionCoordinator else {
-        dimmingView.alpha = 1.0
-        return
-      }
+         //3
+         guard let coordinator = presentedViewController.transitionCoordinator else {
+           dimmingView.alpha = 1.0
+           return
+         }
 
-      coordinator.animate(alongsideTransition: { _ in
-        self.dimmingView.alpha = 1.0
-      })
-    }
-    
-    override func dismissalTransitionWillBegin() {
-      guard let coordinator = presentedViewController.transitionCoordinator else {
-        dimmingView.alpha = 0.0
-        return
-      }
+         coordinator.animate(alongsideTransition: { _ in
+           self.dimmingView.alpha = 1.0
+         })
+       }
+       
+       override func dismissalTransitionWillBegin() {
+         guard let coordinator = presentedViewController.transitionCoordinator else {
+           dimmingView.alpha = 0.0
+           return
+         }
 
-      coordinator.animate(alongsideTransition: { _ in
-        self.dimmingView.alpha = 0.0
-      })
-    }
-    
-    override func containerViewWillLayoutSubviews() {
-      presentedView?.frame = frameOfPresentedViewInContainerView
-    }
-    
-    override func size(forChildContentContainer container: UIContentContainer,
-                       withParentContainerSize parentSize: CGSize) -> CGSize {
-      switch direction {
-      case .bottom:
-        return CGSize(width: parentSize.width, height: parentSize.height*(1.0/3.0))
-      }
-    }
+         coordinator.animate(alongsideTransition: { _ in
+           self.dimmingView.alpha = 0.0
+         })
+       }
+       
+       override func containerViewWillLayoutSubviews() {
+         presentedView?.frame = frameOfPresentedViewInContainerView
+       }
+       
+       override func size(forChildContentContainer container: UIContentContainer,
+                          withParentContainerSize parentSize: CGSize) -> CGSize {
+         switch direction {
+         case .bottom:
+           return CGSize(width: parentSize.width, height: parentSize.height*(1.0/3.0))
+         }
+       }
 }
 
 // MARK: - Private
@@ -110,4 +110,3 @@ private extension SlideInPresentationController {
       presentingViewController.dismiss(animated: true)
     }
 }
-
