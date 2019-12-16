@@ -28,7 +28,7 @@ class EditProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        profileImageVIew.layer.cornerRadius = 50
+        profileImageVIew.layer.cornerRadius = 78
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
         populateProfileTherapist()
         
@@ -81,7 +81,7 @@ class EditProfileViewController: UIViewController {
             } else {
                 print("no data")
                 self.nameTextField.text = therapistName
-                self.profileImageVIew.image = UIImage(named: "Student Photo Default")!
+                //self.profileImageVIew.image = UIImage(named: "Student Photo Default")!
                 self.institutionTextField.placeholder = "Institution name hasn't been set yet"
                 self.addressTextField.placeholder = "Address name hasn't been set yet"
             }

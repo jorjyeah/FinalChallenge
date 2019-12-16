@@ -29,6 +29,9 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         populateProfileTherapist()
+        
+        //styling image profile
+        profilePhotoUIImage.layer.cornerRadius = 68
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,7 +67,7 @@ class ProfileViewController: UIViewController {
                 print("no data")
                 DispatchQueue.main.async {
                     self.nameProfileLabel.text = therapistName
-                    self.profilePhotoUIImage.image = UIImage(named: "Student Photo Default")!
+                    //self.profilePhotoUIImage.image = UIImage(named: "Student Photo Default")!
                     self.institutionLabel.text = "Institution name hasn't been set yet"
                     self.addressLabel.text = "Address hasn't been set yet"
                 }
