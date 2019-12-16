@@ -16,17 +16,26 @@ class BaseProgramCKModel{
         get{
             return (record?.recordID)!
         }
+        set{
+            self.record?.setValue(newValue, forKey: "recordName")
+        }
     }
     
     var defaultData : Int{
         get{
             return record?.value(forKey: "default") as! Int
         }
+        set{
+            self.record?.setValue(newValue, forKey: "default")
+        }
     }
     
     var baseProgramTitle : String{
         get{
             return record?.value(forKey: "baseProgramTitle") as! String
+        }
+        set{
+            self.record?.setValue(newValue, forKey: "baseProgramTitle")
         }
     }
     

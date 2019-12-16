@@ -67,22 +67,38 @@ class BaseProgramDataManager{
             }
         }
     }
-//    class func saveEdited(baseProgramsRecordID : [CKRecord.ID], baseProgramsTitle : [String], onComplete: @escaping(Bool) -> Void){
-//        let database = CKContainer.default().publicCloudDatabase
-//        
-//        basePrograms
-//        database.fetch(withRecordID: baseProgramRecordID) { (baseProgramRecord, error) in
-//            <#code#>
-//        }
-//        let record = CKRecord(recordType: "BaseProgram")
-//        
-//        record.setObject(baseProgramTitle as __CKRecordObjCValue, forKey: "baseProgramTitle")
-//        
-//        database.save(record) { (savedRecord, error) in
-//            if let record = savedRecord{
-//                onComplete(record.recordID, baseProgramTitle)
-//            }
-//            print("err : \(error)")
-//        }
-//    }
+    
+    class func saveNewBaseProgram(baseProgramRecord : CKRecord, onComplete: @escaping(Bool) -> Void){
+        let database = CKContainer.default().publicCloudDatabase
+        
+        database.save(baseProgramRecord) { (savedRecord, error) in
+            if let record = savedRecord{
+                onComplete(true)
+            }
+        }
+    }
+    
+    class func saveEdited(baseProgramRecord : [BaseProgramCKModel], onComplete: @escaping(Bool) -> Void){
+        let database = CKContainer.default().publicCloudDatabase
+        var ckRecordBaseProgram = [CKRecord]()
+        var ckRecordIDBaseProgram = [CKRecord.ID]()
+        
+        baseProgramRecord .forEach { (baseProgram) in
+            print(baseProgram.baseProgramRecordID)
+            ckRecordBaseProgram.append(baseProgram.record!)
+            ckRecordIDBaseProgram.append(baseProgram.baseProgramRecordID)
+        }
+        
+        let saveRecordsOperation = CKModifyRecordsOperation(recordsToSave: ckRecordBaseProgram, recordIDsToDelete: nil)
+
+        saveRecordsOperation.modifyRecordsCompletionBlock = { savedRecords, deletedRecordIDs, error in
+            if let err = error{
+                onComplete(false)
+            } else {
+                onComplete(true)
+            }
+        }
+        
+        database.add(saveRecordsOperation)
+    }
 }

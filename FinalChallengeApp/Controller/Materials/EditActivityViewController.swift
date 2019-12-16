@@ -51,8 +51,11 @@ class EditActivityViewController: UIViewController {
     }
 
     @IBAction func doneButtonTapped(_ sender: Any) {
+        let alert = UIAlertController(title: "Can't edit activity", message: "All fields must be completed", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         if activityName == "" || desc == "" || media == "" || helpfulTips == "" || selectedPrompts.count == 0{
             print("harus ada data")
+            self.present(alert, animated: true)
             // bikin alert "Semua field harus diisi"
         } else {
             print("ada data")

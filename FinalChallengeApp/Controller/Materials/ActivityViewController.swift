@@ -49,6 +49,22 @@ class ActivityViewController: UIViewController {
             
             DispatchQueue.main.async {
                 self.tableView.reloadData()
+                
+                let footer = UIView()
+                if self.activities.count == 0 {
+                    let emptyStateImage = UIImageView()
+                    emptyStateImage.image = UIImage(named: "Search not found")
+                    emptyStateImage.frame = CGRect(x: 0, y: 0, width: 296, height: 284)
+                    footer.addSubview(emptyStateImage)
+                    
+                    emptyStateImage.translatesAutoresizingMaskIntoConstraints = false
+                    NSLayoutConstraint.activate([
+                        emptyStateImage.centerXAnchor.constraint(equalTo: footer.centerXAnchor),
+                        emptyStateImage.topAnchor.constraint(equalTo: footer.topAnchor, constant: 8)
+                    ])
+                }
+                
+                self.tableView.tableFooterView = footer
             }
         }
         
@@ -116,20 +132,21 @@ extension ActivityViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        print(activities.count)
-        if section == 1 && activities.count == 0{
-            let footer = UIView()
-            let emptyStateImage = UIImageView()
-            emptyStateImage.image = UIImage(named: "Search not found")
-            emptyStateImage.frame = CGRect(x: 0, y: 0, width: 296, height: 284)
-            footer.addSubview(emptyStateImage)
-            return footer
-        } else {
-            let footer = UIView()
-            return footer
-        }
-    }
+//    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+//        print(activities.count)
+////        if section == 1 && activities.count == 0{
+////            let footer = UIView()
+////            let emptyStateImage = UIImageView()
+////            emptyStateImage.image = UIImage(named: "Search not found")
+////            emptyStateImage.frame = CGRect(x: 0, y: 0, width: 296, height: 284)
+////            footer.addSubview(emptyStateImage)
+////            return footer
+////        } else {
+////            let footer = UIView()
+////            return footer
+////        }
+//        return nil
+//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showActivityDetail" {
