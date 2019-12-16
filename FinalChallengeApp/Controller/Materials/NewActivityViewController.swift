@@ -27,7 +27,10 @@ class NewActivityViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.allowsMultipleSelection = true
-        // Do any additional setup after loading the view.
+        
+        // notif for view if keyboard will show or hide
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -108,6 +111,10 @@ extension NewActivityViewController: UITableViewDelegate, UITableViewDataSource,
         
         let checkboxCell = tableView.dequeueReusableCell(withIdentifier: "checkboxCell", for: indexPath) as! CheckBoxTableViewCell
         
+        // create done in customTextView
+        customCell.customTextView.doneButton(title: "Done", target: self, selector: #selector(dismissKeyboard(sender:)))
+        defaultCell.defaultTextField.doneButton(title: "Done", target: self, selector: #selector(dismissKeyboard(sender:)))
+        
         if indexPath.section == 0 {
             defaultCell.defaultTextField.delegate = self
             defaultCell.defaultTextField.text = activityName
@@ -132,6 +139,7 @@ extension NewActivityViewController: UITableViewDelegate, UITableViewDataSource,
             customCell.customTextView.tag = indexPath.section
             return customCell
         } else {
+            defaultCell.defaultTextField.delegate = self
             defaultCell.defaultTextField.text = videoLink
             return defaultCell
         }
@@ -178,6 +186,63 @@ extension NewActivityViewController: UITableViewDelegate, UITableViewDataSource,
             print(activityName)
         default:
             print("nothing")
+        }
+    }
+    
+    // keyboard handler for textfield
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print("press return to dismiss")
+        textField.resignFirstResponder()
+        return true
+    }
+
+    
+    // keyboard handler for textView
+    @objc func dismissKeyboard(sender: Any){
+        self.view.endEditing(true)
+    }
+}
+
+extension UITextView{
+    // add Done button for textView
+    func doneButton(title: String, target: Any, selector: Selector) {
+        let toolBar = UIToolbar(frame: CGRect(x: 0.0,
+                                              y: 0.0,
+                                              width: UIScreen.main.bounds.size.width,
+                                              height: 44.0))//1
+        let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)//2
+        let barButton = UIBarButtonItem(title: title, style: .plain, target: target, action: selector)//3
+        toolBar.setItems([flexible, barButton], animated: false)//4
+        self.inputAccessoryView = toolBar//5
+    }
+}
+
+extension UITextField{
+    func doneButton(title: String, target: Any, selector: Selector) {
+        let toolBar = UIToolbar(frame: CGRect(x: 0.0,
+                                              y: 0.0,
+                                              width: UIScreen.main.bounds.size.width,
+                                              height: 44.0))//1
+        let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)//2
+        let barButton = UIBarButtonItem(title: title, style: .plain, target: target, action: selector)//3
+        toolBar.setItems([flexible, barButton], animated: false)//4
+        self.inputAccessoryView = toolBar//5
+    }
+}
+
+extension UIViewController{
+    // configure position UIView for keyboard
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
         }
     }
 }
