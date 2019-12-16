@@ -27,7 +27,8 @@ class NewActivityViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.allowsMultipleSelection = true
-        // Do any additional setup after loading the view.
+        
+        self.HideKeyboard()// keyboard handler
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -180,4 +181,25 @@ extension NewActivityViewController: UITableViewDelegate, UITableViewDataSource,
             print("nothing")
         }
     }
+    
+    // keyboard handler
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print("press return to dismiss")
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    @objc func DismissKeyboard(){
+        view.endEditing(true)
+    }
+    
+    func HideKeyboard(){
+        let tap = UISwipeGestureRecognizer(target: self, action: #selector(DismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        textField.resignFirstResponder()
+//        return true
+//    }
 }
