@@ -12,6 +12,7 @@ import CloudKit
 class NewSkillViewController: UIViewController, UITextViewDelegate {
     
     var baseProgramRecordID = CKRecord.ID()
+    var skillModel : SkillCKModel?
     
     @IBOutlet weak var backgroundImageView: UIImageView!
     
@@ -34,16 +35,26 @@ class NewSkillViewController: UIViewController, UITextViewDelegate {
         
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "backToEditMaterialsFromAddNewSkill" {
+            let destination = segue.destination as! EditMaterialsViewController
+            guard let skillModel = skillModel else { return }
+            destination.skillData[baseProgramRecordID]?.append(skillModel)
+        }
+    }
     @IBAction func doneButtonTapped(_ sender: Any) {
         let newSkillTitle = skillTitleTextView.text
         if !(newSkillTitle == "Create New Skill" || newSkillTitle == ""){
-            SkillDataManager.saveNewSkill(baseProgramRecordID: baseProgramRecordID, skillTitle: newSkillTitle!) { (skillRecordID, skillTitle) in
-                if skillRecordID != nil {
+            SkillDataManager.saveNewSkill(baseProgramRecordID: baseProgramRecordID, skillTitle: newSkillTitle!) { (newSkillModel) in
+                if newSkillModel != nil {
+                    self.skillModel = newSkillModel
                     DispatchQueue.main.async {
                         self.performSegue(withIdentifier: "backToEditMaterialsFromAddNewSkill", sender: nil)
                     }
                 }
             }
+        } else {
+            dismiss(animated: true, completion: nil)
         }
     }
     

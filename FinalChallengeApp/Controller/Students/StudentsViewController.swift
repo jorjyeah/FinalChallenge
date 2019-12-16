@@ -104,6 +104,7 @@ extension StudentsViewController: UITableViewDelegate, UITableViewDataSource, UI
         })
         print("data student filtered : \(filteredData)")
         tableView.reloadData()
+        emptyState()
     }
     
     //[BI] ini untuk cancel
@@ -118,6 +119,24 @@ extension StudentsViewController: UITableViewDelegate, UITableViewDataSource, UI
         searchBar.showsCancelButton = false
         searchBar.text = ""
         searchBar.resignFirstResponder()
+    }
+    
+    func emptyState(){
+        let footer = UIView()
+        if self.filteredData.count == 0 {
+            let emptyStateImage = UIImageView()
+            emptyStateImage.image = UIImage(named: "Search not found")
+            emptyStateImage.frame = CGRect(x: 0, y: 0, width: 296, height: 284)
+            footer.addSubview(emptyStateImage)
+            
+            emptyStateImage.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                emptyStateImage.centerXAnchor.constraint(equalTo: footer.centerXAnchor),
+                emptyStateImage.topAnchor.constraint(equalTo: footer.topAnchor, constant: 8)
+            ])
+        }
+        
+        self.tableView.tableFooterView = footer
     }
 }
 

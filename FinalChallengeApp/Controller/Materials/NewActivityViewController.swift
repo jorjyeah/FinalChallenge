@@ -42,8 +42,11 @@ class NewActivityViewController: UIViewController {
     }
     
     @IBAction func doneButtonTapped(_ sender: Any) {
+        let alert = UIAlertController(title: "Can't create new activity", message: "Please complete all fields", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         if activityName == "" || desc == "" || media == "" || helpfulTips == "" || selectedPrompts.count == 0{
             print("harus ada data")
+            self.present(alert, animated: true)
             // bikin alert "Semua field harus diisi"
         } else {
             print("ada data")

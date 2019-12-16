@@ -64,10 +64,18 @@ class AddReportViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let alert = UIAlertController(title: "Activity not selected", message: "Please select at least one activity", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         if segue.identifier == "showSummary" {
-            let destination = segue.destination as! SummaryViewController
-            destination.selectedActivity = selected
-            destination.studentRecordID = studentRecordID
+            if selected.count == 0{
+                self.present(alert, animated: true)
+            } else {
+                DispatchQueue.main.async {
+                    let destination = segue.destination as! SummaryViewController
+                    destination.selectedActivity = self.selected
+                    destination.studentRecordID = self.studentRecordID
+                }
+            }
         }
     }
 }

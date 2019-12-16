@@ -47,13 +47,23 @@ class EditMaterialsViewController: UIViewController {
 //    }
     
     @IBAction func doneButtonTapped(_ sender: Any) {
-        performSegue(withIdentifier: "backToMaterialsFromEditMaterials", sender: nil)
+        BaseProgramDataManager.saveEdited(baseProgramRecord: baseProgram) { (success) in
+            if success {
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: "backToMaterialsFromEditMaterials", sender: self)
+                }
+            }
+        }
     }
     
     @IBAction func unwindFromAddNewSkill(_ sender:UIStoryboardSegue){
         // bikin function dulu buat unwind, nanti di exit di page summary
         if sender.source is NewSkillViewController{
-            
+            if let senderVC = sender.source as? NewSkillViewController{
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+            }
         }
     }
     
@@ -83,18 +93,22 @@ class EditMaterialsViewController: UIViewController {
     @IBAction func newCategoryTapped(_ sender: Any) {
         let newRecord = CKRecord(recordType: "BaseProgram")
         newRecord.setValue(0, forKey: "default")
-        newRecord.setValue("Edit", forKey: "baseProgramTitle")
+        newRecord.setValue("New Program", forKey: "baseProgramTitle")
         
         let addNewProgram = BaseProgramCKModel(record: newRecord)
-        baseProgram.append(addNewProgram)
-        DispatchQueue.main.async {
-            self.collectionView.reloadData()
-        }
         
+        BaseProgramDataManager.saveNewBaseProgram(baseProgramRecord: newRecord){ (successCreateNew) in
+            if successCreateNew{
+                self.baseProgram.append(addNewProgram)
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+            }
+        }
     }
 }
 
-extension EditMaterialsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension EditMaterialsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return  baseProgram.count
@@ -139,7 +153,7 @@ extension EditMaterialsViewController: UICollectionViewDelegate, UICollectionVie
 
         } else {
             if let baseProgram =  skillData[baseProgram[indexPath.section].baseProgramRecordID]{
-                cell.programLabel.text = "\(baseProgram[indexPath.row].skillTitle) + \(indexPath.row)"
+                cell.programLabel.text = "\(baseProgram[indexPath.row].skillTitle)"
             }else{
                 cell.programLabel.text = ""
             }
@@ -152,6 +166,8 @@ extension EditMaterialsViewController: UICollectionViewDelegate, UICollectionVie
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerSection", for: indexPath) as! HeaderEditCollectionReusableView
             // ini header textnya (editable)
             let program = baseProgram[indexPath.section]
+            headerView.editHeaderTitle.tag = indexPath.section
+            headerView.editHeaderTitle.delegate = self
             headerView.editHeaderTitle.text = program.baseProgramTitle
             return headerView
         }
@@ -160,8 +176,9 @@ extension EditMaterialsViewController: UICollectionViewDelegate, UICollectionVie
         }
     }
     
-    
-    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        self.baseProgram[textField.tag].baseProgramTitle = textField.text!
+    }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     
 //        if  indexPath.row == skillData[baseProgram[indexPath.section].baseProgramRecordID]?.count{
@@ -176,6 +193,10 @@ extension EditMaterialsViewController: UICollectionViewDelegate, UICollectionVie
             let section = sender as! Int
             let destination = segue.destination as! NewSkillViewController
             destination.baseProgramRecordID = baseProgram[section].baseProgramRecordID
+        } else if segue.identifier == "backToMaterialsFromEditMaterials" {
+            let destination = segue.destination as! MaterialsViewController
+            destination.skillData = skillData
+            destination.baseProgram = baseProgram
         }
     }
     

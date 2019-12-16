@@ -69,6 +69,11 @@
 		B9820B7523941DD500C4A6C3 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9820B7423941DD500C4A6C3 /* EditProfileViewController.swift */; };
 		B982CE2F239626D00065FB1D /* SaveNewReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = B982CE2E239626D00065FB1D /* SaveNewReport.swift */; };
 		B9A2EEDF238BD63E0041BB93 /* AddReportModelCK.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A2EEDE238BD63E0041BB93 /* AddReportModelCK.swift */; };
+		B9A2F43523A3927700339354 /* TherapyScheduleDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A2F43423A3927700339354 /* TherapyScheduleDataManager.swift */; };
+		B9A2F43923A4B0BE00339354 /* StudentProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A2F43823A4B0BE00339354 /* StudentProfileTableViewCell.swift */; };
+		B9A2F43B23A4B21000339354 /* StudentProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A2F43A23A4B21000339354 /* StudentProfileViewController.swift */; };
+		B9A2F43D23A4D26300339354 /* ParentsCKModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A2F43C23A4D26300339354 /* ParentsCKModel.swift */; };
+		B9A2F43F23A4D48C00339354 /* ParentDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A2F43E23A4D48C00339354 /* ParentDataManager.swift */; };
 		B9B548FE237C195000ACB625 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9B548FD237C195000ACB625 /* CloudKit.framework */; };
 		B9BC0D99238420A30063DC95 /* ParentNotesCKModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BC0D98238420A30063DC95 /* ParentNotesCKModel.swift */; };
 		B9BC0D9B238537040063DC95 /* ProfileTherapistCKModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BC0D9A238537040063DC95 /* ProfileTherapistCKModel.swift */; };
@@ -174,6 +179,11 @@
 		B9820B7423941DD500C4A6C3 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		B982CE2E239626D00065FB1D /* SaveNewReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveNewReport.swift; sourceTree = "<group>"; };
 		B9A2EEDE238BD63E0041BB93 /* AddReportModelCK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReportModelCK.swift; sourceTree = "<group>"; };
+		B9A2F43423A3927700339354 /* TherapyScheduleDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TherapyScheduleDataManager.swift; sourceTree = "<group>"; };
+		B9A2F43823A4B0BE00339354 /* StudentProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentProfileTableViewCell.swift; sourceTree = "<group>"; };
+		B9A2F43A23A4B21000339354 /* StudentProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentProfileViewController.swift; sourceTree = "<group>"; };
+		B9A2F43C23A4D26300339354 /* ParentsCKModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentsCKModel.swift; sourceTree = "<group>"; };
+		B9A2F43E23A4D48C00339354 /* ParentDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentDataManager.swift; sourceTree = "<group>"; };
 		B9B548FB237C193800ACB625 /* FinalChallengeApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FinalChallengeApp.entitlements; sourceTree = "<group>"; };
 		B9B548FD237C195000ACB625 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		B9BC0D98238420A30063DC95 /* ParentNotesCKModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentNotesCKModel.swift; sourceTree = "<group>"; };
@@ -277,13 +287,13 @@
 			isa = PBXGroup;
 			children = (
 				68A570EC238AA3DE002A3014 /* MaterialsViewController.swift */,
+				687E7D84239651A000331EAE /* EditMaterialsViewController.swift */,
+				68DEA8622399382500FC59D3 /* NewSkillViewController.swift */,
+				68DEA864239A209500FC59D3 /* DeleteSkillViewController.swift */,
 				68A570F6238AB389002A3014 /* ActivityViewController.swift */,
 				687E7D9123966E6600331EAE /* NewActivityViewController.swift */,
 				B96299C3239E4FDA0009DE32 /* ActivityDetailViewController.swift */,
 				6837ED95239A3D0E00CF1FCC /* EditActivityViewController.swift */,
-				687E7D84239651A000331EAE /* EditMaterialsViewController.swift */,
-				68DEA8622399382500FC59D3 /* NewSkillViewController.swift */,
-				68DEA864239A209500FC59D3 /* DeleteSkillViewController.swift */,
 				687E7D88239651E600331EAE /* Header */,
 			);
 			path = Materials;
@@ -305,6 +315,7 @@
 				68FEA19B239F857300EF30C7 /* AudioRecorderViewController.swift */,
 				680EA4A923A37A130082F1F5 /* QRCodeScannerViewController.swift */,
 				680EA4AB23A37A360082F1F5 /* StudentProfilePreviewViewController.swift */,
+				B9A2F43A23A4B21000339354 /* StudentProfileViewController.swift */,
 			);
 			path = Students;
 			sourceTree = "<group>";
@@ -320,6 +331,7 @@
 				68A570DD2386C079002A3014 /* DetailSummaryTableViewCell.swift */,
 				68A570DF2386C09B002A3014 /* NotesSummaryTableViewCell.swift */,
 				68FEA197239E614B00EF30C7 /* AttachmentTableViewCell.swift */,
+				B9A2F43823A4B0BE00339354 /* StudentProfileTableViewCell.swift */,
 			);
 			path = Students;
 			sourceTree = "<group>";
@@ -443,6 +455,8 @@
 				B9F87B1D239A3A8A00985864 /* SkillDataManager.swift */,
 				B9F87B1F239A438000985864 /* BaseProgramDataManager.swift */,
 				B96299C1239E34F00009DE32 /* ActivityDataManager.swift */,
+				B9A2F43423A3927700339354 /* TherapyScheduleDataManager.swift */,
+				B9A2F43E23A4D48C00339354 /* ParentDataManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -460,6 +474,7 @@
 				B9F87B1B239A393000985864 /* SkillCKModel.swift */,
 				B9F87B21239A43D300985864 /* BaseProgramCKModel.swift */,
 				B96299BF239E31670009DE32 /* ActivityCKModel.swift */,
+				B9A2F43C23A4D26300339354 /* ParentsCKModel.swift */,
 			);
 			path = ModelCK;
 			sourceTree = "<group>";
@@ -618,7 +633,9 @@
 				B91BD49E237980010015C934 /* ViewController.swift in Sources */,
 				B96299C2239E34F00009DE32 /* ActivityDataManager.swift in Sources */,
 				6837ED98239A3FD000CF1FCC /* EditDefaultTextFieldTableViewCell.swift in Sources */,
+				B9A2F43523A3927700339354 /* TherapyScheduleDataManager.swift in Sources */,
 				687E7D8A2396524100331EAE /* EditProgramCollectionViewCell.swift in Sources */,
+				B9A2F43D23A4D26300339354 /* ParentsCKModel.swift in Sources */,
 				68A570B82383D479002A3014 /* ReportTableViewCell.swift in Sources */,
 				687E7D5D2390E3AB00331EAE /* NewStudentPreviewViewController.swift in Sources */,
 				6837ED9C239A3FF900CF1FCC /* EditCheckBoxTableViewCell.swift in Sources */,
@@ -648,6 +665,7 @@
 				687E7D5B2390D21500331EAE /* AddStudentViewController.swift in Sources */,
 				68A570FB238AB3EB002A3014 /* ActivityTaskTableViewCell.swift in Sources */,
 				68A570E42387C586002A3014 /* SummaryViewController.swift in Sources */,
+				B9A2F43923A4B0BE00339354 /* StudentProfileTableViewCell.swift in Sources */,
 				68DEA8632399382500FC59D3 /* NewSkillViewController.swift in Sources */,
 				687E7D85239651A000331EAE /* EditMaterialsViewController.swift in Sources */,
 				B9BC0D99238420A30063DC95 /* ParentNotesCKModel.swift in Sources */,
@@ -657,6 +675,7 @@
 				B906747B237C13E800671632 /* StudentsViewController.swift in Sources */,
 				687E7D87239651D900331EAE /* HeaderEditCollectionReusableView.swift in Sources */,
 				B91BD49C237980010015C934 /* SceneDelegate.swift in Sources */,
+				B9A2F43B23A4B21000339354 /* StudentProfileViewController.swift in Sources */,
 				68FEA19C239F857300EF30C7 /* AudioRecorderViewController.swift in Sources */,
 				68A57101238B6EBD002A3014 /* ParentsDetailViewController.swift in Sources */,
 				B9D1302C23969E1100A4F8B2 /* DetailedReportDataManager.swift in Sources */,
@@ -666,7 +685,7 @@
 				B9C016FF2395291E0051D9FC /* SaveEditedProfile.swift in Sources */,
 				B96299C0239E31670009DE32 /* ActivityCKModel.swift in Sources */,
 				68A570C72384F378002A3014 /* AddReportViewController.swift in Sources */,
-				6892BF3923A79E0F00E8FDC8 /* SlideInPresentationManager.swift in Sources */,
+				B9A2F43F23A4D48C00339354 /* ParentDataManager.swift in Sources */,
 				68A570D5238544E4002A3014 /* NotesTableViewCell.swift in Sources */,
 				B9F87B20239A438000985864 /* BaseProgramDataManager.swift in Sources */,
 			);

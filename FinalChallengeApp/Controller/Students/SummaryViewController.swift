@@ -43,11 +43,19 @@ class SummaryViewController: UIViewController, AVAudioPlayerDelegate {
     var audioFilename = URL(string: "")
     var audioPlayer: AVAudioPlayer!
     
+    let loadingView = UIView()
+    let logoMoveImage = UIImageView.init(image: UIImage(named: "stara-active"))
+
     
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loadingView.autoresizingMask = [ .flexibleHeight, .flexibleWidth]
+        loadingView.addSubview(logoMoveImage)
+        loadingView.isOpaque = true
+        loadingView.backgroundColor = .lightGray
+        loadingView.isHidden = true
         let recordingPlay = UIImage(named: "Recordings Play")?.withRenderingMode(.alwaysOriginal)
         
         attachmentView.isHidden = true
@@ -90,6 +98,7 @@ class SummaryViewController: UIViewController, AVAudioPlayerDelegate {
     
     // save button tapped
     @IBAction func saveButtonTapped(_ sender: Any) {
+        
         SaveNewReport.saveReport(childName: studentRecordID, therapistName: therapistRecordID, therapySessionNotes: notes) { (therapySessionModel, therapySessionRecordID) in
             self.newTherapySession = therapySessionModel
             
@@ -110,7 +119,6 @@ class SummaryViewController: UIViewController, AVAudioPlayerDelegate {
                     self.audioData = data
                     SaveNewReport.saveAudio(therapySession: therapySessionRecordID, audio: self.audioData) { (success) in
                         if success{
-                            
                         }
                     }
                 }
@@ -137,7 +145,8 @@ class SummaryViewController: UIViewController, AVAudioPlayerDelegate {
         print("udah masuk ke gallery")
     }
     
-    
+//=============================================================================================================================//
+
     
     //ini handlernya audio attachment
     @objc func recordTapped(tapGestureRecognizer: UITapGestureRecognizer) {
@@ -200,6 +209,9 @@ class SummaryViewController: UIViewController, AVAudioPlayerDelegate {
         }
     }
 }
+
+//=============================================================================================================================//
+
 
 //  tableview
 extension SummaryViewController: UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
@@ -327,6 +339,8 @@ extension SummaryViewController: UITableViewDataSource, UITableViewDelegate, UIT
             cell.notesTextView.text = "Write your notes about today's activity"
             cell.notesTextView.textColor = UIColor.lightGray
             cell.notesTextView.becomeFirstResponder()
+            cell.notesTextView.tag = indexPath.section
+            cell.notesTextView.delegate = self // agar fungsi check changed dan placeholdernya nyala, harus di delegasikan ke UIVC
             cell.notesTextView.selectedTextRange = cell.notesTextView.textRange(from: cell.notesTextView.beginningOfDocument, to: cell.notesTextView.beginningOfDocument)
             
             //styling
@@ -354,6 +368,25 @@ extension SummaryViewController: UITableViewDataSource, UITableViewDelegate, UIT
         }
     }
     
+    // untuk get notesnya
+    func textViewDidChange(_ textView: UITextView) {
+        switch textView.tag {
+        case 1 :
+            self.notes = textView.text
+            print(notes)
+        default:
+            print("nothing")
+        }
+        
+    }
+    
+    // untuk placeholdernya
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray && textView.text != nil{
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
