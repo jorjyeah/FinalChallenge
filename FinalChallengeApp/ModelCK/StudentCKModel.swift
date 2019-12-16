@@ -28,6 +28,15 @@ class StudentCKModel: NSObject{
         }
     }
     
+    var studentGender : String {
+        get{
+            return record?.value(forKey: "childGender") as! String
+        }
+        set{
+            self.record?.setValue(newValue, forKey: "childGender")
+        }
+    }
+    
     var studentDOB : Date {
         get{
             return record?.value(forKey: "childDOB") as! Date
@@ -40,7 +49,7 @@ class StudentCKModel: NSObject{
     var studentPhoto : UIImage{
         get{
             if let asset = record?["childPhoto"] as? CKAsset,
-                let data = try? NSData(contentsOf: (asset.fileURL)!),
+                let data = NSData(contentsOf: (asset.fileURL)!),
                 let image = UIImage(data: data as Data)
             {
                 return image
@@ -51,11 +60,12 @@ class StudentCKModel: NSObject{
     
     var parentRecordID : String{
         get{
-            if record?.value(forKey: "parentName") != nil{
-                return self.record?.value(forKey: "parentName") as! String
-            } else{
+            guard let parentRecordID = record?.value(forKey: "parentName") else {
                 return "No Parent"
             }
+            let recordRef = self.record?.value(forKey: "parentName") as! CKRecord.Reference
+            let recordID = recordRef.recordID.recordName
+            return recordID
         }
         set{
             self.record?.setValue(newValue, forKey: "parentName")

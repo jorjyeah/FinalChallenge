@@ -33,6 +33,14 @@ class TherapyScheduleDataManager{
         }
     }
     
+    class func getAllTherapy(studentRecordID: CKRecord.ID, onComplete : ([TherapyScheduleCKModel])) -> Void{
+        
+    }
+    
+    class func updateTherapySchedule(studentRecordID: CKRecord.ID, onComplete : (Bool) -> Void){
+        
+    }
+    
     class func saveNewTherapySchedule(studentRecordID: CKRecord.ID, onComplete : @escaping (StudentCKModel) -> Void){
         let database = CKContainer.default().publicCloudDatabase
         let record = CKRecord(recordType: "TherapySchedule")

@@ -27,7 +27,7 @@ class SaveNewReport{
         record.setObject(childRecordID as __CKRecordObjCValue, forKey: "childName")
         record.setObject(therapistRecordID as __CKRecordObjCValue, forKey: "therapistName")
         record.setObject(dateNow as __CKRecordObjCValue, forKey: "therapySessionDate")
-        record.setObject("notes" as __CKRecordObjCValue, forKey: "therapySessionNotes")
+        record.setObject(therapySessionNotes as __CKRecordObjCValue, forKey: "therapySessionNotes")
         database.save(record) { (savedRecord, error) in
             if savedRecord != nil{
                 therapySessionRecordID = savedRecord!.recordID

@@ -104,6 +104,7 @@ class QRCodeScannerViewController: UIViewController, UIImagePickerControllerDele
                                 self.newStudent = new
                                 if let student = self.newStudent?.studentName {
                                     self.scannedString = student
+                                    
                                     DispatchQueue.main.async {
                                         self.performSegue(withIdentifier: "showProfilePreview", sender: self)
                                     }
@@ -123,6 +124,9 @@ class QRCodeScannerViewController: UIViewController, UIImagePickerControllerDele
         self.captureSession?.stopRunning()
     }
     
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

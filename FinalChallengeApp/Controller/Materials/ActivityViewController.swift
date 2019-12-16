@@ -116,6 +116,21 @@ extension ActivityViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        print(activities.count)
+        if section == 1 && activities.count == 0{
+            let footer = UIView()
+            let emptyStateImage = UIImageView()
+            emptyStateImage.image = UIImage(named: "Search not found")
+            emptyStateImage.frame = CGRect(x: 0, y: 0, width: 296, height: 284)
+            footer.addSubview(emptyStateImage)
+            return footer
+        } else {
+            let footer = UIView()
+            return footer
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showActivityDetail" {
             let row = sender as! Int
