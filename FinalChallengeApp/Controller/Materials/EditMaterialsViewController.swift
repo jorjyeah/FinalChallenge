@@ -29,10 +29,13 @@ class EditMaterialsViewController: UIViewController {
         super.viewDidLoad()
 //        self.navigationItem.setHidesBackButton(true, animated:true);
         populateData()
+    
+
+        self.navigationItem.setHidesBackButton(true, animated:true)
         
         // add image di button add new category
-        let addCategory = UIImage(named: "Add")?.withRenderingMode(.alwaysOriginal)
-        newCategoryButton.setImage(addCategory, for: .normal)
+        let addButton = UIImage(named: "Add")?.withRenderingMode(.alwaysOriginal)
+        newCategoryButton.setImage(addButton, for: .normal)
         
         //styling
         

@@ -136,6 +136,7 @@ extension DetailTherapistReportViewController: UITableViewDataSource, UITableVie
         myLabel.frame = CGRect(x: 20, y: 8, width: 320, height: 20)
         myLabel.font = UIFont.systemFont(ofSize: 13)
         myLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
+        myLabel.textColor = .gray
 
         let headerView = UIView()
         headerView.backgroundColor = UIColor(red: 0.97, green: 0.97, blue: 0.97, alpha: 1)

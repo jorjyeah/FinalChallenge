@@ -48,6 +48,8 @@ class EditActivityViewController: UIViewController {
         super.viewDidLoad()
         tableView.allowsMultipleSelection = true
         // Do any additional setup after loading the view.
+        
+        self.tableView.separatorColor = .clear
     }
 
     @IBAction func doneButtonTapped(_ sender: Any) {
@@ -72,6 +74,26 @@ class EditActivityViewController: UIViewController {
 
 
 extension EditActivityViewController: UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, UITextFieldDelegate {
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+
+        let myLabel = UILabel()
+        myLabel.frame = CGRect(x: 20, y: 8, width: 320, height: 20)
+        myLabel.font = UIFont.systemFont(ofSize: 13)
+        myLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
+        myLabel.textColor = .gray
+
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor(red: 0.97, green: 0.97, blue: 0.97, alpha: 1)
+        headerView.addSubview(myLabel)
+
+        return headerView
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 38
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 6
     }

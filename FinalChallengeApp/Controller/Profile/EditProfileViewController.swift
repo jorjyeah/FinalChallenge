@@ -28,7 +28,7 @@ class EditProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        profileImageVIew.layer.cornerRadius = 50
+        profileImageVIew.layer.cornerRadius = 78
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
         populateProfileTherapist()
         
@@ -81,9 +81,9 @@ class EditProfileViewController: UIViewController {
             } else {
                 print("no data")
                 self.nameTextField.text = therapistName
-                self.profileImageVIew.image = UIImage(named: "Student Photo Default")!
+                //self.profileImageVIew.image = UIImage(named: "Student Photo Default")!
                 self.institutionTextField.placeholder = "Institution name hasn't been set yet"
-                self.addressTextField.placeholder = "Address name hasn't been set yet"
+                self.addressTextField.placeholder = "Address hasn't been set yet"
             }
         }
     }
@@ -93,6 +93,36 @@ extension EditProfileViewController : ImagePickerDelegate, UITextFieldDelegate {
     func didSelect(image: UIImage?) {
         self.profileImageVIew.image = image
         newProfilePicture = (image ?? UIImage(named: "Student Photo Default"))!
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange,
+                   replacementString string: String) -> Bool {
+        
+        
+        if textField == nameTextField {
+            let maxLength = 20
+            
+            let currentString: NSString = textField.text! as NSString
+            let newString: NSString = currentString.replacingCharacters(in: range, with: string) as NSString
+            return newString.length <= maxLength
+        } else if textField == institutionTextField {
+            let maxLength = 25
+            
+            let currentString: NSString = textField.text! as NSString
+            let newString: NSString = currentString.replacingCharacters(in: range, with: string) as NSString
+            return newString.length <= maxLength
+        } else {
+            let maxLength = 50
+            
+            let currentString: NSString = textField.text! as NSString
+            let newString: NSString = currentString.replacingCharacters(in: range, with: string) as NSString
+            return newString.length <= maxLength
+        }
+        
+        
+//        let currentString: NSString = textField.text! as NSString
+//        let newString: NSString = currentString.replacingCharacters(in: range, with: string) as NSString
+//        return newString.length <= maxLength
     }
     
 }

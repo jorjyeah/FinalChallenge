@@ -99,6 +99,7 @@
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="grY-Tr-C2a">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <color key="backgroundColor" red="0.95686918499999996" green="0.95685130360000004" blue="0.95686346290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="jOK-Md-Slf"/>
                                 </constraints>
@@ -148,12 +149,13 @@
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YOQ-eC-QBA">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <color key="backgroundColor" red="0.95686918499999996" green="0.95685130360000004" blue="0.95686346290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="SKW-Uq-ebC"/>
                                 </constraints>
                                 <items>
                                     <navigationItem title="Add New Student" id="T6g-73-NNY">
-                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="NHb-rR-GKX">
+                                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="NHb-rR-GKX">
                                             <connections>
                                                 <action selector="doneButtonTapped:" destination="5yL-SS-DEk" id="pRl-Yu-hhU"/>
                                             </connections>
@@ -243,9 +245,10 @@
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aIt-0o-rGd">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                                <color key="backgroundColor" red="0.95686918499999996" green="0.95685130360000004" blue="0.95686346290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <items>
                                     <navigationItem title="Student Profile" id="RqE-su-7sT">
-                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="Roo-ex-QUa">
+                                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="Roo-ex-QUa">
                                             <connections>
                                                 <action selector="doneButtonTapped:" destination="jgQ-vj-COD" id="dgl-gi-BvQ"/>
                                             </connections>
@@ -277,7 +280,12 @@
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lKA-Yd-oxi">
                                 <rect key="frame" x="0.0" y="327" width="414" height="485"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" red="0.95686918499999996" green="0.95685130360000004" blue="0.95686346290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="Kc1-gg-oza">
+                                    <rect key="frame" x="0.0" y="116" width="414" height="0.0"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="detailsStudent" rowHeight="60" id="fD6-ag-rkX" customClass="StudentProfileTableViewCell" customModule="Stara" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="60"/>
@@ -564,7 +572,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.95686918499999996" green="0.95685130360000004" blue="0.95686346290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="oHG-nK-2Lo" firstAttribute="leading" secondItem="i4F-KT-N1t" secondAttribute="leading" id="37g-Hm-CUI"/>
                             <constraint firstItem="i4F-KT-N1t" firstAttribute="bottom" secondItem="oHG-nK-2Lo" secondAttribute="bottom" id="8q3-Ix-zWf"/>
@@ -611,7 +619,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.95686918499999996" green="0.95685130360000004" blue="0.95686346290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="oRQ-bp-P1l" firstAttribute="top" secondItem="DxR-yb-5rG" secondAttribute="top" constant="16" id="8t0-jl-ugP"/>
                             <constraint firstItem="M68-gK-SdR" firstAttribute="leading" secondItem="DxR-yb-5rG" secondAttribute="leading" constant="16" id="Qia-ir-DQU"/>
@@ -685,7 +693,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.95686918499999996" green="0.95685130360000004" blue="0.95686346290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="EW2-Al-361" firstAttribute="bottom" secondItem="uo3-a8-qQ3" secondAttribute="bottom" id="E1T-bG-uou"/>
                             <constraint firstItem="EW2-Al-361" firstAttribute="trailing" secondItem="uo3-a8-qQ3" secondAttribute="trailing" id="O0U-85-tv3"/>
@@ -872,7 +880,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.95686918499999996" green="0.95685130360000004" blue="0.95686346290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="YQR-Eg-8mE" firstAttribute="leading" secondItem="HgD-Cd-AS6" secondAttribute="leading" id="G3a-SO-4PQ"/>
                             <constraint firstItem="YQR-Eg-8mE" firstAttribute="top" secondItem="HgD-Cd-AS6" secondAttribute="top" id="KOP-LS-OXS"/>
@@ -882,7 +890,7 @@
                         <viewLayoutGuide key="safeArea" id="HgD-Cd-AS6"/>
                     </view>
                     <navigationItem key="navigationItem" title="Summary" id="gav-1U-bMd">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="zAr-gS-bqd">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="zAr-gS-bqd">
                             <connections>
                                 <action selector="saveButtonTapped:" destination="rNe-Ul-54a" id="0ET-DQ-gOr"/>
                             </connections>
@@ -1005,9 +1013,10 @@
                                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mj9-H9-PF5">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.95686918499999996" green="0.95685130360000004" blue="0.95686346290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <items>
                                                     <navigationItem title="Activity Detail" id="z4i-WN-pgS">
-                                                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="done" id="m5a-am-BWt">
+                                                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="m5a-am-BWt">
                                                             <connections>
                                                                 <action selector="doneButtonTapped:" destination="eOn-S4-O2o" id="NAT-y3-2az"/>
                                                             </connections>
@@ -1267,9 +1276,10 @@
                                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pp8-Zd-l5v">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.95686918499999996" green="0.95685130360000004" blue="0.95686346290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <items>
                                                     <navigationItem title="Activity Detail" id="77i-bU-lLa">
-                                                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="done" id="boK-mL-XMo">
+                                                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="boK-mL-XMo">
                                                             <connections>
                                                                 <action selector="doneButtonTapped:" destination="rNn-XN-T2g" id="Yo9-gq-aAe"/>
                                                             </connections>
