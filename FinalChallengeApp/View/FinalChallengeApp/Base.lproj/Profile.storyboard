@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Jse-oS-pXa">
-                                <rect key="frame" x="137" y="208.5" width="140" height="140"/>
+                                <rect key="frame" x="137" y="208.5" width="140" height="139.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Jse-oS-pXa" secondAttribute="height" multiplier="1:1" id="aUr-na-JTN"/>
                                 </constraints>
@@ -90,7 +90,7 @@
         <!--Edit Profile-->
         <scene sceneID="eMq-i3-vBt">
             <objects>
-                <viewController id="0nd-hS-3DZ" customClass="EditProfileViewController" customModule="Stara" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="0nd-hS-3DZ" customClass="EditProfileViewController" customModule="Stara" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Qan-gX-keV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

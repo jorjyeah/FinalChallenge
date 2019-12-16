@@ -99,6 +99,7 @@
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="grY-Tr-C2a">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <color key="backgroundColor" red="0.95686918499999996" green="0.95685130360000004" blue="0.95686346290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="jOK-Md-Slf"/>
                                 </constraints>
@@ -148,6 +149,7 @@
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YOQ-eC-QBA">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <color key="backgroundColor" red="0.95686918499999996" green="0.95685130360000004" blue="0.95686346290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="SKW-Uq-ebC"/>
                                 </constraints>
@@ -243,6 +245,7 @@
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aIt-0o-rGd">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                                <color key="backgroundColor" red="0.95686918499999996" green="0.95685130360000004" blue="0.95686346290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <items>
                                     <navigationItem title="Student Profile" id="RqE-su-7sT">
                                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="Roo-ex-QUa">
@@ -277,7 +280,7 @@
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lKA-Yd-oxi">
                                 <rect key="frame" x="0.0" y="327" width="414" height="485"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" red="0.95686918499999996" green="0.95685130360000004" blue="0.95686346290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="Kc1-gg-oza">
                                     <rect key="frame" x="0.0" y="116" width="414" height="0.0"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -569,7 +572,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.95686918499999996" green="0.95685130360000004" blue="0.95686346290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="oHG-nK-2Lo" firstAttribute="leading" secondItem="i4F-KT-N1t" secondAttribute="leading" id="37g-Hm-CUI"/>
                             <constraint firstItem="i4F-KT-N1t" firstAttribute="bottom" secondItem="oHG-nK-2Lo" secondAttribute="bottom" id="8q3-Ix-zWf"/>
@@ -616,7 +619,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.95686918499999996" green="0.95685130360000004" blue="0.95686346290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="oRQ-bp-P1l" firstAttribute="top" secondItem="DxR-yb-5rG" secondAttribute="top" constant="16" id="8t0-jl-ugP"/>
                             <constraint firstItem="M68-gK-SdR" firstAttribute="leading" secondItem="DxR-yb-5rG" secondAttribute="leading" constant="16" id="Qia-ir-DQU"/>
@@ -690,7 +693,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.95686918499999996" green="0.95685130360000004" blue="0.95686346290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="EW2-Al-361" firstAttribute="bottom" secondItem="uo3-a8-qQ3" secondAttribute="bottom" id="E1T-bG-uou"/>
                             <constraint firstItem="EW2-Al-361" firstAttribute="trailing" secondItem="uo3-a8-qQ3" secondAttribute="trailing" id="O0U-85-tv3"/>
@@ -877,7 +880,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.95686918499999996" green="0.95685130360000004" blue="0.95686346290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="YQR-Eg-8mE" firstAttribute="leading" secondItem="HgD-Cd-AS6" secondAttribute="leading" id="G3a-SO-4PQ"/>
                             <constraint firstItem="YQR-Eg-8mE" firstAttribute="top" secondItem="HgD-Cd-AS6" secondAttribute="top" id="KOP-LS-OXS"/>
@@ -1010,6 +1013,7 @@
                                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mj9-H9-PF5">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.95686918499999996" green="0.95685130360000004" blue="0.95686346290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <items>
                                                     <navigationItem title="Activity Detail" id="z4i-WN-pgS">
                                                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="m5a-am-BWt">
@@ -1272,6 +1276,7 @@
                                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pp8-Zd-l5v">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.95686918499999996" green="0.95685130360000004" blue="0.95686346290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <items>
                                                     <navigationItem title="Activity Detail" id="77i-bU-lLa">
                                                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="boK-mL-XMo">

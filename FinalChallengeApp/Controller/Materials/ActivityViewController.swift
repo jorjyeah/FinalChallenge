@@ -80,7 +80,6 @@ class ActivityViewController: UIViewController {
 
 
 extension ActivityViewController: UITableViewDelegate, UITableViewDataSource {
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }

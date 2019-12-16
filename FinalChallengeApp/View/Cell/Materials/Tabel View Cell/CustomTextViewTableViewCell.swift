@@ -17,6 +17,11 @@ class CustomTextViewTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 //        customTextView.delegate = self as! UITextViewDelegate
+        
+        customTextView.backgroundColor = .white
+        customTextView.layer.cornerRadius = 4
+        customTextView.layer.borderWidth = 0.5
+        customTextView.layer.borderColor = UIColor(red: 0.59, green: 0.59, blue: 0.59, alpha: 1).cgColor
         // Initialization code
     }
 
