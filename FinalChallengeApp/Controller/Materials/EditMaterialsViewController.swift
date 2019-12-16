@@ -59,7 +59,11 @@ class EditMaterialsViewController: UIViewController {
     @IBAction func unwindFromAddNewSkill(_ sender:UIStoryboardSegue){
         // bikin function dulu buat unwind, nanti di exit di page summary
         if sender.source is NewSkillViewController{
-            
+            if let senderVC = sender.source as? NewSkillViewController{
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+            }
         }
     }
     
@@ -189,6 +193,10 @@ extension EditMaterialsViewController: UICollectionViewDelegate, UICollectionVie
             let section = sender as! Int
             let destination = segue.destination as! NewSkillViewController
             destination.baseProgramRecordID = baseProgram[section].baseProgramRecordID
+        } else if segue.identifier == "backToMaterialsFromEditMaterials" {
+            let destination = segue.destination as! MaterialsViewController
+            destination.skillData = skillData
+            destination.baseProgram = baseProgram
         }
     }
     

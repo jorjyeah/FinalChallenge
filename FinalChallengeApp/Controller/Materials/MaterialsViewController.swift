@@ -26,9 +26,11 @@ class MaterialsViewController: UIViewController {
     var selectedSkillTitle = String()
     
     @IBAction func unwindFromEditMaterials(_ sender:UIStoryboardSegue){
-        // bikin function dulu buat unwind, nanti di exit di page summary
+        // bikin function dulu buat unwind, nanti di exit di page edit
         if sender.source is EditMaterialsViewController{
-            
+            if let senderVC = sender.source as? EditMaterialsViewController{
+                collectionView.reloadData()
+            }
         }
     }
     
@@ -44,10 +46,6 @@ class MaterialsViewController: UIViewController {
     }
     
     
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        populateData()
-//    }
     
     func populateData(){
         BaseProgramDataManager.getAllBaseProgram { (baseProgramModel) in
@@ -107,7 +105,7 @@ extension MaterialsViewController: UICollectionViewDelegate, UICollectionViewDat
         cell.layer.shadowRadius = 4
         
         if let baseProgram =  skillData[baseProgram[indexPath.section].baseProgramRecordID]{
-            cell.programLabel.text = "\(baseProgram[indexPath.row].skillTitle) + \(indexPath.row)"
+            cell.programLabel.text = "\(baseProgram[indexPath.row].skillTitle)"
         }else{
             cell.programLabel.text = ""
         }
