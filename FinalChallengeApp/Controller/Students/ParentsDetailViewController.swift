@@ -22,7 +22,7 @@ class ParentsDetailViewController: UIViewController {
         
         notesLabel.frame = CGRect(x: 16, y: 137, width: 382, height: 104)
         notesLabel.backgroundColor = .white
-        notesLabel.layer.cornerRadius = 14
+        notesLabel.layer.cornerRadius = 4
         notesLabel.layer.borderWidth = 0.3
         notesLabel.layer.borderColor = UIColor(red: 0.59, green: 0.59, blue: 0.59, alpha: 1).cgColor
         

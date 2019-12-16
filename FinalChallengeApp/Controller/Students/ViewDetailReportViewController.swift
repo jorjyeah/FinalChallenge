@@ -48,5 +48,10 @@ class ViewDetailReportViewController: UIViewController {
             }
         }
     }
-
+    
+    
+    @IBAction func doneButtonTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
 }
