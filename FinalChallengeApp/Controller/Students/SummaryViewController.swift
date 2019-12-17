@@ -10,7 +10,7 @@ import UIKit
 import CloudKit
 import AVFoundation
 
-class SummaryViewController: UIViewController, AVAudioPlayerDelegate {
+class SummaryViewController: StaraLoadingViewController, AVAudioPlayerDelegate {
     
     // MARK: - IBOutlets
     @IBOutlet weak var tableView: UITableView!
@@ -42,21 +42,33 @@ class SummaryViewController: UIViewController, AVAudioPlayerDelegate {
     var audioData = Data()
     var audioFilename = URL(string: "")
     var audioPlayer: AVAudioPlayer!
+//    let loadingView = UIView()
+//    let loadingImage = UIImageView()
     
-    let loadingView = UIView()
-    let logoMoveImage = UIImageView.init(image: UIImage(named: "stara-active"))
-
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    
     
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        loadingView.autoresizingMask = [ .flexibleHeight, .flexibleWidth]
-        loadingView.addSubview(logoMoveImage)
-        loadingView.isOpaque = true
-        loadingView.backgroundColor = .lightGray
-        loadingView.isHidden = true
-        
+//        loadingView.backgroundColor = UIColor(displayP3Red: 1, green: 1, blue: 1, alpha: 0.5)
+//
+//
+//        loadingImage.animationImages = (0...29).map { UIImage(named: "stara-icon-\($0)")!}
+//        loadingImage.startAnimating()
+////        loadingImage.animationImages?.append(UIImage(named: ))
+//        //loadingImage.image = UIImage(named: "Stara Moving")
+//        loadingView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+//        loadingImage.frame = CGRect(x: loadingView.center.x, y: loadingView.center.y, width: 120, height: 248)
+//        loadingView.addSubview(loadingImage)
+//
+//        loadingImage.translatesAutoresizingMaskIntoConstraints = false
+//        NSLayoutConstraint.activate([
+//            loadingImage.centerXAnchor.constraint(equalTo: loadingView.centerXAnchor),
+//            loadingImage.centerYAnchor.constraint(equalTo: loadingView.centerYAnchor)
+//        ])
+//        self.view.addSubview(loadingView)
+//        loadingView.isHidden = true
         
         let recordingPlay = UIImage(named: "Recordings Play")?.withRenderingMode(.alwaysOriginal)
         
@@ -103,40 +115,61 @@ class SummaryViewController: UIViewController, AVAudioPlayerDelegate {
     
     // save button tapped
     @IBAction func saveButtonTapped(_ sender: Any) {
-        
+//        self.view.configureLoading()
+        startLoading()
+        let uploadGroup = DispatchGroup()
+        saveButton.isEnabled = false
+//        loadingView.isHidden = false
+
+        uploadGroup.enter()
         SaveNewReport.saveReport(childName: studentRecordID, therapistName: therapistRecordID, therapySessionNotes: notes) { (therapySessionModel, therapySessionRecordID) in
+//            guard let therapySessionModel = therapySessionModel else { return }
             self.newTherapySession = therapySessionModel
-            
-            DispatchQueue.main.async {
-                self.performSegue(withIdentifier: "backToAddReportFromSummary", sender: self)
-            }
-            
+
             if let image = self.selectedImage{
+                uploadGroup.enter()
                 SaveNewReport.savePhoto(therapySession: therapySessionRecordID, photo: image) { (success) in
-                    if success {
+                    print(success)
+                    if success{
+                        uploadGroup.leave()
                     }
                 }
             }
-            
+
             if let audioFilename = self.audioFilename {
+                uploadGroup.enter()
                 if let data = try? Data(contentsOf: audioFilename) {
                     print(data)
                     self.audioData = data
                     SaveNewReport.saveAudio(therapySession: therapySessionRecordID, audio: self.audioData) { (success) in
-                        if success{
+                        if success {
+                            uploadGroup.leave()
                         }
                     }
                 }
             }
-            
+
             self.selectedActivity .forEach { (detailedActivity) in
                 print(detailedActivity.activityRecordID)
+                uploadGroup.enter()
                 SaveNewReport.saveActivitySessions(activityReference: detailedActivity.activityRecordID, childName: self.studentRecordID, therapySession: therapySessionRecordID) { (success) in
-                    print(success)
+                    if success {
+                        uploadGroup.leave()
+                    }
                 }
             }
+
+            uploadGroup.leave()
+        }
+
+        uploadGroup.notify(queue: .main){
+            self.dismissLoading()
+//            self.loadingView.isHidden = false
+            self.saveButton.isEnabled = true
+            self.performSegue(withIdentifier: "backToAddReportFromSummary", sender: self)
         }
     }
+    
     
     //ini handlernya image attachment
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
@@ -423,5 +456,10 @@ extension SummaryViewController: AudioRecorderViewControllerDelegate {
     func sendBack(string: URL) {
         attachmentView.isHidden = false
         playButton.isHidden = false
+        audioFilename = string
     }
+}
+
+extension UIView{
+    
 }

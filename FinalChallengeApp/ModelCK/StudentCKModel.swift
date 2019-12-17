@@ -77,6 +77,7 @@ class StudentCKModel: NSObject{
     }
     
     class func getTherapySchedule(onComplete : @escaping ([String]) -> Void){
+        print(UserDefaults.standard.bool(forKey: "didPreloadData"))
         let therapistRecordID = String(UserDefaults.standard.string(forKey: "userID")!)
         let therapistReference = CKRecord.Reference(recordID: CKRecord.ID(recordName: therapistRecordID), action: CKRecord_Reference_Action.none)
 

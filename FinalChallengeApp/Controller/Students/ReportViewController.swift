@@ -26,15 +26,15 @@ class ReportViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        populateTableView()
 //        self.tableView.separatorColor = .clear
         //navigationController?.navigationBar.prefersLargeTitles = false
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        populateTableView()
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        populateTableView()
+//    }
     
     
     func populateTableView(){
@@ -67,7 +67,11 @@ class ReportViewController: UIViewController {
         if sender.source is SummaryViewController{
             if let senderVC = sender.source as? SummaryViewController{
                 populateTableView()
-                print(senderVC.test)
+//                DispatchQueue.main.async {
+//                    self.tableView.reloadData()
+//                }
+                
+//                print(senderVC.test)
                 print(senderVC.selectedActivity)
             }
         }
