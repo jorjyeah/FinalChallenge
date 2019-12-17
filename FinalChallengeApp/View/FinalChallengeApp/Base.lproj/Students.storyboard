@@ -1159,7 +1159,7 @@
         <scene sceneID="hZm-IH-neX">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JLt-p9-X3O" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Students" id="Bw1-0m-OdF"/>
+                    <tabBarItem key="tabBarItem" title="Students" image="stara-inactive" selectedImage="stara-active" id="Bw1-0m-OdF"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="7tk-LG-dbY">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
@@ -1375,6 +1375,8 @@
         <image name="camera.fill" catalog="system" width="64" height="48"/>
         <image name="checkmark.circle.fill" catalog="system" width="64" height="62"/>
         <image name="mic.fill" catalog="system" width="50" height="64"/>
+        <image name="stara-active" width="30" height="28"/>
+        <image name="stara-inactive" width="30" height="28"/>
     </resources>
     <color key="tintColor" red="0.72549019609999998" green="0.51764705879999995" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>

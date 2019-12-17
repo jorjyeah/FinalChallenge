@@ -20,11 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let therapistNameUserDef = "therapistName"
         let userDefaults = UserDefaults.standard
         
-        //navbar styling
-//        var navigationBarAppearace = UINavigationBar.appearance()
-//
-//        navigationBarAppearace.tintColor = uicolorFromHex(rgbValue: 0xffffff)
-//        navigationBarAppearace.barTintColor = uicolorFromHex(rgbValue: 0x034517)
+        //tabbar styling
+        UITabBar.appearance().tintColor = UIColor(red: 0.73, green: 0.52, blue: 0, alpha: 1)
+        UITabBar.appearance().unselectedItemTintColor = UIColor.darkGray
 
         
         if userDefaults.bool(forKey: preloadedDataKey) == false {
@@ -55,14 +53,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    
-//    func uicolorFromHex(rgbValue:UInt32)->UIColor{
-//        let red = CGFloat((rgbValue & 0xFF0000) >> 16)/256.0
-//        let green = CGFloat((rgbValue & 0xFF00) >> 8)/256.0
-//        let blue = CGFloat(rgbValue & 0xFF)/256.0
-//
-//        return UIColor(red:red, green:green, blue:blue, alpha:1.0)
-//    }
     
     
     // MARK: UISceneSession Lifecycle
