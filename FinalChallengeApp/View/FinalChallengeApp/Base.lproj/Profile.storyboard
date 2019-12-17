@@ -205,7 +205,7 @@
         <scene sceneID="WaK-QC-cJv">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Xc5-DB-ezq" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" id="Qat-JM-e66"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="profile-inactive" selectedImage="profile-active" id="Qat-JM-e66"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="r1J-gY-aBI">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -224,6 +224,8 @@
     <resources>
         <image name="person.circle" catalog="system" width="64" height="62"/>
         <image name="person.crop.circle.badge.plus" catalog="system" width="64" height="52"/>
+        <image name="profile-active" width="30" height="28"/>
+        <image name="profile-inactive" width="30" height="28"/>
     </resources>
     <color key="tintColor" red="0.72549019609999998" green="0.51764705879999995" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>

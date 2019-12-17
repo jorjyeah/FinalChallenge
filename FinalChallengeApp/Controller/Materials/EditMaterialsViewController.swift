@@ -13,6 +13,7 @@ class EditMaterialsViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+   
     @IBOutlet weak var newCategoryButton: UIButton!
     
 
@@ -34,9 +35,9 @@ class EditMaterialsViewController: UIViewController {
         self.navigationItem.setHidesBackButton(true, animated:true)
         
         // add image di button add new category
-        let addButton = UIImage(named: "Add")?.withRenderingMode(.alwaysOriginal)
+        let addButton = UIImage(named: "add-yellow")?.withRenderingMode(.alwaysOriginal)
         newCategoryButton.setImage(addButton, for: .normal)
-        
+        newCategoryButton.setTitle("Add New Category", for: .normal)
         //styling
         
         

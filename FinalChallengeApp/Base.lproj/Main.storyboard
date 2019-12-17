@@ -9,11 +9,12 @@
         <!--View Controller-->
         <scene sceneID="bpE-O5-skr">
             <objects>
-                <tabBarController id="628-sI-Bge" customClass="ViewController" customModule="FinalChallengeApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController id="628-sI-Bge" customClass="ViewController" customModule="Stara" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="I50-rv-9bQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="0.72549019609999998" green="0.51764705879999995" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="e6t-wx-8sf" kind="relationship" relationship="viewControllers" id="FKd-Qj-m6o"/>
@@ -29,7 +30,7 @@
         <scene sceneID="fk9-cT-daX">
             <objects>
                 <viewControllerPlaceholder storyboardName="Students" id="e6t-wx-8sf" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="stara-active" id="LdB-yG-Rsj"/>
+                    <tabBarItem key="tabBarItem" title="Students" image="stara-inactive" selectedImage="stara-active" id="LdB-yG-Rsj"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vIu-wR-ypo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -39,7 +40,7 @@
         <scene sceneID="h8v-rb-W7r">
             <objects>
                 <viewControllerPlaceholder storyboardName="Materials" id="e6m-3W-fOi" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="4Z8-Zv-9ov"/>
+                    <tabBarItem key="tabBarItem" title="Materials" image="materials-inactive" selectedImage="materials-active" id="4Z8-Zv-9ov"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NxT-q4-uQo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -49,7 +50,7 @@
         <scene sceneID="o2h-ZV-1YE">
             <objects>
                 <viewControllerPlaceholder storyboardName="Profile" id="JzD-Zo-axd" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="IDz-lp-Hoo"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="profile-inactive" selectedImage="profile-active" id="IDz-lp-Hoo"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PMy-S2-8pA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -57,6 +58,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="materials-active" width="30" height="28"/>
+        <image name="materials-inactive" width="30" height="28"/>
+        <image name="profile-active" width="30" height="28"/>
+        <image name="profile-inactive" width="30" height="28"/>
         <image name="stara-active" width="30" height="28"/>
+        <image name="stara-inactive" width="30" height="28"/>
     </resources>
+    <color key="tintColor" red="0.72549019609999998" green="0.51764705879999995" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>
