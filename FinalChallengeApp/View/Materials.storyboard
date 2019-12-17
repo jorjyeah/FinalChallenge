@@ -711,7 +711,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="tBG-E5-9w4">
-                                <rect key="frame" x="16" y="104" width="382" height="742"/>
+                                <rect key="frame" x="16" y="104" width="382" height="719"/>
                                 <color key="backgroundColor" red="0.95686918499999996" green="0.95685130360000004" blue="0.95686346290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CD0-M3-55e">
                                     <size key="itemSize" width="120" height="80"/>
@@ -790,27 +790,29 @@
                                     <outlet property="delegate" destination="Xpo-RV-2Og" id="opy-0d-lIh"/>
                                 </connections>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NC8-c9-fMe">
-                                <rect key="frame" x="16" y="829" width="382" height="33"/>
-                                <color key="backgroundColor" red="0.95686918499999996" green="0.95685130360000004" blue="0.95686346290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PYL-n4-IFO">
+                                <rect key="frame" x="0.0" y="823" width="414" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="39" id="IJl-va-zdd"/>
+                                    <constraint firstAttribute="width" constant="414" id="sx6-jR-wPB"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                <state key="normal" title="Add New Category">
-                                    <color key="titleColor" red="0.72549019609999998" green="0.51764705879999995" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
+                                <inset key="contentEdgeInsets" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
-                                    <action selector="newCategoryTapped:" destination="Xpo-RV-2Og" eventType="touchUpInside" id="6jp-th-CUY"/>
+                                    <action selector="newCategoryTapped:" destination="Xpo-RV-2Og" eventType="touchUpInside" id="gy5-Rh-FC5"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.95686918499999996" green="0.95685130360000004" blue="0.95686346290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="NC8-c9-fMe" firstAttribute="leading" secondItem="hVz-Ar-imm" secondAttribute="leading" constant="16" id="5Me-uv-YNv"/>
-                            <constraint firstItem="tBG-E5-9w4" firstAttribute="leading" secondItem="NC8-c9-fMe" secondAttribute="leading" id="8X6-uq-QmM"/>
-                            <constraint firstItem="tBG-E5-9w4" firstAttribute="trailing" secondItem="NC8-c9-fMe" secondAttribute="trailing" id="MLh-eq-QHM"/>
+                            <constraint firstItem="tBG-E5-9w4" firstAttribute="leading" secondItem="hVz-Ar-imm" secondAttribute="leading" constant="16" id="8oy-vi-rsw"/>
+                            <constraint firstItem="PYL-n4-IFO" firstAttribute="leading" secondItem="hVz-Ar-imm" secondAttribute="leading" id="FAH-ht-AWI"/>
+                            <constraint firstItem="PYL-n4-IFO" firstAttribute="bottom" secondItem="hVz-Ar-imm" secondAttribute="bottom" id="Se4-dd-jTU"/>
                             <constraint firstItem="tBG-E5-9w4" firstAttribute="top" secondItem="hVz-Ar-imm" secondAttribute="top" constant="16" id="U1F-gK-YXX"/>
-                            <constraint firstItem="hVz-Ar-imm" firstAttribute="bottom" secondItem="tBG-E5-9w4" secondAttribute="bottom" constant="16" id="aLa-8T-Qe0"/>
+                            <constraint firstItem="PYL-n4-IFO" firstAttribute="top" secondItem="tBG-E5-9w4" secondAttribute="bottom" id="Y3C-8L-i0s"/>
+                            <constraint firstItem="PYL-n4-IFO" firstAttribute="trailing" secondItem="hVz-Ar-imm" secondAttribute="trailing" id="YMH-ed-ujl"/>
                             <constraint firstItem="hVz-Ar-imm" firstAttribute="trailing" secondItem="tBG-E5-9w4" secondAttribute="trailing" constant="16" id="bM9-uy-0UH"/>
-                            <constraint firstItem="NC8-c9-fMe" firstAttribute="bottom" secondItem="hVz-Ar-imm" secondAttribute="bottom" id="klC-gv-PTf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hVz-Ar-imm"/>
                     </view>
@@ -823,7 +825,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="tBG-E5-9w4" id="Zsn-Tl-Lpz"/>
-                        <outlet property="newCategoryButton" destination="NC8-c9-fMe" id="8fh-Gc-CLl"/>
+                        <outlet property="newCategoryButton" destination="PYL-n4-IFO" id="yAN-O1-v1v"/>
                         <segue destination="Ey5-5w-Z8j" kind="presentation" identifier="showAddSkill" id="CTx-BJ-VB4"/>
                         <segue destination="Gx7-fu-YbS" kind="unwind" identifier="backToMaterialsFromEditMaterials" unwindAction="unwindFromEditMaterials:" id="Xth-OF-Tvy"/>
                     </connections>
@@ -969,7 +971,7 @@
         <scene sceneID="a4L-Zr-VNT">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MUY-hO-l3I" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Materials" id="uDM-M3-cbD"/>
+                    <tabBarItem key="tabBarItem" title="Materials" image="materials-inactive" selectedImage="materials-active" id="uDM-M3-cbD"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="kxe-2i-VGa">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -987,6 +989,8 @@
     </scenes>
     <resources>
         <image name="Unchecked box" width="36" height="36"/>
+        <image name="materials-active" width="30" height="28"/>
+        <image name="materials-inactive" width="30" height="28"/>
         <image name="plus.circle.fill" catalog="system" width="64" height="62"/>
     </resources>
     <color key="tintColor" red="0.72549019609999998" green="0.51764705879999995" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
