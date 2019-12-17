@@ -9,7 +9,7 @@
 import UIKit
 import CloudKit
 
-class MaterialsViewController: UIViewController {
+class MaterialsViewController: StaraLoadingViewController {
 
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -27,9 +27,11 @@ class MaterialsViewController: UIViewController {
     
     @IBAction func unwindFromEditMaterials(_ sender:UIStoryboardSegue){
         // bikin function dulu buat unwind, nanti di exit di page edit
+        startLoading()
         if sender.source is EditMaterialsViewController{
             if let senderVC = sender.source as? EditMaterialsViewController{
                 collectionView.reloadData()
+                self.dismissLoading()
             }
         }
     }
@@ -43,9 +45,12 @@ class MaterialsViewController: UIViewController {
     
     
     func populateData(){
+        let reloadGroup = DispatchGroup()
+        startLoading()
+        reloadGroup.enter()
         BaseProgramDataManager.getAllBaseProgram { (baseProgramModel) in
             self.baseProgram = baseProgramModel
-            
+            reloadGroup.enter()
             SkillDataManager.getAllSkill { (skillModel) in
                 skillModel.map { (skill) in
                     if self.skillData[skill.baseProgramRecordID] == nil{
@@ -54,14 +59,14 @@ class MaterialsViewController: UIViewController {
                     
                     self.skillData[skill.baseProgramRecordID]?.append(skill)
                 }
-                
-                
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                }
+                reloadGroup.leave()
             }
+            reloadGroup.leave()
         }
-        
+        reloadGroup.notify(queue: .main){
+            self.dismissLoading()
+            self.collectionView.reloadData()
+        }
     }
 }
 

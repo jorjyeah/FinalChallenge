@@ -9,7 +9,7 @@
 import UIKit
 import CloudKit
 
-class EditMaterialsViewController: UIViewController {
+class EditMaterialsViewController: StaraLoadingViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -72,9 +72,13 @@ class EditMaterialsViewController: UIViewController {
     }
     
     func populateData(){
+        let reloadGroup = DispatchGroup()
+        startLoading()
+        reloadGroup.enter()
         BaseProgramDataManager.getAllBaseProgram { (baseProgramModel) in
             self.baseProgram = baseProgramModel
             self.newbaseProgram = baseProgramModel
+            reloadGroup.enter()
             SkillDataManager.getAllSkill { (skillModel) in
                 skillModel.map { (skill) in
                     if self.skillData[skill.baseProgramRecordID] == nil{
@@ -84,12 +88,13 @@ class EditMaterialsViewController: UIViewController {
                     self.skillData[skill.baseProgramRecordID]?.append(skill)
                 }
                 
-                
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-//                    self.collectionView.collectionViewLayout.invalidateLayout()
-                }
+                reloadGroup.leave()
             }
+            reloadGroup.leave()
+        }
+        reloadGroup.notify(queue: .main){
+            self.dismissLoading()
+            self.collectionView.reloadData()
         }
     }
     
