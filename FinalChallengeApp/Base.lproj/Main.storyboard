@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="628-sI-Bge">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="628-sI-Bge">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,7 +14,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="tintColor" red="0.72549019609999998" green="0.51764705879999995" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="e6t-wx-8sf" kind="relationship" relationship="viewControllers" id="FKd-Qj-m6o"/>
@@ -30,7 +29,7 @@
         <scene sceneID="fk9-cT-daX">
             <objects>
                 <viewControllerPlaceholder storyboardName="Students" id="e6t-wx-8sf" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Students" image="stara-inactive" selectedImage="stara-active" id="LdB-yG-Rsj"/>
+                    <tabBarItem key="tabBarItem" title="Students" image="Stara Icon Active" id="LdB-yG-Rsj"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vIu-wR-ypo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -40,7 +39,7 @@
         <scene sceneID="h8v-rb-W7r">
             <objects>
                 <viewControllerPlaceholder storyboardName="Materials" id="e6m-3W-fOi" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Materials" image="materials-inactive" selectedImage="materials-active" id="4Z8-Zv-9ov"/>
+                    <tabBarItem key="tabBarItem" title="Materials" image="Materials active" id="4Z8-Zv-9ov"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NxT-q4-uQo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -50,7 +49,7 @@
         <scene sceneID="o2h-ZV-1YE">
             <objects>
                 <viewControllerPlaceholder storyboardName="Profile" id="JzD-Zo-axd" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" image="profile-inactive" selectedImage="profile-active" id="IDz-lp-Hoo"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="My Profile Active" id="IDz-lp-Hoo"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PMy-S2-8pA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -58,12 +57,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="materials-active" width="30" height="28"/>
-        <image name="materials-inactive" width="30" height="28"/>
-        <image name="profile-active" width="30" height="28"/>
-        <image name="profile-inactive" width="30" height="28"/>
-        <image name="stara-active" width="30" height="28"/>
-        <image name="stara-inactive" width="30" height="28"/>
+        <image name="Materials active" width="30" height="28"/>
+        <image name="My Profile Active" width="30" height="28"/>
+        <image name="Stara Icon Active" width="30" height="28"/>
     </resources>
-    <color key="tintColor" red="0.72549019609999998" green="0.51764705879999995" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>

@@ -27,38 +27,39 @@ class AddReportViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let reloadGroup = DispatchGroup()
         tableView.allowsMultipleSelection = true
         
+        reloadGroup.enter()
         let allActivityData = AddReportModelCK.self
         allActivityData.getActivity { allActivitiesData in
             self.allActivitiesList = allActivitiesData
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-            
-            
+            reloadGroup.leave()
             //styling
             self.tableView.separatorColor = .clear
         }
         
+        reloadGroup.enter()
         let lastActivityData = AddReportModelCK.self
         lastActivityData.getLastActivity(childRecordID: studentRecordID) { lastActivitiesData in
             if lastActivitiesData.count != 0 {
                 self.hideLastActivity = false
                 lastActivityData.getActivityBasedOnLastActivities(activitiesRecordID: lastActivitiesData) { activities in
                     self.lastActivitiesList = activities
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
+                    reloadGroup.leave()
                 }
             }
             else {
                 self.hideLastActivity = true
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
+                reloadGroup.leave()
             }
             
+        }
+        
+        reloadGroup.notify(queue: .main){
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
         // Do any additional setup after loading the view.
     }
