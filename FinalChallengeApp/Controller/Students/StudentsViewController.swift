@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StudentsViewController: UIViewController {
+class StudentsViewController: StaraLoadingViewController {
     
     @IBOutlet weak var tableView: UITableView!
         
@@ -29,8 +29,17 @@ class StudentsViewController: UIViewController {
      
 
         // search bar
+        startLoading()
         searchBar.delegate =  self
         
+        NotificationCenter.default.addObserver(self, selector: #selector(loadData), name: NSNotification.Name("preloadDataDone"), object: nil)
+    }
+    
+    @objc private func loadData(){
+        print("done")
+        DispatchQueue.main.async {
+            self.dismissLoading()
+        }
         let studentsData = StudentCKModel.self
         studentsData.getTherapySchedule{ studentsRecordID in
             print("studentsRecordID:\(studentsRecordID)")

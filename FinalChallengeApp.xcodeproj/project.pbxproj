@@ -75,6 +75,7 @@
 		B9A2F43D23A4D26300339354 /* ParentsCKModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A2F43C23A4D26300339354 /* ParentsCKModel.swift */; };
 		B9A2F43F23A4D48C00339354 /* ParentDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A2F43E23A4D48C00339354 /* ParentDataManager.swift */; };
 		B9A2F44123A8EBEC00339354 /* StaraLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A2F44023A8EBEC00339354 /* StaraLoadingViewController.swift */; };
+		B9A2F44323AA316500339354 /* StaraOnBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9A2F44223AA316500339354 /* StaraOnBoard.storyboard */; };
 		B9B548FE237C195000ACB625 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9B548FD237C195000ACB625 /* CloudKit.framework */; };
 		B9BC0D99238420A30063DC95 /* ParentNotesCKModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BC0D98238420A30063DC95 /* ParentNotesCKModel.swift */; };
 		B9BC0D9B238537040063DC95 /* ProfileTherapistCKModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BC0D9A238537040063DC95 /* ProfileTherapistCKModel.swift */; };
@@ -186,6 +187,7 @@
 		B9A2F43C23A4D26300339354 /* ParentsCKModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentsCKModel.swift; sourceTree = "<group>"; };
 		B9A2F43E23A4D48C00339354 /* ParentDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentDataManager.swift; sourceTree = "<group>"; };
 		B9A2F44023A8EBEC00339354 /* StaraLoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StaraLoadingViewController.swift; path = FinalChallengeApp/View/StaraLoadingViewController.swift; sourceTree = SOURCE_ROOT; };
+		B9A2F44223AA316500339354 /* StaraOnBoard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StaraOnBoard.storyboard; sourceTree = "<group>"; };
 		B9B548FB237C193800ACB625 /* FinalChallengeApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FinalChallengeApp.entitlements; sourceTree = "<group>"; };
 		B9B548FD237C195000ACB625 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		B9BC0D98238420A30063DC95 /* ParentNotesCKModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentNotesCKModel.swift; sourceTree = "<group>"; };
@@ -362,6 +364,7 @@
 			children = (
 				68A57093237E7BCF002A3014 /* Cell */,
 				B9067470237C136400671632 /* Profile.storyboard */,
+				B9A2F44223AA316500339354 /* StaraOnBoard.storyboard */,
 				B906746E237C135300671632 /* Materials.storyboard */,
 				B906746B237C133E00671632 /* Students.storyboard */,
 			);
@@ -588,6 +591,7 @@
 			files = (
 				B9067472237C136400671632 /* Profile.storyboard in Resources */,
 				B906746D237C133E00671632 /* Students.storyboard in Resources */,
+				B9A2F44323AA316500339354 /* StaraOnBoard.storyboard in Resources */,
 				B906746F237C135300671632 /* Materials.storyboard in Resources */,
 				B91BD4A9237980020015C934 /* LaunchScreen.storyboard in Resources */,
 				B91BD4A6237980020015C934 /* Assets.xcassets in Resources */,

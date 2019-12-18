@@ -45,7 +45,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         print("data available therapist, appDelegate")
                     }
                     print("userID & therapistName : \(userDefaults.string(forKey: userIDUserDef)) & \(userDefaults.string(forKey: therapistNameUserDef))")
-                    userDefaults.set(true, forKey: preloadedDataKey) // dont forget to set true
+                    userDefaults.set(true, forKey: preloadedDataKey)
+                    NotificationCenter.default.post(name: NSNotification.Name("preloadDataDone"), object: nil)
+                     // dont forget to set true
                 }
             }
         }
