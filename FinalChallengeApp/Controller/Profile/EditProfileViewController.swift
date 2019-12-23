@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EditProfileViewController: UIViewController {
+class EditProfileViewController: StaraLoadingViewController {
     var test:String = ""
     
     @IBOutlet weak var doneButton: UIBarButtonItem!
@@ -16,7 +16,7 @@ class EditProfileViewController: UIViewController {
     @IBOutlet weak var institutionTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var profileImageVIew: UIImageView!
-    var newProfilePicture = UIImage(named: "Student Photo Default")
+    var newProfilePicture = UIImage(systemName: "person.circle")
     let therapistData = ProfileTherapistCKModel.self
     var imagePicker: ImagePicker!
     var newData = [String]()
@@ -43,13 +43,23 @@ class EditProfileViewController: UIViewController {
         newData.append(String(nameTextField.text!))
         newData.append(String(institutionTextField.text!))
         newData.append(String(addressTextField.text!))
+        let reloadGroup = DispatchGroup()
+        configureLoading()
+        reloadGroup.enter()
         ProfileTherapistCKModel.getTherapistData(userRef:therapistRecordID) { profileData in
+            reloadGroup.enter()
             SaveEditedProfile.saveProfile(newData: self.newData, newProfilePicture: self.newProfilePicture!, profileData: profileData.therapistRecordID) { (success) in
                 if success {
-                    self.performSegue(withIdentifier: "backToProfile", sender: nil)
+                    reloadGroup.leave()
+                    
                 }
-//                print(success)
             }
+            reloadGroup.leave()
+        }
+        
+        reloadGroup.notify(queue: .main){
+            self.dismissLoading()
+            self.performSegue(withIdentifier: "backToProfile", sender: nil)
         }
     }
     
@@ -57,14 +67,18 @@ class EditProfileViewController: UIViewController {
         let theraphistData = ProfileTherapistCKModel.self
         let therapistRecordID = String(UserDefaults.standard.string(forKey: "userID")!)
         let therapistName = String(UserDefaults.standard.string(forKey: "therapistName")!)
-        
+        let reloadGroup = DispatchGroup()
+        startLoading()
+        reloadGroup.enter()
         theraphistData.checkTherapistData(userRef: therapistRecordID) { (available) in
             if available{
+                reloadGroup.enter()
                 theraphistData.getTherapistData(userRef: therapistRecordID) { (ProfileTherapistData) in
+                    reloadGroup.leave()
                     DispatchQueue.main.async {
                         self.nameTextField.text = ProfileTherapistData.therapistName
                         self.profileImageVIew.image = ProfileTherapistData.therapistPhoto
-                        
+                        self.newProfilePicture = ProfileTherapistData.therapistPhoto
                         if ProfileTherapistData.institutionName == "no data" {
                             self.institutionTextField.placeholder = "Institution name hasn't been set yet"
                         } else {
@@ -79,12 +93,22 @@ class EditProfileViewController: UIViewController {
                     }
                 }
             } else {
+                reloadGroup.enter()
                 print("no data")
-                self.nameTextField.text = therapistName
-                //self.profileImageVIew.image = UIImage(named: "Student Photo Default")!
-                self.institutionTextField.placeholder = "Institution name hasn't been set yet"
-                self.addressTextField.placeholder = "Address hasn't been set yet"
+                DispatchQueue.main.async {
+                    self.nameTextField.text = therapistName
+                    //self.profileImageVIew.image = UIImage(named: "Student Photo Default")!
+                    self.institutionTextField.placeholder = "Institution name hasn't been set yet"
+                    self.addressTextField.placeholder = "Address hasn't been set yet"
+                    reloadGroup.leave()
+                }
+                
             }
+            reloadGroup.leave()
+        }
+        
+        reloadGroup.notify(queue: .main){
+            self.dismissLoading()
         }
     }
 }

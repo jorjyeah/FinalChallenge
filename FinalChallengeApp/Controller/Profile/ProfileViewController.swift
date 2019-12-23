@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: StaraLoadingViewController {
 
     @IBOutlet weak var profilePhotoUIImage: UIImageView!
     @IBOutlet weak var nameProfileLabel: UILabel!
@@ -44,9 +44,13 @@ class ProfileViewController: UIViewController {
         let therapistRecordID = String(UserDefaults.standard.string(forKey: "userID")!)
         let therapistName = String(UserDefaults.standard.string(forKey: "therapistName")!)
         
+        let reloadGroup = DispatchGroup()
+        startLoading()
+        reloadGroup.enter()
         therapistData.checkTherapistData(userRef: therapistRecordID) { (available) in
             if available{
                 therapistData.getTherapistData(userRef: therapistRecordID) { (ProfileTherapistData) in
+                    reloadGroup.enter()
                     DispatchQueue.main.async {
                         self.nameProfileLabel.text = ProfileTherapistData.therapistName
                         self.profilePhotoUIImage.image = ProfileTherapistData.therapistPhoto
@@ -61,18 +65,25 @@ class ProfileViewController: UIViewController {
                         } else {
                             self.addressLabel.text = ProfileTherapistData.therapistAddress
                         }
+                        reloadGroup.leave()
                     }
+                    reloadGroup.leave()
                 }
             } else {
                 print("no data")
+                reloadGroup.enter()
                 DispatchQueue.main.async {
                     self.nameProfileLabel.text = therapistName
                     //self.profilePhotoUIImage.image = UIImage(named: "Student Photo Default")!
                     self.institutionLabel.text = "Institution name hasn't been set yet"
                     self.addressLabel.text = "Address hasn't been set yet"
+                    reloadGroup.leave()
                 }
-                
+                reloadGroup.leave()
             }
+        }
+        reloadGroup.notify(queue: .main){
+            self.dismissLoading()
         }
     }
 

@@ -18,7 +18,7 @@ class ParentDataManager{
             guard let parentRecord = record else {
                 return
             }
-            onComplete(ParentCKModel.init(record: parentRecord))
+            onComplete(ParentCKModel(record: parentRecord))
         }
     }
 }

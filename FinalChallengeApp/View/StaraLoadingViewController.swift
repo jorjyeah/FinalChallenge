@@ -14,7 +14,7 @@ class StaraLoadingViewController : UIViewController{
     func configureLoading(){
         let loadingView = UIView()
         let loadingImage = UIImageView()
-        loadingView.backgroundColor = UIColor(displayP3Red: 1, green: 1, blue: 1, alpha: 0.5)
+        loadingView.backgroundColor = UIColor(displayP3Red: 0.9, green: 0.9, blue: 0.9, alpha: 0.7)
         loadingImage.animationImages = (0...29).map { UIImage(named: "stara-icon-\($0)")!}
         loadingImage.startAnimating()
         loadingView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)

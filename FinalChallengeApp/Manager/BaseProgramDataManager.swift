@@ -92,10 +92,10 @@ class BaseProgramDataManager{
         let saveRecordsOperation = CKModifyRecordsOperation(recordsToSave: ckRecordBaseProgram, recordIDsToDelete: nil)
 
         saveRecordsOperation.modifyRecordsCompletionBlock = { savedRecords, deletedRecordIDs, error in
-            if let err = error{
-                onComplete(false)
-            } else {
+            if let saved = savedRecords{
                 onComplete(true)
+            } else {
+                onComplete(false)
             }
         }
         

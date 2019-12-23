@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StudentsViewController: UIViewController {
+class StudentsViewController: StaraLoadingViewController {
     
     @IBOutlet weak var tableView: UITableView!
         
@@ -30,17 +30,42 @@ class StudentsViewController: UIViewController {
 
         // search bar
         searchBar.delegate =  self
-        
+        if UserDefaults.standard.bool(forKey: "didPreloadData") == false {
+            NotificationCenter.default.addObserver(self, selector: #selector(loadData), name: NSNotification.Name("preloadDataDone"), object: nil)
+        } else {
+            loadData()
+        }
+//        NotificationCenter.default.post(name: NSNotification.Name("preloadDataDone"), object: nil)
+    }
+    
+    @objc func loadData(){
+        print("done")
+        DispatchQueue.main.async {
+            self.startLoading()
+        }
+        let reloadGroup = DispatchGroup()
         let studentsData = StudentCKModel.self
+        reloadGroup.enter()
         studentsData.getTherapySchedule{ studentsRecordID in
-            print("studentsRecordID:\(studentsRecordID)")
-            studentsData.getStudentData(studentsRecordID: studentsRecordID) { studentsData in
-                self.student = studentsData // tampung data semua
-                self.filteredData = studentsData // tampung data yang terfilter
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
+            if studentsRecordID.count != 0{
+                print("studentsRecordID:\(studentsRecordID)")
+                reloadGroup.enter()
+                studentsData.getStudentData(studentsRecordID: studentsRecordID) { studentsData in
+                    self.student = studentsData // tampung data semua
+                    self.filteredData = studentsData // tampung data yang terfilter
+                    reloadGroup.leave()
                 }
+                reloadGroup.leave()
             }
+            else {
+                reloadGroup.leave()
+            }
+        }
+        
+        reloadGroup.notify(queue: .main){
+            self.tableView.reloadData()
+            self.dismissLoading()
+            
         }
     }
 
