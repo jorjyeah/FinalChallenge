@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().tintColor = UIColor(red: 0.73, green: 0.52, blue: 0, alpha: 1)
         UITabBar.appearance().unselectedItemTintColor = UIColor.darkGray
 
-        
+//        NotificationCenter.default.addObserver(self, selector: #selector(StudentsViewController.loadData), name: NSNotification.Name("preloadDataDone"), object: nil)
         if userDefaults.bool(forKey: preloadedDataKey) == false {
             // check if it's the firsttime user open the app
             preloadData { (userRef, therapistName) in
@@ -51,6 +51,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             }
         }
+//        else {
+//            NotificationCenter.default.post(name: NSNotification.Name("preloadDataDone"), object: nil)
+//        }
+        
         // Override point for customization after application launch.
         return true
     }

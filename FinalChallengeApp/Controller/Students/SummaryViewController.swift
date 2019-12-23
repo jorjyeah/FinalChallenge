@@ -51,24 +51,7 @@ class SummaryViewController: StaraLoadingViewController, AVAudioPlayerDelegate {
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-//        loadingView.backgroundColor = UIColor(displayP3Red: 1, green: 1, blue: 1, alpha: 0.5)
-//
-//
-//        loadingImage.animationImages = (0...29).map { UIImage(named: "stara-icon-\($0)")!}
-//        loadingImage.startAnimating()
-////        loadingImage.animationImages?.append(UIImage(named: ))
-//        //loadingImage.image = UIImage(named: "Stara Moving")
-//        loadingView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
-//        loadingImage.frame = CGRect(x: loadingView.center.x, y: loadingView.center.y, width: 120, height: 248)
-//        loadingView.addSubview(loadingImage)
-//
-//        loadingImage.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            loadingImage.centerXAnchor.constraint(equalTo: loadingView.centerXAnchor),
-//            loadingImage.centerYAnchor.constraint(equalTo: loadingView.centerYAnchor)
-//        ])
-//        self.view.addSubview(loadingView)
-//        loadingView.isHidden = true
+        print(selectedActivity)
         
         let recordingPlay = UIImage(named: "Recordings Play")?.withRenderingMode(.alwaysOriginal)
         

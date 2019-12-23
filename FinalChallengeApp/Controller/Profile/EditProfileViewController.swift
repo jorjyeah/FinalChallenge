@@ -93,12 +93,15 @@ class EditProfileViewController: StaraLoadingViewController {
                     }
                 }
             } else {
-                reloadGroup.leave()
+                reloadGroup.enter()
                 print("no data")
-                self.nameTextField.text = therapistName
-                //self.profileImageVIew.image = UIImage(named: "Student Photo Default")!
-                self.institutionTextField.placeholder = "Institution name hasn't been set yet"
-                self.addressTextField.placeholder = "Address hasn't been set yet"
+                DispatchQueue.main.async {
+                    self.nameTextField.text = therapistName
+                    //self.profileImageVIew.image = UIImage(named: "Student Photo Default")!
+                    self.institutionTextField.placeholder = "Institution name hasn't been set yet"
+                    self.addressTextField.placeholder = "Address hasn't been set yet"
+                    reloadGroup.leave()
+                }
                 
             }
             reloadGroup.leave()

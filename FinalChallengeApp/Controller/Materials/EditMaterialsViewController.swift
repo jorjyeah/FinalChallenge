@@ -52,6 +52,7 @@ class EditMaterialsViewController: StaraLoadingViewController {
     
     @IBAction func doneButtonTapped(_ sender: Any) {
         BaseProgramDataManager.saveEdited(baseProgramRecord: baseProgram) { (success) in
+            print("Success \(success)")
             if success {
                 DispatchQueue.main.async {
                     self.performSegue(withIdentifier: "backToMaterialsFromEditMaterials", sender: self)

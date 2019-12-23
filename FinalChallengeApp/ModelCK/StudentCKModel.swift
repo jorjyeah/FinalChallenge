@@ -79,6 +79,7 @@ class StudentCKModel: NSObject{
     class func getTherapySchedule(onComplete : @escaping ([String]) -> Void){
         print(UserDefaults.standard.bool(forKey: "didPreloadData"))
         let therapistRecordID = String(UserDefaults.standard.string(forKey: "userID")!)
+        print("user default therapistRecordID \(therapistRecordID)")
         let therapistReference = CKRecord.Reference(recordID: CKRecord.ID(recordName: therapistRecordID), action: CKRecord_Reference_Action.none)
 
         let predicate = NSPredicate(format: "therapistName == %@", therapistReference)
@@ -100,7 +101,7 @@ class StudentCKModel: NSObject{
         operation.queryCompletionBlock = { (cursor, error) in
             DispatchQueue.main.async {
                 if error == nil {
-                    print(studentsRecordID.removingDuplicates())
+                    print("studentREcordsID count : \(studentsRecordID.removingDuplicates().count)")
                     onComplete(studentsRecordID.removingDuplicates()) // removing duplicate of multiple string
                 } else {
                     print("error : \(error as Any)")
