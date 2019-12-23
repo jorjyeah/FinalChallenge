@@ -24,12 +24,17 @@ class AudioRecorderViewController: UIViewController, AVAudioRecorderDelegate, AV
     
     var fileName: String = "audioFile.m4a"
     var delegate:AudioRecorderViewControllerDelegate?
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //recordButton.setImage(UIImage(named: "play.png"), for: .normal)
         
-        recordButton.setImage(UIImage(named: "Record"), for: .normal)
+        
+        let recordImage = UIImage(named: "Record")?.withRenderingMode(.alwaysOriginal)
+        
+        recordButton.setImage(recordImage, for: .normal)
+        
+        //recordButton.setImage(UIImage(named: "Record"), for: .normal)
         setupRecorder()
 
     }

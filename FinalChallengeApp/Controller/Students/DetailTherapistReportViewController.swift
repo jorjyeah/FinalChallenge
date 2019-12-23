@@ -14,10 +14,12 @@ class DetailTherapistReportViewController: UIViewController, AVAudioPlayerDelega
     
     @IBOutlet weak var tableView: UITableView!
     
-    
     @IBOutlet weak var audioAttachmentButton: UIButton!
     
     @IBOutlet weak var imageAttachment: UIImageView!
+    
+    
+    @IBOutlet weak var attachmentView: UIView!
     
     
     var detailActivity = [DetailedReportCKModel]()
@@ -67,9 +69,10 @@ class DetailTherapistReportViewController: UIViewController, AVAudioPlayerDelega
         // Do any additional setup after loading the view.
         audioAttachmentButton.isEnabled = false
         imageAttachment.isHidden = true
-        let recordingPlay = UIImage(named: "Recordings Play")?.withRenderingMode(.alwaysOriginal)
         
+        let recordingPlay = UIImage(named: "Recordings Play")?.withRenderingMode(.alwaysOriginal)
         audioAttachmentButton.setImage(recordingPlay, for: .normal)
+        attachmentView.backgroundColor = UIColor(red: 0.97, green: 0.97, blue: 0.97, alpha: 1)
     }
     
     
@@ -121,12 +124,30 @@ class DetailTherapistReportViewController: UIViewController, AVAudioPlayerDelega
             
         }
     }
-    
-    
+
 }
 
 
 extension DetailTherapistReportViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+
+        let myLabel = UILabel()
+        myLabel.frame = CGRect(x: 20, y: 8, width: 320, height: 20)
+        myLabel.font = UIFont.systemFont(ofSize: 13)
+        myLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
+        myLabel.textColor = .gray
+
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor(red: 0.97, green: 0.97, blue: 0.97, alpha: 1)
+        headerView.addSubview(myLabel)
+
+        return headerView
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 38
+    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -153,11 +174,11 @@ extension DetailTherapistReportViewController: UITableViewDataSource, UITableVie
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section  == 0 {
+        if indexPath.section == 0 {
             return 128
         }
         else {
-            return 220
+            return UITableView.automaticDimension
         }
     }
     

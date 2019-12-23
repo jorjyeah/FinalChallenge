@@ -28,6 +28,15 @@ class StudentCKModel: NSObject{
         }
     }
     
+    var studentGender : String {
+        get{
+            return record?.value(forKey: "childGender") as! String
+        }
+        set{
+            self.record?.setValue(newValue, forKey: "childGender")
+        }
+    }
+    
     var studentDOB : Date {
         get{
             return record?.value(forKey: "childDOB") as! Date
@@ -40,7 +49,7 @@ class StudentCKModel: NSObject{
     var studentPhoto : UIImage{
         get{
             if let asset = record?["childPhoto"] as? CKAsset,
-                let data = try? NSData(contentsOf: (asset.fileURL)!),
+                let data = NSData(contentsOf: (asset.fileURL)!),
                 let image = UIImage(data: data as Data)
             {
                 return image
@@ -51,11 +60,12 @@ class StudentCKModel: NSObject{
     
     var parentRecordID : String{
         get{
-            if record?.value(forKey: "parentName") != nil{
-                return self.record?.value(forKey: "parentName") as! String
-            } else{
+            guard let parentRecordID = record?.value(forKey: "parentName") else {
                 return "No Parent"
             }
+            let recordRef = self.record?.value(forKey: "parentName") as! CKRecord.Reference
+            let recordID = recordRef.recordID.recordName
+            return recordID
         }
         set{
             self.record?.setValue(newValue, forKey: "parentName")
@@ -67,7 +77,9 @@ class StudentCKModel: NSObject{
     }
     
     class func getTherapySchedule(onComplete : @escaping ([String]) -> Void){
+        print(UserDefaults.standard.bool(forKey: "didPreloadData"))
         let therapistRecordID = String(UserDefaults.standard.string(forKey: "userID")!)
+        print("user default therapistRecordID \(therapistRecordID)")
         let therapistReference = CKRecord.Reference(recordID: CKRecord.ID(recordName: therapistRecordID), action: CKRecord_Reference_Action.none)
 
         let predicate = NSPredicate(format: "therapistName == %@", therapistReference)
@@ -89,7 +101,7 @@ class StudentCKModel: NSObject{
         operation.queryCompletionBlock = { (cursor, error) in
             DispatchQueue.main.async {
                 if error == nil {
-                    print(studentsRecordID.removingDuplicates())
+                    print("studentREcordsID count : \(studentsRecordID.removingDuplicates().count)")
                     onComplete(studentsRecordID.removingDuplicates()) // removing duplicate of multiple string
                 } else {
                     print("error : \(error as Any)")

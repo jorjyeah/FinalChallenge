@@ -62,7 +62,7 @@ class DeleteSkillViewController: UIViewController, UITextViewDelegate {
         let OKAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
             
             //unwind segue ke materialVC
-            //self.performSegue(withIdentifier: "unwindToMaterialVC", sender: self)
+            self.performSegue(withIdentifier: "unwindToMaterialVC", sender: self)
             
             
         })

@@ -10,16 +10,19 @@ import UIKit
 import CloudKit
 import AVFoundation
 
-class SummaryViewController: UIViewController, AVAudioPlayerDelegate {
+class SummaryViewController: StaraLoadingViewController, AVAudioPlayerDelegate {
     
+    // MARK: - IBOutlets
     @IBOutlet weak var tableView: UITableView!
-    
     @IBOutlet weak var selectedImageView: UIImageView!
-    
     @IBOutlet weak var attachmentView: UIView!
-    
     @IBOutlet weak var playButton: UIButton!
     
+    
+    // MARK: - Properties
+    
+    //modal  view
+    lazy var slideInTransitioningDelegate = SlideInPresentationManager()
     
     var selectedActivity = [AddReportModelCK]()
     var newTherapySession = [TherapySessionCKModel]()
@@ -39,19 +42,33 @@ class SummaryViewController: UIViewController, AVAudioPlayerDelegate {
     var audioData = Data()
     var audioFilename = URL(string: "")
     var audioPlayer: AVAudioPlayer!
+//    let loadingView = UIView()
+//    let loadingImage = UIImageView()
     
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    
+    
+    // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(selectedActivity)
         
         let recordingPlay = UIImage(named: "Recordings Play")?.withRenderingMode(.alwaysOriginal)
         
         attachmentView.isHidden = true
         playButton.isHidden = true
         playButton.setImage(recordingPlay, for: .normal)
+        
+        
+        
+        
+        //styling
+        attachmentView.backgroundColor = UIColor(red: 0.97, green: 0.97, blue: 0.97, alpha: 0.82)
     }
     
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showSummaryViewDetail" {
+    if segue.identifier == "showSummaryViewDetail" {
             let destination = segue.destination as? ViewDetailSummaryViewController
             let row = sender as! Int
             var prompts = String()
@@ -69,6 +86,9 @@ class SummaryViewController: UIViewController, AVAudioPlayerDelegate {
             destination?.program = CKRecord.ID(recordName: selectedActivity[row].baseProgramTitle)
         } else if segue.identifier == "showRecordView" {
             let destination = segue.destination as? AudioRecorderViewController
+            slideInTransitioningDelegate.direction = .bottom
+            destination!.transitioningDelegate = slideInTransitioningDelegate
+            destination!.modalPresentationStyle = .custom
             destination?.delegate = self
         } else if segue.identifier == "backToAddReportFromSummary" {
             let destination = segue.destination as? ReportViewController
@@ -78,40 +98,61 @@ class SummaryViewController: UIViewController, AVAudioPlayerDelegate {
     
     // save button tapped
     @IBAction func saveButtonTapped(_ sender: Any) {
+//        self.view.configureLoading()
+        startLoading()
+        let uploadGroup = DispatchGroup()
+        saveButton.isEnabled = false
+//        loadingView.isHidden = false
+
+        uploadGroup.enter()
         SaveNewReport.saveReport(childName: studentRecordID, therapistName: therapistRecordID, therapySessionNotes: notes) { (therapySessionModel, therapySessionRecordID) in
+//            guard let therapySessionModel = therapySessionModel else { return }
             self.newTherapySession = therapySessionModel
-            
-            DispatchQueue.main.async {
-                self.performSegue(withIdentifier: "backToAddReportFromSummary", sender: self)
-            }
-            
+
             if let image = self.selectedImage{
+                uploadGroup.enter()
                 SaveNewReport.savePhoto(therapySession: therapySessionRecordID, photo: image) { (success) in
-                    if success {
+                    print(success)
+                    if success{
+                        uploadGroup.leave()
                     }
                 }
             }
-            
+
             if let audioFilename = self.audioFilename {
+                uploadGroup.enter()
                 if let data = try? Data(contentsOf: audioFilename) {
                     print(data)
                     self.audioData = data
                     SaveNewReport.saveAudio(therapySession: therapySessionRecordID, audio: self.audioData) { (success) in
-                        if success{
-                            
+                        if success {
+                            uploadGroup.leave()
                         }
                     }
                 }
             }
-            
+
             self.selectedActivity .forEach { (detailedActivity) in
                 print(detailedActivity.activityRecordID)
+                uploadGroup.enter()
                 SaveNewReport.saveActivitySessions(activityReference: detailedActivity.activityRecordID, childName: self.studentRecordID, therapySession: therapySessionRecordID) { (success) in
-                    print(success)
+                    if success {
+                        uploadGroup.leave()
+                    }
                 }
             }
+
+            uploadGroup.leave()
+        }
+
+        uploadGroup.notify(queue: .main){
+            self.dismissLoading()
+//            self.loadingView.isHidden = false
+            self.saveButton.isEnabled = true
+            self.performSegue(withIdentifier: "backToAddReportFromSummary", sender: self)
         }
     }
+    
     
     //ini handlernya image attachment
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
@@ -125,7 +166,8 @@ class SummaryViewController: UIViewController, AVAudioPlayerDelegate {
         print("udah masuk ke gallery")
     }
     
-    
+//=============================================================================================================================//
+
     
     //ini handlernya audio attachment
     @objc func recordTapped(tapGestureRecognizer: UITapGestureRecognizer) {
@@ -189,16 +231,30 @@ class SummaryViewController: UIViewController, AVAudioPlayerDelegate {
     }
 }
 
-
-
-
-
-
-
+//=============================================================================================================================//
 
 
 //  tableview
 extension SummaryViewController: UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+
+        let myLabel = UILabel()
+        myLabel.frame = CGRect(x: 20, y: 8, width: 320, height: 20)
+        myLabel.font = UIFont.systemFont(ofSize: 13)
+        myLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
+        myLabel.textColor = .gray
+
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor(red: 0.97, green: 0.97, blue: 0.97, alpha: 1)
+        headerView.addSubview(myLabel)
+
+        return headerView
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 38
+    }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
 
@@ -295,6 +351,9 @@ extension SummaryViewController: UITableViewDataSource, UITableViewDelegate, UIT
             cell.promptLabel.text = "Prompt: " + prompts
             cell.mediaLabel.text = "Media: " + selectedActivity[indexPath.row].activityMedia
             
+            //styling
+//            tableView.separatorColor = .darkGray
+            
             return  cell
             
         } else if indexPath.section == 1 {
@@ -302,7 +361,13 @@ extension SummaryViewController: UITableViewDataSource, UITableViewDelegate, UIT
             cell.notesTextView.text = "Write your notes about today's activity"
             cell.notesTextView.textColor = UIColor.lightGray
             cell.notesTextView.becomeFirstResponder()
+            cell.notesTextView.tag = indexPath.section
+            cell.notesTextView.delegate = self // agar fungsi check changed dan placeholdernya nyala, harus di delegasikan ke UIVC
             cell.notesTextView.selectedTextRange = cell.notesTextView.textRange(from: cell.notesTextView.beginningOfDocument, to: cell.notesTextView.beginningOfDocument)
+            
+            //styling
+//            tableView.separatorColor = .clear
+            
             return  cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "attachmentCell", for: indexPath) as! AttachmentTableViewCell
@@ -317,11 +382,33 @@ extension SummaryViewController: UITableViewDataSource, UITableViewDelegate, UIT
             //ini untuk action audio
             cell.audioAttachment.isUserInteractionEnabled = true
             cell.audioAttachment.addGestureRecognizer(audioTapRecognizer)
+            
+            //styling
+//            tableView.separatorColor = .clear
 
             return cell
         }
     }
     
+    // untuk get notesnya
+    func textViewDidChange(_ textView: UITextView) {
+        switch textView.tag {
+        case 1 :
+            self.notes = textView.text
+            print(notes)
+        default:
+            print("nothing")
+        }
+        
+    }
+    
+    // untuk placeholdernya
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray && textView.text != nil{
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
@@ -352,5 +439,10 @@ extension SummaryViewController: AudioRecorderViewControllerDelegate {
     func sendBack(string: URL) {
         attachmentView.isHidden = false
         playButton.isHidden = false
+        audioFilename = string
     }
+}
+
+extension UIView{
+    
 }

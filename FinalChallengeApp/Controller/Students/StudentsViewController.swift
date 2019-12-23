@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StudentsViewController: UIViewController {
+class StudentsViewController: StaraLoadingViewController {
     
     @IBOutlet weak var tableView: UITableView!
         
@@ -25,23 +25,47 @@ class StudentsViewController: UIViewController {
         super.viewDidLoad()
         
         //navbar customize
-        navigationController?.navigationBar.backgroundColor = UIColor(red: 0.97, green: 0.97, blue: 0.97, alpha: 0)
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.topItem?.title = "Students"
-        
+        //navigationController?.navigationBar.backgroundColor = UIColor(red: 0.97, green: 0.97, blue: 0.97, alpha: 1)
+     
+
         // search bar
         searchBar.delegate =  self
-        
+        if UserDefaults.standard.bool(forKey: "didPreloadData") == false {
+            NotificationCenter.default.addObserver(self, selector: #selector(loadData), name: NSNotification.Name("preloadDataDone"), object: nil)
+        } else {
+            loadData()
+        }
+//        NotificationCenter.default.post(name: NSNotification.Name("preloadDataDone"), object: nil)
+    }
+    
+    @objc func loadData(){
+        print("done")
+        DispatchQueue.main.async {
+            self.startLoading()
+        }
+        let reloadGroup = DispatchGroup()
         let studentsData = StudentCKModel.self
+        reloadGroup.enter()
         studentsData.getTherapySchedule{ studentsRecordID in
-            print("studentsRecordID:\(studentsRecordID)")
-            studentsData.getStudentData(studentsRecordID: studentsRecordID) { studentsData in
-                self.student = studentsData // tampung data semua
-                self.filteredData = studentsData // tampung data yang terfilter
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
+            if studentsRecordID.count != 0{
+                print("studentsRecordID:\(studentsRecordID)")
+                reloadGroup.enter()
+                studentsData.getStudentData(studentsRecordID: studentsRecordID) { studentsData in
+                    self.student = studentsData // tampung data semua
+                    self.filteredData = studentsData // tampung data yang terfilter
+                    reloadGroup.leave()
                 }
+                reloadGroup.leave()
             }
+            else {
+                reloadGroup.leave()
+            }
+        }
+        
+        reloadGroup.notify(queue: .main){
+            self.tableView.reloadData()
+            self.dismissLoading()
+            
         }
     }
 
@@ -52,7 +76,7 @@ extension StudentsViewController: UITableViewDelegate, UITableViewDataSource, UI
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         if let headerView = view as? UITableViewHeaderFooterView {
-            headerView.contentView.backgroundColor = UIColor(red: 0.97, green: 0.97, blue: 0.97, alpha: 0.82)
+            headerView.contentView.backgroundColor = UIColor(red: 0.97, green: 0.97, blue: 0.97, alpha: 1)
         }
     }
     
@@ -105,6 +129,7 @@ extension StudentsViewController: UITableViewDelegate, UITableViewDataSource, UI
         })
         print("data student filtered : \(filteredData)")
         tableView.reloadData()
+        emptyState()
     }
     
     //[BI] ini untuk cancel
@@ -120,4 +145,43 @@ extension StudentsViewController: UITableViewDelegate, UITableViewDataSource, UI
         searchBar.text = ""
         searchBar.resignFirstResponder()
     }
+    
+    func emptyState(){
+        let footer = UIView()
+        if self.filteredData.count == 0 {
+            let emptyStateImage = UIImageView()
+            emptyStateImage.image = UIImage(named: "Search not found")
+            emptyStateImage.frame = CGRect(x: 0, y: 0, width: 296, height: 284)
+            footer.addSubview(emptyStateImage)
+            
+            emptyStateImage.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                emptyStateImage.centerXAnchor.constraint(equalTo: footer.centerXAnchor),
+                emptyStateImage.topAnchor.constraint(equalTo: footer.topAnchor, constant: 8)
+            ])
+        }
+        
+        self.tableView.tableFooterView = footer
+    }
 }
+
+//extension UIViewController {
+//
+//    func setLargeTitleDisplayMode(_ largeTitleDisplayMode: UINavigationItem.LargeTitleDisplayMode) {
+//        switch largeTitleDisplayMode {
+//        case .automatic:
+//              guard let navigationController = navigationController else { break }
+//            if let index = navigationController.children.firstIndex(of: self) {
+//                setLargeTitleDisplayMode(index == 0 ? .always : .never)
+//            } else {
+//                setLargeTitleDisplayMode(.always)
+//            }
+//        case .always, .never:
+//            navigationItem.largeTitleDisplayMode = largeTitleDisplayMode
+//            // Even when .never, needs to be true otherwise animation will be broken on iOS11, 12, 13
+//            navigationController?.navigationBar.prefersLargeTitles = true
+//        @unknown default:
+//            assertionFailure("\(#function): Missing handler for \(largeTitleDisplayMode)")
+//        }
+//    }
+//}

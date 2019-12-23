@@ -15,6 +15,12 @@ class NotesSummaryTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        notesTextView.backgroundColor = .white
+        notesTextView.layer.cornerRadius = 4
+        notesTextView.layer.borderWidth = 0.5
+        notesTextView.layer.borderColor = UIColor(red: 0.59, green: 0.59, blue: 0.59, alpha: 1).cgColor
+        
         // Initialization code
     }
 

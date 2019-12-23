@@ -76,7 +76,7 @@ class SkillDataManager{
     
     
     
-    class func saveNewSkill(baseProgramRecordID : CKRecord.ID, skillTitle : String, onComplete: @escaping(CKRecord.ID,String) -> Void){
+    class func saveNewSkill(baseProgramRecordID : CKRecord.ID, skillTitle : String, onComplete: @escaping(SkillCKModel) -> Void){
         let database = CKContainer.default().publicCloudDatabase
         let record = CKRecord(recordType: "Skill")
         
@@ -88,7 +88,8 @@ class SkillDataManager{
         
         database.save(record) { (savedRecord, error) in
             if let record = savedRecord{
-                onComplete(record.recordID, skillTitle)
+                let newRecord = SkillCKModel(record: record)
+                onComplete(newRecord)
             }
             print("err : \(error)")
         }

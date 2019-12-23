@@ -48,11 +48,16 @@ class EditActivityViewController: UIViewController {
         super.viewDidLoad()
         tableView.allowsMultipleSelection = true
         // Do any additional setup after loading the view.
+        
+        self.tableView.separatorColor = .clear
     }
 
     @IBAction func doneButtonTapped(_ sender: Any) {
+        let alert = UIAlertController(title: "Can't edit activity", message: "All fields must be completed", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         if activityName == "" || desc == "" || media == "" || helpfulTips == "" || selectedPrompts.count == 0{
             print("harus ada data")
+            self.present(alert, animated: true)
             // bikin alert "Semua field harus diisi"
         } else {
             print("ada data")
@@ -69,6 +74,26 @@ class EditActivityViewController: UIViewController {
 
 
 extension EditActivityViewController: UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, UITextFieldDelegate {
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+
+        let myLabel = UILabel()
+        myLabel.frame = CGRect(x: 20, y: 8, width: 320, height: 20)
+        myLabel.font = UIFont.systemFont(ofSize: 13)
+        myLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
+        myLabel.textColor = .gray
+
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor(red: 0.97, green: 0.97, blue: 0.97, alpha: 1)
+        headerView.addSubview(myLabel)
+
+        return headerView
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 38
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 6
     }

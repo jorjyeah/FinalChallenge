@@ -9,7 +9,7 @@
 import UIKit
 import CloudKit
 
-class MaterialsViewController: UIViewController {
+class MaterialsViewController: StaraLoadingViewController {
 
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -26,9 +26,13 @@ class MaterialsViewController: UIViewController {
     var selectedSkillTitle = String()
     
     @IBAction func unwindFromEditMaterials(_ sender:UIStoryboardSegue){
-        // bikin function dulu buat unwind, nanti di exit di page summary
+        // bikin function dulu buat unwind, nanti di exit di page edit
+        startLoading()
         if sender.source is EditMaterialsViewController{
-            
+            if let senderVC = sender.source as? EditMaterialsViewController{
+                collectionView.reloadData()
+                self.dismissLoading()
+            }
         }
     }
     
@@ -36,23 +40,17 @@ class MaterialsViewController: UIViewController {
         super.viewDidLoad()
         populateData()
         // Do any additional setup after loading the view.
-        collectionView.layer.cornerRadius = 8
-        collectionView.layer.shadowOffset = CGSize(width: 2, height: 2)
-        collectionView.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.16).cgColor
-        collectionView.layer.shadowOpacity = 1
-        collectionView.layer.shadowRadius = 4
     }
     
     
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        populateData()
-//    }
-    
     func populateData(){
+        let reloadGroup = DispatchGroup()
+        startLoading()
+        reloadGroup.enter()
         BaseProgramDataManager.getAllBaseProgram { (baseProgramModel) in
             self.baseProgram = baseProgramModel
-            
+            reloadGroup.enter()
             SkillDataManager.getAllSkill { (skillModel) in
                 skillModel.map { (skill) in
                     if self.skillData[skill.baseProgramRecordID] == nil{
@@ -61,14 +59,14 @@ class MaterialsViewController: UIViewController {
                     
                     self.skillData[skill.baseProgramRecordID]?.append(skill)
                 }
-                
-                
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                }
+                reloadGroup.leave()
             }
+            reloadGroup.leave()
         }
-        
+        reloadGroup.notify(queue: .main){
+            self.dismissLoading()
+            self.collectionView.reloadData()
+        }
     }
 }
 
@@ -107,7 +105,7 @@ extension MaterialsViewController: UICollectionViewDelegate, UICollectionViewDat
         cell.layer.shadowRadius = 4
         
         if let baseProgram =  skillData[baseProgram[indexPath.section].baseProgramRecordID]{
-            cell.programLabel.text = "\(baseProgram[indexPath.row].skillTitle) + \(indexPath.row)"
+            cell.programLabel.text = "\(baseProgram[indexPath.row].skillTitle)"
         }else{
             cell.programLabel.text = ""
         }
@@ -132,6 +130,7 @@ extension MaterialsViewController: UICollectionViewDelegate, UICollectionViewDat
 //        }
   
     }
+    
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

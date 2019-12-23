@@ -20,6 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let therapistNameUserDef = "therapistName"
         let userDefaults = UserDefaults.standard
         
+        //tabbar styling
+        UITabBar.appearance().tintColor = UIColor(red: 0.73, green: 0.52, blue: 0, alpha: 1)
+        UITabBar.appearance().unselectedItemTintColor = UIColor.darkGray
+
+//        NotificationCenter.default.addObserver(self, selector: #selector(StudentsViewController.loadData), name: NSNotification.Name("preloadDataDone"), object: nil)
         if userDefaults.bool(forKey: preloadedDataKey) == false {
             // check if it's the firsttime user open the app
             preloadData { (userRef, therapistName) in
@@ -40,14 +45,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         print("data available therapist, appDelegate")
                     }
                     print("userID & therapistName : \(userDefaults.string(forKey: userIDUserDef)) & \(userDefaults.string(forKey: therapistNameUserDef))")
-                    userDefaults.set(true, forKey: preloadedDataKey) // dont forget to set true
+                    userDefaults.set(true, forKey: preloadedDataKey)
+                    NotificationCenter.default.post(name: NSNotification.Name("preloadDataDone"), object: nil)
+                     // dont forget to set true
                 }
             }
         }
+//        else {
+//            NotificationCenter.default.post(name: NSNotification.Name("preloadDataDone"), object: nil)
+//        }
+        
         // Override point for customization after application launch.
         return true
     }
-
+    
+    
+    
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {

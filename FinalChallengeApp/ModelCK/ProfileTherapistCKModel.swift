@@ -85,12 +85,12 @@ class ProfileTherapistCKModel: NSObject{
         let userReference = CKRecord.Reference(recordID: CKRecord.ID(recordName: userReference), action: CKRecord_Reference_Action.none)
         record.setObject(userReference as __CKRecordObjCValue, forKey: "userReference")
         database.save(record) { savedRecord, error in
-            if error != nil{
-                print("saved : \(savedRecord!)")
+            if savedRecord != nil{
+//                print("saved : \(savedRecord!)")
                 onComplete(true)
             } else {
                 // handle errors here
-                print("error saved: \(error!)")
+//                print("error saved: \(error!)")
                 onComplete(false)
             }
         }

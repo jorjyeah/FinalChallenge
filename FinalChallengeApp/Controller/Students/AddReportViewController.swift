@@ -27,48 +27,68 @@ class AddReportViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let reloadGroup = DispatchGroup()
         tableView.allowsMultipleSelection = true
         
+        reloadGroup.enter()
         let allActivityData = AddReportModelCK.self
         allActivityData.getActivity { allActivitiesData in
             self.allActivitiesList = allActivitiesData
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
+            reloadGroup.leave()
+            //styling
+            self.tableView.separatorColor = .clear
         }
         
+        reloadGroup.enter()
         let lastActivityData = AddReportModelCK.self
         lastActivityData.getLastActivity(childRecordID: studentRecordID) { lastActivitiesData in
             if lastActivitiesData.count != 0 {
                 self.hideLastActivity = false
                 lastActivityData.getActivityBasedOnLastActivities(activitiesRecordID: lastActivitiesData) { activities in
                     self.lastActivitiesList = activities
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
+                    reloadGroup.leave()
                 }
             }
             else {
                 self.hideLastActivity = true
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
+                reloadGroup.leave()
             }
             
+        }
+        
+        reloadGroup.notify(queue: .main){
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
         // Do any additional setup after loading the view.
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let alert = UIAlertController(title: "Activity not selected", message: "Please select at least one activity", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         if segue.identifier == "showSummary" {
-            let destination = segue.destination as! SummaryViewController
-            destination.selectedActivity = selected
-            destination.studentRecordID = studentRecordID
+            if selected.count == 0{
+                self.present(alert, animated: true)
+            } else {
+                DispatchQueue.main.async {
+                    let destination = segue.destination as! SummaryViewController
+                    destination.selectedActivity = self.selected
+                    destination.studentRecordID = self.studentRecordID
+                }
+            }
         }
     }
 }
 
 extension AddReportViewController: UITableViewDelegate,UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if let headerView = view as? UITableViewHeaderFooterView {
+            headerView.contentView.backgroundColor = UIColor(red: 0.97, green: 0.97, blue: 0.97, alpha: 0.82)
+        }
+    }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
@@ -182,5 +202,6 @@ extension AddReportViewController: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
+    
     
 }
