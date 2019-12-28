@@ -56,7 +56,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "6E317ECA-5BF5-4AFA-9B99-FFE0CBAD07DB"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FinalChallengeApp/AppDelegate.swift"
@@ -88,7 +88,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "185B4227-CC3F-46EB-A403-D8B4DF6C18D5"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FinalChallengeApp/AppDelegate.swift"
@@ -136,7 +136,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "D70CFEBC-BA36-4935-97BE-FB614C7B2642"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FinalChallengeApp/AppDelegate.swift"
@@ -152,7 +152,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "1F7BD328-6403-4A46-91A9-A5B5A52DE3C3"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FinalChallengeApp/Controller/Students/AddReportViewController.swift"
@@ -184,7 +184,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "F9E9144C-C01D-4215-AC1A-D8260A55D9B6"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FinalChallengeApp/Controller/Students/SummaryViewController.swift"
@@ -200,7 +200,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "0E0F32DE-DD4D-4CFF-BBBF-C33B3FE40483"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FinalChallengeApp/Controller/Students/SummaryViewController.swift"
@@ -216,7 +216,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "FB9DF668-08A4-42C1-8015-3ADC1D1E8369"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FinalChallengeApp/Controller/Students/SummaryViewController.swift"
@@ -274,70 +274,6 @@
             endingLineNumber = "50"
             landmarkName = "loadData()"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "7FAEF5A5-D182-4686-BAA7-A3C4A66D7E7A"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FinalChallengeApp/Manager/BaseProgramDataManager.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "saveEdited(baseProgramRecord:onComplete:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "9AB569E2-71DE-4C4E-B66A-1ECEAFCBB954"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FinalChallengeApp/Manager/BaseProgramDataManager.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
-            landmarkName = "saveEdited(baseProgramRecord:onComplete:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "9AB569E2-71DE-4C4E-B66A-1ECEAFCBB954 - 12ad011ce8689d26"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static STARA_Therapist.BaseProgramDataManager.saveEdited(baseProgramRecord: Swift.Array&lt;STARA_Therapist.BaseProgramCKModel&gt;, onComplete: (Swift.Bool) -&gt; ()) -&gt; ()"
-                  moduleName = "STARA Therapist"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jorjyeah/Documents/ASDEV/XCODE/FinalChallengeApp/FinalChallengeApp/Manager/BaseProgramDataManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "94"
-                  endingLineNumber = "94"
-                  offsetFromSymbolStart = "492">
-               </Location>
-               <Location
-                  uuid = "9AB569E2-71DE-4C4E-B66A-1ECEAFCBB954 - b2ef6994f8a532af"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (Swift.Optional&lt;Swift.Array&lt;__C.CKRecord&gt;&gt;, Swift.Optional&lt;Swift.Array&lt;__C.CKRecordID&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in static STARA_Therapist.BaseProgramDataManager.saveEdited(baseProgramRecord: Swift.Array&lt;STARA_Therapist.BaseProgramCKModel&gt;, onComplete: (Swift.Bool) -&gt; ()) -&gt; ()"
-                  moduleName = "STARA Therapist"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jorjyeah/Documents/ASDEV/XCODE/FinalChallengeApp/FinalChallengeApp/Manager/BaseProgramDataManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "95"
-                  endingLineNumber = "95"
-                  offsetFromSymbolStart = "212">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
