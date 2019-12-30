@@ -35,7 +35,7 @@ class SummaryViewController: StaraLoadingViewController, AVAudioPlayerDelegate {
     var imagePicker = UIImagePickerController()
     
     //yang selected ditampung kesini
-    var selectedImage = UIImage(named: "Student Photo Default")
+    var selectedImage = UIImage()
     
     //audio
     var fileName: String = "audioFile.m4a"
@@ -109,7 +109,7 @@ class SummaryViewController: StaraLoadingViewController, AVAudioPlayerDelegate {
 //            guard let therapySessionModel = therapySessionModel else { return }
             self.newTherapySession = therapySessionModel
 
-            if let image = self.selectedImage{
+            if let image = self.selectedImage as? UIImage {
                 uploadGroup.enter()
                 SaveNewReport.savePhoto(therapySession: therapySessionRecordID, photo: image) { (success) in
                     print(success)

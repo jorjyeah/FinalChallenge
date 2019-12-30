@@ -100,25 +100,32 @@ class SaveNewReport{
         let record = CKRecord(recordType: "Photo")
         
         let data = photo.jpegData(compressionQuality: 90); // UIImage -> NSData, see also UIImageJPEGRepresentation
-        let url = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(NSUUID().uuidString+".dat")
-        
-        do {
-            try data!.write(to: url!, options: [])
-        } catch let e as NSError {
-            print("Error! \(e)");
-            return
-        }
-        
-        let therapySessionRecordID = CKRecord.Reference(recordID: therapySession, action: CKRecord_Reference_Action.none)
-        record.setObject(therapySessionRecordID as __CKRecordObjCValue, forKey: "ext")
-        record.setObject(CKAsset(fileURL: url!), forKey: "image")
-        
-        database.save(record) { (savedRecord, error) in
-            if (savedRecord != nil){
-                onComplete(true)
-            } else{
-                print(error)
+        if let data = data{
+            let url = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(NSUUID().uuidString+".dat")
+            
+            do {
+                try data.write(to: url!, options: [])
+            } catch let e as NSError {
+                print("Error! \(e)");
+                return
+            }
+            
+            let therapySessionRecordID = CKRecord.Reference(recordID: therapySession, action: CKRecord_Reference_Action.none)
+            record.setObject(therapySessionRecordID as __CKRecordObjCValue, forKey: "ext")
+            record.setObject(CKAsset(fileURL: url!), forKey: "image")
+            
+            database.save(record) { (savedRecord, error) in
+                if (savedRecord != nil){
+                    onComplete(true)
+                } else{
+                    print(error)
+                }
             }
         }
+        else {
+            onComplete(true)
+        }
+
+        
     }
 }
