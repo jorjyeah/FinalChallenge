@@ -29,7 +29,6 @@ class SummaryViewController: StaraLoadingViewController, AVAudioPlayerDelegate {
     var studentRecordID = String()
     let therapistRecordID = String(UserDefaults.standard.string(forKey: "userID")!)
     var notes = String()
-    var test : String!
     
     
     var imagePicker = UIImagePickerController()
