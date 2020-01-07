@@ -71,11 +71,11 @@ class AddReportViewController: UIViewController {
             if selected.count == 0{
                 self.present(alert, animated: true)
             } else {
-                DispatchQueue.main.async {
+//                DispatchQueue.main.async {
                     let destination = segue.destination as! SummaryViewController
                     destination.selectedActivity = self.selected
                     destination.studentRecordID = self.studentRecordID
-                }
+//                }
             }
         }
     }
