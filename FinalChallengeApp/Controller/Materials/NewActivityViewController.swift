@@ -33,6 +33,7 @@ class NewActivityViewController: UIViewController {
         // notif for view if keyboard will show or hide
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardMayAdjustView), name: UITextView.textDidChangeNotification, object: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -92,6 +93,26 @@ extension NewActivityViewController: UITableViewDelegate, UITableViewDataSource,
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 6
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        activeTextField = textField
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        activeTextField = nil
+    }
+    
+//    func textViewDidBeginEditing(_ textView: UITextView) {
+//        activeTextView = textView
+//    }
+    
+    func textViewDidChangeSelection(_ textView: UITextView) {
+        activeTextView = textView
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        activeTextView = nil
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -253,19 +274,94 @@ extension UITextField{
     }
 }
 
+let height = UIScreen.main.bounds.height
+var activeTextField:  UITextField?
+var activeTextView: UITextView?
+
 extension UIViewController{
     // configure position UIView for keyboard
     @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0 {
-                self.view.frame.origin.y -= keyboardSize.height
-            }
-        }
+        pushView(notification: notification as Notification, view: self.view)
+//        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            
+//            if self.view.frame.origin.y == 0 {
+//                self.view.frame.origin.y -= keyboardSize.height
+//            }
+//        }
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
         if self.view.frame.origin.y != 0 {
             self.view.frame.origin.y = 0
         }
+//        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+//            self.view.frame.size = CGSize(width: self.view.frame.width, height: view.frame.height - keyboardSize.height)
+//        }
     }
+    
+    func pushView(notification : Notification, view:UIView){
+//        guard let userInfo = notification.userInfo else {return}
+//        guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {return}
+//
+//        let keyboardFrame = keyboardSize.cgRectValue
+//
+//        let kbFrame = self.view.convert(keyboardFrame, to: view.window)
+//
+//        view.frame.origin.y = -kbFrame.height
+        guard let userInfo = notification.userInfo else {return}
+        guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {return}
+
+        let keyboardFrame = keyboardSize.cgRectValue
+        let yPos = height - keyboardFrame.height
+
+        let targetField : CGPoint?
+        let activeTextFrameSize : CGFloat?
+        if activeTextField != nil {
+            targetField = activeTextField?.convert((activeTextField?.frame.origin)!, to: view)
+            activeTextFrameSize = (activeTextField?.frame.size.height)!
+        } else if activeTextView != nil {
+            targetField = activeTextView?.convert((activeTextView?.frame.origin)!, to: view)
+            activeTextFrameSize = (activeTextView?.frame.size.height)!
+        } else {
+            targetField = nil
+            activeTextFrameSize = nil
+        }
+
+        guard let target = targetField?.y else {return}
+        guard let active = activeTextFrameSize else {return}
+        let yLastPosition = target + active
+
+        if view.frame.origin.y == 0 && yLastPosition > yPos{
+            view.frame.origin.y -= (yLastPosition - yPos + 8)
+        }
+    }
+    
+//    @objc func keyboardMayAdjustView(notification: Notification) {
+//    var cursor = CGPoint.zero
+//    var pointed = CGPoint.zero
+//
+//        for viewa in self.view.subviews {
+//            for viewb in viewa.subviews {
+//                if viewb.isKind(of: UITextView .classForCoder()) {
+//                    if viewb.isFirstResponder { // got the textView
+//                        let tv = viewb as! UITextView
+//                        pointed = viewb.convert(viewb.frame.origin, to:self.view)
+//                        cursor = tv.caretRect(for: (tv.selectedTextRange?.start)!).origin
+//                        break
+//                    }
+//                }
+//            }
+//            if (cursor.y > 0.0) {
+//                break
+//            }
+//        }
+//
+//        var viewNewY : CGFloat = 0.0
+//        if self.isKeyboardUp {
+//            if (pointed.y + cursor.y > self.keyboardOriginY) { // move the view
+//                viewNewY = self.keyboardOriginY - (pointed.y + cursor.y) - 50.0
+//            }
+//        }
+//    }
+    // don't move the view up too high
 }

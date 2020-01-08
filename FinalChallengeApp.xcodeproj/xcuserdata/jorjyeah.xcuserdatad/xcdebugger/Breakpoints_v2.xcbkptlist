@@ -32,7 +32,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "30"
                   endingLineNumber = "30"
-                  offsetFromSymbolStart = "929">
+                  offsetFromSymbolStart = "944">
                </Location>
                <Location
                   uuid = "0FCDE064-F826-4D6E-BD6E-3ED467075148 - b86e92498d28e161"
@@ -47,7 +47,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "32"
                   endingLineNumber = "32"
-                  offsetFromSymbolStart = "131">
+                  offsetFromSymbolStart = "320">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -241,6 +241,22 @@
             startingLineNumber = "50"
             endingLineNumber = "50"
             landmarkName = "loadData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "96D8F2BF-D7CF-4D2E-9FFD-F33B309B55DB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FinalChallengeApp/Controller/Materials/NewActivityViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
+            landmarkName = "textViewDidChangeSelection(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
