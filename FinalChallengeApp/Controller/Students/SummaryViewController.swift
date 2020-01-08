@@ -58,8 +58,8 @@ class SummaryViewController: StaraLoadingViewController, AVAudioPlayerDelegate {
         playButton.isHidden = true
         playButton.setImage(recordingPlay, for: .normal)
         
-        
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         //styling
         attachmentView.backgroundColor = UIColor(red: 0.97, green: 0.97, blue: 0.97, alpha: 0.82)
@@ -349,7 +349,6 @@ extension SummaryViewController: UITableViewDataSource, UITableViewDelegate, UIT
             cell.activityLabel.text = selectedActivity[indexPath.row].activityTitle
             cell.promptLabel.text = "Prompt: " + prompts
             cell.mediaLabel.text = "Media: " + selectedActivity[indexPath.row].activityMedia
-            
             //styling
 //            tableView.separatorColor = .darkGray
             
@@ -363,7 +362,7 @@ extension SummaryViewController: UITableViewDataSource, UITableViewDelegate, UIT
             cell.notesTextView.tag = indexPath.section
             cell.notesTextView.delegate = self // agar fungsi check changed dan placeholdernya nyala, harus di delegasikan ke UIVC
             cell.notesTextView.selectedTextRange = cell.notesTextView.textRange(from: cell.notesTextView.beginningOfDocument, to: cell.notesTextView.beginningOfDocument)
-            
+            cell.notesTextView.doneButton(title: "Done", target: self, selector: #selector(dismissKeyboard(sender:)))
             //styling
 //            tableView.separatorColor = .clear
             
@@ -409,6 +408,11 @@ extension SummaryViewController: UITableViewDataSource, UITableViewDelegate, UIT
         }
     }
     
+    // keyboard handler for textView
+    @objc func dismissKeyboard(sender: Any){
+        self.view.endEditing(true)
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             performSegue(withIdentifier: "showSummaryViewDetail", sender: indexPath.row)
@@ -442,6 +446,6 @@ extension SummaryViewController: AudioRecorderViewControllerDelegate {
     }
 }
 
-extension UIView{
+extension UIViewController{
     
 }
